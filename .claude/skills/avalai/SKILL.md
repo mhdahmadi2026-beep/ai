@@ -270,3 +270,6 @@ See `references/00-index.md`.
 
 ## Streaming (references/guides/streaming-responses.md)
 - Responses SSE is typed: append only `response.output_text.delta`; refusals via `response.refusal.delta`; run tools after `response.function_call_arguments.done`; read usage/status from `response.completed` (check `incomplete_details`); handle both `response.failed` and `error`; moderation scores only after completion; stream resume (`starting_after`) is not available on AvalAI (hosted background unimplemented).
+
+## Responses WebSocket mode (references/guides/websocket-mode.md) — NOT implemented
+- Don't emit `wss://…/v1/responses` code. Use HTTP `/v1/responses` + `previous_response_id`/replay + SSE streaming.
