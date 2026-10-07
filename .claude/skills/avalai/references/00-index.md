@@ -98,7 +98,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | پیام‌ها (Messages / Anthropic) | /api-reference/messages | api-reference/messages.md | DONE |
 | سنتز متن Vertex (text:synthesize) | /api-reference/v1-text-synthesize | api-reference/v1-text-synthesize.md | DONE |
 | OCR | /api-reference/ocr | api-reference/ocr.md | DONE |
-| ویدیوها | /api-reference/videos | — | PENDING |
+| ویدیوها ⚠ Sora shut down 2026-09-24 | /api-reference/videos | api-reference/videos.md | DONE |
 | جستجو | /api-reference/search | api-reference/search.md | DONE |
 | (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
 

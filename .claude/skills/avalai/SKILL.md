@@ -171,3 +171,6 @@ See `references/00-index.md`.
 
 ## OCR rules (see api-reference/ocr.md)
 - `POST /v1/ocr` model `mistral-ocr-4-0` ($0.004/page; $0.005 annotated; `mistral-ocr-latest` alias). `document:{type:"document_url"|"image_url", …}` (public URL or base64 data URL); `pages` 0-based; `table_format` markdown|html; structured output via `document_annotation_format` json_schema → `document_annotation` is a JSON *string*. Request images (`include_image_base64`) only when needed. Mistral SDK works with `server_url="https://api.avalai.ir"`.
+
+## Videos API (see api-reference/videos.md) — ⚠ verify availability
+- `/v1/videos` (create/retrieve/list/delete/remix/content). Sora models + OpenAI Videos API had a provider shutdown 2026-09-24 → treat Sora as unavailable; verify Veo (`veo-3.1-*`) / Runway (`gen4.5`, `gen4_turbo`) live via `/v1/models`. Async: poll `status`; download only when `completed`; never resubmit after a dropped connection — list videos first (`failed` = not billed, otherwise billed). `seconds` is a string (multiples of 4 for Sora). Characters/extensions/edits not supported.
