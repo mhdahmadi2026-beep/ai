@@ -136,3 +136,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Fireworks.ai | /providers/fireworksai | providers/fireworks.md | DONE |
 | Guide: rate-limits | /guides/rate-limits | guides/rate-limits.md | DONE |
 | Guide: batch-processing | /guides/batch-processing | guides/batch-processing.md | DONE |
+| Guide: error-handling | /guides/error-handling | guides/error-handling.md | DONE |

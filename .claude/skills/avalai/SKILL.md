@@ -211,3 +211,7 @@ See `references/00-index.md`.
 - ElevenLabs: TTS `/v1/audio/speech` (`eleven_v3` for Persian; priced per second), STT `scribe_v2` `/v1/audio/transcriptions`.
 - Serper `serper-search` $0.001/query; Fireworks models: muse-glimmer-30b, nemotron-3.5-lightning, nemotron-3-ultra (responses partial).
 - Rate limits are per org+model; Tier 1 = phone verify (200k toman total), Tier2+ = cumulative top-ups $10/50/250/1000; see guides/rate-limits.md. Batch = client-side worker only (guides/batch-processing.md).
+
+## Error handling (references/guides/error-handling.md)
+- Always log `error.request_id` / `avalai-request-id`; send `X-Client-Request-Id` for correlation. Retry only 429(rate), 5xx, timeouts, network drops with capped exponential backoff + jitter and `Retry-After`; never blind-retry 400/401/403/404/422, `unsupported_model`, `content_policy_violation`, `insufficient_quota`, `quota_exceeded` (these need a code/account fix, even though quota errors come as 429).
+- Read `error.solution` field. WebSocket Responses: `previous_response_not_found` → resend full input with `previous_response_id:null`.
