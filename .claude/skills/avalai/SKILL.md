@@ -291,3 +291,6 @@ See `references/00-index.md`.
 
 ## Graders (references/guides/graders.md)
 - No hosted graders: write local deterministic graders (`item.*` vs `sample.*`, score 0–1 + reason), prefer string/schema checks, calibrate LLM judges with ranked fixtures and a reward-hacking pack before CI gating.
+
+## Agent evals (references/guides/agent-evals.md)
+- Grade the whole trajectory (tool choice, args, state, handoffs, recovery, grounding, stopping), log typed Responses output items, deterministic checks first, add eval cases for every incident before changing prompts; only add handoffs when evals prove a boundary needs them.
