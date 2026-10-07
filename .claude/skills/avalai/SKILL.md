@@ -297,3 +297,6 @@ See `references/00-index.md`.
 
 ## Red teaming (references/guides/red-teaming.md)
 - Authorized scope only; test layers (input, retrieval, tools, output, abuse tracking) with synthetic adversarial datasets; run on every prompt/tool/retrieval/model change; record request ids + hashed `safety_identifier`; require approval for side-effect tools.
+
+## Retrieval (references/guides/retrieval.md) — hosted vector stores / file_search NOT available
+- Build RAG yourself: `/v1/embeddings` + own vector store; filter by tenant/permission BEFORE similarity; require source-id citations; rewrite queries but log both; tune top_k/threshold/hybrid weights; eval retrieval and answers separately.
