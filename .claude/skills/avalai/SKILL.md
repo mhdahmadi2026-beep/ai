@@ -107,3 +107,8 @@ See `references/00-index.md`.
 
 ## Models API rules
 - `GET /v1/models` (+`/{id}`), `GET /public/models` (no auth). Header decides format: `Authorization: Bearer` → OpenAI, `x-api-key` → Anthropic (Anthropic SDK base URL has no `/v1`). Only `GET /v1/models/{id}` returns `extra.{metadata,pricing,rate_limits}` (per-tier rpm/tpm + your `current` tier). Use it/`/public/models` instead of guessing IDs, prices, limits, `min_tier`, capabilities.
+
+## Response-header rules (important, time-sensitive)
+- Read **`avalai-request-id`** (UUID v7) from response headers. Legacy `x-request-id` is returned only until **2026-10-15**; afterwards it may be a CDN's id — never use it. The OpenAI SDK's `response._request_id` was derived from `x-request-id` → prefer `with_raw_response(...).headers.get("avalai-request-id")` (older references in this skill that say `_request_id` should be treated with that caveat).
+- Optional request header `X-Client-Request-Id` (ASCII ≤512 chars, unique per attempt) → log with `avalai-request-id`.
+- Rate-limit headers: `x-ratelimit-{limit,remaining,reset}-{requests,tokens}` (+ `-project-tokens` on some routes); reset values are duration strings like `45s` (don't `int()`); on 429 honor `Retry-After`.
