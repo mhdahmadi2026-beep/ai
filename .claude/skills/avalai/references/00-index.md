@@ -21,7 +21,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 | کتابخانه‌ها | /libraries | 04-libraries.md | DONE |
 | عملکرد | /performance | 05-performance.md | DONE (cache benchmark source missing) |
 | قیمت‌گذاری | /pricing | 06-pricing.md | DONE (per-tier RPM/TPM per model not transcribed → see rate-limits page / live API) |
-| سطوح سرویس | /service-tiers | 07-service-tiers.md | PENDING |
+| سطوح سرویس | /service-tiers | 07-service-tiers.md | DONE |
 | بسته‌های اعتباری | /credit-packages | 08-credit-packages.md | PENDING |
 | محدودیت‌های نرخ مدل | /rate-limits | 09-rate-limits.md | PENDING |
 | مدل‌های منسوخ شده | /deprecations | 10-deprecations.md | PENDING |
@@ -54,3 +54,6 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 
 ## Discovered in pricing page (PENDING)
 /models/model-details, /models/<model-id> pages (one per model), /api-reference/images, /api-reference/user, /resellers/cost-tracking-guide, /resellers/enterprise-guide, /guides/cost-optimization, /news/2026-09-11-..., /news/2026-09-30-gemini-3-8-tts-models-added
+
+## Discovered in service-tiers page (PENDING)
+/guides/error-handling, /guides/production-best-practices, /api-reference/responses, /api-reference/chat
