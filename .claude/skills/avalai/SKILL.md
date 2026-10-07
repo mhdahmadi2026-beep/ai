@@ -423,3 +423,6 @@ See `references/00-index.md`.
 
 ## RAG best practices (references/guides/rag-best-practices.md)
 - Pipeline: classify query → chunk (512–1024 tokens, 10–20% overlap, headings/metadata; Persian needs Persian-aware splitting) → embed (same model docs+queries; `text-embedding-3-large` default dim is 3072 NOT 1536) → vector store with metadata filters (permission filters BEFORE retrieval) → hybrid dense+BM25 (prefer RRF) → rerank via AvalAI `POST /v1/rerank` (OpenAI SDK has no `reranking.create`; the MS-MARCO cross-encoder is English-only) → repack with source IDs → generate with strict citations → eval on labelled questions. Don't use pickle for untrusted data; FAISS read/write take file paths; hosted vector stores/file_search unavailable.
+
+## Evidence-grounded workflow example (references/examples/evidence-grounded-workflows.md, references/scripts/evidence_workflow.py)
+- Pattern: records `{id,text}` → strict JSON-schema Chat call → validate in code (ids exist, quotes are exact source substrings) → `needs_human_review`; no auto-retry on timeout (may be billed), no redirects (don't forward keys), `finish_reason=="stop"` + no `refusal`, response size cap, key via env/getpass. Quote-match ≠ semantic validation; offline fixtures aren't AI evidence.

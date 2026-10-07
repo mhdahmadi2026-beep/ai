@@ -206,3 +206,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: advanced-usage (راهنمای استفاده پیشرفته) | /guides/advanced-usage (inferred) | guides/advanced-usage.md | DONE |
 | Guide: responses-vs-chat-completions | /guides/responses-vs-chat-completions | guides/responses-vs-chat-completions.md | DONE |
 | Guide: rag-best-practices | /guides/rag-best-practices | guides/rag-best-practices.md | DONE (samples have defects) |
+| Example: evidence-grounded workflows (support/feedback/study) | /examples/… (slug unknown) | examples/evidence-grounded-workflows.md + scripts/evidence_workflow.py | DONE (offline verified) |
