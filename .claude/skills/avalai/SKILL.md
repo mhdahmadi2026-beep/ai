@@ -205,3 +205,9 @@ See `references/00-index.md`.
 - Kimi: prefer `kimi-k3` (alias `kimi-latest`), `reasoning_effort:"max"`; k2-thinking needs max_tokens ≥16000, stream, keep `reasoning_content` in tool loops. Never copy the docs' Responses examples (they use gpt-5.6-luna).
 - RunwayML video: `/v1/videos`, prompt ≤1000 chars, input_reference required for gen4.5/gen4_turbo.
 - Groq ids `groq.*`; NVIDIA NIM ids `nvidia_nim.*` are research-only (low RPM) — don't use in production.
+
+## MiniMax, ElevenLabs, Serper, Fireworks, rate-limit & batch guides
+- MiniMax: `minimax-m3` flagship (1M ctx, price doubles >512K); M2.x reasoning via `extra_body={"reasoning_split":True}` → `reasoning_details`; keep full assistant message/thinking blocks in tool loops; Anthropic SDK base has no /v1.
+- ElevenLabs: TTS `/v1/audio/speech` (`eleven_v3` for Persian; priced per second), STT `scribe_v2` `/v1/audio/transcriptions`.
+- Serper `serper-search` $0.001/query; Fireworks models: muse-glimmer-30b, nemotron-3.5-lightning, nemotron-3-ultra (responses partial).
+- Rate limits are per org+model; Tier 1 = phone verify (200k toman total), Tier2+ = cumulative top-ups $10/50/250/1000; see guides/rate-limits.md. Batch = client-side worker only (guides/batch-processing.md).

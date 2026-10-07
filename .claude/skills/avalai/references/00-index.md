@@ -130,3 +130,9 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | RunwayML | /providers/runwayml | providers/runwayml.md | DONE |
 | Groq | /providers/groq | providers/groq.md | DONE |
 | NVIDIA NIM | /providers/nvidia-nim | providers/nvidia-nim.md | DONE |
+| MiniMax | /providers/minimax | providers/minimax.md | DONE |
+| ElevenLabs | /providers/elevenlabs | providers/elevenlabs.md | DONE |
+| Serper | /providers/serper | providers/serper.md | DONE |
+| Fireworks.ai | /providers/fireworksai | providers/fireworks.md | DONE |
+| Guide: rate-limits | /guides/rate-limits | guides/rate-limits.md | DONE |
+| Guide: batch-processing | /guides/batch-processing | guides/batch-processing.md | DONE |
