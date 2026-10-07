@@ -104,3 +104,6 @@ See `references/00-index.md`.
 
 ## User API quick map (`https://api.avalai.ir/user/v1`, Bearer key; rate-limited 3/15/50/150/350/750 req/min by tier)
 `GET /credit` (balance, tier, packages/grants) · `GET /transactions` (filters: hours_ago≤720, dates, page_size≤1000, model, provider, status_code, api_key_id, safety_identifier) · `POST /transactions/lookup` (≤1000 ids, exact `cost`) · `GET /transactions/summary?group_by=model|provider|date|hour` · `GET /health`. Records kept ≥90 days. Error shape is flat `{error, message}`.
+
+## Models API rules
+- `GET /v1/models` (+`/{id}`), `GET /public/models` (no auth). Header decides format: `Authorization: Bearer` → OpenAI, `x-api-key` → Anthropic (Anthropic SDK base URL has no `/v1`). Only `GET /v1/models/{id}` returns `extra.{metadata,pricing,rate_limits}` (per-tier rpm/tpm + your `current` tier). Use it/`/public/models` instead of guessing IDs, prices, limits, `min_tier`, capabilities.

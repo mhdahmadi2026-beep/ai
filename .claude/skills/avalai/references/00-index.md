@@ -88,7 +88,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | نظارت | /api-reference/moderation | — | PENDING |
 | API کاربر | /api-reference/user | api-reference/user.md | DONE |
 | هدرهای پاسخ | /api-reference/response-headers | — | PENDING |
-| مدل‌ها | /api-reference/models | — | PENDING |
+| مدل‌ها | /api-reference/models | api-reference/models.md | DONE |
 | v1beta (Gemini native) | /api-reference/v1beta | — | PENDING |
 | ویدیوها | /api-reference/videos | — | PENDING |
 | جستجو | /api-reference/search | — | PENDING |
