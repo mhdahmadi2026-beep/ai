@@ -492,3 +492,6 @@ See `references/00-index.md`.
 
 ## API content policy (references/guides/content-policy.md)
 - AvalAI states it does NOT collect/store/use API call content (prompts, messages, audio, images); it keeps only model name, IP, timestamp, usage metrics. Applies to AvalAI layer only — upstream providers (OpenAI, Google…) have their own terms; provider-side state (stored Responses, files, batches, tools) still needs `store:false`/expiry/minimisation. Don't promise "nothing stored anywhere"; document per-route retention (data-controls.md). Not a contract/ZDR.
+
+## Privacy policy (references/guides/privacy-policy.md)
+- Chat platform: conversations used for model improvement only if "help improve the model" is ON (default OFF), anonymised, not shared; uploaded files never used, deleted immediately on request; other data usable up to 30 days after deletion. API: content not processed/stored; model name, IP (+timestamp/usage per content-policy) kept. Docs site: consent levels Essential/Performance(GA4)/All(OpenRouter live data). Don't conflate chat-product and API policies; no "no logs" promises; policy has no DPA/jurisdiction/retention details.

@@ -229,3 +229,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: speaker-aware meeting intelligence | /examples/speaker_aware_meeting_intelligence | examples/speaker-aware-meeting-intelligence.md + scripts/meeting_intelligence.py | DONE (validators tested offline; STT model availability UNRESOLVED) |
 | Example: advanced Gemini image generation (native v1beta) | /examples/advanced_gemini_image_generation | examples/advanced-gemini-image-generation.md | DONE |
 | Guide: content-policy (API content policy & safeguards) | /safety/content-policy | guides/content-policy.md | DONE |
+| Guide: privacy-policy | /safety/privacy-policy | guides/privacy-policy.md | DONE |
