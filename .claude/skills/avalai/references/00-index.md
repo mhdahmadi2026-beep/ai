@@ -198,3 +198,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: cost-optimization | /guides/cost-optimization | guides/cost-optimization.md | DONE |
 | Guide: citation-formatting | /guides/citation-formatting | guides/citation-formatting.md | DONE |
 | Guide: prompt-caching | /guides/prompt-caching | guides/prompt-caching.md | DONE |
+| Guide: token-counting | /guides/token-counting | guides/token-counting.md | DONE (NOT IMPLEMENTED – never emit /v1/responses/input_tokens) |
