@@ -414,3 +414,6 @@ See `references/00-index.md`.
 
 ## Optimizing LLM accuracy (references/guides/optimizing-llm-accuracy.md)
 - Cycle: define failure+cost → small eval set → diagnose (missing context ⇒ RAG/files/search; inconsistent behaviour ⇒ instructions/examples/schemas/routing) → change ONE lever → re-run evals → rollout; every prod failure becomes an eval row. Prompt engineering first; RAG fails at retrieval OR LLM use; judge-models need rubric + human calibration + rotated order + frozen versions. Hosted fine-tuning unavailable (prepare data/evals only). Low confidence/high cost ⇒ clarify or hand off; high-impact actions ⇒ assistant mode.
+
+## Advanced usage (references/guides/advanced-usage.md)
+- Embeddings: normalize then dot (fix the page's broken sample); `seed` + `system_fingerprint` = best-effort reproducibility (provider/model dependent; reasoning models reject `temperature`); frequency/presence penalties (0.1–1 mild, ≤2 strong) unsupported on reasoning models/with `prediction`; logprobs = token likelihood, NOT correctness — validate single-token labels, human-review below a threshold tuned on a labelled hold-out; Persian text costs more tokens; add `strict:true` to tool schemas.

@@ -203,3 +203,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: model-selection | /guides/model-selection | guides/model-selection.md | DONE (ids need live verification) |
 | Guide: latency-optimization | /guides/latency-optimization | guides/latency-optimization.md | DONE |
 | Guide: optimizing-llm-accuracy | /guides/optimizing-llm-accuracy | guides/optimizing-llm-accuracy.md | DONE |
+| Guide: advanced-usage (راهنمای استفاده پیشرفته) | /guides/advanced-usage (inferred) | guides/advanced-usage.md | DONE |
