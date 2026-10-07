@@ -1,0 +1,41 @@
+---
+name: avalai
+description: Expert guide for building with AvalAI (اول ای‌آی / "اول ai" / "هوش مصنوعی اول"), an OpenAI-compatible AI gateway at https://api.avalai.ir/v1. Use whenever the project calls AvalAI, api.avalai.ir, AVALAI_API_KEY, or the user asks about AvalAI models, pricing, rate limits, service tiers, credit packages, deprecations, Responses/Chat Completions/Messages APIs, images, audio, tools, streaming, structured outputs, function calling, or production practices. Always consult references/ instead of guessing model IDs, prices or limits.
+---
+
+# AvalAI skill
+
+Source of truth: https://docs.avalai.ir/fa/ (Persian) — English at https://docs.avalai.ir/en/.
+Official name is always written **AvalAI**. Users may also say «اول ai», «اول ای آی», «هوش مصنوعی اول».
+
+## Core facts (from the Introduction page)
+- Single base URL for OpenAI-compatible clients: `https://api.avalai.ir/v1`
+- Auth: project API key in env var `AVALAI_API_KEY`. Create it in the dashboard (https://chat.avalai.ir/platform/home). **Server-side only — never ship to browsers/mobile apps.**
+- Recommended first call: **Responses API** (`client.responses.create`), read `response.output_text`.
+- Works with the official OpenAI SDKs (Python/JS) and plain cURL.
+- Support: ticket https://chat.avalai.ir/platform/support/create-ticket · status https://status.avalai.ir/ · debug with AvalAI chat https://chat.avalai.ir/chat
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ["AVALAI_API_KEY"],
+    base_url="https://api.avalai.ir/v1",
+)
+response = client.responses.create(
+    model="gpt-6-astra",
+    input="Give me one practical idea for a developer tool.",
+)
+print(response.output_text)
+```
+
+## Working rules
+1. Read the matching file in `references/` before writing code; see `references/00-index.md` for the page map and which pages are already captured.
+2. Never invent model IDs, prices, tiers or limits. If a reference file is missing or marked PENDING, say so and ask the user for that page.
+3. Model availability depends on account tier (e.g. some models "from tier 1"). Check `references/` for tier and endpoint support (Chat Completions / Messages / Responses — support may be full or partial per model).
+4. Keys from env, never hard-coded; plan security, retries, latency and cost per production-best-practices.
+5. Dates in docs are Jalali with Gregorian in parentheses; promotional rates expire — check dates.
+
+## References
+See `references/00-index.md`.
