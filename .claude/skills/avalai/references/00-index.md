@@ -23,7 +23,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 | قیمت‌گذاری | /pricing | 06-pricing.md | DONE (per-tier RPM/TPM per model not transcribed → see rate-limits page / live API) |
 | سطوح سرویس | /service-tiers | 07-service-tiers.md | DONE |
 | بسته‌های اعتباری | /credit-packages | 08-credit-packages.md | DONE |
-| محدودیت‌های نرخ مدل | /rate-limits | 09-rate-limits.md | PENDING |
+| محدودیت‌های نرخ مدل | /rate-limits | 09-rate-limits.md | DONE |
 | مدل‌های منسوخ شده | /deprecations | 10-deprecations.md | PENDING |
 
 ### Collapsed groups (sub-pages still unknown — need user to expand)
@@ -57,3 +57,6 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 
 ## Discovered in service-tiers page (PENDING)
 /guides/error-handling, /guides/production-best-practices, /api-reference/responses, /api-reference/chat
+
+## Discovered in rate-limits page (PENDING)
+/rate-limits-tier0 … /rate-limits-tier5 (per-model RPM/TPM per tier — high value), /api-reference/user
