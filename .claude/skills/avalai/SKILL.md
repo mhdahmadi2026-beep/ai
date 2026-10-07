@@ -255,3 +255,6 @@ See `references/00-index.md`.
 
 ## Conversation state (references/guides/conversation-state.md)
 - `previous_response_id` needs `store=True`; resend `instructions` each turn; never combine with `conversation`; prior chain is billed as input. Stateless: replay `response.output` items (keep reasoning/function_call/phase, `include=["reasoning.encrypted_content"]` if supported) with `store=False`. Keep your own DB record of response ids/usage.
+
+## Compaction (references/guides/compaction.md)
+- Default to app-managed summaries (JSON: goal, facts, decisions, completed_actions, blockers, next_step; keep IDs, latest tool outputs verbatim). Use `context_management`/`compact_threshold`/`/v1/responses/compact` only if the route is confirmed; compaction items are opaque—append unchanged, never edit/prune with `previous_response_id`.
