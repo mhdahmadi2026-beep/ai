@@ -306,3 +306,6 @@ See `references/00-index.md`.
 
 ## Hermes Agent (references/guides/setup-hermes.md)
 - Named provider `providers.avalai`: `api: https://api.avalai.ir/v1`, `key_env: AVALAI_API_KEY`, `transport: chat_completions` (Responses only via separate `codex_responses` provider), model needs ≥64K input; secrets only in `~/.hermes/.env`; validate with read-only task first; keep dashboard/gateway private.
+
+## 9Router (references/guides/setup-9router.md)
+- Provider node: OpenAI Compatible, prefix `avalai`, base `https://api.avalai.ir/v1`, Chat Completions node separate from Responses node; add a persistent Connection (Check key is temporary); client uses model `avalai/<id>` and a 9Router downstream key (not the AvalAI key); keep fallback/token-saver off until the direct path works.

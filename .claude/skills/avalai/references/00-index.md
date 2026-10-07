@@ -167,3 +167,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: retrieval | /guides/retrieval | guides/retrieval.md | DONE (hosted not available) |
 | Setup: n8n | /guides/setup-n8n | guides/setup-n8n.md | DONE |
 | Setup: Hermes Agent | /guides/setup-hermes | guides/setup-hermes.md | DONE |
+| Setup: 9Router | /guides/setup-9router | guides/setup-9router.md | DONE |
