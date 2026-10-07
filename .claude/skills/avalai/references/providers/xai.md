@@ -16,3 +16,6 @@ Base `https://api.avalai.ir/v1` chat completions. ⚠ Sections on Grok 3/2 use o
 
 ## Notes
 Function-calling uses standard OpenAI `tools`. Live Search via direct xAI only (real-time info). Grok 4.7 model pages: fa/models/grok-4.7, guides fa/guides/reasoning, pricing.
+
+## Audit addendum — ids and aliases
+`grok-4-fast-reasoning` (aliases `grok-4-fast`, `grok-4-fast-reasoning-latest`) and `grok-4-fast-non-reasoning` (+`-latest`): 2,000,000 ctx. `grok-4.20-beta-0309-reasoning` (aliases `grok-4.20-beta`, `grok-4.20-beta-0309`, `-latest`, `-latest-reasoning`, `-reasoning`): 2,000,000 ctx. Newer: `grok-4.7`, `grok-4.6`, `grok-4.5`, `grok-4.3`, `grok-4.1-fast-*`. Verify live — aliases change.

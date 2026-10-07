@@ -31,3 +31,6 @@ OpenAI SDK format. Endpoint support: kimi-k3/kimi-latest: chat ✅, `/v1/message
 - kimi-thinking-preview prices ($30/$30, cached $0.15) look wrong/legacy; kimi-k2.7-code ctx quoted exactly, others missing.
 - Vision-preview/old moonshot-v1 ids likely retired upstream — check 10-deprecations.md.
 - Sample uses `"name"` in tool messages; harmless.
+
+## Audit addendum — Kimi reasoning rules
+Ids: `kimi-k3`, `kimi-k2.7-code`, `kimi-k2.7-code-highspeed`, `kimi-k2.6`, `kimi-k2.5`, `kimi-k2-thinking` (+ legacy `kimi-latest-*` removed). Reasoning models: send `max_tokens ≥ 16,000`, `temperature = 1.0`, `stream = true` (avoid network timeouts); read `reasoning_content` (same level as `content`) with `getattr(obj,"reasoning_content",None)` in the OpenAI SDK; thinking switch via `extra_body={"thinking":{"type":"enabled"}}` on models that support it.

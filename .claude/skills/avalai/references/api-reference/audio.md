@@ -1,5 +1,8 @@
 # Audio API (docs: /fa/api-reference/audio)
 
+> ⚠ **AUDIT 2026-10-07 — stale ids in this file.** AvalAI removed `gpt-4o-mini-tts` and `groq.playai-tts*` (see `10b-deprecations-complete.md`); `tts-1`/`tts-1-hd` appear in the 2026-09-04 migration notice (→ `gpt-audio-1.5` or Gemini TTS); STT ids `whisper-1`, `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-transcribe-diarize` shut down 2027-02-26 (→ `gpt-transcribe` / `gpt-live-transcribe`). Examples below use `TTS_MODEL` / `STT_MODEL` placeholders — pick ids with `scripts/avalai_live.py models --mode audio_speech` (or `audio_transcription`) and verify with `check`. Working Gemini TTS example: `news/2026-09-30-gemini-3-8-tts-models-added.md`.
+
+
 OpenAI-SDK compatible: `base_url=https://api.avalai.ir/v1`, key `AVALAI_API_KEY`. Related guides: fa/guides/{audio-processing,realtime-audio,speech-to-text,text-to-speech,responses-vs-chat-completions}.
 
 ## Choosing a path
@@ -24,14 +27,14 @@ OpenAI-SDK compatible: `base_url=https://api.avalai.ir/v1`, key `AVALAI_API_KEY`
 
 ```bash
 curl https://api.avalai.ir/v1/audio/speech -H "Authorization: Bearer $AVALAI_API_KEY" -H "Content-Type: application/json" \
-  -d '{"model":"gpt-4o-mini-tts","voice":"coral","input":"امروز روز خوبی برای ساختن چیزی است که مردم دوستش داشته باشند.","instructions":"با لحنی گرم و مطمئن صحبت کن."}' --output avalai_speech.mp3
+  -d '{"model":"TTS_MODEL","voice":"VOICE","input":"امروز روز خوبی برای ساختن چیزی است که مردم دوستش داشته باشند.","instructions":"با لحنی گرم و مطمئن صحبت کن."}' --output avalai_speech.mp3
 ```
 ```python
-with client.audio.speech.with_streaming_response.create(model="gpt-4o-mini-tts", voice="coral", input="…", instructions="…") as r:
+with client.audio.speech.with_streaming_response.create(model="TTS_MODEL", voice="VOICE", input="…", instructions="…") as r:
     r.stream_to_file(Path("avalai_speech.mp3"))
 ```
 ```javascript
-const audio = await client.audio.speech.create({ model:"gpt-4o-mini-tts", voice:"coral", input:"…", instructions:"…" });
+const audio = await client.audio.speech.create({ model:"TTS_MODEL", voice:"VOICE", input:"…", instructions:"…" });
 await fs.writeFile("avalai_speech.mp3", Buffer.from(await audio.arrayBuffer()));
 ```
 

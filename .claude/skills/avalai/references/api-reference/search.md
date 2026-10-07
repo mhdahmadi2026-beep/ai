@@ -68,3 +68,10 @@ for x in r.json()["results"]: print(x["title"], x["url"])
 ## Best practices
 Pick tool by need (cost/quality/features); use `search_domain_filter`; set `max_results`; handle errors; respect per-provider rate limits; **cache results** to cut cost. Errors: 200/400/401/429/500.
 Related: fa/providers/{perplexity,tavily,firecrawl,dataforseo,exa_ai,google,parallel_ai,serper}, pricing, authentication, fa/examples/web_search_capabilities, fa/guides/tools-web-search.
+
+## Audit addendum — provider-specific parameter values (from the source page)
+- `tbs` time filter: `qdr:h` (past hour) · `qdr:d` (day) · `qdr:w` (week) · `qdr:m` (month) · `qdr:y` (year).
+- `device`: `desktop` | `mobile` | `tablet`; `os`: `windows` | `macos` | `android` | `ios`; `depth` ≤ 700 results (DataForSEO-style); `autocorrect` boolean (false disables); `page` integer.
+- `country`: full name (`"United States"`, `"Germany"`) except Tavily (lowercase list, see providers/search-providers.md); `language_code` (`en`, `de`); `location` e.g. `"San Francisco,California,United States"`; `ignoreInvalidURLs` boolean.
+- Exa-style: `sources` `["web","news","images"]`, `categories` `[{"type":"github"},{"type":"research"},{"type":"pdf"}]`; Parallel: `processor` `"base"|"pro"`, `max_chars_per_result`; Firecrawl: `scrapeOptions.formats|onlyMainContent|removeBase64Images`, operators `site:` `inurl:` `intitle:` `related:` `allintitle:` `allinurl:`.
+- Response fields: `results[].title|url|snippet|date(optional)`.
