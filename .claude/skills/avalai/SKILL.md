@@ -474,3 +474,6 @@ See `references/00-index.md`.
 
 ## Seedream images (references/examples/seedream-image-generation.md)
 - `seedream-5-0-260128` via `/v1/images/generations|edits`; `size` 1K/2K/4K or `WxH`; provider params (`sequential_image_generation:"auto"|"disabled"`, `sequential_image_generation_options.max_images`, `watermark`, `image:[urls]` for fusion, `stream`) → Python `extra_body`, raw HTTP top-level. Output = temporary hosted URLs (save immediately). Don't copy page's JS `extra_body` hack or naive SSE parsing; retry only 429/5xx with jitter.
+
+## `/v1/search` recipes (references/examples/using-v1-search.md)
+- Raw results only. Domain filter = `search_domain_filter` (NOT `domains`); response `{"object":"search","results":[{title,url,snippet,date}]}` (read defensively). Fan-out with bounded concurrency + cache + URL dedup + per-call cost log; retry only 429/5xx. Search snippets are untrusted for LLM prompts. `gpt-4o-search-preview` comparison on page is stale (removed).

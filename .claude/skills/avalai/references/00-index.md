@@ -223,3 +223,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: image generation/editing with Nano Banana (Gemini image) | /examples/generate_images_with_nano_banana_series | examples/nano-banana-image-generation.md | DONE |
 | Example/Notice: Google Imagen deprecated (migration to Nano Banana) | /examples/… (slug unknown) | examples/imagen-deprecated.md | DONE |
 | Example: Seedream image generation/editing | /examples/generate_images_with_seedream_4 (or newer; unconfirmed) | examples/seedream-image-generation.md | DONE |
+| Example: using /v1/search | /examples/using_v1_search | examples/using-v1-search.md | DONE |
