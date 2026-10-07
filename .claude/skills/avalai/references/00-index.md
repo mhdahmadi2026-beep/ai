@@ -19,7 +19,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 | شروع سریع | /quickstart | 02-quickstart.md | DONE |
 | استفاده عملی از هوش مصنوعی | /guides/ai-workflows | 03-ai-workflows.md | DONE |
 | کتابخانه‌ها | /libraries | 04-libraries.md | DONE |
-| عملکرد | /performance | 05-performance.md | PENDING |
+| عملکرد | /performance | 05-performance.md | DONE (cache benchmark source missing) |
 | قیمت‌گذاری | /pricing | 06-pricing.md | PENDING |
 | سطوح سرویس | /service-tiers | 07-service-tiers.md | PENDING |
 | بسته‌های اعتباری | /credit-packages | 08-credit-packages.md | PENDING |
@@ -48,3 +48,6 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 
 ## Discovered in libraries page (PENDING)
 /api-reference/v1beta, /api-reference/response-headers (also `X-Client-Request-Id` request header), /guides/responses-vs-chat-completions
+
+## Discovered in performance page (PENDING)
+/guides/latency-optimization, /guides/cost-optimization, /guides/token-counting, /guides/prompt-caching
