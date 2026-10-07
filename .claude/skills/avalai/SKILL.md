@@ -285,3 +285,6 @@ See `references/00-index.md`.
 
 ## Fine-tuning guide (references/guides/fine-tuning.md) — NOT implemented
 - Never emit fine-tuning job code or `ft:` ids for AvalAI. Recommend prompting/RAG/tools/evals first; dataset prep notes (JSONL chat format, `weight`, DPO/RFT readiness) are planning only.
+
+## Evals (references/guides/evals.md) — no hosted `/v1/evals`
+- Run evals locally/CI (Promptfoo/pytest/script) with versioned datasets, deterministic checks first, calibrated LLM judges, trajectory logging for agents; compare prod vs candidate per route; add production failures to the dataset before changing prompts.
