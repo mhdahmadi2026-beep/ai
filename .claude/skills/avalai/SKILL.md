@@ -495,3 +495,7 @@ See `references/00-index.md`.
 
 ## Privacy policy (references/guides/privacy-policy.md)
 - Chat platform: conversations used for model improvement only if "help improve the model" is ON (default OFF), anonymised, not shared; uploaded files never used, deleted immediately on request; other data usable up to 30 days after deletion. API: content not processed/stored; model name, IP (+timestamp/usage per content-policy) kept. Docs site: consent levels Essential/Performance(GA4)/All(OpenRouter live data). Don't conflate chat-product and API policies; no "no logs" promises; policy has no DPA/jurisdiction/retention details.
+
+## Deprecation notice 2026-09-04 & status page (references/news/…, references/guides/service-status.md)
+- Old ids now ERROR; AvalAI maps: gpt-5*-chat→`gpt-5.6-sol`/`-terra`, imagen-4→Nano Banana (`gemini-3.1-flash-image`/`gemini-3-pro-image`), TTS (tts-1/gpt-4o-mini-tts)→`gpt-audio-1.5`/Gemini TTS, STT (whisper-1/gpt-4o-*transcribe*)→`gpt-transcribe`, diarize→`gpt-live-transcribe`, Claude 4→`claude-opus-4-7`/`claude-sonnet-4-6`. Verify live `/v1/models` (some mappings conflict across notes).
+- status.avalai.ir (Instatus): frequent 1–6 min auto-detected degradations per endpoint, `/v1/files` weakest; plan retries/fallbacks/circuit breaker; tracks OpenAI, Anthropic, Google, Cloudflare, Stability, Perplexity upstreams. Not fetchable from sandbox.

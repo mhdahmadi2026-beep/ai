@@ -1,7 +1,7 @@
 # Speech-to-text guide
 Endpoints: `POST /v1/audio/transcriptions`, `POST /v1/audio/translations` (OpenAI-compatible, base `https://api.avalai.ir/v1`). See api-reference/audio.md and guides/audio-processing.md.
 
-## ⚠ Model availability conflict
+## ⚠ Model availability conflict (UPDATE: AvalAI's news/2026-09-04 notice lists `gpt-transcribe`/`gpt-live-transcribe` as the replacements for whisper-1/gpt-4o-*transcribe* → prefer them; this guide page itself was not updated; still verify `/v1/models`)
 This page's table uses legacy ids; 10-deprecations.md: `whisper-1`, `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-transcribe-diarize` → shutdown **2027-02-26** (replacement `gpt-transcribe` / `gpt-live-transcribe`); audio-processing guide calls them unavailable; 03-ai-workflows says verify `gpt-transcribe` availability. ALWAYS check `/v1/models` before hardcoding; new code → `gpt-transcribe`, `gpt-live-transcribe`, `scribe_v2`.
 
 ## Models (as listed in this page)

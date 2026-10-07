@@ -230,3 +230,6 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: advanced Gemini image generation (native v1beta) | /examples/advanced_gemini_image_generation | examples/advanced-gemini-image-generation.md | DONE |
 | Guide: content-policy (API content policy & safeguards) | /safety/content-policy | guides/content-policy.md | DONE |
 | Guide: privacy-policy | /safety/privacy-policy | guides/privacy-policy.md | DONE |
+| News: 2026-09-04 model deprecations & migration guide | /news/2026-09-04-model-deprecations-and-migration-guide | news/2026-09-04-model-deprecations-and-migration-guide.md | DONE |
+| Service status page (screenshot only) | status.avalai.ir | guides/service-status.md | DONE (from screenshot; live fetch blocked) |
+| Re-sent duplicates (no change): rate-limits, speech-to-text, api-reference/models | | 09-rate-limits.md, guides/speech-to-text.md, api-reference/models.md | DUPLICATE (STT file got a news-based update note) |
