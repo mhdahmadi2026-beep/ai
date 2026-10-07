@@ -81,7 +81,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | مقدمه | /api-reference/introduction | api-reference/introduction.md | DONE |
 | احراز هویت | /api-reference/authentication | api-reference/authentication.md | DONE |
 | پاسخ‌ها (Responses) | /api-reference/responses | — | PENDING |
-| تکمیل گفتگو | /api-reference/chat | — | PENDING |
+| تکمیل گفتگو | /api-reference/chat | api-reference/chat.md | DONE |
 | تصاویر | /api-reference/images | — | PENDING |
 | بردارهای تعبیه‌سازی | /api-reference/embeddings | — | PENDING |
 | صدا | /api-reference/audio | — | PENDING |
@@ -93,3 +93,5 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | ویدیوها | /api-reference/videos | — | PENDING |
 | جستجو | /api-reference/search | — | PENDING |
 | (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
+
+Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices,structured-outputs,text-to-speech}, /providers/{openai,anthropic,xai,fireworksai,deepseek}, /examples/processing_audio_in_chat_completion_api, /api-reference/{moderation,search,audio}
