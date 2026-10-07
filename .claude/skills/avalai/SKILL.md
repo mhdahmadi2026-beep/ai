@@ -450,3 +450,6 @@ See `references/00-index.md`.
 
 ## Agentic guardrails — schema change (references/examples/agentic-guardrails-schema-workflow.md)
 - Parse request → strict JSON schema → deterministic validation (catalog, name regex, type allowlist, duplicates, forbidden-keyword check on request text) → SQL draft for human review (never auto-run) → rollout plan from catalog → JSON artifact for CI/Promptfoo. Never trust model-supplied downstream objects; drop `temperature=0` on reasoning/Claude 5.x; keyword regex false-positives (e.g. "drop-down") fail closed.
+
+## Web search capabilities overview (references/examples/web-search-capabilities.md)
+- Routes: Responses `web_search` tool (OpenAI, preferred), Gemini `tools:[{"googleSearch":{}}]` (or native v1beta `google_search` + grounding_metadata, base_url without /v1), Qwen `enable_search`+`search_strategy:"agent"` (+$10/1K calls). `*-search-preview` models are REMOVED. Citations live in `output[].content[].annotations` (`url_citation`), not `response.annotations`; sources via `include:["web_search_call.action.sources"]` (item in `output`). No `detail_level` param for Gemini. Prefer guides/tools-web-search.md; raw results → `/v1/search`.
