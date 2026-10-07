@@ -136,3 +136,6 @@ See `references/00-index.md`.
 ## Moderation rules (see api-reference/moderation.md)
 - `POST /v1/moderations`, models `omni-moderation-latest` (text+image, free, no audio), `text-moderation-*`, `cf.llama-guard-3-8b`. Array input → one result each. Use `category_scores` with per-category thresholds (stricter `sexual/minors`), not only `flagged`; keep result `id` + hashed `safety_identifier` for audit; human review for borderline.
 - Inline `moderation:{model}` on Responses/Chat only if route supports it; check input/output error objects first; streamed output is unmoderated until the final result; tool names/schemas aren't checked.
+
+## Fine-tuning (see api-reference/fine-tuning.md)
+- **Not implemented on AvalAI** — no fine-tunable models/routes; never generate code relying on `/v1/fine-tuning/*`. Offer prompting / structured outputs / few-shot / RAG instead.
