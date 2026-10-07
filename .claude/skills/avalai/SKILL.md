@@ -294,3 +294,6 @@ See `references/00-index.md`.
 
 ## Agent evals (references/guides/agent-evals.md)
 - Grade the whole trajectory (tool choice, args, state, handoffs, recovery, grounding, stopping), log typed Responses output items, deterministic checks first, add eval cases for every incident before changing prompts; only add handoffs when evals prove a boundary needs them.
+
+## Red teaming (references/guides/red-teaming.md)
+- Authorized scope only; test layers (input, retrieval, tools, output, abuse tracking) with synthetic adversarial datasets; run on every prompt/tool/retrieval/model change; record request ids + hashed `safety_identifier`; require approval for side-effect tools.

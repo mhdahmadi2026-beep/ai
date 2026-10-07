@@ -163,3 +163,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: evals | /guides/evals | guides/evals.md | DONE (hosted evals not provided) |
 | Guide: graders | /guides/graders | guides/graders.md | DONE (hosted not implemented) |
 | Guide: agent-evals | /guides/agent-evals | guides/agent-evals.md | DONE (hosted not available) |
+| Guide: red-teaming | /guides/red-teaming | guides/red-teaming.md | DONE |
