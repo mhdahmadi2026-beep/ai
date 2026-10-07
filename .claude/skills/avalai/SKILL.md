@@ -282,3 +282,6 @@ See `references/00-index.md`.
 
 ## Embeddings guide (references/guides/embeddings.md)
 - Same model + `dimensions` for docs and queries; `dimensions` only where supported; filter by tenant/permissions BEFORE ranking; evaluate retrieval with labelled queries; vectors are derived user data (retention/deletion apply); hosted batch isn't available.
+
+## Fine-tuning guide (references/guides/fine-tuning.md) — NOT implemented
+- Never emit fine-tuning job code or `ft:` ids for AvalAI. Recommend prompting/RAG/tools/evals first; dataset prep notes (JSONL chat format, `weight`, DPO/RFT readiness) are planning only.

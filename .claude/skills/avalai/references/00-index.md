@@ -159,3 +159,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: pdf-files | /guides/pdf-files | guides/pdf-files.md | DONE |
 | Guide: file-inputs | /guides/file-inputs | guides/file-inputs.md | DONE |
 | Guide: embeddings | /guides/embeddings | guides/embeddings.md | DONE |
+| Guide: fine-tuning | /guides/fine-tuning | guides/fine-tuning.md | DONE (NOT IMPLEMENTED) |
