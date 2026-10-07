@@ -477,3 +477,6 @@ See `references/00-index.md`.
 
 ## `/v1/search` recipes (references/examples/using-v1-search.md)
 - Raw results only. Domain filter = `search_domain_filter` (NOT `domains`); response `{"object":"search","results":[{title,url,snippet,date}]}` (read defensively). Fan-out with bounded concurrency + cache + URL dedup + per-call cost log; retry only 429/5xx. Search snippets are untrusted for LLM prompts. `gpt-4o-search-preview` comparison on page is stale (removed).
+
+## Gemini Robotics-ER (references/examples/gemini-robotics-er.md)
+- `gemini-robotics-er-1.5-preview` via v1beta (`base_url` NOT `url`) or chat: points `[y,x]` and boxes `[ymin,xmin,ymax,xmax]` normalized 0–1000; `thinkingBudget` 0 for speed; code_execution for zoom. Perception/planning only — NEVER drive actuators from raw output: schema + bounds + allow-listed functions + collision checks + human/e-stop. Keep labels English; defensive JSON parsing; video "tracking" = per-frame calls.
