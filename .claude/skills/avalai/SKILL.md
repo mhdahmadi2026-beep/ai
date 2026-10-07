@@ -1,9 +1,43 @@
 ---
 name: avalai
-description: Expert guide for building with AvalAI (اول ای‌آی / "اول ai" / "هوش مصنوعی اول"), an OpenAI-compatible AI gateway at https://api.avalai.ir/v1. Use whenever the project calls AvalAI, api.avalai.ir, AVALAI_API_KEY, or the user asks about AvalAI models, pricing, rate limits, service tiers, credit packages, deprecations, Responses/Chat Completions/Messages APIs, images, audio, tools, streaming, structured outputs, function calling, or production practices. Always consult references/ instead of guessing model IDs, prices or limits.
+description: Expert guide for building with AvalAI (اول ای‌آی / "اول ai" / "هوش مصنوعی اول"), an OpenAI-compatible AI gateway at https://api.avalai.ir/v1. Use whenever the project calls AvalAI, api.avalai.ir, AVALAI_API_KEY, or the user asks about AvalAI models, pricing, rate limits, service tiers, credit packages, deprecations, Responses/Chat Completions/Messages APIs, images, audio, tools, streaming, structured outputs, function calling, or production practices. Always consult references/ and run scripts/avalai_live.py for live prices/ids instead of guessing; includes multi-language (PHP/Go/Java/C#/Ruby/Rust) client examples.
 ---
 
 # AvalAI skill
+
+## START HERE — agent playbook (read first, 60 seconds)
+**Protocol for every AvalAI task**
+1. **Prices, model ids, tiers, limits, endpoint support are LIVE data.** Before quoting or coding any of them run
+   `python3 -I references/scripts/avalai_live.py check|price|cost …` (reads `GET https://api.avalai.ir/public/models`, no key). If the network is blocked, say so, ask the user to paste/save that JSON (use `--file`), and label any number from `references/*.md` as "snapshot as of <file date> — unverified".
+2. **Cost/budget questions → compute, don't estimate by eye:** `avalai_live.py cost MODEL --in N --out M [--cached C] [--reasoning R] [--requests K] [--rate <toman per USD today>]`. Long-context tiers apply to the WHOLE request when input exceeds the threshold; reasoning tokens bill at the output rate; promo prices expire (check dates); toman rate changes daily → ask the user for today's rate or read it from a live `estimated_cost.exchange_rate`. Exact billing = `/user/v1/transactions/lookup` with `avalai-request-id`.
+3. **Pick the reference with the router below, read it, then write code.** Never invent ids/params. If a file says snapshot/PENDING/conflict, verify live or ask.
+4. **Deliver production-grade code:** key from env, explicit timeout, retry only 429/5xx/network with `Retry-After`+jitter+cap, log `avalai-request-id`, validate model-generated JSON/tool args, human approval before side effects, no secrets client-side, check `usage` for cost.
+5. **Language not Python/JS?** → `references/examples/multi-language-clients.md` (PHP, Go, Java, C#, Ruby, Rust, fetch, cURL; raw-HTTP + SDK).
+
+**Task → file router**
+| Task | Read |
+|---|---|
+| first call / SDK base URLs / which API | `02-quickstart.md`, `04-libraries.md`, `api-reference/` |
+| which model, price, tier, limits | live script + `06-pricing.md`, `11-tier-rate-limits.md`, `providers/*.md`, `models/index.md` |
+| model removed / migrating | `10-deprecations.md`, `news/` (dated) |
+| 429, throughput planning | `09-rate-limits.md`, `11-tier-rate-limits.md`, `guides/rate-limits.md` |
+| flex/priority tiers, credits | `07-service-tiers.md`, `08-credit-packages.md` |
+| images / video / audio / TTS / STT / OCR | `api-reference/{images,videos,audio,ocr}.md`, `examples/` (nano-banana, seedream, voice, meeting, mistral-ocr), `guides/speech-to-text.md` |
+| tools, agents, structured output, search, RAG-ish | `guides/`, `examples/agentic-*`, `examples/web-search-*`, `examples/using-v1-search.md` |
+| reselling / cost tracking | `resellers/`, `news/2025-11-27-user-api-launched.md` |
+| privacy / content policy | `guides/privacy-policy.md`, `guides/content-policy.md` |
+| outage / status | `guides/service-status.md` (+ https://status.avalai.ir) |
+| what's new | `news/index.md` (newest first) |
+
+**Top gotchas (most common agent mistakes)**
+- OpenAI SDK base `https://api.avalai.ir/v1`; Anthropic & Google SDK base `https://api.avalai.ir` (**no /v1**). Don't paste a full path into tools that append `/chat/completions`.
+- Raw HTTP Responses has no `output_text` field (SDK helper only).
+- `x-request-id` is gone after 2026-10-15 → `avalai-request-id`.
+- Source docs contain fictional/broken sample code in places (see notes in each reference); trust the wire format, not the sample.
+- Removed ids (Imagen, Sora/Videos API, old STT/TTS, gpt-5 `-chat`, Gemini 1.x, DeepSeek legacy ids → `deepseek-v4.1-flash`) fail with errors — `check` them live.
+- Not provided by AvalAI: hosted vector stores/file_search, token counting endpoint, hosted Batch, Realtime, Assistants, fine-tuning, explicit prompt-cache controls.
+- Persian users: answer in Persian, keep code/ids in English; docs dates are Jalali (Gregorian in parentheses).
+
 
 Source of truth: https://docs.avalai.ir/fa/ (Persian) — English at https://docs.avalai.ir/en/.
 Official name is always written **AvalAI**. Users may also say «اول ai», «اول ای آی», «هوش مصنوعی اول».

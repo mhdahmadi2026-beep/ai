@@ -258,3 +258,5 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | News: Mistral OCR added | /news/2025-05-15-mistral-ocr-latest-added | news/2025-05-15-mistral-ocr-latest-added.md | DONE |
 | News: Gemini 1.x deprecation | /news/2025-09-27-google-gemini-models-deprecation | news/2025-09-27-google-gemini-models-deprecation.md | DONE |
 | models/model-details | /models/model-details | — | NOT A PAGE (redirects to /models explorer; screenshot 2026-10-07: 2,589 models, filters, per-model "API page" + details) |
+| LIVE price/catalog/cost tool (authored) | — | scripts/avalai_live.py | DONE (stdlib; `--selftest`; `--file` offline) |
+| Multi-language client examples (authored) | — | examples/multi-language-clients.md | DONE |
