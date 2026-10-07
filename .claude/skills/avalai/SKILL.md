@@ -29,6 +29,8 @@ description: Expert guide for building with AvalAI (اول ای‌آی / "اول
 | privacy / content policy | `guides/privacy-policy.md`, `guides/content-policy.md` |
 | outage / status | `guides/service-status.md` (+ https://status.avalai.ir) |
 | what's new | `news/index.md` (newest first) |
+| building an app (chat/RAG/bot/agent/OCR/voice, any stack) | `references/starters/README.md` → pick a blueprint; Laravel: `examples/laravel-complete-guide.md` |
+| docs search by meaning | MCP server `mcp-server/` (hybrid BM25+embeddings) — tools avalai_search/avalai_price/avalai_cost |
 
 **Top gotchas (most common agent mistakes)**
 - OpenAI SDK base `https://api.avalai.ir/v1`; Anthropic & Google SDK base `https://api.avalai.ir` (**no /v1**). Don't paste a full path into tools that append `/chat/completions`.
