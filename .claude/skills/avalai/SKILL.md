@@ -309,3 +309,6 @@ See `references/00-index.md`.
 
 ## 9Router (references/guides/setup-9router.md)
 - Provider node: OpenAI Compatible, prefix `avalai`, base `https://api.avalai.ir/v1`, Chat Completions node separate from Responses node; add a persistent Connection (Check key is temporary); client uses model `avalai/<id>` and a 9Router downstream key (not the AvalAI key); keep fallback/token-saver off until the direct path works.
+
+## Open WebUI (references/guides/setup-open-webui.md)
+- Admin Settings → Connections → OpenAI: URL `https://api.avalai.ir/v1`, dedicated key, Model IDs (Filter) as fallback; chat works independently of RAG/image/audio settings (configure separately); keep `WEBUI_AUTH=True`, stable `WEBUI_SECRET_KEY`, pinned image, volume `/app/backend/data`; Open Responses experimental.
