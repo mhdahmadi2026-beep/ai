@@ -176,3 +176,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Setup: VSCode / Copilot / Continue / Cursor | /guides/setup-vscode | guides/setup-vscode.md | DONE |
 | Setup: OpenAI Codex | /guides/setup-codex | guides/setup-codex.md | DONE |
 | Setup: Claude Code | /guides/setup-claude-code | guides/setup-claude-code.md | DONE |
+| Guide: code-generation | /guides/code-generation | guides/code-generation.md | DONE |

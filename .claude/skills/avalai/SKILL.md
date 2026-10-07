@@ -333,3 +333,6 @@ See `references/00-index.md`.
 
 ## Claude Code (references/guides/setup-claude-code.md)
 - Direct, no proxy: `ANTHROPIC_BASE_URL=https://api.avalai.ir` (no `/v1`), `ANTHROPIC_AUTH_TOKEN=<AvalAI key>`, `ANTHROPIC_MODEL`, `ANTHROPIC_SMALL_FAST_MODEL`; Windows also needs `ANTHROPIC_API_KEY`=same key to skip browser login. Non-Claude models work only if `/v1/messages` + tool calling is compatible (not guaranteed). Env var names are upper-case. Verify with `/status`.
+
+## Code generation (references/guides/code-generation.md)
+- New coding flows: `/v1/responses` (`instructions` + brief input, `response.output_text`; read `response.output` when tools/reasoning). `apply_patch`/hosted Skills are route-dependent, not guaranteed → default to plain unified diff applied by your own harness (path allowlist, one `apply_patch_call_output` per `call_id`, tests after each round, human approval for deletes/deps/migrations). Treat generated code as untrusted; ground API facts via retrieved docs, not model memory.
