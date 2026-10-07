@@ -1,6 +1,7 @@
-# Audio API (docs: /fa/api-reference/audio)
-
-> ⚠ **AUDIT 2026-10-07 — stale ids in this file.** AvalAI removed `gpt-4o-mini-tts` and `groq.playai-tts*` (see `10b-deprecations-complete.md`); `tts-1`/`tts-1-hd` appear in the 2026-09-04 migration notice (→ `gpt-audio-1.5` or Gemini TTS); STT ids `whisper-1`, `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-transcribe-diarize` shut down 2027-02-26 (→ `gpt-transcribe` / `gpt-live-transcribe`). Examples below use `TTS_MODEL` / `STT_MODEL` placeholders — pick ids with `scripts/avalai_live.py models --mode audio_speech` (or `audio_transcription`) and verify with `check`. Working Gemini TTS example: `news/2026-09-30-gemini-3-8-tts-models-added.md`.
+> ⚠ **AUDIT 2026-10-07 — Live catalog verification:**
+> - **STT**: `gpt-transcribe` and `gpt-live-transcribe` are NOT in the live catalog yet. Active live transcription models: `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-transcribe-diarize`, `whisper-1`, `groq.whisper-large-v3`, `groq.whisper-large-v3-turbo`.
+> - **TTS**: Exact live Gemini 3.8 TTS spellings are `gemini-3.8-flash-tts` and `gemini-3.8-flash-lite-tts` (single hyphens). Also live: `gemini-3.1-flash-tts-preview`, `gemini-2.5-pro-tts`, `gemini-2.5-flash-tts`, `tts-1`, `tts-1-hd`.
+> - **Audio chat**: `gpt-audio-mini` (and `gpt-audio-mini-2025-10-06`), `gpt-audio`, `gpt-audio-1.5` ARE live and active.
 
 
 OpenAI-SDK compatible: `base_url=https://api.avalai.ir/v1`, key `AVALAI_API_KEY`. Related guides: fa/guides/{audio-processing,realtime-audio,speech-to-text,text-to-speech,responses-vs-chat-completions}.

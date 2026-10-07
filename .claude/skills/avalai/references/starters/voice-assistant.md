@@ -1,6 +1,6 @@
 # Starter: Persian voice assistant (STT → LLM → TTS)
 
-`pip install openai sounddevice soundfile numpy` · env: `AVALAI_API_KEY`, `AVALAI_STT_MODEL`, `AVALAI_MODEL`, `AVALAI_TTS_MODEL` — **verify all ids live**: legacy STT/TTS ids (whisper-1, gpt-4o-*transcribe*, tts-1…) are being retired (`10b-deprecations-complete.md`).
+`pip install openai sounddevice soundfile numpy` · env: `AVALAI_API_KEY`, `AVALAI_STT_MODEL` (e.g. `gpt-4o-transcribe` or `whisper-1`), `AVALAI_MODEL` (e.g. `gpt-6-sol` or `deepseek-v4.1-flash`), `AVALAI_TTS_MODEL` (e.g. `gemini-3.8-flash-tts` or `tts-1`) — verify with `avalai_live.py check`.
 ```python
 import os, io, wave, numpy as np, sounddevice as sd, soundfile as sf
 from openai import OpenAI
@@ -33,4 +33,4 @@ while True:
     history.append({"role": "user", "content": q}); a = think(history[-10:]); history.append({"role": "assistant", "content": a})
     print("bot:", a); tts(a)
 ```
-Notes: Gemini TTS (`gemini-3.8-*-tts`) needs `voice={"name":"Zephyr","languageCode":"fa-IR"}` on `/v1/audio/speech` (see `news/2026-09-30-gemini-3-8-tts-models-added.md`); Realtime API is NOT provided → this pipeline is the pattern (latency ≈ STT + LLM + TTS; stream LLM tokens and TTS sentence-by-sentence to cut it). Add VAD (webrtcvad) instead of fixed 6 s; barge-in = stop playback on new speech; consent + privacy for recorded audio. Deeper: `examples/voice-conversational-apps.md`, `examples/processing-audio-chat-completions.md`.
+Notes: Gemini TTS (`gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts`) needs `voice={"name":"Zephyr","languageCode":"fa-IR"}` on `/v1/audio/speech` (see `news/2026-09-30-gemini-3-8-tts-models-added.md`); Realtime API is NOT provided → this pipeline is the pattern (latency ≈ STT + LLM + TTS; stream LLM tokens and TTS sentence-by-sentence to cut it). Add VAD (webrtcvad) instead of fixed 6 s; barge-in = stop playback on new speech; consent + privacy for recorded audio. Deeper: `examples/voice-conversational-apps.md`, `examples/processing-audio-chat-completions.md`.

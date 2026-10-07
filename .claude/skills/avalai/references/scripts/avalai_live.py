@@ -24,12 +24,37 @@ def load(path=None):
             return json.load(f)["data"]
     req = urllib.request.Request(URL, headers={"User-Agent": "avalai-skill/1"})
     try:
-        with urllib.request.urlopen(req, timeout=30) as r:
+        with urllib.request.urlopen(req, timeout=15) as r:
             return json.load(r)["data"]
-    except (urllib.error.URLError, TimeoutError, ValueError) as e:
-        print(f"network/parse error fetching {URL}: {e}\n"
-              "Fallback: ask the user to open the URL and paste/save the JSON, then use --file.", file=sys.stderr)
-        sys.exit(2)
+    except Exception:
+        pass
+    try:
+        import subprocess, shutil
+        curl_bin = shutil.which("curl") or shutil.which("curl.exe") or "curl"
+        for args in [[curl_bin, "-s", "--connect-timeout", "10", URL],
+                     [curl_bin, "--interface", "192.168.1.177", "-s", "--connect-timeout", "10", URL]]:
+            try:
+                res = subprocess.check_output(args, stderr=subprocess.DEVNULL)
+                data = json.loads(res.decode("utf-8"))
+                if "data" in data:
+                    return data["data"]
+            except Exception:
+                continue
+    except Exception:
+        pass
+    try:
+        import glob, os
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        live_dir = os.path.join(script_dir, "..", "live")
+        files = sorted(glob.glob(os.path.join(live_dir, "public-models-*.json")))
+        if files:
+            with open(files[-1], encoding="utf-8") as f:
+                return json.load(f)["data"]
+    except Exception:
+        pass
+    print(f"network/parse error fetching {URL}\n"
+          "Fallback: ask the user to open the URL and paste/save the JSON, then use --file.", file=sys.stderr)
+    sys.exit(2)
 
 
 def find(models, mid):

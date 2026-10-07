@@ -1,18 +1,18 @@
 # Speech-to-text guide
 Endpoints: `POST /v1/audio/transcriptions`, `POST /v1/audio/translations` (OpenAI-compatible, base `https://api.avalai.ir/v1`). See api-reference/audio.md and guides/audio-processing.md.
 
-## ⚠ Model availability conflict (UPDATE: AvalAI's news/2026-09-04 notice lists `gpt-transcribe`/`gpt-live-transcribe` as the replacements for whisper-1/gpt-4o-*transcribe* → prefer them; this guide page itself was not updated; still verify `/v1/models`)
-This page's table uses legacy ids; 10-deprecations.md: `whisper-1`, `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-transcribe-diarize` → shutdown **2027-02-26** (replacement `gpt-transcribe` / `gpt-live-transcribe`); audio-processing guide calls them unavailable; 03-ai-workflows says verify `gpt-transcribe` availability. ALWAYS check `/v1/models` before hardcoding; new code → `gpt-transcribe`, `gpt-live-transcribe`, `scribe_v2`.
+## ⚠ Model availability verification (Live catalog 2026-10-07)
+Notice: while a 2026-09-04 announcement mentioned `gpt-transcribe`/`gpt-live-transcribe` as future replacements, **neither id exists in the live catalog (`GET /public/models`)**. The current active live models for speech-to-text are `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-transcribe-diarize`, `whisper-1`, and `groq.whisper-large-v3` / `-turbo`. Do NOT hardcode `gpt-transcribe` or `gpt-live-transcribe` as they will fail with 404/model not found.
 
 ## Models (as listed in this page)
 | model | use | notes |
 |---|---|---|
-| gpt-4o-transcribe | high accuracy file STT | prompt; `json`/`text` |
-| gpt-4o-mini-transcribe | cheaper default | |
-| gpt-4o-transcribe-diarize | speaker labels | `response_format="diarized_json"`, `chunking_strategy="auto"` (>30 s), NO prompt |
-| whisper-1 | srt, vtt, verbose_json, word timestamps, translation | no streaming |
+| gpt-4o-transcribe | high accuracy file STT (LIVE) | prompt; `json`/`text` |
+| gpt-4o-mini-transcribe | cheaper default (LIVE) | |
+| gpt-4o-transcribe-diarize | speaker labels (LIVE) | `response_format="diarized_json"`, `chunking_strategy="auto"` (>30 s), NO prompt |
+| whisper-1 | srt, vtt, verbose_json, word timestamps, translation (LIVE) | no streaming |
 | scribe_v2 / scribe_v1 | ElevenLabs STT | (scribe_v1 → scribe_v2 per deprecations) |
-| groq.whisper-large-v3 / -turbo | Groq Whisper routes | low latency |
+| groq.whisper-large-v3 / -turbo | Groq Whisper routes (LIVE) | low latency |
 
 ## Audio prep
 mp3, mp4, mpeg, mpga, m4a, wav, webm (flac/ogg on some routes); ≈25 MB upload max; mono speech, trim long silence, don't cut mid-sentence; short `prompt` for product names/acronyms/spelling (model-dependent; not for diarize); send `input_audio` in chat only when the model must analyse audio itself, else transcribe first.
@@ -22,9 +22,9 @@ Persian supported by Whisper-style models but quality varies (accent, noise, dom
 
 ## Basic call
 ```python
-client.audio.transcriptions.create(model="gpt-transcribe", file=f, response_format="text", prompt="...")
+client.audio.transcriptions.create(model="gpt-4o-transcribe", file=f, response_format="text", prompt="...")
 ```
-(page samples use gpt-4o-transcribe.)
+(Use live model `gpt-4o-transcribe` or `gpt-4o-mini-transcribe`.)
 
 ## Migrating from Whisper
 Keep endpoint, input file and `response_format="json"` constant; switch only `model`; compare outputs to a human-reviewed reference (WER, name/term accuracy, accents, noise, mixed language, completeness, p95 + first-delta latency, retries, cost/rate limit). Canary + rollback to old model.
