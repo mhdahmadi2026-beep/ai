@@ -16,15 +16,15 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 | Page | URL | File | Status |
 |---|---|---|---|
 | معرفی | / | 01-introduction.md | DONE |
-| شروع سریع | /quickstart | 02-quickstart.md | PENDING |
-| استفاده عملی از هوش مصنوعی | /guides/ai-workflows | 03-ai-workflows.md | PENDING |
-| کتابخانه‌ها | /libraries | 04-libraries.md | PENDING |
-| عملکرد | /performance | 05-performance.md | PENDING |
-| قیمت‌گذاری | /pricing | 06-pricing.md | PENDING |
-| سطوح سرویس | /service-tiers | 07-service-tiers.md | PENDING |
-| بسته‌های اعتباری | /credit-packages | 08-credit-packages.md | PENDING |
-| محدودیت‌های نرخ مدل | /rate-limits | 09-rate-limits.md | PENDING |
-| مدل‌های منسوخ شده | /deprecations | 10-deprecations.md | PENDING |
+| شروع سریع | /quickstart | 02-quickstart.md | DONE |
+| استفاده عملی از هوش مصنوعی | /guides/ai-workflows | 03-ai-workflows.md | DONE |
+| کتابخانه‌ها | /libraries | 04-libraries.md | DONE |
+| عملکرد | /performance | 05-performance.md | DONE (cache benchmark source missing) |
+| قیمت‌گذاری | /pricing | 06-pricing.md | DONE (per-tier RPM/TPM per model not transcribed → see rate-limits page / live API) |
+| سطوح سرویس | /service-tiers | 07-service-tiers.md | DONE |
+| بسته‌های اعتباری | /credit-packages | 08-credit-packages.md | DONE |
+| محدودیت‌های نرخ مدل | /rate-limits | 09-rate-limits.md | DONE |
+| مدل‌های منسوخ شده | /deprecations | 10-deprecations.md | DONE |
 
 ### Collapsed groups (sub-pages still unknown — need user to expand)
 - نمایندگان فروش
@@ -38,3 +38,225 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 
 ## Known model pages (from intro/news)
 /models/muse-glimmer-30b, /models/nemotron-3.5-lightning
+
+## Additional URLs discovered in Quickstart (pages still PENDING)
+/api-reference/chat, /api-reference/models, /api-reference/user, /api-reference/authentication, /api-reference/response-headers, /guides/responses-vs-chat-completions, /guides/provider-specific-params, /models/model-details, /resellers/cost-tracking-guide, /resellers/enterprise-guide, /safety/content-policy, /news/2025-06-03-anthropic-sdk-support-added, /news/2025-06-09-anthropic-sdk-multi-provider-support
+Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /user/v1/transactions/lookup
+
+## Discovered in ai-workflows page (PENDING)
+/examples/evidence_based_workflows, /examples/speaker_aware_meeting_intelligence, /examples/manual_rag_with_embeddings, /guides/coding-agent-workflows, /guides/setup-open-webui, /guides/setup-hermes, /guides/setup-opencode, /guides/setup-aider, /guides/setup-9router, /guides/setup-n8n, /guides/speech-to-text, /guides/evals, /guides/rate-limits, /models/
+
+## Discovered in libraries page (PENDING)
+/api-reference/v1beta, /api-reference/response-headers (also `X-Client-Request-Id` request header), /guides/responses-vs-chat-completions
+
+## Discovered in performance page (PENDING)
+/guides/latency-optimization, /guides/cost-optimization, /guides/token-counting, /guides/prompt-caching
+
+## Discovered in pricing page (PENDING)
+/models/model-details, /models/<model-id> pages (one per model), /api-reference/images, /api-reference/user, /resellers/cost-tracking-guide, /resellers/enterprise-guide, /guides/cost-optimization, /news/2026-09-11-..., /news/2026-09-30-gemini-3-8-tts-models-added
+
+## Discovered in service-tiers page (PENDING)
+/guides/error-handling, /guides/production-best-practices, /api-reference/responses, /api-reference/chat
+
+## Discovered in rate-limits page (PENDING)
+/rate-limits-tier0 … /rate-limits-tier5 (per-model RPM/TPM per tier — high value), /api-reference/user
+
+## Discovered in deprecations page (PENDING)
+/guides/model-selection, /providers/{moonshotai,elevenlabs,alibaba,google,zai,minimax}, /examples/{generate_images_with_gpt_image,generate_images_with_seedream_4,web_search_capabilities}, /api-reference/search, /news/2025-11-18-new-models-gemini-3-pro-kimi-k2-thinking, /news/2025-09-27-google-gemini-models-deprecation
+
+## ALL 10 'شروع به کار' sidebar pages are now captured. Remaining groups: خبرها, نمایندگان فروش, مرجع API, ارائه‌دهندگان, راهنماها, ابزارهای داخلی, بهترین شیوه‌ها, مثال‌ها, منابع.
+
+## نمایندگان فروش group
+| Page | URL | File | Status |
+|---|---|---|---|
+| راهنمای پیگیری هزینه نمایندگان | /resellers/cost-tracking-guide | resellers/cost-tracking-guide.md | DONE |
+| راهنمای سازمانی | /resellers/enterprise-guide | resellers/enterprise-guide.md | DONE |
+(other pages in this group unknown — ask user to expand the group)
+
+Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (incl. LangChain async section)
+
+## مرجع API group
+| Page | URL | File | Status |
+|---|---|---|---|
+| مقدمه | /api-reference/introduction | api-reference/introduction.md | DONE |
+| احراز هویت | /api-reference/authentication | api-reference/authentication.md | DONE |
+| پاسخ‌ها (Responses) | /api-reference/responses | api-reference/responses.md | DONE |
+| تکمیل گفتگو | /api-reference/chat | api-reference/chat.md | DONE |
+| تصاویر | /api-reference/images | api-reference/images.md | DONE |
+| بردارهای تعبیه‌سازی | /api-reference/embeddings | api-reference/embeddings.md | DONE |
+| صدا | /api-reference/audio | api-reference/audio.md | DONE |
+| نظارت | /api-reference/moderation | api-reference/moderation.md | DONE |
+| API کاربر | /api-reference/user | api-reference/user.md | DONE |
+| هدرهای پاسخ | /api-reference/response-headers | api-reference/response-headers.md | DONE |
+| مدل‌ها | /api-reference/models | api-reference/models.md | DONE |
+| v1beta (Gemini native) | /api-reference/v1beta | api-reference/v1beta.md | DONE |
+| تنظیم دقیق (Fine-tuning) — NOT IMPLEMENTED | /api-reference/fine-tuning | api-reference/fine-tuning.md | DONE |
+| دستیاران (Assistants) — NOT IMPLEMENTED | /api-reference/assistants | api-reference/assistants.md | DONE |
+| دسته‌ای (Batch) — NOT IMPLEMENTED | /api-reference/batch | api-reference/batch.md | DONE |
+| فایل‌ها (Files) | /api-reference/files | api-reference/files.md | DONE |
+| رتبه‌بندی مجدد (Rerank) | /api-reference/rerank | api-reference/rerank.md | DONE |
+| پیام‌ها (Messages / Anthropic) | /api-reference/messages | api-reference/messages.md | DONE |
+| سنتز متن Vertex (text:synthesize) | /api-reference/v1-text-synthesize | api-reference/v1-text-synthesize.md | DONE |
+| OCR | /api-reference/ocr | api-reference/ocr.md | DONE |
+| ویدیوها ⚠ Sora shut down 2026-09-24 | /api-reference/videos | api-reference/videos.md | DONE |
+| جستجو | /api-reference/search | api-reference/search.md | DONE |
+| کاتالوگ مدل‌ها (ModelExplorer، داده پویا) | /models/index | models/index.md | DONE (shell only) |
+| (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
+
+Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices,structured-outputs,text-to-speech}, /providers/{openai,anthropic,xai,fireworksai,deepseek}, /examples/processing_audio_in_chat_completion_api, /api-reference/{moderation,search,audio}
+
+
+## Providers (ارائه‌دهندگان)
+| page | URL | file | status |
+|---|---|---|---|
+| Alibaba (Qwen) | /providers/alibaba | providers/alibaba.md | DONE |
+| OpenAI | /providers/openai | providers/openai.md | DONE |
+| Anthropic (Claude) | /providers/anthropic | providers/anthropic.md | DONE |
+| Google (Gemini/Gemma) | /providers/google | providers/google.md | DONE |
+| Meta (Llama) | /providers/meta | providers/meta.md | DONE |
+| Mistral AI | /providers/mistralai | providers/mistral.md | DONE |
+| xAI (Grok) | /providers/xai | providers/xai.md | DONE |
+| Cohere | /providers/cohere | providers/cohere.md | DONE |
+| Stability AI | /providers/stability | providers/stability.md | DONE |
+| DeepSeek | /providers/deepseek | providers/deepseek.md | DONE |
+| Black Forest Labs (FLUX) | /providers/bfl | providers/bfl.md | DONE |
+| Cloudflare | /providers/cloudflare | providers/cloudflare.md | DONE |
+| BytePlus (Seedream) | /providers/byteplus | providers/byteplus.md | DONE |
+| Z.AI (GLM) | /providers/zai | providers/zai.md | DONE |
+| Perplexity | /providers/perplexity | providers/perplexity.md | DONE |
+| Search tools (Tavily, DataForSEO, Exa, Parallel AI) | /providers/{tavily,dataforseo,exa_ai,parallel_ai} | providers/search-providers.md | DONE |
+| Firecrawl | /providers/firecrawl | providers/firecrawl.md | DONE |
+| Moonshot (Kimi) | /providers/moonshot | providers/moonshot.md | DONE |
+| RunwayML | /providers/runwayml | providers/runwayml.md | DONE |
+| Groq | /providers/groq | providers/groq.md | DONE |
+| NVIDIA NIM | /providers/nvidia-nim | providers/nvidia-nim.md | DONE |
+| MiniMax | /providers/minimax | providers/minimax.md | DONE |
+| ElevenLabs | /providers/elevenlabs | providers/elevenlabs.md | DONE |
+| Serper | /providers/serper | providers/serper.md | DONE |
+| Fireworks.ai | /providers/fireworksai | providers/fireworks.md | DONE |
+| Guide: rate-limits | /guides/rate-limits | guides/rate-limits.md | DONE |
+| Guide: batch-processing | /guides/batch-processing | guides/batch-processing.md | DONE |
+| Guide: error-handling | /guides/error-handling | guides/error-handling.md | DONE |
+| Guide: text-generation | /guides/text-generation | guides/text-generation.md | DONE |
+| Guide: vision | /guides/vision | guides/vision.md | DONE |
+| Guide: image-generation | /guides/image-generation | guides/image-generation.md | DONE |
+| Guide: audio-processing | /guides/audio-processing | guides/audio-processing.md | DONE |
+| Guide: realtime-audio | /guides/realtime-audio | guides/realtime-audio.md | DONE (NOT IMPLEMENTED) |
+| Guide: speech-to-text | /guides/speech-to-text | guides/speech-to-text.md | DONE |
+| Guide: text-to-speech | /guides/text-to-speech | guides/text-to-speech.md | DONE |
+| Guide: moderation | /guides/moderation | guides/moderation.md | DONE |
+| Guide: agents | /guides/agents | guides/agents.md | DONE |
+| Guide: reasoning | /guides/reasoning | guides/reasoning.md | DONE |
+| Guide: structured-outputs | /guides/structured-outputs | guides/structured-outputs.md | DONE |
+| Guide: function-calling | /guides/function-calling | guides/function-calling.md | DONE |
+| Guide: conversation-state | /guides/conversation-state | guides/conversation-state.md | DONE |
+| Guide: compaction | /guides/compaction | guides/compaction.md | DONE |
+| Guide: background-processing | /guides/background-processing | guides/background-processing.md | DONE (NOT IMPLEMENTED) |
+| Guide: deep-research | /guides/deep-research | guides/deep-research.md | DONE |
+| Guide: webhooks | /guides/webhooks | guides/webhooks.md | DONE (NOT IMPLEMENTED) |
+| Guide: streaming-responses | /guides/streaming-responses | guides/streaming-responses.md | DONE |
+| Guide: websocket-mode | /guides/websocket-mode | guides/websocket-mode.md | DONE (NOT IMPLEMENTED) |
+| Guide: pdf-files | /guides/pdf-files | guides/pdf-files.md | DONE |
+| Guide: file-inputs | /guides/file-inputs | guides/file-inputs.md | DONE |
+| Guide: embeddings | /guides/embeddings | guides/embeddings.md | DONE |
+| Guide: fine-tuning | /guides/fine-tuning | guides/fine-tuning.md | DONE (NOT IMPLEMENTED) |
+| Guide: evals | /guides/evals | guides/evals.md | DONE (hosted evals not provided) |
+| Guide: graders | /guides/graders | guides/graders.md | DONE (hosted not implemented) |
+| Guide: agent-evals | /guides/agent-evals | guides/agent-evals.md | DONE (hosted not available) |
+| Guide: red-teaming | /guides/red-teaming | guides/red-teaming.md | DONE |
+| Guide: retrieval | /guides/retrieval | guides/retrieval.md | DONE (hosted not available) |
+| Setup: n8n | /guides/setup-n8n | guides/setup-n8n.md | DONE |
+| Setup: Hermes Agent | /guides/setup-hermes | guides/setup-hermes.md | DONE |
+| Setup: 9Router | /guides/setup-9router | guides/setup-9router.md | DONE |
+| Setup: Open WebUI | /guides/setup-open-webui | guides/setup-open-webui.md | DONE |
+| Setup: OpenCode | /guides/setup-opencode | guides/setup-opencode.md | DONE |
+| Setup: Aider | /guides/setup-aider | guides/setup-aider.md | DONE |
+| Guide: coding-agent-workflows | /guides/coding-agent-workflows | guides/coding-agent-workflows.md | DONE (exercise verified offline) |
+| Guide: provider-specific-params | /guides/provider-specific-params | guides/provider-specific-params.md | DONE |
+| Setup: VSCode / Copilot / Continue / Cursor | /guides/setup-vscode | guides/setup-vscode.md | DONE |
+| Setup: OpenAI Codex | /guides/setup-codex | guides/setup-codex.md | DONE |
+| Setup: Claude Code | /guides/setup-claude-code | guides/setup-claude-code.md | DONE |
+| Guide: code-generation | /guides/code-generation | guides/code-generation.md | DONE |
+| Guide: video-generation (Sora) | /guides/video-generation | guides/video-generation.md | DONE (⚠ Sora shut down 2026-09-24) |
+| Guide: video-generation-veo | /guides/generate-videos-using-veo | guides/video-generation-veo.md | DONE (verify Veo live) |
+| Guide: video-generation-runway | /guides/generate-videos-using-runway | guides/video-generation-runway.md | DONE (verify live) |
+| Guide: gemini-safety-settings | /guides/gemini-safety-settings | guides/gemini-safety-settings.md | DONE |
+| Guide: tools (overview) | /guides/tools | guides/tools.md | DONE |
+| Guide: tools-web-search | /guides/tools-web-search | guides/tools-web-search.md | DONE |
+| Guide: tools-file-search | /guides/tools-file-search | guides/tools-file-search.md | DONE (NOT IMPLEMENTED – use manual RAG) |
+| Guide: tools-code-interpreter | /guides/tools-code-interpreter | guides/tools-code-interpreter.md | DONE (hosted route-dependent) |
+| Guide: tools-shell | /guides/tools-shell | guides/tools-shell.md | DONE (hosted route-dependent) |
+| Guide: tools-computer-use | /guides/tools-computer-use | guides/tools-computer-use.md | DONE (route-dependent; preview removed) |
+| Guide: tools-connectors-mcp | /guides/tools-connectors-mcp | guides/tools-connectors-mcp.md | DONE (route-dependent) |
+| Guide: best-practices | /guides/best-practices | guides/best-practices.md | DONE |
+| Guide: prompt-engineering | /guides/prompt-engineering | guides/prompt-engineering.md | DONE |
+| Guide: production-best-practices | /guides/production-best-practices | guides/production-best-practices.md | DONE |
+| Guide: deployment-checklist | /guides/deployment-checklist | guides/deployment-checklist.md | DONE |
+| Guide: data-controls | /guides/data-controls | guides/data-controls.md | DONE |
+| Guide: safety-best-practices | /guides/safety-best-practices | guides/safety-best-practices.md | DONE |
+| Guide: safety-checks | /guides/safety-checks | guides/safety-checks.md | DONE |
+| Guide: cost-optimization | /guides/cost-optimization | guides/cost-optimization.md | DONE |
+| Guide: citation-formatting | /guides/citation-formatting | guides/citation-formatting.md | DONE |
+| Guide: prompt-caching | /guides/prompt-caching | guides/prompt-caching.md | DONE |
+| Guide: token-counting | /guides/token-counting | guides/token-counting.md | DONE (NOT IMPLEMENTED – never emit /v1/responses/input_tokens) |
+| Guide: predicted-outputs | /guides/predicted-outputs | guides/predicted-outputs.md | DONE (provider/model dependent) |
+| Guide: model-selection | /guides/model-selection | guides/model-selection.md | DONE (ids need live verification) |
+| Guide: latency-optimization | /guides/latency-optimization | guides/latency-optimization.md | DONE |
+| Guide: optimizing-llm-accuracy | /guides/optimizing-llm-accuracy | guides/optimizing-llm-accuracy.md | DONE |
+| Guide: advanced-usage (راهنمای استفاده پیشرفته) | /guides/advanced-usage (inferred) | guides/advanced-usage.md | DONE |
+| Guide: responses-vs-chat-completions | /guides/responses-vs-chat-completions | guides/responses-vs-chat-completions.md | DONE |
+| Guide: rag-best-practices | /guides/rag-best-practices | guides/rag-best-practices.md | DONE (samples have defects) |
+| Example: evidence-grounded workflows (support/feedback/study) | /examples/… (slug unknown) | examples/evidence-grounded-workflows.md + scripts/evidence_workflow.py | DONE (offline verified) |
+| Example/Guide: generate images with GPT Image models | /examples/generate_images_with_gpt_image (inferred) | guides/generate-images-gpt-image.md | DONE (⚠ stale models; use gpt-image-2.5) |
+| Example: responses stateful workflows | /examples/responses_stateful_workflows | examples/responses-stateful-workflows.md | DONE |
+| Example: persistent agent memory with embeddings | /examples/… (slug unknown) | examples/persistent-agent-memory.md + scripts/durable_memory.py | DONE (script tested offline) |
+| Example: manual RAG with embeddings | /examples/manual_rag_with_embeddings | examples/manual-rag-with-embeddings.md | DONE |
+| Example: reasoning models with function calling | /examples/reasoning_function_calls | examples/reasoning-function-calls.md | DONE |
+| Example: rate-limit-safe parallel requests | /examples/rate_limit_safe_parallel_requests | examples/rate-limit-safe-parallel-requests.md | DONE |
+| Example: Promptfoo evals with AvalAI | /examples/promptfoo_evals_with_avalai | examples/promptfoo-evals.md | DONE |
+| Example: agentic guardrails schema-change workflow | /examples/agentic_guardrails_schema_workflow | examples/agentic-guardrails-schema-workflow.md + scripts/schema_change_guardrails.py | DONE (script tested offline) |
+| Example: web search capabilities | /examples/web_search_capabilities | examples/web-search-capabilities.md | DONE (older overview; see guides/tools-web-search.md) |
+| Example: processing PDF files (Chat Completions, Claude/Gemini) | /examples/… (slug unknown) | examples/processing-pdf-files-chat.md | DONE |
+| Example: processing audio in Chat Completions | /examples/processing_audio_in_chat_completion_api | examples/processing-audio-chat-completions.md | DONE |
+| Example: Mistral OCR document processing | /examples/… (slug unknown) | examples/mistral-ocr-document-processing.md | DONE |
+| Example: processing Excel files | /examples/… (slug unknown) | examples/processing-excel-files.md | DONE |
+| Example: image generation/editing with Nano Banana (Gemini image) | /examples/generate_images_with_nano_banana_series | examples/nano-banana-image-generation.md | DONE |
+| Example/Notice: Google Imagen deprecated (migration to Nano Banana) | /examples/… (slug unknown) | examples/imagen-deprecated.md | DONE |
+| Example: Seedream image generation/editing | /examples/generate_images_with_seedream_4 (or newer; unconfirmed) | examples/seedream-image-generation.md | DONE |
+| Example: using /v1/search | /examples/using_v1_search | examples/using-v1-search.md | DONE |
+| Example: Gemini Robotics-ER | /examples/… (slug unknown) | examples/gemini-robotics-er.md | DONE |
+| Example: voice conversational apps (audio models) | /examples/… (slug unknown) | examples/voice-conversational-apps.md | DONE |
+| Example: speaker-aware meeting intelligence | /examples/speaker_aware_meeting_intelligence | examples/speaker-aware-meeting-intelligence.md + scripts/meeting_intelligence.py | DONE (validators tested offline; STT model availability UNRESOLVED) |
+| Example: advanced Gemini image generation (native v1beta) | /examples/advanced_gemini_image_generation | examples/advanced-gemini-image-generation.md | DONE |
+| Guide: content-policy (API content policy & safeguards) | /safety/content-policy | guides/content-policy.md | DONE |
+| Guide: privacy-policy | /safety/privacy-policy | guides/privacy-policy.md | DONE |
+| News: 2026-09-04 model deprecations & migration guide | /news/2026-09-04-model-deprecations-and-migration-guide | news/2026-09-04-model-deprecations-and-migration-guide.md | DONE |
+| Service status page (screenshot only) | status.avalai.ir | guides/service-status.md | DONE (from screenshot; live fetch blocked) |
+| Re-sent duplicates (no change): rate-limits, speech-to-text, api-reference/models | | 09-rate-limits.md, guides/speech-to-text.md, api-reference/models.md | DUPLICATE (STT file got a news-based update note) |
+| Models explorer page (interactive, no static content) | /models | — | NOTHING TO CAPTURE (use /public/models or /v1/models) |
+| Pricing page full generated catalog → per-tier RPM/TPM | /pricing | 11-tier-rate-limits.md (+ prices in 06-pricing.md) | DONE (rate limits transcribed from catalog) |
+| Stability AI editing (deprecated) | /examples/stability_ai_image_editing | models/stability-deprecated.md | DONE |
+| News index | /news | news/index.md | DONE (titles only) |
+| News: Gemini 3.8 TTS added | /news/2026-09-30-gemini-3-8-tts-models-added | news/2026-09-30-gemini-3-8-tts-models-added.md | DONE |
+| News: GPT-6.1 Sol + Sonnet 5.5 | /news/2026-09-30-gpt-6-1-sol-claude-sonnet-5-5-added | news/2026-09-30-gpt-6-1-sol-claude-sonnet-5-5-added.md | DONE |
+| News: GPT-6 Sol/Luna + Grok 4.7 | /news/2026-09-24-gpt-6-sol-luna-grok-4-7-added | news/2026-09-24-gpt-6-sol-luna-grok-4-7-added.md | DONE |
+| News: Claude Opus 5.5 | /news/2026-09-24-claude-opus-5-5-added | news/2026-09-24-claude-opus-5-5-added.md | DONE |
+| News: GPT Image 2.5, DeepSeek V4.1 Flash, Grok 4.6 | /news/2026-09-11-gpt-image-2-5-deepseek-v4-1-grok-4-6-added | news/2026-09-11-gpt-image-2-5-deepseek-v4-1-grok-4-6-added.md | DONE |
+| News: GPT-6 Astra | /news/2026-09-05-gpt-6-astra-added | news/2026-09-05-gpt-6-astra-added.md | DONE |
+| News: GPT-5.6 + Grok 4.5 | /news/2026-07-10-gpt-5-6-grok-4-5-models-added | news/2026-07-10-gpt-5-6-grok-4-5-models-added.md | DONE |
+| News: avalai-request-id header | /news/2026-08-16-avalai-request-id-header-migration | news/2026-08-16-avalai-request-id-header-migration.md | DONE |
+| News: DeepSeek V4 fixed pricing | /news/2026-08-14-deepseek-v4-fixed-off-peak-pricing | news/2026-08-14-deepseek-v4-fixed-off-peak-pricing.md | DONE |
+| News: Fireworks models + cache routing | /news/2026-08-13-fireworks-models-cache-aware-routing | news/2026-08-13-fireworks-models-cache-aware-routing.md | DONE |
+| Deprecations (raw page, 2026-09-30) | /deprecations | 10-deprecations.md | DUPLICATE (verified; see notes in SKILL.md) |
+| Models explorer (2nd paste) | /models | — | DUPLICATE / nothing to capture |
+| News: Files API beta | /news/2026-01-01-files-api-beta-launched | news/2026-01-01-files-api-beta-launched.md | DONE |
+| News: Flex tier | /news/2025-12-15-flex-service-tier-launched | news/2025-12-15-flex-service-tier-launched.md | DONE |
+| News: User API | /news/2025-11-27-user-api-launched | news/2025-11-27-user-api-launched.md | DONE |
+| News: Claude base ids routing | /news/2025-11-28-claude-base-models-smart-routing | news/2025-11-28-claude-base-models-smart-routing.md | DONE |
+| News: Search API launch | /news/2025-10-26-search-api-launched | news/2025-10-26-search-api-launched.md | DONE |
+| News: Robotics-ER added | /news/2025-10-28-gemini-robotics-er-model-added | news/2025-10-28-gemini-robotics-er-model-added.md | DONE |
+| News: Mistral OCR added | /news/2025-05-15-mistral-ocr-latest-added | news/2025-05-15-mistral-ocr-latest-added.md | DONE |
+| News: Gemini 1.x deprecation | /news/2025-09-27-google-gemini-models-deprecation | news/2025-09-27-google-gemini-models-deprecation.md | DONE |
+| models/model-details | /models/model-details | — | NOT A PAGE (redirects to /models explorer; screenshot 2026-10-07: 2,589 models, filters, per-model "API page" + details) |
+| LIVE price/catalog/cost tool (authored) | — | scripts/avalai_live.py | DONE (stdlib; `--selftest`; `--file` offline) |
+| Multi-language client examples (authored) | — | examples/multi-language-clients.md | DONE |

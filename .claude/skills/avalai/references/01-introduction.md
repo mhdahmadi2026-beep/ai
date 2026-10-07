@@ -24,7 +24,32 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
-(Tabs on the page: Python, JavaScript, Bash — only Python was captured; JS/Bash PENDING.)
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  apiKey: process.env.AVALAI_API_KEY,
+  baseURL: "https://api.avalai.ir/v1",
+});
+
+const response = await client.responses.create({
+  model: "gpt-6-astra",
+  input: "Give me one practical idea for a developer tool.",
+});
+
+console.log(response.output_text);
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $AVALAI_API_KEY" \
+  -d '{
+    "model": "gpt-6-astra",
+    "input": "Give me one practical idea for a developer tool."
+  }'
+```
 
 ## Task paths
 | Need | Page |
@@ -73,3 +98,9 @@ Also: model browser (family, input/output type, context length, supported endpoi
 ## Page navigation
 Previous: آخرین تغییرات (/news/) · Next: شروع سریع (/quickstart)
 On-page anchors: first-request, task-paths, models-pricing, popular-guides, support-status.
+
+## Extra details from page source
+- Page title/description: «توسعه هوش مصنوعی با AvalAI» — OpenAI-compatible API, runnable examples, implementation guides, model & pricing reference.
+- Hero buttons: شروع راه‌اندازی سریع → /quickstart ; مشاهده مرجع API → /api-reference/introduction
+- Gemini 3.8 Flash promo date: «۱۰ دی ۱۴۰۵ (December 31, 2026)»; GLM-5.3-Flash promo: until «۱۸ شهریور ۱۴۰۵».
+- Qwen open-weight row: `qwen3.8-2.4t-a95b`, `qwen-image-3.0-pro`, `qwen-image-3.0` (text with mandatory thinking / image gen+edit).
