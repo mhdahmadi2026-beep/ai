@@ -18,7 +18,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 | معرفی | / | 01-introduction.md | DONE |
 | شروع سریع | /quickstart | 02-quickstart.md | DONE |
 | استفاده عملی از هوش مصنوعی | /guides/ai-workflows | 03-ai-workflows.md | DONE |
-| کتابخانه‌ها | /libraries | 04-libraries.md | PENDING |
+| کتابخانه‌ها | /libraries | 04-libraries.md | DONE |
 | عملکرد | /performance | 05-performance.md | PENDING |
 | قیمت‌گذاری | /pricing | 06-pricing.md | PENDING |
 | سطوح سرویس | /service-tiers | 07-service-tiers.md | PENDING |
@@ -45,3 +45,6 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 
 ## Discovered in ai-workflows page (PENDING)
 /examples/evidence_based_workflows, /examples/speaker_aware_meeting_intelligence, /examples/manual_rag_with_embeddings, /guides/coding-agent-workflows, /guides/setup-open-webui, /guides/setup-hermes, /guides/setup-opencode, /guides/setup-aider, /guides/setup-9router, /guides/setup-n8n, /guides/speech-to-text, /guides/evals, /guides/rate-limits, /models/
+
+## Discovered in libraries page (PENDING)
+/api-reference/v1beta, /api-reference/response-headers (also `X-Client-Request-Id` request header), /guides/responses-vs-chat-completions
