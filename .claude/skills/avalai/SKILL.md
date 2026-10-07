@@ -429,3 +429,6 @@ See `references/00-index.md`.
 
 ## GPT Image example (references/guides/generate-images-gpt-image.md)
 - Page predates `gpt-image-2.5-flare/sunburst`: `gpt-image-1`, `-1-mini`, `-1.5`, `chatgpt-image-latest` shut down 2026-12-01 → don't recommend. Reusable patterns: Goal/Format/Canvas/Subject/Composition/Style/Text/Constraints prompt template, "change only X; keep everything else" edits, image numbering for multi-image, quality low→high iteration, no `input_fidelity` on gpt-image-2+, up to 10 input images, alpha mask, no transparent bg on gpt-image-2, optional Responses `image_generation` tool (route-dependent), custom sizes (≤3840, multiples of 16, ≤3:1, 655,360–8,294,400 px).
+
+## Stateful Responses example (references/examples/responses-stateful-workflows.md)
+- Continue with `previous_response_id` (prior response must be stored; resend `instructions`; keep one model per chain), branch from any earlier id, retrieve via `GET /v1/responses/{id}`; stateless alternative = `store=False` + `history.extend(response.output)`. If the prior id can't be resolved resend full context. Whole-chain input still bills.
