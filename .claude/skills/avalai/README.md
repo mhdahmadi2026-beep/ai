@@ -18,6 +18,12 @@
 - **کلاینت‌های چندزبانه**: PHP، Go، Java، C#، Ruby، Rust، Node (fetch)، cURL، با retry، timeout و ثبت شناسه‌ی درخواست.
 - **اسکریپت‌های آماده**: guardrail تغییر اسکیما، تحلیل جلسه با تفکیک گوینده، حافظه‌ی پایدار، بنچمارک تأخیر و … (اجرای `--selftest` در دسترس برخی از آن‌ها).
 
+## سرور MCP و ایندکس معنایی
+پوشه‌ی `mcp-server/` یک سرور MCP بدون وابستگی است (جستجوی ترکیبی BM25 + embeddings، قیمت/هزینه‌ی زنده، نمونه‌کد، فهرست منسوخ‌ها، اخبار و پروژه‌های آماده). راهنمای کامل: [`mcp-server/README.md`](mcp-server/README.md). فایل `.mcp.json` برای Claude Code آماده است.
+
+## پروژه‌های آماده (Starters)
+بلوپرینت‌های کامل در `.claude/skills/avalai/references/starters/`: چت+RAG با FastAPI، چت استریم با Next.js، ربات تلگرام فارسی، چت Laravel، ایجنت CLI با Node، OCR→JSON، دستیار صوتی.
+
 ## نصب
 
 ### Claude Code (پیشنهادی)
