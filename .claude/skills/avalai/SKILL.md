@@ -486,3 +486,6 @@ See `references/00-index.md`.
 
 ## Meeting intelligence (references/examples/speaker-aware-meeting-intelligence.md)
 - diarized transcription → `seg_NNN` ids → strict-JSON extraction with `evidence_refs[{segment_id,quote}]` → deterministic validation (segment exists, quote is a substring, evidence non-empty) → redaction → `human_review_required` on any evidence error/medium-high risk/policy flag; never auto-sync. STT model (`gpt-live-transcribe`) availability CONFLICTS across notes — verify `/v1/models`; script `scripts/meeting_intelligence.py` (env `AVALAI_STT_MODEL`).
+
+## Advanced Gemini image generation — native API (references/examples/advanced-gemini-image-generation.md)
+- Use `client.models.generate_content` / `chats` with `response_modalities=["TEXT","IMAGE"]` and `image_config` (aspect_ratio, image_size "1K|2K|4K" uppercase); read `inline_data`; native chat keeps images across turns. JS option key is `baseUrl`. The page's `generate_image`/`GenerateImageConfig`/`getGenerativeModel().generateImage`/`images.generate` samples DON'T exist — don't emit them. `gemini-2.5-flash-image` stopped 2026-10-02 → `gemini-3.1-flash-image` / `gemini-3-pro-image`. No `person_generation`/`safety_filter_level` for Gemini images.
