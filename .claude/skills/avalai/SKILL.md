@@ -471,3 +471,6 @@ See `references/00-index.md`.
 
 ## Imagen deprecated (references/examples/imagen-deprecated.md)
 - No `imagen-*` ids or v1beta image `:predict`. Map: imagen-4 ultra→`gemini-3-pro-image`; imagen-4 generate/fast→`gemini-3.1-flash-image`; imagen-3.*→`gemini-3.1-flash-lite-image`. `gemini-2.5-flash-image` stopped 2026-10-02 → use Gemini 3.x image models; other options gpt-image-2.x, FLUX, Qwen Image, Seedream. Image result = base64 data URL, not a URL.
+
+## Seedream images (references/examples/seedream-image-generation.md)
+- `seedream-5-0-260128` via `/v1/images/generations|edits`; `size` 1K/2K/4K or `WxH`; provider params (`sequential_image_generation:"auto"|"disabled"`, `sequential_image_generation_options.max_images`, `watermark`, `image:[urls]` for fusion, `stream`) → Python `extra_body`, raw HTTP top-level. Output = temporary hosted URLs (save immediately). Don't copy page's JS `extra_body` hack or naive SSE parsing; retry only 429/5xx with jitter.
