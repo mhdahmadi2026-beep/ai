@@ -205,3 +205,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: optimizing-llm-accuracy | /guides/optimizing-llm-accuracy | guides/optimizing-llm-accuracy.md | DONE |
 | Guide: advanced-usage (راهنمای استفاده پیشرفته) | /guides/advanced-usage (inferred) | guides/advanced-usage.md | DONE |
 | Guide: responses-vs-chat-completions | /guides/responses-vs-chat-completions | guides/responses-vs-chat-completions.md | DONE |
+| Guide: rag-best-practices | /guides/rag-best-practices | guides/rag-best-practices.md | DONE (samples have defects) |
