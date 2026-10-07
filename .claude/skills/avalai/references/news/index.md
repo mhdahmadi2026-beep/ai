@@ -1,5 +1,5 @@
 # News index (docs.avalai.ir/fa/news) — dates are Persian (Jalali) with ISO slug
-Pages exist as `/fa/news/<ISO-date>-<slug>`. Captured: 2026-09-04-model-deprecations-and-migration-guide. Everything below = TITLES ONLY (content not captured) — fetch live when needed.
+Pages exist as `/fa/news/<ISO-date>-<slug>`. Captured (files in this dir): 2026-09-30-gemini-3-8-tts-models-added, 2026-09-30-gpt-6-1-sol-claude-sonnet-5-5-added, 2026-09-24-gpt-6-sol-luna-grok-4-7-added, 2026-09-24-claude-opus-5-5-added, 2026-09-11-gpt-image-2-5-deepseek-v4-1-grok-4-6-added, 2026-09-05-gpt-6-astra-added, 2026-07-10-gpt-5-6-grok-4-5-models-added, 2026-08-16-avalai-request-id-header-migration, 2026-08-14-deepseek-v4-fixed-off-peak-pricing, 2026-08-13-fireworks-models-cache-aware-routing, 2026-09-04-model-deprecations-and-migration-guide. Everything below = TITLES ONLY (content not captured) — fetch live when needed.
 
 ## 2026 (newest first)
 - 1405-07-08 (2026-09-30): Gemini 3.8 Flash / Flash-Lite TTS models added · GPT-6.1 Sol & Claude Sonnet 5.5 added

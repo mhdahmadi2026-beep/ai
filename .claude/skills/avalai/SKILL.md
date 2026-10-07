@@ -503,3 +503,11 @@ See `references/00-index.md`.
 ## Tier rate limits (references/11-tier-rate-limits.md) & news index
 - Per-model RPM/TPM for tiers 0–5 are in `11-tier-rate-limits.md` (snapshot; live: `/public/models` → `tier_rate_limits`). Frontier Claude/o-series/gpt-5-pro/grok-4 are NOT available on T0 (and often T1). Tier 0 chat ≈ 1–3 RPM, 10–40K TPM. Size per exact model id; stay ≤50–75% of limit.
 - `references/news/index.md` lists all announcement pages (titles); notable: `x-request-id`→`avalai-request-id` (2026-08-16), Files API beta (2026-01-01), Flex tier (2025-12-15), User API (2025-11-27), Search API (2025-10-26).
+
+## News 2026-07…09 (references/news/<date>-*.md)
+- **Deadline 2026-10-15 (1405-07-23):** AvalAI stops returning `x-request-id`; read `avalai-request-id` (UUID v7, same as body `request_id`; works with `/user/v1/transactions/lookup`).
+- `deepseek-v4-pro` has been routed to `deepseek-v4.1-flash` since 2026-09-14 04:00 UTC (billed $0.15 in / $0.003 cached / $0.60 out per 1M, flat all hours). Old V4 fixed-price numbers ($0.22/$0.66…) are history. Use `deepseek-v4.1-flash` directly.
+- New ids (tier ≥1): `claude-opus-5-5` ($4/$0.20/**cache-create $8**/$20; thinking always on, no disable, no `temperature`/`top_p`/prefill/forced tool_choice; empty thinking text between tools is normal), `claude-sonnet-5-5` ($2/$0.20/**cache-create $4**/$10; chat+messages full, responses partial; set effort explicitly; thinking-off apps → `between_tools`), `gpt-6.1-sol`, `gpt-6-sol`, `gpt-6-luna`, `gpt-6-astra` ($10/$1/$12.50/$50 ≤272K), `grok-4.7`/`grok-4.6` (responses partial), `gpt-image-2.5-flare|sunburst` (Images API only), `muse-glimmer-30b`, `nemotron-3.5-lightning`. Long-context tier (272K GPT-6.x, 200K Grok): the higher rate applies to the WHOLE request when input exceeds the threshold.
+- Gemini 3.8 TTS: price promo to 2026-12-31 then ×2; routes only v1beta/chat/audio-speech; output audio default WAV (check mimeType); see providers/google.md.
+- Cache-aware routing: best-effort 15-min sticky infra per user+model; keep prefixes stable; verify `cached_tokens`. No explicit cache breakpoints.
+- GPT-5 `-chat` ids: newer deprecations page maps to base `gpt-5`/`5.1`/`5.2`/`5.3` (supersedes news 2026-09-04 mapping to gpt-5.6-*). `gpt-audio-mini`: deprecations says removed but catalog still lists it — verify `/v1/models`.

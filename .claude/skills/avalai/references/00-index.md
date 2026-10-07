@@ -237,3 +237,15 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Pricing page full generated catalog → per-tier RPM/TPM | /pricing | 11-tier-rate-limits.md (+ prices in 06-pricing.md) | DONE (rate limits transcribed from catalog) |
 | Stability AI editing (deprecated) | /examples/stability_ai_image_editing | models/stability-deprecated.md | DONE |
 | News index | /news | news/index.md | DONE (titles only) |
+| News: Gemini 3.8 TTS added | /news/2026-09-30-gemini-3-8-tts-models-added | news/2026-09-30-gemini-3-8-tts-models-added.md | DONE |
+| News: GPT-6.1 Sol + Sonnet 5.5 | /news/2026-09-30-gpt-6-1-sol-claude-sonnet-5-5-added | news/2026-09-30-gpt-6-1-sol-claude-sonnet-5-5-added.md | DONE |
+| News: GPT-6 Sol/Luna + Grok 4.7 | /news/2026-09-24-gpt-6-sol-luna-grok-4-7-added | news/2026-09-24-gpt-6-sol-luna-grok-4-7-added.md | DONE |
+| News: Claude Opus 5.5 | /news/2026-09-24-claude-opus-5-5-added | news/2026-09-24-claude-opus-5-5-added.md | DONE |
+| News: GPT Image 2.5, DeepSeek V4.1 Flash, Grok 4.6 | /news/2026-09-11-gpt-image-2-5-deepseek-v4-1-grok-4-6-added | news/2026-09-11-gpt-image-2-5-deepseek-v4-1-grok-4-6-added.md | DONE |
+| News: GPT-6 Astra | /news/2026-09-05-gpt-6-astra-added | news/2026-09-05-gpt-6-astra-added.md | DONE |
+| News: GPT-5.6 + Grok 4.5 | /news/2026-07-10-gpt-5-6-grok-4-5-models-added | news/2026-07-10-gpt-5-6-grok-4-5-models-added.md | DONE |
+| News: avalai-request-id header | /news/2026-08-16-avalai-request-id-header-migration | news/2026-08-16-avalai-request-id-header-migration.md | DONE |
+| News: DeepSeek V4 fixed pricing | /news/2026-08-14-deepseek-v4-fixed-off-peak-pricing | news/2026-08-14-deepseek-v4-fixed-off-peak-pricing.md | DONE |
+| News: Fireworks models + cache routing | /news/2026-08-13-fireworks-models-cache-aware-routing | news/2026-08-13-fireworks-models-cache-aware-routing.md | DONE |
+| Deprecations (raw page, 2026-09-30) | /deprecations | 10-deprecations.md | DUPLICATE (verified; see notes in SKILL.md) |
+| Models explorer (2nd paste) | /models | — | DUPLICATE / nothing to capture |
