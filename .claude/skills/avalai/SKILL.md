@@ -351,3 +351,6 @@ See `references/00-index.md`.
 
 ## Tools overview (references/guides/tools.md)
 - Portable default: `/v1/responses` + `web_search` + custom `function` tools. Hosted file_search/computer use/shell/code interpreter/remote MCP/tool_search/image_generation tool are route/model-dependent (hosted vector stores unavailable) → implement in your app and return via `function_call_output`. Gemini: `codeExecution` is exclusive, `googleSearch` only with `urlContext`, function declarations alone; Qwen web search = `extra_body.enable_search`. Web search costs per 1K calls on top of tokens. Use `parallel_tool_calls:false` for stateful tools; keep secrets/OAuth in the backend; approval for write ops.
+
+## Web search tool (references/guides/tools-web-search.md)
+- `tools:[{"type":"web_search", "search_context_size":"low|medium|high", "filters":{"allowed_domains":[…≤100],"blocked_domains":[…]}, "user_location":{…}}]` on `/v1/responses`; `include:["web_search_call.action.sources"]` for audit; render `url_citation` annotations as visible clickable links; `tool_choice:"required"` when a search must happen. `gpt-4o(-mini)-search-preview` are REMOVED (deprecations) despite the page → don't use. `web_search_preview` is legacy. User location is a hint only; keep secrets/PII out of queries.
