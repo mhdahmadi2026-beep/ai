@@ -166,3 +166,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: red-teaming | /guides/red-teaming | guides/red-teaming.md | DONE |
 | Guide: retrieval | /guides/retrieval | guides/retrieval.md | DONE (hosted not available) |
 | Setup: n8n | /guides/setup-n8n | guides/setup-n8n.md | DONE |
+| Setup: Hermes Agent | /guides/setup-hermes | guides/setup-hermes.md | DONE |

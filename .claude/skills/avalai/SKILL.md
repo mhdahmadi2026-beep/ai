@@ -303,3 +303,6 @@ See `references/00-index.md`.
 
 ## n8n (references/guides/setup-n8n.md)
 - n8n OpenAI credential base URL `https://api.avalai.ir/v1`; Gemini/Anthropic credentials host `https://api.avalai.ir` (no /v1); Gemini node model names need the `models/` prefix; HTTP Request node: Header Auth `Authorization: Bearer <key>`.
+
+## Hermes Agent (references/guides/setup-hermes.md)
+- Named provider `providers.avalai`: `api: https://api.avalai.ir/v1`, `key_env: AVALAI_API_KEY`, `transport: chat_completions` (Responses only via separate `codex_responses` provider), model needs ≥64K input; secrets only in `~/.hermes/.env`; validate with read-only task first; keep dashboard/gateway private.
