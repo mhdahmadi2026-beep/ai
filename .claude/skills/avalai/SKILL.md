@@ -139,3 +139,6 @@ See `references/00-index.md`.
 
 ## Fine-tuning (see api-reference/fine-tuning.md)
 - **Not implemented on AvalAI** — no fine-tunable models/routes; never generate code relying on `/v1/fine-tuning/*`. Offer prompting / structured outputs / few-shot / RAG instead.
+
+## Assistants API (see api-reference/assistants.md)
+- **Not implemented on AvalAI** (and OpenAI sunset it 2026-08-26). Never emit `/v1/assistants|threads|runs` code. Migrate to `/v1/responses`: instructions→`instructions`, thread→`previous_response_id`/own DB state, run→response, store history yourself, keep typed output items, RAG via embeddings if `file_search` unavailable.

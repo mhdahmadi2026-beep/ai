@@ -91,6 +91,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | مدل‌ها | /api-reference/models | api-reference/models.md | DONE |
 | v1beta (Gemini native) | /api-reference/v1beta | — | PENDING |
 | تنظیم دقیق (Fine-tuning) — NOT IMPLEMENTED | /api-reference/fine-tuning | api-reference/fine-tuning.md | DONE |
+| دستیاران (Assistants) — NOT IMPLEMENTED | /api-reference/assistants | api-reference/assistants.md | DONE |
 | ویدیوها | /api-reference/videos | — | PENDING |
 | جستجو | /api-reference/search | — | PENDING |
 | (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
