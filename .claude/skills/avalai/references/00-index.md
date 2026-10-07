@@ -152,3 +152,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: conversation-state | /guides/conversation-state | guides/conversation-state.md | DONE |
 | Guide: compaction | /guides/compaction | guides/compaction.md | DONE |
 | Guide: background-processing | /guides/background-processing | guides/background-processing.md | DONE (NOT IMPLEMENTED) |
+| Guide: deep-research | /guides/deep-research | guides/deep-research.md | DONE |

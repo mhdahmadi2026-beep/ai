@@ -261,3 +261,6 @@ See `references/00-index.md`.
 
 ## Background processing (references/guides/background-processing.md) — hosted background NOT implemented
 - Don't emit `background:true` / response cancel / stream resume. Use an app-owned job queue + `GET /jobs/{id}` (or webhooks), `store:false`, idempotent job keys, backoff polling, handle all terminal states.
+
+## Deep research (references/guides/deep-research.md)
+- Use `gpt-5.6-terra`/`gpt-5.6-sol` + `web_search` on `/v1/responses` with `max_tool_calls`, explicit citation requirements and a precise brief; not `o3/o4-mini-deep-research`. Keep research read-only; separate untrusted web from private data; app-side RAG/MCP instead of hosted file_search unless enabled; background isn't implemented → own job queue.
