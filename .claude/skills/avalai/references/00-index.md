@@ -151,3 +151,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: function-calling | /guides/function-calling | guides/function-calling.md | DONE |
 | Guide: conversation-state | /guides/conversation-state | guides/conversation-state.md | DONE |
 | Guide: compaction | /guides/compaction | guides/compaction.md | DONE |
+| Guide: background-processing | /guides/background-processing | guides/background-processing.md | DONE (NOT IMPLEMENTED) |

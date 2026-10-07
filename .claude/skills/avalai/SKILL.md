@@ -258,3 +258,6 @@ See `references/00-index.md`.
 
 ## Compaction (references/guides/compaction.md)
 - Default to app-managed summaries (JSON: goal, facts, decisions, completed_actions, blockers, next_step; keep IDs, latest tool outputs verbatim). Use `context_management`/`compact_threshold`/`/v1/responses/compact` only if the route is confirmed; compaction items are opaque—append unchanged, never edit/prune with `previous_response_id`.
+
+## Background processing (references/guides/background-processing.md) — hosted background NOT implemented
+- Don't emit `background:true` / response cancel / stream resume. Use an app-owned job queue + `GET /jobs/{id}` (or webhooks), `store:false`, idempotent job keys, backoff polling, handle all terminal states.
