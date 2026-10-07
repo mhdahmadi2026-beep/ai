@@ -447,3 +447,6 @@ See `references/00-index.md`.
 
 ## Promptfoo evals (references/examples/promptfoo-evals.md)
 - Local/CI regression evals: dataset contract first, Python provider via `file://…py` returning `{"output": …}` (key from env, never YAML), deterministic asserts before `llm-rubric`, fixed labelled dataset, one change at a time, small PR smoke eval + full pre-release suite, no secrets for fork PRs. Drop `temperature=0` for reasoning/Claude 5.x models; env var is `AVALAI_EVAL_MODEL` (page has a case typo).
+
+## Agentic guardrails — schema change (references/examples/agentic-guardrails-schema-workflow.md)
+- Parse request → strict JSON schema → deterministic validation (catalog, name regex, type allowlist, duplicates, forbidden-keyword check on request text) → SQL draft for human review (never auto-run) → rollout plan from catalog → JSON artifact for CI/Promptfoo. Never trust model-supplied downstream objects; drop `temperature=0` on reasoning/Claude 5.x; keyword regex false-positives (e.g. "drop-down") fail closed.

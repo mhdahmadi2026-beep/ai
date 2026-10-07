@@ -214,3 +214,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: reasoning models with function calling | /examples/reasoning_function_calls | examples/reasoning-function-calls.md | DONE |
 | Example: rate-limit-safe parallel requests | /examples/rate_limit_safe_parallel_requests | examples/rate-limit-safe-parallel-requests.md | DONE |
 | Example: Promptfoo evals with AvalAI | /examples/promptfoo_evals_with_avalai | examples/promptfoo-evals.md | DONE |
+| Example: agentic guardrails schema-change workflow | /examples/agentic_guardrails_schema_workflow | examples/agentic-guardrails-schema-workflow.md + scripts/schema_change_guardrails.py | DONE (script tested offline) |
