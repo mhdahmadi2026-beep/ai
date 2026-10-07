@@ -357,3 +357,6 @@ See `references/00-index.md`.
 
 ## File search tool (references/guides/tools-file-search.md)
 - Hosted `file_search`/`vector_stores` NOT available (in development) → never emit them. Manual RAG: chunk with stable source IDs → `/v1/embeddings` → own vector index with tenant/permission filters applied BEFORE retrieval → rerank → `/v1/responses` with context + required source-ID citations; log chunk ids/scores/filters.
+
+## Code Interpreter (references/guides/tools-code-interpreter.md)
+- Hosted `code_interpreter` is route/model/account-dependent — don't assume it. Default: your own sandboxed backend (no network, CPU/mem/time limits, allowlisted packages, validated files) exposed as one strict `function` tool (`run_python_analysis`), answered via `function_call_output` with the same `call_id`. If hosted: containers expire after 20 min inactivity → copy `container_file_citation` artifacts promptly; redact stdout/stderr; no secrets in the environment.
