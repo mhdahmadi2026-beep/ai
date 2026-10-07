@@ -390,3 +390,6 @@ See `references/00-index.md`.
 
 ## Safety checks (references/guides/safety-checks.md)
 - Hashed `safety_identifier` on every supported user-facing call — never rotate it to evade a block; don't blind-retry policy/safety errors (e.g. upstream `cyber_policy`) → safe fallback/account review/support; buffer/moderate streams on high-risk surfaces; minors need age-gating, stricter moderation, minimal data and an escalation path; don't copy ZDR claims into customer text; realtime safety-id binding only if a route exists (hosted Realtime isn't available).
+
+## Cost optimization (references/guides/cost-optimization.md)
+- Optimize **cost per usable answer**, not per token. Token caps cover hidden reasoning + visible text: detect `status:"incomplete"`/`incomplete_details.reason:"max_output_tokens"` or `finish_reason:"length"` before retrying; never cache/show/bill incomplete answers; retry only with ONE change (higher cap, lower effort, split task, trim context, other model) and a retry cap; cap = expected reasoning + final-answer margin from P50/P95/P99. Route by task value; per-request/workflow/account budget guardrails; `flex` only for delay-tolerant work (timeouts up, backoff, no `priority`); log request id + usage; cost = `output_tokens × output_price` (reasoning already included in `output_tokens`; don't double count unless a route reports them separately).
