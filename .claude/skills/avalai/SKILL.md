@@ -276,3 +276,6 @@ See `references/00-index.md`.
 
 ## PDF inputs (references/guides/pdf-files.md)
 - `/v1/responses` `input_file` with `file_url` | `file_id` (Files `purpose="user_data"`) | `filename`+`file_data` data URL; <50 MB per file and per request; PDFs bill text + page images. Many docs → embed+retrieve. Layout OCR → `/v1/ocr` `mistral-ocr-4-0` ($0.004/page).
+
+## File inputs (references/guides/file-inputs.md)
+- Carriers: URL | base64 data URL | `file_id`. Responses: `input_file.file_url` / `file_id` (`purpose="user_data"`) / `filename`+`file_data`; images `input_image.image_url`/`file_id` (`purpose="vision"`). Never put a URL in Responses `file_id`. Inline limits ≈20 MB (Anthropic 32, Mistral OCR 50). Gemini = base64 only. Spreadsheets: summarized by the model — compute in code.
