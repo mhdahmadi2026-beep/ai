@@ -239,3 +239,6 @@ See `references/00-index.md`.
 
 ## Moderation guide (references/guides/moderation.md)
 - Use `omni-moderation-latest` on `/v1/moderations` for input AND output checks; image input only with omni; `sexual/minors`, harassment/hate are text-only. Inline `moderation={...}` on Responses is route-dependent; log request ids, never silently drop blocked requests.
+
+## Agents (references/guides/agents.md)
+- Build agents as app-owned tool loops on `/v1/responses`: strict function schemas, validate args server-side, cap iterations, resend `instructions` when chaining with `previous_response_id`, keep untrusted content in `input` (not developer/system), require approval for risky writes. No hosted Agent Builder/ChatKit runtime on AvalAI.

@@ -145,3 +145,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: speech-to-text | /guides/speech-to-text | guides/speech-to-text.md | DONE |
 | Guide: text-to-speech | /guides/text-to-speech | guides/text-to-speech.md | DONE |
 | Guide: moderation | /guides/moderation | guides/moderation.md | DONE |
+| Guide: agents | /guides/agents | guides/agents.md | DONE |
