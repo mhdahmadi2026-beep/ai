@@ -74,3 +74,22 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 (other pages in this group unknown — ask user to expand the group)
 
 Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (incl. LangChain async section)
+
+## مرجع API group
+| Page | URL | File | Status |
+|---|---|---|---|
+| مقدمه | /api-reference/introduction | api-reference/introduction.md | DONE |
+| احراز هویت | /api-reference/authentication | — | PENDING |
+| پاسخ‌ها (Responses) | /api-reference/responses | — | PENDING |
+| تکمیل گفتگو | /api-reference/chat | — | PENDING |
+| تصاویر | /api-reference/images | — | PENDING |
+| بردارهای تعبیه‌سازی | /api-reference/embeddings | — | PENDING |
+| صدا | /api-reference/audio | — | PENDING |
+| نظارت | /api-reference/moderation | — | PENDING |
+| API کاربر | /api-reference/user | — | PENDING |
+| هدرهای پاسخ | /api-reference/response-headers | — | PENDING |
+| مدل‌ها | /api-reference/models | — | PENDING |
+| v1beta (Gemini native) | /api-reference/v1beta | — | PENDING |
+| ویدیوها | /api-reference/videos | — | PENDING |
+| جستجو | /api-reference/search | — | PENDING |
+| (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
