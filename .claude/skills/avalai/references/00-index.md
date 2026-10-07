@@ -98,7 +98,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | پیام‌ها (Messages / Anthropic) | /api-reference/messages | api-reference/messages.md | DONE |
 | سنتز متن Vertex (text:synthesize) | /api-reference/v1-text-synthesize | api-reference/v1-text-synthesize.md | DONE |
 | ویدیوها | /api-reference/videos | — | PENDING |
-| جستجو | /api-reference/search | — | PENDING |
+| جستجو | /api-reference/search | api-reference/search.md | DONE |
 | (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
 
 Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices,structured-outputs,text-to-speech}, /providers/{openai,anthropic,xai,fireworksai,deepseek}, /examples/processing_audio_in_chat_completion_api, /api-reference/{moderation,search,audio}

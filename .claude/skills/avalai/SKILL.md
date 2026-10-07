@@ -165,3 +165,6 @@ See `references/00-index.md`.
 
 ## `/v1/text:synthesize` (see api-reference/v1-text-synthesize.md)
 - Vertex-native TTS for **Gemini 2.5** TTS only (`voice.model_name`, `audioConfig.audioEncoding`, base64 `audioContent`, multi-speaker with English aliases). Not for Gemini 3.8 TTS; default to `/v1/audio/speech` for new code.
+
+## Search API rules (see api-reference/search.md)
+- `POST /v1/search` (`search_tool_name` in body) or `/v1/search/{tool}`; returns raw `{object:"search", results:[{title,url,snippet,date?}]}` (not an LLM answer — distinct from hosted web-search tool). Tools by cost: `serper-search` $0.001, `dataforseo-search` .003, `parallel_ai-search` .004, `perplexity-search` .005, `tavily-search`/`firecrawl-search` .008, `parallel_ai-search-pro` .009, `tavily-search-advanced` .016, `exa_ai-search` .025. `max_results` 1–20; `search_domain_filter` ≤20; per-provider params (Serper `gl/hl/tbs`, Tavily country full name). Cache results.
