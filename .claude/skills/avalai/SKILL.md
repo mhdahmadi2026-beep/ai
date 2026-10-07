@@ -242,3 +242,7 @@ See `references/00-index.md`.
 
 ## Agents (references/guides/agents.md)
 - Build agents as app-owned tool loops on `/v1/responses`: strict function schemas, validate args server-side, cap iterations, resend `instructions` when chaining with `previous_response_id`, keep untrusted content in `input` (not developer/system), require approval for risky writes. No hosted Agent Builder/ChatKit runtime on AvalAI.
+
+## Reasoning (references/guides/reasoning.md)
+- Reasoning tokens are billed as output and `output_tokens` already includes them. `max_output_tokens`/`max_completion_tokens` cap hidden reasoning + answer → leave headroom; watch `status:"incomplete"` / `finish_reason:"length"` with empty text.
+- Per family: OpenAI `reasoning.effort`; Claude 5.x adaptive thinking + `output_config.effort` (no budget_tokens/temperature/prefill/forced tools); Kimi K3 `reasoning_effort:"max"`; Gemini 3.x `generationConfig.thinkingConfig.thinkingLevel` via `extra_body`; GLM-5.3 mandatory thinking; Qwen needs stream for thinking; DeepSeek tool loops must resend `reasoning_content` within the same turn. `deepseek-v4-pro` already redirects to `deepseek-v4.1-flash`.
