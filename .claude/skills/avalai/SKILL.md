@@ -233,3 +233,6 @@ See `references/00-index.md`.
 
 ## Speech-to-text (references/guides/speech-to-text.md)
 - STT: file transcription only; legacy ids (`whisper-1`, `gpt-4o-*transcribe*`) shut down 2027-02-26 — prefer `gpt-transcribe`/`gpt-live-transcribe`/`scribe_v2` after checking `/v1/models`. Diarization: `diarized_json` + `chunking_strategy:"auto"`; streaming only on non-Whisper models; translation → English only.
+
+## Text-to-speech (references/guides/text-to-speech.md)
+- TTS default `gpt-audio-1.5` (voices marin/cedar first); `gpt-4o-mini-tts`/`tts-1*` are gone — api-reference/audio.md samples using them are stale. Gemini 3.8 TTS: object voice, verbatim text (no "Say:" prefixes), check MIME (wav vs L16), only speech/chat/v1beta routes. ≤4,096 chars/request.
