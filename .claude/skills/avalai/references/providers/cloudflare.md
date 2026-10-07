@@ -1,0 +1,11 @@
+# Cloudflare Workers AI provider page (docs: /fa/providers/cloudflare)
+
+33 edge-hosted models via `cf.*` ids, standard OpenAI interface (chat full, responses partial, embeddings, images). ⚠ many `cf.*` ids removed (deprecations: cf.qwen3-embedding-0.6b, cf.meta-llama-3-8b-instruct, cf.llama-3.1-8b-*, cf.llama-3-8b-*, cf.gemma-7b-it(-lora), cf.gemma-2b-it-lora, cf.llama-3.1-70b-instruct, cf.gemma-3-12b-it) — verify live.
+## Chat models (ctx)
+Meta: `cf.llama-4-scout-17b-16e-instruct` (17B×16 experts, multimodal text+image, 128K), `cf.llama-3.3-70b-instruct-fp8-fast` (128K), `cf.llama-3.1-8b-instruct-fast|awq|fp8|` plain (128K), `cf.llama-3.1-70b-instruct`, `cf.llama-3.2-1b/3b-instruct` (128K), `cf.meta-llama-3-8b-instruct`, `cf.llama-3-8b-instruct(-awq)` (8K), `cf.llama-guard-3-8b` (safety, 8K). Google: `cf.gemma-3-12b-it` (multimodal, 140+ langs, 128K), `cf.gemma-7b-it(-lora)`, `cf.gemma-2b-it-lora` (8K). Mistral: `cf.mistral-small-3.1-24b-instruct` (vision + function calling, 128K). Qwen: `cf.qwq-32b` (reasoning, 32K), `cf.qwen2.5-coder-32b-instruct` (128K), `cf.qwen3-30b-a3b-fp8` (128K), `cf.qwen3-embedding-0.6b`. DeepSeek: `cf.deepseek-r1-distill-qwen-32b` (128K). OpenAI OSS: `cf.gpt-oss-120b`, `cf.gpt-oss-20b` (128K). NVIDIA: `cf.nemotron-3-120b-a12b` (LatentMoE Mamba-2+MoE+attention, 120B/12B active, **1M ctx**; $0.50 in / $0.05 cached / $1.50 out; reasoning toggle; MTP; langs en/fr/de/it/ja/es/zh; use temperature 1.0, top_p 0.95; SWE-Bench OpenHands 60.47%, AIME25 90.21%, LiveCodeBench 81.19%). IBM: `cf.granite-4.0-h-micro` (128K).
+## Images (`/v1/images/generations`; per 1 MP)
+`cf.flux-2-klein-9b` $0.015, `cf.flux-2-klein-4b` $0.010, `cf.flux-2-dev` $0.010, `cf.lucid-origin` $0.015, `cf.phoenix-1.0` $0.015.
+## Embeddings (`/v1/embeddings`; $/1M in)
+`cf.qwen3-embedding-0.6b` 0.012, `cf.plamo-embedding-1b` 0.019 (PFN), `cf.embeddinggemma-300m` 0.012.
+## Params / practice
+temperature (default 0.7, 0–2), max_tokens (default 2048; 1–4096), top_p, frequency/presence_penalty. Speed → FP8/AWQ variants (`…-fp8-fast`); reasoning → qwq-32b / deepseek-r1-distill; code → qwen2.5-coder; multimodal → llama-4-scout / gemma-3-12b; compact → llama-3.2-1b; content safety → `cf.llama-guard-3-8b`. Standard AvalAI rate limits.

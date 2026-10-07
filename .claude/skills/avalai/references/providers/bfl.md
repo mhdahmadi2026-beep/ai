@@ -1,0 +1,7 @@
+# Black Forest Labs (FLUX) provider page (docs: /fa/providers/bfl)
+
+- `flux.2-pro`: up to 4 MP (4096×4096); PNG/JPEG; multi-reference up to 8 images via API (10 in playground); price **$0.03 per megapixel (first MP) + $0.015 per extra MP; reference images $0.015/MP**; 1 MP = 1024×1024, rounded up to next MP; >4 MP resized to 4 MP. Typography, color accuracy (hex), photorealism. **Best with English prompts.** Generations only (`/v1/images/generations`).
+- `flux-1.1-pro`: ≤2048×2048; **$0.04/image**; top quality & prompt following. Example uses `response_format="b64_json"` (**'url' unsupported**).
+- `flux.1-kontext-pro`: generation + edits (`/v1/images/edits`); ≤2048×2048; $0.04/image; context-aware editing, style transfer. Edits also `b64_json` only. (Page example imports `fs`/`fs.createReadStream` in Python — JS idiom; use `open(…,"rb")`.)
+- Flat per-image price regardless of resolution (up to max) for 1.1-pro/kontext. `extra_body`: `aspect_ratio`, `output_format`, `prompt_upsampling`, `safety_tolerance`, `samples`, … (see images.md). Page's basic example passes `quality="hd"` (not a FLUX/OpenAI-GPT-Image param).
+Selection: quality → flux-1.1-pro; editing → kontext-pro; multi-reference/typography → flux.2-pro. Prompt tips: describe subject, lens, lighting, style (e.g. "85 mm, soft natural light, shallow depth of field"). Official docs https://docs.bfl.ai/quick_start/introduction.

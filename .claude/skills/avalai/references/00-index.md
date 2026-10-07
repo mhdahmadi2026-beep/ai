@@ -117,3 +117,9 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Mistral AI | /providers/mistralai | providers/mistral.md | DONE |
 | xAI (Grok) | /providers/xai | providers/xai.md | DONE |
 | Cohere | /providers/cohere | providers/cohere.md | DONE |
+| Stability AI | /providers/stability | providers/stability.md | DONE |
+| DeepSeek | /providers/deepseek | providers/deepseek.md | DONE |
+| Black Forest Labs (FLUX) | /providers/bfl | providers/bfl.md | DONE |
+| Cloudflare | /providers/cloudflare | providers/cloudflare.md | DONE |
+| BytePlus (Seedream) | /providers/byteplus | providers/byteplus.md | DONE |
+| Z.AI (GLM) | /providers/zai | providers/zai.md | DONE |

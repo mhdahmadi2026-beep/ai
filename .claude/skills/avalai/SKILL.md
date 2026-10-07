@@ -190,3 +190,8 @@ See `references/00-index.md`.
 - Google: Gemini extras via `extra_body={"generationConfig":{…}}`; images base64 only; `gemini-flash-latest`→`gemini-3.8-flash` (promo $0.75/$3.75 until 2026-12-31); code-execution tool excludes all other tools; Google Search billed per call; image models `gemini-3-pro-image`/`3.1-flash-image`/`3.1-flash-lite-image` (Imagen removed); Gemini 3.8 TTS paths only v1beta/chat/audio-speech.
 - xAI: `grok-4.7`/`4.6` 500K in/out, don't send `reasoning_effort`; Responses partial; prices ≤200K $2/$6, >200K $4/$12.50.
 - Mistral SDK `server_url` without `/v1`; OCR `mistral-ocr-4-0`. Cohere: rerank via raw HTTP; `embed-v-4-0` Azure = 30× limits. Meta: Llama via Bedrock ids; many removed.
+
+## More providers (see providers/{deepseek,zai,bfl,cloudflare,byteplus,stability}.md)
+- DeepSeek: all legacy ids route to `deepseek-v4.1-flash` ($0.15/$0.60, cached $0.003); `deepseek-v4-pro` redirected since 2026-09-14. Thinking+tool loops: resend `reasoning_content` within the same turn (else 400), drop it on new user turn.
+- Z.AI: `glm-5.3` thinking mandatory (`thinking.type:"enabled"`, effort low|high|max); glm-5.3-flash promo ended 2026-09-09.
+- BFL FLUX: `response_format:"b64_json"` only; flux.2-pro per-megapixel pricing. BytePlus `seedream-5-0-260128` $0.035/img, URLs expire 24 h, set `watermark:false`. Stability: no U+200C, English prompts, ids likely removed. Cloudflare `cf.*` ids (many removed).
