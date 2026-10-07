@@ -435,3 +435,6 @@ See `references/00-index.md`.
 
 ## Persistent agent memory (references/examples/persistent-agent-memory.md, references/scripts/durable_memory.py)
 - Durable memory ≠ conversation state: app-approved, provenance-tagged facts only (preference/decision/verified_fact), scope (tenant,user,agent) filtered in SQL BEFORE similarity, `source_id` idempotency per scope, UTC-epoch expiry, recalled text treated as untrusted, `store=False` on the answer call; support delete/correct/export.
+
+## Manual RAG example (references/examples/manual-rag-with-embeddings.md)
+- Supported RAG path today: batch-embed chunks ONCE (cache), filter by metadata before similarity, threshold + top-k, context blocks `[id] title\ntext`, `/v1/responses` with "answer only from context, cite source IDs, say when insufficient", log retrieved ids/scores; measure Recall@k/MRR. Don't re-embed the corpus per query (the page's JS sample does).
