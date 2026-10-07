@@ -145,3 +145,6 @@ See `references/00-index.md`.
 
 ## Batch API (see api-reference/batch.md)
 - **Not implemented** on AvalAI: no `/v1/batches`, no 50% batch discount, no hosted webhooks. Build client-side workers (bounded concurrency, `custom_id`, retry/backoff, job state machine) and consider the flex service tier (−50%) for non-urgent OpenAI-model work.
+
+## Files API rules (see api-reference/files.md)
+- Available: `/v1/files` (upload ≤128 MB multipart, list, retrieve, delete, `/content`). Use `purpose="user_data"` for model inputs; reference by `file_id` in chat (`{"type":"file","file":{"file_id"}}`), responses (`input_file`), messages, ocr, images/edits. Tier limits: uploads/min 3/10/50/250/500/1500, storage 250 MB→200 GB; 507 when full. Set `expires_after`, delete when done, avoid base64 in logs. PDFs: Gemini/vision models; big corpora → embeddings/RAG.
