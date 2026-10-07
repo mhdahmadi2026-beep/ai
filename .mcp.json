@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "avalai-docs": {
+      "command": "python3",
+      "args": ["-I", "mcp-server/avalai_mcp.py"]
+    }
+  }
+}
