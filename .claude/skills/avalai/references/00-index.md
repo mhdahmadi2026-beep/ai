@@ -142,3 +142,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: image-generation | /guides/image-generation | guides/image-generation.md | DONE |
 | Guide: audio-processing | /guides/audio-processing | guides/audio-processing.md | DONE |
 | Guide: realtime-audio | /guides/realtime-audio | guides/realtime-audio.md | DONE (NOT IMPLEMENTED) |
+| Guide: speech-to-text | /guides/speech-to-text | guides/speech-to-text.md | DONE |

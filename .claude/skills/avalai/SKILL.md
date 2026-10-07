@@ -226,7 +226,10 @@ See `references/00-index.md`.
 - Use `/v1/images/generations|edits` by default; Responses `image_generation` tool only if verified. Default model `gpt-image-2.5-flare` (pro edits: `gpt-image-2.5-sunburst`); `xhigh`/`max` quality only on those two; results are base64. gpt-6-sol/luna, grok-4.7 are NOT image generators. No `imagen-*`; `gemini-2.5-flash-image` retired 2026-10-02. Non-OpenAI params via `extra_body`; edit prompt must describe full final image + invariants.
 
 ## Audio processing (references/guides/audio-processing.md)
-- TTS `/v1/audio/speech`, STT `/v1/audio/transcriptions` (`gpt-transcribe`, diarization `gpt-live-transcribe`, `scribe_v2`), translation `/v1/audio/translations`, chat audio via `/v1/chat/completions`. `whisper-1`, `tts-1*`, `gpt-4o-*transcribe*` are removed. Realtime is NOT available — don't emit realtime/SIP code. Gemini 3.8 TTS: only v1beta, chat, `/v1/audio/speech` (voice as object).
+- TTS `/v1/audio/speech`, STT `/v1/audio/transcriptions` (`gpt-transcribe`, diarization `gpt-live-transcribe`, `scribe_v2`), translation `/v1/audio/translations`, chat audio via `/v1/chat/completions`. `gpt-4o-mini-tts` is removed; `whisper-1`, `gpt-4o-*transcribe*` are legacy with shutdown 2027-02-26 (sources conflict on whether live now — prefer `gpt-transcribe`/`scribe_v2`, verify `/v1/models`). Realtime is NOT available — don't emit realtime/SIP code. Gemini 3.8 TTS: only v1beta, chat, `/v1/audio/speech` (voice as object).
 
 ## Realtime (references/guides/realtime-audio.md) — NOT implemented
 - Never generate code for `/v1/realtime*`, WebRTC/SIP sessions or `gpt-realtime-*`. Use transcribe → Responses → TTS.
+
+## Speech-to-text (references/guides/speech-to-text.md)
+- STT: file transcription only; legacy ids (`whisper-1`, `gpt-4o-*transcribe*`) shut down 2027-02-26 — prefer `gpt-transcribe`/`gpt-live-transcribe`/`scribe_v2` after checking `/v1/models`. Diarization: `diarized_json` + `chunking_strategy:"auto"`; streaming only on non-Whisper models; translation → English only.
