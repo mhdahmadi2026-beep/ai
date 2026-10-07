@@ -215,3 +215,6 @@ See `references/00-index.md`.
 ## Error handling (references/guides/error-handling.md)
 - Always log `error.request_id` / `avalai-request-id`; send `X-Client-Request-Id` for correlation. Retry only 429(rate), 5xx, timeouts, network drops with capped exponential backoff + jitter and `Retry-After`; never blind-retry 400/401/403/404/422, `unsupported_model`, `content_policy_violation`, `insufficient_quota`, `quota_exceeded` (these need a code/account fix, even though quota errors come as 429).
 - Read `error.solution` field. WebSocket Responses: `previous_response_not_found` → resend full input with `previous_response_id:null`.
+
+## Text generation guide (references/guides/text-generation.md)
+- Default to `/v1/responses` with `instructions` + `input`; read `output_text`; parse `output` by `type`. `instructions` aren't inherited across `previous_response_id`; prior chain is billed. `max_output_tokens` includes reasoning. Prefer `truncation:"disabled"`; set temperature OR top_p. Keep prompts in code, not hosted prompt objects (deprecated).
