@@ -168,3 +168,6 @@ See `references/00-index.md`.
 
 ## Search API rules (see api-reference/search.md)
 - `POST /v1/search` (`search_tool_name` in body) or `/v1/search/{tool}`; returns raw `{object:"search", results:[{title,url,snippet,date?}]}` (not an LLM answer — distinct from hosted web-search tool). Tools by cost: `serper-search` $0.001, `dataforseo-search` .003, `parallel_ai-search` .004, `perplexity-search` .005, `tavily-search`/`firecrawl-search` .008, `parallel_ai-search-pro` .009, `tavily-search-advanced` .016, `exa_ai-search` .025. `max_results` 1–20; `search_domain_filter` ≤20; per-provider params (Serper `gl/hl/tbs`, Tavily country full name). Cache results.
+
+## OCR rules (see api-reference/ocr.md)
+- `POST /v1/ocr` model `mistral-ocr-4-0` ($0.004/page; $0.005 annotated; `mistral-ocr-latest` alias). `document:{type:"document_url"|"image_url", …}` (public URL or base64 data URL); `pages` 0-based; `table_format` markdown|html; structured output via `document_annotation_format` json_schema → `document_annotation` is a JSON *string*. Request images (`include_image_base64`) only when needed. Mistral SDK works with `server_url="https://api.avalai.ir"`.
