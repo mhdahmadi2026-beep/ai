@@ -161,3 +161,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: embeddings | /guides/embeddings | guides/embeddings.md | DONE |
 | Guide: fine-tuning | /guides/fine-tuning | guides/fine-tuning.md | DONE (NOT IMPLEMENTED) |
 | Guide: evals | /guides/evals | guides/evals.md | DONE (hosted evals not provided) |
+| Guide: graders | /guides/graders | guides/graders.md | DONE (hosted not implemented) |

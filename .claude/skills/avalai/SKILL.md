@@ -288,3 +288,6 @@ See `references/00-index.md`.
 
 ## Evals (references/guides/evals.md) — no hosted `/v1/evals`
 - Run evals locally/CI (Promptfoo/pytest/script) with versioned datasets, deterministic checks first, calibrated LLM judges, trajectory logging for agents; compare prod vs candidate per route; add production failures to the dataset before changing prompts.
+
+## Graders (references/guides/graders.md)
+- No hosted graders: write local deterministic graders (`item.*` vs `sample.*`, score 0–1 + reason), prefer string/schema checks, calibrate LLM judges with ranked fixtures and a reward-hacking pack before CI gating.
