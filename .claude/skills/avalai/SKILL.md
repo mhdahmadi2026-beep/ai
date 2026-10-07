@@ -12,7 +12,8 @@ description: Expert guide for building with AvalAI (اول ای‌آی / "اول
 2. **Cost/budget questions → compute, don't estimate by eye:** `avalai_live.py cost MODEL --in N --out M [--cached C] [--reasoning R] [--requests K] [--rate <toman per USD today>]`. Long-context tiers apply to the WHOLE request when input exceeds the threshold; reasoning tokens bill at the output rate; promo prices expire (check dates); toman rate changes daily → ask the user for today's rate or read it from a live `estimated_cost.exchange_rate`. Exact billing = `/user/v1/transactions/lookup` with `avalai-request-id`.
 3. **Pick the reference with the router below, read it, then write code.** Never invent ids/params. If a file says snapshot/PENDING/conflict, verify live or ask.
 4. **Deliver production-grade code:** key from env, explicit timeout, retry only 429/5xx/network with `Retry-After`+jitter+cap, log `avalai-request-id`, validate model-generated JSON/tool args, human approval before side effects, no secrets client-side, check `usage` for cost.
-5. **Language not Python/JS?** → `references/examples/multi-language-clients.md` (PHP, Go, Java, C#, Ruby, Rust, fetch, cURL; raw-HTTP + SDK).
+5. **Language not Python/JS?** → PHP/Laravel: `references/examples/laravel-complete-guide.md` (service class, streaming, tools, queues, cost tracking, tests) + `php-official-samples.md`; Go: `go-official-samples.md`; others: `multi-language-clients.md`.
+6. **Need exact wording or an omitted detail?** `references/source-archive/INDEX.md` has every doc page verbatim (lossless); curated files may condense — the archive is the ground truth for text, `avalai_live.py` for live numbers.
 
 **Task → file router**
 | Task | Read |

@@ -260,3 +260,7 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | models/model-details | /models/model-details | — | NOT A PAGE (redirects to /models explorer; screenshot 2026-10-07: 2,589 models, filters, per-model "API page" + details) |
 | LIVE price/catalog/cost tool (authored) | — | scripts/avalai_live.py | DONE (stdlib; `--selftest`; `--file` offline) |
 | Multi-language client examples (authored) | — | examples/multi-language-clients.md | DONE |
+| Raw verbatim doc pages (as pasted, lossless) | — | source-archive/INDEX.md + 173 page files | DONE — use for exact wording / every sample |
+| ALL PHP samples from docs (104 blocks, verbatim, by page) | — | examples/php-official-samples.md | DONE |
+| ALL Go samples from docs (113 blocks) | — | examples/go-official-samples.md | DONE |
+| Laravel/PHP complete guide (authored) | — | examples/laravel-complete-guide.md | DONE |
