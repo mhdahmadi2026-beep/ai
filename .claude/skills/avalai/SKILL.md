@@ -489,3 +489,6 @@ See `references/00-index.md`.
 
 ## Advanced Gemini image generation — native API (references/examples/advanced-gemini-image-generation.md)
 - Use `client.models.generate_content` / `chats` with `response_modalities=["TEXT","IMAGE"]` and `image_config` (aspect_ratio, image_size "1K|2K|4K" uppercase); read `inline_data`; native chat keeps images across turns. JS option key is `baseUrl`. The page's `generate_image`/`GenerateImageConfig`/`getGenerativeModel().generateImage`/`images.generate` samples DON'T exist — don't emit them. `gemini-2.5-flash-image` stopped 2026-10-02 → `gemini-3.1-flash-image` / `gemini-3-pro-image`. No `person_generation`/`safety_filter_level` for Gemini images.
+
+## API content policy (references/guides/content-policy.md)
+- AvalAI states it does NOT collect/store/use API call content (prompts, messages, audio, images); it keeps only model name, IP, timestamp, usage metrics. Applies to AvalAI layer only — upstream providers (OpenAI, Google…) have their own terms; provider-side state (stored Responses, files, batches, tools) still needs `store:false`/expiry/minimisation. Don't promise "nothing stored anywhere"; document per-route retention (data-controls.md). Not a contract/ZDR.
