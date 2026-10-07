@@ -426,3 +426,6 @@ See `references/00-index.md`.
 
 ## Evidence-grounded workflow example (references/examples/evidence-grounded-workflows.md, references/scripts/evidence_workflow.py)
 - Pattern: records `{id,text}` → strict JSON-schema Chat call → validate in code (ids exist, quotes are exact source substrings) → `needs_human_review`; no auto-retry on timeout (may be billed), no redirects (don't forward keys), `finish_reason=="stop"` + no `refusal`, response size cap, key via env/getpass. Quote-match ≠ semantic validation; offline fixtures aren't AI evidence.
+
+## GPT Image example (references/guides/generate-images-gpt-image.md)
+- Page predates `gpt-image-2.5-flare/sunburst`: `gpt-image-1`, `-1-mini`, `-1.5`, `chatgpt-image-latest` shut down 2026-12-01 → don't recommend. Reusable patterns: Goal/Format/Canvas/Subject/Composition/Style/Text/Constraints prompt template, "change only X; keep everything else" edits, image numbering for multi-image, quality low→high iteration, no `input_fidelity` on gpt-image-2+, up to 10 input images, alpha mask, no transparent bg on gpt-image-2, optional Responses `image_generation` tool (route-dependent), custom sizes (≤3840, multiples of 16, ≤3:1, 655,360–8,294,400 px).
