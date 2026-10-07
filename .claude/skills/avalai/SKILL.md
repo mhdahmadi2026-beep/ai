@@ -279,3 +279,6 @@ See `references/00-index.md`.
 
 ## File inputs (references/guides/file-inputs.md)
 - Carriers: URL | base64 data URL | `file_id`. Responses: `input_file.file_url` / `file_id` (`purpose="user_data"`) / `filename`+`file_data`; images `input_image.image_url`/`file_id` (`purpose="vision"`). Never put a URL in Responses `file_id`. Inline limits ≈20 MB (Anthropic 32, Mistral OCR 50). Gemini = base64 only. Spreadsheets: summarized by the model — compute in code.
+
+## Embeddings guide (references/guides/embeddings.md)
+- Same model + `dimensions` for docs and queries; `dimensions` only where supported; filter by tenant/permissions BEFORE ranking; evaluate retrieval with labelled queries; vectors are derived user data (retention/deletion apply); hosted batch isn't available.

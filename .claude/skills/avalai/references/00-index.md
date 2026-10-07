@@ -158,3 +158,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: websocket-mode | /guides/websocket-mode | guides/websocket-mode.md | DONE (NOT IMPLEMENTED) |
 | Guide: pdf-files | /guides/pdf-files | guides/pdf-files.md | DONE |
 | Guide: file-inputs | /guides/file-inputs | guides/file-inputs.md | DONE |
+| Guide: embeddings | /guides/embeddings | guides/embeddings.md | DONE |
