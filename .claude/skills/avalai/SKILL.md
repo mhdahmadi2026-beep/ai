@@ -148,3 +148,8 @@ See `references/00-index.md`.
 
 ## Files API rules (see api-reference/files.md)
 - Available: `/v1/files` (upload ≤128 MB multipart, list, retrieve, delete, `/content`). Use `purpose="user_data"` for model inputs; reference by `file_id` in chat (`{"type":"file","file":{"file_id"}}`), responses (`input_file`), messages, ocr, images/edits. Tier limits: uploads/min 3/10/50/250/500/1500, storage 250 MB→200 GB; 507 when full. Set `expires_after`, delete when done, avoid base64 in logs. PDFs: Gemini/vision models; big corpora → embeddings/RAG.
+
+## Responses API rules (see api-reference/responses.md) — preferred API for new apps
+- `POST /v1/responses`: `input` (+ `instructions`, resend each turn; NOT inherited via `previous_response_id`); read `response.output_text` (SDK-only) or iterate `output` by `type`. `max_output_tokens` includes reasoning → leave headroom, check `status`/`incomplete_details` before parsing. Structured: `text.format` json_schema strict. No `n`. One state strategy: `previous_response_id` | `conversation` | manual replay; `store:false` + `include:["reasoning.encrypted_content"]` for stateless reasoning; chain tokens still billed.
+- Streaming = typed SSE events: accumulate `response.output_text.delta`, run function calls only after `response.function_call_arguments.done`, finish on `response.completed`, handle `response.failed`/`error`; save `sequence_number` for resume.
+- Non-OpenAI models: partial support (text + basic tools); hosted tools/`reasoning` OpenAI-only and route/account dependent → fall back to function tools / manual RAG. `service_tier`: `default`|`flex` only. Use `safety_identifier` + `prompt_cache_key`, not `user`.
