@@ -405,3 +405,6 @@ See `references/00-index.md`.
 
 ## Predicted outputs (references/guides/predicted-outputs.md)
 - Chat Completions only: `prediction={"type":"content","content":<current file>}` for regenerating a file after a small edit (no Responses equivalent). Provider/model dependent — verify the model is live (several `gpt-4.1*`/`gpt-4o*` ids have deprecation entries). Not with tools, `n>1`, `logprobs`, positive penalties, audio/modalities, or `max_completion_tokens`. Rejected prediction tokens are still billed → watch `accepted/rejected_prediction_tokens`; ask for the full updated file, not a diff.
+
+## Model selection (references/guides/model-selection.md)
+- Process: accuracy target (break-even = loss/(gain+loss)) → eval set → strongest model first → then cheaper/faster models, routing (easy→small, hard→flagship) and prompt/few-shot tuning; tune `reasoning.effort`/`text.verbosity` before swapping models; same eval on every provider route (feature parity, retention, quotas differ). Fine-tuning/distillation not available. Page model tables are stale in places — always confirm ids via `/v1/models` + deprecations. There is no `avalai` Python SDK (the page's sample is wrong): use the OpenAI SDK with `base_url`.
