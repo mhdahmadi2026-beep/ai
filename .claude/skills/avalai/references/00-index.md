@@ -70,5 +70,7 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 | Page | URL | File | Status |
 |---|---|---|---|
 | راهنمای پیگیری هزینه نمایندگان | /resellers/cost-tracking-guide | resellers/cost-tracking-guide.md | DONE |
-| راهنمای سازمانی | /resellers/enterprise-guide | resellers/enterprise-guide.md | PENDING |
+| راهنمای سازمانی | /resellers/enterprise-guide | resellers/enterprise-guide.md | DONE |
 (other pages in this group unknown — ask user to expand the group)
+
+Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (incl. LangChain async section)

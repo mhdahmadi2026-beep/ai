@@ -97,3 +97,4 @@ See `references/00-index.md`.
 
 ## Reseller billing rules (references/resellers/)
 - Never bill from `estimated_cost`. Store `avalai-request-id` (response HEADER; OpenAI SDK: `response._request_id`) per customer request, wait ~5 s (≤30 s), then `POST /user/v1/transactions/lookup` (≤1000 ids per call) and bill from `cost.unit` (USD) / `paid_irt + paid_grant_irt` (Toman). Prefer async worker; retry with backoff; store full transaction detail; key charges on `request_id` (idempotent).
+- Enterprise tracking: tag requests with `safety_identifier` (e.g. `dept-<id>`) in the body, store `avalai-request-id` + tags locally, batch-lookup ≤1000 ids, re-queue not-yet-found ids. Video API bodies include `request_id`/`safety_identifier`, but Sora/OpenAI Videos shut down 2026-09-24.
