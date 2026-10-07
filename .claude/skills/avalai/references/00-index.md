@@ -211,3 +211,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: responses stateful workflows | /examples/responses_stateful_workflows | examples/responses-stateful-workflows.md | DONE |
 | Example: persistent agent memory with embeddings | /examples/… (slug unknown) | examples/persistent-agent-memory.md + scripts/durable_memory.py | DONE (script tested offline) |
 | Example: manual RAG with embeddings | /examples/manual_rag_with_embeddings | examples/manual-rag-with-embeddings.md | DONE |
+| Example: reasoning models with function calling | /examples/reasoning_function_calls | examples/reasoning-function-calls.md | DONE |

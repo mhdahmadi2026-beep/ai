@@ -438,3 +438,6 @@ See `references/00-index.md`.
 
 ## Manual RAG example (references/examples/manual-rag-with-embeddings.md)
 - Supported RAG path today: batch-embed chunks ONCE (cache), filter by metadata before similarity, threshold + top-k, context blocks `[id] title\ntext`, `/v1/responses` with "answer only from context, cite source IDs, say when insufficient", log retrieved ids/scores; measure Recall@k/MRR. Don't re-embed the corpus per query (the page's JS sample does).
+
+## Reasoning + function calling loop (references/examples/reasoning-function-calls.md)
+- Loop: create → execute every `function_call` item → send `function_call_output` (same `call_id`, string `output`) with `previous_response_id` → repeat until no calls; ALWAYS cap iterations; unknown tool/bad JSON/timeout → return structured error output; stateless = replay output items unchanged (+ `reasoning.encrypted_content` if supported); keep `phase`; sample model `o3` is on the shutdown list (2026-12-11) — use a current reasoning model.
