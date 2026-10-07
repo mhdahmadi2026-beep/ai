@@ -79,7 +79,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | Page | URL | File | Status |
 |---|---|---|---|
 | مقدمه | /api-reference/introduction | api-reference/introduction.md | DONE |
-| احراز هویت | /api-reference/authentication | — | PENDING |
+| احراز هویت | /api-reference/authentication | api-reference/authentication.md | DONE |
 | پاسخ‌ها (Responses) | /api-reference/responses | — | PENDING |
 | تکمیل گفتگو | /api-reference/chat | — | PENDING |
 | تصاویر | /api-reference/images | — | PENDING |
