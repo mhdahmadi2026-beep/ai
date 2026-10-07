@@ -183,3 +183,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: gemini-safety-settings | /guides/gemini-safety-settings | guides/gemini-safety-settings.md | DONE |
 | Guide: tools (overview) | /guides/tools | guides/tools.md | DONE |
 | Guide: tools-web-search | /guides/tools-web-search | guides/tools-web-search.md | DONE |
+| Guide: tools-file-search | /guides/tools-file-search | guides/tools-file-search.md | DONE (NOT IMPLEMENTED – use manual RAG) |
