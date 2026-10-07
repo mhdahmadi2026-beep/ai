@@ -264,3 +264,6 @@ See `references/00-index.md`.
 
 ## Deep research (references/guides/deep-research.md)
 - Use `gpt-5.6-terra`/`gpt-5.6-sol` + `web_search` on `/v1/responses` with `max_tool_calls`, explicit citation requirements and a precise brief; not `o3/o4-mini-deep-research`. Keep research read-only; separate untrusted web from private data; app-side RAG/MCP instead of hosted file_search unless enabled; background isn't implemented → own job queue.
+
+## Webhooks (references/guides/webhooks.md) — hosted webhooks NOT implemented
+- Don't use `client.webhooks.unwrap` against AvalAI. Own signed callbacks: HMAC-SHA256 over `timestamp.raw_body`, 300 s tolerance, persistent dedupe by event id, fast 2xx + queue, at-least-once semantics, rotate secrets with overlap.
