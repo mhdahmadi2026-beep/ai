@@ -387,3 +387,6 @@ See `references/00-index.md`.
 
 ## Safety best practices (references/guides/safety-best-practices.md)
 - Layers: AvalAI Guardrails (`"guardrails":["hide-secrets"]` strips secrets from `messages`/`input`/`prompt` on chat, responses, messages, completions) → untrusted-content separation (never in `instructions`) → `/v1/moderations` (`omni-moderation-latest`; check `flagged`, scores; optional inline `moderation` object; streaming scores only after completion; tool schemas/names NOT moderated) → double-validated tool calls + human approval for side effects → hashed `safety_identifier` on every related request (not auto-carried across APIs/sessions) → red-team evals. Under-18 audiences need age-gating, stricter moderation, minimal data, escalation path.
+
+## Safety checks (references/guides/safety-checks.md)
+- Hashed `safety_identifier` on every supported user-facing call — never rotate it to evade a block; don't blind-retry policy/safety errors (e.g. upstream `cyber_policy`) → safe fallback/account review/support; buffer/moderate streams on high-risk surfaces; minors need age-gating, stricter moderation, minimal data and an escalation path; don't copy ZDR claims into customer text; realtime safety-id binding only if a route exists (hosted Realtime isn't available).
