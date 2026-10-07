@@ -321,3 +321,6 @@ See `references/00-index.md`.
 
 ## Coding-agent workflow (references/guides/coding-agent-workflows.md)
 - Pattern: baseline tests you run → read-only plan → one scoped, explicitly approved edit → independent verification (tests, diff, unchanged tests). Never let an agent weaken tests; `bool` is an `int` subclass in Python (use `type(p) is int`).
+
+## Provider-specific params (references/guides/provider-specific-params.md)
+- Non-OpenAI fields go in `extra_body` (python) / top-level body (raw HTTP); only effective on that provider's models; Gemini image config: `generationConfig.imageConfig` (`aspectRatio`, `imageSize` "1K|2K|4K" gemini-3-pro-image only), safety via `safety_settings`; MiniMax `reasoning_split`; don't trust invented chat params (`enable_thinking` on Claude, etc.).
