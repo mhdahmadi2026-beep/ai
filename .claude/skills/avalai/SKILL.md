@@ -324,3 +324,6 @@ See `references/00-index.md`.
 
 ## Provider-specific params (references/guides/provider-specific-params.md)
 - Non-OpenAI fields go in `extra_body` (python) / top-level body (raw HTTP); only effective on that provider's models; Gemini image config: `generationConfig.imageConfig` (`aspectRatio`, `imageSize` "1K|2K|4K" gemini-3-pro-image only), safety via `safety_settings`; MiniMax `reasoning_split`; don't trust invented chat params (`enable_thinking` on Claude, etc.).
+
+## Editors (references/guides/setup-vscode.md)
+- Copilot BYOK / Continue / Cursor: OpenAI-compatible Base URL `https://api.avalai.ir/v1` (API type Chat Completions); native Anthropic/Gemini profiles use `https://api.avalai.ir` without `/v1` and only that provider's models. Docs model ids in samples are inconsistent: confirm via `/v1/models`; don't commit keys.
