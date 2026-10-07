@@ -402,3 +402,6 @@ See `references/00-index.md`.
 
 ## Token counting (references/guides/token-counting.md) — NOT IMPLEMENTED
 - `POST /v1/responses/input_tokens` / `client.responses.input_tokens.count` is in development on AvalAI: never emit it as working code. Estimate with a local tokenizer as a lower bound + extra budget for roles/tools/schemas/images/files/reasoning, set conservative request-size limits, check the model context window via Models API, then reconcile with `usage`, `cached_tokens` and User API transactions. Leave output headroom (shared cap incl. reasoning; watch `status:"incomplete"`/`finish_reason:"length"`).
+
+## Predicted outputs (references/guides/predicted-outputs.md)
+- Chat Completions only: `prediction={"type":"content","content":<current file>}` for regenerating a file after a small edit (no Responses equivalent). Provider/model dependent — verify the model is live (several `gpt-4.1*`/`gpt-4o*` ids have deprecation entries). Not with tools, `n>1`, `logprobs`, positive penalties, audio/modalities, or `max_completion_tokens`. Rejected prediction tokens are still billed → watch `accepted/rejected_prediction_tokens`; ask for the full updated file, not a diff.

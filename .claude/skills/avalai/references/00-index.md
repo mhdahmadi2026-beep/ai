@@ -199,3 +199,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: citation-formatting | /guides/citation-formatting | guides/citation-formatting.md | DONE |
 | Guide: prompt-caching | /guides/prompt-caching | guides/prompt-caching.md | DONE |
 | Guide: token-counting | /guides/token-counting | guides/token-counting.md | DONE (NOT IMPLEMENTED – never emit /v1/responses/input_tokens) |
+| Guide: predicted-outputs | /guides/predicted-outputs | guides/predicted-outputs.md | DONE (provider/model dependent) |
