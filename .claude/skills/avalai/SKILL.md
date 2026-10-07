@@ -336,3 +336,6 @@ See `references/00-index.md`.
 
 ## Code generation (references/guides/code-generation.md)
 - New coding flows: `/v1/responses` (`instructions` + brief input, `response.output_text`; read `response.output` when tools/reasoning). `apply_patch`/hosted Skills are route-dependent, not guaranteed → default to plain unified diff applied by your own harness (path allowlist, one `apply_patch_call_output` per `call_id`, tests after each round, human approval for deletes/deps/migrations). Treat generated code as untrusted; ground API facts via retrieved docs, not model memory.
+
+## Video generation guide (references/guides/video-generation.md)
+- Sora guide contradicts deprecations (Sora/Videos API shut down 2026-09-24): never recommend Sora; verify video models live. Reusable patterns: async create→poll→download, after a dropped connection list videos before resubmitting (`failed` = unbilled), `seconds` is a string, track via `request_id`/`safety_identifier`.

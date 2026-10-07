@@ -177,3 +177,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Setup: OpenAI Codex | /guides/setup-codex | guides/setup-codex.md | DONE |
 | Setup: Claude Code | /guides/setup-claude-code | guides/setup-claude-code.md | DONE |
 | Guide: code-generation | /guides/code-generation | guides/code-generation.md | DONE |
+| Guide: video-generation (Sora) | /guides/video-generation | guides/video-generation.md | DONE (⚠ Sora shut down 2026-09-24) |
