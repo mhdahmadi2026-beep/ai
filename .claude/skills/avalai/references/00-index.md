@@ -89,7 +89,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | API کاربر | /api-reference/user | api-reference/user.md | DONE |
 | هدرهای پاسخ | /api-reference/response-headers | api-reference/response-headers.md | DONE |
 | مدل‌ها | /api-reference/models | api-reference/models.md | DONE |
-| v1beta (Gemini native) | /api-reference/v1beta | — | PENDING |
+| v1beta (Gemini native) | /api-reference/v1beta | api-reference/v1beta.md | DONE |
 | تنظیم دقیق (Fine-tuning) — NOT IMPLEMENTED | /api-reference/fine-tuning | api-reference/fine-tuning.md | DONE |
 | دستیاران (Assistants) — NOT IMPLEMENTED | /api-reference/assistants | api-reference/assistants.md | DONE |
 | دسته‌ای (Batch) — NOT IMPLEMENTED | /api-reference/batch | api-reference/batch.md | DONE |

@@ -159,3 +159,6 @@ See `references/00-index.md`.
 
 ## Messages API rules (see api-reference/messages.md)
 - `POST /v1/messages` (Anthropic format). Anthropic SDK `base_url="https://api.avalai.ir"` (NO `/v1`); raw HTTP uses `x-api-key`. `max_tokens` is required. Multi-provider (Claude, OpenAI, Bedrock, Vertex, Gemini, MiniMax `minimax-m3`). Don't use removed Claude ids (docs' `anthropic.claude-sonnet-4-20250514-v1:0` is stale); Sonnet 5/Opus 4.8 support mid-conversation `role:"system"` and `stop_details`.
+
+## v1beta / Gemini-native rules (see api-reference/v1beta.md)
+- Google SDK base URL `https://api.avalai.ir` (no `/v1`, `api_version="v1beta"`); paths `/v1beta/models/{m}:{generateContent|streamGenerateContent|embedContent|batchEmbedContents|countTokens}`; auth Bearer or `x-goog-api-key`. Roles only `user`/`model`; system via `system_instruction`; `thinkingLevel` (Gemini 3.x) vs `thinkingBudget` (2.5). Images base64 only. Search grounding: `tools:[{google_search:{}}]` (Gemini 3 billed per query). `imagen-*` removed; `gemini-2.5-flash-image` stops 2026-10-02 → use `gemini-3.1-flash-image`/`gemini-3-pro-image` via generateContent/chat. Gemini 3.8 TTS native: `speechMetadata{speaker,style}` + `responseModalities:["AUDIO"]`; check `inlineData.mimeType` (WAV vs `audio/L16` 24 kHz). Use `client.models.generate_content` (not `agenerate_content`).
