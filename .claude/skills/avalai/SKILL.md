@@ -342,3 +342,6 @@ See `references/00-index.md`.
 
 ## Veo video (references/guides/video-generation-veo.md)
 - `veo-3.1-generate-001` $0.40/s, `veo-3.1-fast-generate-001` $0.15/s; `seconds` "4|6|8", 1080p only 16:9 (use `720x1280` for vertical, not 1080x1920); `input_reference`, `reference_images` (≤3), `/videos/{id}/extend` (AvalAI extensions; may need raw HTTP); `extra_body` `aspectRatio`/`resolution`/`negativePrompt`/`personGeneration`. Outputs kept only 2 days → download promptly; blocked = not billed; never resubmit after a dropped connection. Verify Veo availability live.
+
+## Runway video (references/guides/video-generation-runway.md)
+- `gen4.5` ($0.12/s) and `gen4_turbo` ($0.05/s; page header's $0.10 is inconsistent): always send `input_reference`, `prompt` ≤1000 chars, `seconds` "2"–"10" string, sizes per list (e.g. 1280x720, 720x1280, 1920x1080). Never resubmit after a dropped connection (list videos first). Ignore the page's Sora comparison (Sora shut down).
