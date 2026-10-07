@@ -56,11 +56,11 @@ def main():
     todo = [i for i, cid in enumerate(ids) if cid not in old]
     chars = sum(len(M.chunk_input(chunks[i])) for i in todo)
     est_tokens = int(chars / 3.2)  # conservative for mixed Persian/English/code
-    print(f"chunks: {len(chunks)} | reuse: {len(chunks) - len(todo)} | to embed: {len(todo)} | ≈{est_tokens:,} tokens")
+    print(f"chunks: {len(chunks)} | reuse: {len(chunks) - len(todo)} | to embed: {len(todo)} | ~{est_tokens:,} tokens")
     try:
         mm = next((m for m in M.live_models() if m["id"] == a.model), None)
         if mm and "input" in mm.get("pricing", {}):
-            print(f"estimated cost ≈ ${est_tokens * mm['pricing']['input'] / 1e6:.4f} at ${mm['pricing']['input']}/1M tokens (live price; verify)")
+            print(f"estimated cost ~ ${est_tokens * mm['pricing']['input'] / 1e6:.4f} at ${mm['pricing']['input']}/1M tokens (live price; verify)")
     except Exception as e:
         print(f"(live price unavailable: {str(e)[:80]})")
     if a.dry_run:

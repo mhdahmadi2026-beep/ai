@@ -789,7 +789,8 @@ def selftest() -> None:
     fx = {"data": [{"id": "x-sol", "mode": "chat", "min_tier": 1,
                     "pricing": {"input": 2.0, "cached_input": 0.1, "output": 10.0, "input_above_272K": 4.0, "cached_input_above_272K": 0.2, "output_above_272K": 15.0},
                     "tier_rate_limits": {"1": {"max_requests_per_1_minute": 5, "max_tokens_per_1_minute": 9}}}]}
-    tmp = Path(os.environ.get("TMPDIR", "/tmp")) / "avalai_mcp_fixture.json"
+    import tempfile
+    tmp = Path(tempfile.gettempdir()) / "avalai_mcp_fixture.json"
     tmp.write_text(json.dumps(fx))
     os.environ["AVALAI_MODELS_FILE"] = str(tmp)
     r = handle({"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-03-26"}})
