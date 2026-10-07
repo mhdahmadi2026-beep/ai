@@ -345,3 +345,6 @@ See `references/00-index.md`.
 
 ## Runway video (references/guides/video-generation-runway.md)
 - `gen4.5` ($0.12/s) and `gen4_turbo` ($0.05/s; page header's $0.10 is inconsistent): always send `input_reference`, `prompt` ≤1000 chars, `seconds` "2"–"10" string, sizes per list (e.g. 1280x720, 720x1280, 1920x1080). Never resubmit after a dropped connection (list videos first). Ignore the page's Sora comparison (Sora shut down).
+
+## Gemini safety settings (references/guides/gemini-safety-settings.md)
+- 4 harm categories (HARASSMENT, HATE_SPEECH, SEXUALLY_EXPLICIT, DANGEROUS_CONTENT) × thresholds `OFF|BLOCK_NONE|BLOCK_ONLY_HIGH|BLOCK_MEDIUM_AND_ABOVE|BLOCK_LOW_AND_ABOVE`; default OFF on Gemini 2.5/3, `BLOCK_MEDIUM_AND_ABOVE` on older. Native: `safetySettings` (v1beta, camelCase); Chat compat: `safety_settings` via `extra_body`. Always check `promptFeedback.blockReason` / `safetyRatings`. Gemini-only; use Moderation API for other providers or combine for sensitive apps.

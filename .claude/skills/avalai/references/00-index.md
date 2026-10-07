@@ -180,3 +180,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: video-generation (Sora) | /guides/video-generation | guides/video-generation.md | DONE (⚠ Sora shut down 2026-09-24) |
 | Guide: video-generation-veo | /guides/generate-videos-using-veo | guides/video-generation-veo.md | DONE (verify Veo live) |
 | Guide: video-generation-runway | /guides/generate-videos-using-runway | guides/video-generation-runway.md | DONE (verify live) |
+| Guide: gemini-safety-settings | /guides/gemini-safety-settings | guides/gemini-safety-settings.md | DONE |
