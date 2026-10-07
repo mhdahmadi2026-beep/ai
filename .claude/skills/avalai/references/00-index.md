@@ -188,3 +188,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: tools-shell | /guides/tools-shell | guides/tools-shell.md | DONE (hosted route-dependent) |
 | Guide: tools-computer-use | /guides/tools-computer-use | guides/tools-computer-use.md | DONE (route-dependent; preview removed) |
 | Guide: tools-connectors-mcp | /guides/tools-connectors-mcp | guides/tools-connectors-mcp.md | DONE (route-dependent) |
+| Guide: best-practices | /guides/best-practices | guides/best-practices.md | DONE |

@@ -369,3 +369,6 @@ See `references/00-index.md`.
 
 ## MCP & connectors (references/guides/tools-connectors-mcp.md)
 - Hosted `{"type":"mcp"}` is route/model/account-dependent; fallback = backend proxy behind a strict `function` tool. Exactly one of `server_url`/`connector_id`, unique `server_label`; limit with `allowed_tools` (not an authz system — enforce permissions inside the MCP server); OAuth token in the tool's `authorization` on EVERY request (never in prompts/logs, don't also send `headers.Authorization`); approval (`require_approval:"always"` → `mcp_approval_request` → `mcp_approval_response` with `previous_response_id`) for writes/sensitive reads; `"never"` only for trusted read-only tools; `parallel_tool_calls:false` when order matters; MCP output = third-party data.
+
+## Best practices checklist (references/guides/best-practices.md)
+- Responses-first; keys server-side; headers-aware backoff+jitter; log request id/model/latency/usage; validate in/out; parse `response.output` by `type`; version prompts in code; strict tool schemas (`parallel_tool_calls:false` for writes); eval before changing prompt/model/effort; moderate + minimize data; cache with TTL. Doc samples for embeddings cosine/caching are incomplete (see file).
