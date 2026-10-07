@@ -227,3 +227,6 @@ See `references/00-index.md`.
 
 ## Audio processing (references/guides/audio-processing.md)
 - TTS `/v1/audio/speech`, STT `/v1/audio/transcriptions` (`gpt-transcribe`, diarization `gpt-live-transcribe`, `scribe_v2`), translation `/v1/audio/translations`, chat audio via `/v1/chat/completions`. `whisper-1`, `tts-1*`, `gpt-4o-*transcribe*` are removed. Realtime is NOT available — don't emit realtime/SIP code. Gemini 3.8 TTS: only v1beta, chat, `/v1/audio/speech` (voice as object).
+
+## Realtime (references/guides/realtime-audio.md) — NOT implemented
+- Never generate code for `/v1/realtime*`, WebRTC/SIP sessions or `gpt-realtime-*`. Use transcribe → Responses → TTS.
