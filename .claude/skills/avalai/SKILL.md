@@ -87,3 +87,10 @@ See `references/00-index.md`.
 - Tiers: Tier 0 (email) → Tier 1 (phone verified, instant) → Tier 2/3/4/5 at cumulative top-up ≈ $10/$50/$250/$1,000. Automatic, instant, no credit deducted. Metrics: RPM, RPD, TPM, TPD, IPM (first hit wins). Per-model limits: `tier_rate_limits` in `/public/models` or per-tier pages.
 - 429 `rate_limit_exceeded` → honor `Retry-After`, exponential backoff + jitter + cap; use `x-ratelimit-*` headers; client-side token bucket / queue for volume. Batch API not available yet.
 - `/user/v1` limits per tier (req/min): 3, 15, 50, 150, 350, 750.
+
+## Deprecation rules (read 10-deprecations.md before choosing a model ID)
+- DeepSeek: any DeepSeek ID currently routes to `deepseek-v4.1-flash`; use only `deepseek-v4.1-flash` / `deepseek-flash`.
+- GPT-5 `-chat` IDs (`gpt-5-chat`, `gpt-5.1-chat`, `gpt-5.2-chat`, `gpt-5.3-chat`, `*-chat-latest`) are removed → use base `gpt-5`, `gpt-5.1`, `gpt-5.2`, `gpt-5.3`.
+- Removed families: Claude 3.x/4.0/4.1 (Bedrock + native), Imagen 4, Gemini 1.5/2.0, Gemma 3, Qwen turbo/VL/max legacy, Moonshot v1/kimi-k2-thinking, GLM ≤5, MiniMax M2/M2.1, Seedream 4.x, Stability, many NVIDIA NIM / Cloudflare cf.* IDs.
+- Upcoming provider shutdowns: gpt-5.4-cyber 2026-10-01; legacy GPT snapshots 2026-10-23; Evals/Prompts/Agent Builder 2026-11-30; gpt-image-1/1-mini/1.5 2026-12-01; GPT-5/o3 snapshots 2026-12-11; legacy audio/realtime 2027-01-20; whisper/gpt-4o-transcribe 2027-02-26.
+- Prefer stable (non-preview) IDs; avoid `-latest` aliases for regulated/regression-sensitive workloads. Always verify with live `/v1/models`; where reference files disagree, deprecations + live API win.

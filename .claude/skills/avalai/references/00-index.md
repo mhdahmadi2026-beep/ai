@@ -24,7 +24,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 | سطوح سرویس | /service-tiers | 07-service-tiers.md | DONE |
 | بسته‌های اعتباری | /credit-packages | 08-credit-packages.md | DONE |
 | محدودیت‌های نرخ مدل | /rate-limits | 09-rate-limits.md | DONE |
-| مدل‌های منسوخ شده | /deprecations | 10-deprecations.md | PENDING |
+| مدل‌های منسوخ شده | /deprecations | 10-deprecations.md | DONE |
 
 ### Collapsed groups (sub-pages still unknown — need user to expand)
 - نمایندگان فروش
@@ -60,3 +60,8 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 
 ## Discovered in rate-limits page (PENDING)
 /rate-limits-tier0 … /rate-limits-tier5 (per-model RPM/TPM per tier — high value), /api-reference/user
+
+## Discovered in deprecations page (PENDING)
+/guides/model-selection, /providers/{moonshotai,elevenlabs,alibaba,google,zai,minimax}, /examples/{generate_images_with_gpt_image,generate_images_with_seedream_4,web_search_capabilities}, /api-reference/search, /news/2025-11-18-new-models-gemini-3-pro-kimi-k2-thinking, /news/2025-09-27-google-gemini-models-deprecation
+
+## ALL 10 'شروع به کار' sidebar pages are now captured. Remaining groups: خبرها, نمایندگان فروش, مرجع API, ارائه‌دهندگان, راهنماها, ابزارهای داخلی, بهترین شیوه‌ها, مثال‌ها, منابع.
