@@ -220,4 +220,5 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: processing audio in Chat Completions | /examples/processing_audio_in_chat_completion_api | examples/processing-audio-chat-completions.md | DONE |
 | Example: Mistral OCR document processing | /examples/… (slug unknown) | examples/mistral-ocr-document-processing.md | DONE |
 | Example: processing Excel files | /examples/… (slug unknown) | examples/processing-excel-files.md | DONE |
-| Example: image generation/editing with Nano Banana (Gemini image) | /examples/… (slug unknown) | examples/nano-banana-image-generation.md | DONE |
+| Example: image generation/editing with Nano Banana (Gemini image) | /examples/generate_images_with_nano_banana_series | examples/nano-banana-image-generation.md | DONE |
+| Example/Notice: Google Imagen deprecated (migration to Nano Banana) | /examples/… (slug unknown) | examples/imagen-deprecated.md | DONE |

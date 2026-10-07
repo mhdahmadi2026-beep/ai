@@ -1,4 +1,4 @@
-# Example: image generation & editing with Nano Banana (Gemini image models) — slug probably /examples/generate_images_with_gemini_2_5_flash (or similar; unconfirmed)
+# Example: image generation & editing with Nano Banana (Gemini image models) — slug **/examples/generate_images_with_nano_banana_series** (confirmed by the Imagen page)
 
 Authoritative model/price tables: providers/google.md (Image models), api-reference/images.md, 06-pricing.md. This page = Chat Completions recipes.
 
@@ -8,7 +8,7 @@ Authoritative model/price tables: providers/google.md (Image models), api-refere
 | Nano Banana 2 | `gemini-3.1-flash-image` | high volume, fast; `aspectRatio` + `imageSize` |
 | Nano Banana Pro | `gemini-3-pro-image` | pro assets, complex instructions, text rendering; up to 4K |
 | Nano Banana | `gemini-2.5-flash-image` | speed/low latency; only `aspectRatio` |
-Use stable ids in production; `*-preview` aliases still work but are legacy. ⚠ **Conflict:** page treats `gemini-2.5-flash-image` as the main model, but 10-deprecations.md lists it as retired 2026-10-02 (today 2026-10-07) while providers/google.md calls it stable → verify live availability/ model list before using; default to `gemini-3.1-flash-image`. Also exists: `gemini-3.1-flash-lite-image` (providers/google.md).
+Use stable ids in production; `*-preview` aliases still work but are legacy. ✔ **Confirmed (Imagen page): `gemini-2.5-flash-image` stops on 2026-10-02 — already past today (2026-10-07); don't use it for anything new.** Page treats `gemini-2.5-flash-image` as the main model, but 10-deprecations.md lists it as retired 2026-10-02 (today 2026-10-07) while providers/google.md calls it stable → verify live availability/ model list before using; default to `gemini-3.1-flash-image`. Also exists: `gemini-3.1-flash-lite-image` (providers/google.md).
 
 ## Generate (Chat Completions)
 ```python

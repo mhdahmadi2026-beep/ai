@@ -468,3 +468,6 @@ See `references/00-index.md`.
 
 ## Nano Banana image gen/edit (references/examples/nano-banana-image-generation.md)
 - Chat Completions + `modalities:["image","text"]` → base64 data URL in `message.images[0]["image_url"]["url"]`; edit = `image_url` parts (multi-image = fusion). Iterative edits/character consistency REQUIRE re-sending the image each turn. `imageConfig` via Python `extra_body={"generationConfig":{"imageConfig":{aspectRatio,imageSize:"4K"}}}`; in raw HTTP/JS put `generationConfig` top-level (page's `extra_body` in cURL/JS is wrong). `imageSize` only on 3.1-flash/3-pro. Verify `gemini-2.5-flash-image` (deprecations say retired 2026-10-02); default `gemini-3.1-flash-image`. Responses-equivalent blocks on the page are placeholders.
+
+## Imagen deprecated (references/examples/imagen-deprecated.md)
+- No `imagen-*` ids or v1beta image `:predict`. Map: imagen-4 ultra→`gemini-3-pro-image`; imagen-4 generate/fast→`gemini-3.1-flash-image`; imagen-3.*→`gemini-3.1-flash-lite-image`. `gemini-2.5-flash-image` stopped 2026-10-02 → use Gemini 3.x image models; other options gpt-image-2.x, FLUX, Qwen Image, Seedream. Image result = base64 data URL, not a URL.
