@@ -140,3 +140,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: text-generation | /guides/text-generation | guides/text-generation.md | DONE |
 | Guide: vision | /guides/vision | guides/vision.md | DONE |
 | Guide: image-generation | /guides/image-generation | guides/image-generation.md | DONE |
+| Guide: audio-processing | /guides/audio-processing | guides/audio-processing.md | DONE |

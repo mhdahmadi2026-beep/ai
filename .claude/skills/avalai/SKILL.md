@@ -224,3 +224,6 @@ See `references/00-index.md`.
 
 ## Image generation (references/guides/image-generation.md)
 - Use `/v1/images/generations|edits` by default; Responses `image_generation` tool only if verified. Default model `gpt-image-2.5-flare` (pro edits: `gpt-image-2.5-sunburst`); `xhigh`/`max` quality only on those two; results are base64. gpt-6-sol/luna, grok-4.7 are NOT image generators. No `imagen-*`; `gemini-2.5-flash-image` retired 2026-10-02. Non-OpenAI params via `extra_body`; edit prompt must describe full final image + invariants.
+
+## Audio processing (references/guides/audio-processing.md)
+- TTS `/v1/audio/speech`, STT `/v1/audio/transcriptions` (`gpt-transcribe`, diarization `gpt-live-transcribe`, `scribe_v2`), translation `/v1/audio/translations`, chat audio via `/v1/chat/completions`. `whisper-1`, `tts-1*`, `gpt-4o-*transcribe*` are removed. Realtime is NOT available — don't emit realtime/SIP code. Gemini 3.8 TTS: only v1beta, chat, `/v1/audio/speech` (voice as object).
