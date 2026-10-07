@@ -199,3 +199,9 @@ See `references/00-index.md`.
 ## Perplexity + search providers (references/providers/perplexity.md, search-providers.md)
 - Sonar models (`sonar`, `sonar-pro`, `sonar-reasoning[-pro]`, `sonar-deep-research`): use `/v1/chat/completions`; read `citations`/`search_results`. Do not use `/v1/responses` for them unless verified.
 - Raw search: `/v1/search/{tool}` with ids `perplexity-search`, `tavily-search[-advanced]`, `dataforseo-search`, `exa_ai-search`, `parallel_ai-search[-pro]`. Tavily `country` takes full lowercase names; others codes/names per file. Max 20 results, ≤20 domain filters.
+
+## Firecrawl, Moonshot, RunwayML, Groq, NVIDIA NIM
+- `firecrawl-search` via `/v1/search` (sources/categories/tbs/scrapeOptions); see providers/firecrawl.md.
+- Kimi: prefer `kimi-k3` (alias `kimi-latest`), `reasoning_effort:"max"`; k2-thinking needs max_tokens ≥16000, stream, keep `reasoning_content` in tool loops. Never copy the docs' Responses examples (they use gpt-5.6-luna).
+- RunwayML video: `/v1/videos`, prompt ≤1000 chars, input_reference required for gen4.5/gen4_turbo.
+- Groq ids `groq.*`; NVIDIA NIM ids `nvidia_nim.*` are research-only (low RPM) — don't use in production.

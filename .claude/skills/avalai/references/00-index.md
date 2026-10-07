@@ -125,3 +125,8 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Z.AI (GLM) | /providers/zai | providers/zai.md | DONE |
 | Perplexity | /providers/perplexity | providers/perplexity.md | DONE |
 | Search tools (Tavily, DataForSEO, Exa, Parallel AI) | /providers/{tavily,dataforseo,exa_ai,parallel_ai} | providers/search-providers.md | DONE |
+| Firecrawl | /providers/firecrawl | providers/firecrawl.md | DONE |
+| Moonshot (Kimi) | /providers/moonshot | providers/moonshot.md | DONE |
+| RunwayML | /providers/runwayml | providers/runwayml.md | DONE |
+| Groq | /providers/groq | providers/groq.md | DONE |
+| NVIDIA NIM | /providers/nvidia-nim | providers/nvidia-nim.md | DONE |
