@@ -96,6 +96,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | فایل‌ها (Files) | /api-reference/files | api-reference/files.md | DONE |
 | رتبه‌بندی مجدد (Rerank) | /api-reference/rerank | api-reference/rerank.md | DONE |
 | پیام‌ها (Messages / Anthropic) | /api-reference/messages | api-reference/messages.md | DONE |
+| سنتز متن Vertex (text:synthesize) | /api-reference/v1-text-synthesize | api-reference/v1-text-synthesize.md | DONE |
 | ویدیوها | /api-reference/videos | — | PENDING |
 | جستجو | /api-reference/search | — | PENDING |
 | (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |

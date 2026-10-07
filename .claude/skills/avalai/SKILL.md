@@ -162,3 +162,6 @@ See `references/00-index.md`.
 
 ## v1beta / Gemini-native rules (see api-reference/v1beta.md)
 - Google SDK base URL `https://api.avalai.ir` (no `/v1`, `api_version="v1beta"`); paths `/v1beta/models/{m}:{generateContent|streamGenerateContent|embedContent|batchEmbedContents|countTokens}`; auth Bearer or `x-goog-api-key`. Roles only `user`/`model`; system via `system_instruction`; `thinkingLevel` (Gemini 3.x) vs `thinkingBudget` (2.5). Images base64 only. Search grounding: `tools:[{google_search:{}}]` (Gemini 3 billed per query). `imagen-*` removed; `gemini-2.5-flash-image` stops 2026-10-02 → use `gemini-3.1-flash-image`/`gemini-3-pro-image` via generateContent/chat. Gemini 3.8 TTS native: `speechMetadata{speaker,style}` + `responseModalities:["AUDIO"]`; check `inlineData.mimeType` (WAV vs `audio/L16` 24 kHz). Use `client.models.generate_content` (not `agenerate_content`).
+
+## `/v1/text:synthesize` (see api-reference/v1-text-synthesize.md)
+- Vertex-native TTS for **Gemini 2.5** TTS only (`voice.model_name`, `audioConfig.audioEncoding`, base64 `audioContent`, multi-speaker with English aliases). Not for Gemini 3.8 TTS; default to `/v1/audio/speech` for new code.
