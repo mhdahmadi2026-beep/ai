@@ -226,3 +226,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: using /v1/search | /examples/using_v1_search | examples/using-v1-search.md | DONE |
 | Example: Gemini Robotics-ER | /examples/… (slug unknown) | examples/gemini-robotics-er.md | DONE |
 | Example: voice conversational apps (audio models) | /examples/… (slug unknown) | examples/voice-conversational-apps.md | DONE |
+| Example: speaker-aware meeting intelligence | /examples/speaker_aware_meeting_intelligence | examples/speaker-aware-meeting-intelligence.md + scripts/meeting_intelligence.py | DONE (validators tested offline; STT model availability UNRESOLVED) |

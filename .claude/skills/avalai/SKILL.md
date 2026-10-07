@@ -483,3 +483,6 @@ See `references/00-index.md`.
 
 ## Voice/conversational apps (references/examples/voice-conversational-apps.md)
 - Pick: direct audio Chat (single call, `input_audio`/`message.audio`) vs Responses-first pipeline (transcribe → Responses → `/v1/audio/speech`, best for tools/state; `previous_response_id` needs `store:true`, resend `instructions`) vs Realtime (NOT available). Gemini 3.8 TTS on `/v1/audio/speech` uses `voice:{"name","languageCode"}` OBJECT + explicit `response_format`. Verify the speech model id — page uses `gpt-audio-1.5` (contradicts audio reference).
+
+## Meeting intelligence (references/examples/speaker-aware-meeting-intelligence.md)
+- diarized transcription → `seg_NNN` ids → strict-JSON extraction with `evidence_refs[{segment_id,quote}]` → deterministic validation (segment exists, quote is a substring, evidence non-empty) → redaction → `human_review_required` on any evidence error/medium-high risk/policy flag; never auto-sync. STT model (`gpt-live-transcribe`) availability CONFLICTS across notes — verify `/v1/models`; script `scripts/meeting_intelligence.py` (env `AVALAI_STT_MODEL`).
