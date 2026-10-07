@@ -186,3 +186,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: tools-file-search | /guides/tools-file-search | guides/tools-file-search.md | DONE (NOT IMPLEMENTED – use manual RAG) |
 | Guide: tools-code-interpreter | /guides/tools-code-interpreter | guides/tools-code-interpreter.md | DONE (hosted route-dependent) |
 | Guide: tools-shell | /guides/tools-shell | guides/tools-shell.md | DONE (hosted route-dependent) |
+| Guide: tools-computer-use | /guides/tools-computer-use | guides/tools-computer-use.md | DONE (route-dependent; preview removed) |

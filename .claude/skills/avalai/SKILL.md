@@ -363,3 +363,6 @@ See `references/00-index.md`.
 
 ## Shell tool (references/guides/tools-shell.md)
 - Hosted `shell` (+ skills / `apply_patch`) is route-dependent — default to your own sandbox exposing a strict `function` (`run_safe_shell_task`): allowlisted commands only (never raw model text), clean env without secrets, read-only mounts, CPU/mem/time limits, network off, capture stdout/stderr/exit code, approval for writes/installs/network/deletes, return compact `function_call_output`. Treat command output as untrusted; log request ids + decisions.
+
+## Computer use (references/guides/tools-computer-use.md)
+- Hosted `{"type":"computer"}` only if the route supports it; `computer-use-preview` deprecated 2026-07-23 (→ `gpt-5.6-terra`) — don't use. Default: your Playwright/Selenium runner behind strict `function` tools (`browser_step`) in an isolated browser (empty env, domain/action allowlists). Loop: execute all `computer_call.actions[]` → screenshot → `computer_call_output` (+`current_url`) with `previous_response_id`. Page/screenshot content is untrusted; only direct user text = permission; ask before sends/purchases/deletes/permission changes; never auto-acknowledge safety checks; hand off CAPTCHA/passwords/HTTPS warnings.
