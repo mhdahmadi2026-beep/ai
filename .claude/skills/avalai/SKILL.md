@@ -142,3 +142,6 @@ See `references/00-index.md`.
 
 ## Assistants API (see api-reference/assistants.md)
 - **Not implemented on AvalAI** (and OpenAI sunset it 2026-08-26). Never emit `/v1/assistants|threads|runs` code. Migrate to `/v1/responses`: instructions→`instructions`, thread→`previous_response_id`/own DB state, run→response, store history yourself, keep typed output items, RAG via embeddings if `file_search` unavailable.
+
+## Batch API (see api-reference/batch.md)
+- **Not implemented** on AvalAI: no `/v1/batches`, no 50% batch discount, no hosted webhooks. Build client-side workers (bounded concurrency, `custom_id`, retry/backoff, job state machine) and consider the flex service tier (−50%) for non-urgent OpenAI-model work.
