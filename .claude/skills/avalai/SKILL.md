@@ -300,3 +300,6 @@ See `references/00-index.md`.
 
 ## Retrieval (references/guides/retrieval.md) — hosted vector stores / file_search NOT available
 - Build RAG yourself: `/v1/embeddings` + own vector store; filter by tenant/permission BEFORE similarity; require source-id citations; rewrite queries but log both; tune top_k/threshold/hybrid weights; eval retrieval and answers separately.
+
+## n8n (references/guides/setup-n8n.md)
+- n8n OpenAI credential base URL `https://api.avalai.ir/v1`; Gemini/Anthropic credentials host `https://api.avalai.ir` (no /v1); Gemini node model names need the `models/` prefix; HTTP Request node: Header Auth `Authorization: Bearer <key>`.
