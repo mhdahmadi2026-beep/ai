@@ -257,3 +257,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | News: Robotics-ER added | /news/2025-10-28-gemini-robotics-er-model-added | news/2025-10-28-gemini-robotics-er-model-added.md | DONE |
 | News: Mistral OCR added | /news/2025-05-15-mistral-ocr-latest-added | news/2025-05-15-mistral-ocr-latest-added.md | DONE |
 | News: Gemini 1.x deprecation | /news/2025-09-27-google-gemini-models-deprecation | news/2025-09-27-google-gemini-models-deprecation.md | DONE |
+| models/model-details | /models/model-details | — | NOT A PAGE (redirects to /models explorer; screenshot 2026-10-07: 2,589 models, filters, per-model "API page" + details) |
