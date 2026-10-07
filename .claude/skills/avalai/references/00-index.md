@@ -156,3 +156,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: webhooks | /guides/webhooks | guides/webhooks.md | DONE (NOT IMPLEMENTED) |
 | Guide: streaming-responses | /guides/streaming-responses | guides/streaming-responses.md | DONE |
 | Guide: websocket-mode | /guides/websocket-mode | guides/websocket-mode.md | DONE (NOT IMPLEMENTED) |
+| Guide: pdf-files | /guides/pdf-files | guides/pdf-files.md | DONE |

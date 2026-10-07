@@ -273,3 +273,6 @@ See `references/00-index.md`.
 
 ## Responses WebSocket mode (references/guides/websocket-mode.md) — NOT implemented
 - Don't emit `wss://…/v1/responses` code. Use HTTP `/v1/responses` + `previous_response_id`/replay + SSE streaming.
+
+## PDF inputs (references/guides/pdf-files.md)
+- `/v1/responses` `input_file` with `file_url` | `file_id` (Files `purpose="user_data"`) | `filename`+`file_data` data URL; <50 MB per file and per request; PDFs bill text + page images. Many docs → embed+retrieve. Layout OCR → `/v1/ocr` `mistral-ocr-4-0` ($0.004/page).
