@@ -65,3 +65,10 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 /guides/model-selection, /providers/{moonshotai,elevenlabs,alibaba,google,zai,minimax}, /examples/{generate_images_with_gpt_image,generate_images_with_seedream_4,web_search_capabilities}, /api-reference/search, /news/2025-11-18-new-models-gemini-3-pro-kimi-k2-thinking, /news/2025-09-27-google-gemini-models-deprecation
 
 ## ALL 10 'شروع به کار' sidebar pages are now captured. Remaining groups: خبرها, نمایندگان فروش, مرجع API, ارائه‌دهندگان, راهنماها, ابزارهای داخلی, بهترین شیوه‌ها, مثال‌ها, منابع.
+
+## نمایندگان فروش group
+| Page | URL | File | Status |
+|---|---|---|---|
+| راهنمای پیگیری هزینه نمایندگان | /resellers/cost-tracking-guide | resellers/cost-tracking-guide.md | DONE |
+| راهنمای سازمانی | /resellers/enterprise-guide | resellers/enterprise-guide.md | PENDING |
+(other pages in this group unknown — ask user to expand the group)
