@@ -456,3 +456,6 @@ See `references/00-index.md`.
 
 ## PDF via Chat Completions (references/examples/processing-pdf-files-chat.md)
 - Content part `{"type":"file","file":{"file_id":"<https URL>"}}` (Claude only) or `{"file":{"file_data":"data:application/pdf;base64,…"}}` (Claude+Gemini; Gemini = base64 only). Claude ≤32 MB/100 pages (~1.5–3K tok/page); Gemini ≤20 MB inline/1,000 pages (~258 tok/page). Text after the PDF; no encrypted PDFs; large bodies via `curl -d @file`; Linux `base64 -w 0`. Responses-API route = guides/pdf-files.md (`input_file`). Verify model ids (`claude-sonnet-5` vs `-4-6` inconsistent on page).
+
+## Audio in Chat Completions (references/examples/processing-audio-chat-completions.md)
+- Audio models `gpt-audio-1.5|gpt-audio|gpt-audio-mini`: need `modalities:["text","audio"]` + `audio:{voice,format}`; reply audio = base64 in `choices[0].message.audio.data`; input via `input_audio{data,format}`. Multi-turn: send text transcript only. Tools/structured output → pipeline transcriptions → Responses → `/v1/audio/speech`. Gemini 3.8 TTS via chat: `modalities:["audio"]`, `format:"pcm16"` = raw 24 kHz mono (no header; `ffmpeg -f s16le -ar 24000 -ac 1`); TTS-only, not on Responses/Messages.
