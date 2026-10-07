@@ -39,3 +39,11 @@ print(response.output_text)
 
 ## References
 See `references/00-index.md`.
+
+## Practical rules from Quickstart
+- New text apps → `/v1/responses` (`input`, `instructions`, `response.output_text`); keep `/v1/chat/completions` (`messages`) for legacy/chat-only models.
+- On `429`: honor `Retry-After`, exponential backoff + jitter + retry cap.
+- Discover models: `GET https://api.avalai.ir/public/models` (no auth) or `/v1/models`.
+- Provider-specific params: `extra_body` (Python) / `@ts-expect-error` direct fields (TS).
+- Exact cost: read `avalai-request-id` header → `POST /user/v1/transactions/lookup` (available ~30s later).
+- Model IDs in examples may be stale; verify live before hard-coding.

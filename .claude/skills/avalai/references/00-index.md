@@ -16,7 +16,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 | Page | URL | File | Status |
 |---|---|---|---|
 | معرفی | / | 01-introduction.md | DONE |
-| شروع سریع | /quickstart | 02-quickstart.md | PENDING |
+| شروع سریع | /quickstart | 02-quickstart.md | DONE |
 | استفاده عملی از هوش مصنوعی | /guides/ai-workflows | 03-ai-workflows.md | PENDING |
 | کتابخانه‌ها | /libraries | 04-libraries.md | PENDING |
 | عملکرد | /performance | 05-performance.md | PENDING |
@@ -38,3 +38,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 
 ## Known model pages (from intro/news)
 /models/muse-glimmer-30b, /models/nemotron-3.5-lightning
+
+## Additional URLs discovered in Quickstart (pages still PENDING)
+/api-reference/chat, /api-reference/models, /api-reference/user, /api-reference/authentication, /api-reference/response-headers, /guides/responses-vs-chat-completions, /guides/provider-specific-params, /models/model-details, /resellers/cost-tracking-guide, /resellers/enterprise-guide, /safety/content-policy, /news/2025-06-03-anthropic-sdk-support-added, /news/2025-06-09-anthropic-sdk-multi-provider-support
+Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /user/v1/transactions/lookup
