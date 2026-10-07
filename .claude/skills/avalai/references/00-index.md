@@ -169,3 +169,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Setup: Hermes Agent | /guides/setup-hermes | guides/setup-hermes.md | DONE |
 | Setup: 9Router | /guides/setup-9router | guides/setup-9router.md | DONE |
 | Setup: Open WebUI | /guides/setup-open-webui | guides/setup-open-webui.md | DONE |
+| Setup: OpenCode | /guides/setup-opencode | guides/setup-opencode.md | DONE |

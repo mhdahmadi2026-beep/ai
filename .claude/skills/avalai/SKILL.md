@@ -312,3 +312,6 @@ See `references/00-index.md`.
 
 ## Open WebUI (references/guides/setup-open-webui.md)
 - Admin Settings → Connections → OpenAI: URL `https://api.avalai.ir/v1`, dedicated key, Model IDs (Filter) as fallback; chat works independently of RAG/image/audio settings (configure separately); keep `WEBUI_AUTH=True`, stable `WEBUI_SECRET_KEY`, pinned image, volume `/app/backend/data`; Open Responses experimental.
+
+## OpenCode (references/guides/setup-opencode.md)
+- `opencode.json` provider `avalai` with `npm:"@ai-sdk/openai-compatible"`, `baseURL:"https://api.avalai.ir/v1"`; set model + small_model, `share:"disabled"`, permission `*:ask`, `external_directory:deny`; `/connect` → Other → id `avalai`; selector `avalai/gpt-5.4-mini`, wire id `gpt-5.4-mini`; start without tools/auto-approve.
