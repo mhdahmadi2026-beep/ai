@@ -156,3 +156,6 @@ See `references/00-index.md`.
 
 ## Rerank rules (see api-reference/rerank.md)
 - `POST /v1/rerank` — raw HTTP only (OpenAI SDK has no rerank). Models: `cohere-rerank-v4.0-pro|fast` (32K ctx, per-query price), `cohere.rerank-v3-5:0` (4K ctx, legacy), `qwen3-rerank`. `documents` = strings or `{id,text}`; use `top_n`; map results back via `index`; scores 0–1 sorted desc. RAG: over-retrieve → rerank → top few into the LLM.
+
+## Messages API rules (see api-reference/messages.md)
+- `POST /v1/messages` (Anthropic format). Anthropic SDK `base_url="https://api.avalai.ir"` (NO `/v1`); raw HTTP uses `x-api-key`. `max_tokens` is required. Multi-provider (Claude, OpenAI, Bedrock, Vertex, Gemini, MiniMax `minimax-m3`). Don't use removed Claude ids (docs' `anthropic.claude-sonnet-4-20250514-v1:0` is stale); Sonnet 5/Opus 4.8 support mid-conversation `role:"system"` and `stop_details`.
