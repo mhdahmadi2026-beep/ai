@@ -195,3 +195,7 @@ See `references/00-index.md`.
 - DeepSeek: all legacy ids route to `deepseek-v4.1-flash` ($0.15/$0.60, cached $0.003); `deepseek-v4-pro` redirected since 2026-09-14. Thinking+tool loops: resend `reasoning_content` within the same turn (else 400), drop it on new user turn.
 - Z.AI: `glm-5.3` thinking mandatory (`thinking.type:"enabled"`, effort low|high|max); glm-5.3-flash promo ended 2026-09-09.
 - BFL FLUX: `response_format:"b64_json"` only; flux.2-pro per-megapixel pricing. BytePlus `seedream-5-0-260128` $0.035/img, URLs expire 24 h, set `watermark:false`. Stability: no U+200C, English prompts, ids likely removed. Cloudflare `cf.*` ids (many removed).
+
+## Perplexity + search providers (references/providers/perplexity.md, search-providers.md)
+- Sonar models (`sonar`, `sonar-pro`, `sonar-reasoning[-pro]`, `sonar-deep-research`): use `/v1/chat/completions`; read `citations`/`search_results`. Do not use `/v1/responses` for them unless verified.
+- Raw search: `/v1/search/{tool}` with ids `perplexity-search`, `tavily-search[-advanced]`, `dataforseo-search`, `exa_ai-search`, `parallel_ai-search[-pro]`. Tavily `country` takes full lowercase names; others codes/names per file. Max 20 results, ≤20 domain filters.

@@ -123,3 +123,5 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Cloudflare | /providers/cloudflare | providers/cloudflare.md | DONE |
 | BytePlus (Seedream) | /providers/byteplus | providers/byteplus.md | DONE |
 | Z.AI (GLM) | /providers/zai | providers/zai.md | DONE |
+| Perplexity | /providers/perplexity | providers/perplexity.md | DONE |
+| Search tools (Tavily, DataForSEO, Exa, Parallel AI) | /providers/{tavily,dataforseo,exa_ai,parallel_ai} | providers/search-providers.md | DONE |
