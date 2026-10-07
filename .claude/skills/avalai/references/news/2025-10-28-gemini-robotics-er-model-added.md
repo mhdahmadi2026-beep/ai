@@ -1,0 +1,4 @@
+# News 2025-10-28 (1404-08-06): Gemini Robotics-ER 1.5 Preview (docs.avalai.ir/fa/news/2025-10-28-gemini-robotics-er-model-added)
+
+`gemini-robotics-er-1.5-preview`: native `v1beta` full; chat/completions full (image via content array); responses partial. Price = gemini-2.5-flash class: in $0.30, cached 0.15, out $2.50, audio in 1.00 (cached 0.25) per 1M. Points `[y,x]` normalized 0–1000; `thinkingBudget:0` for low latency; trajectory/spatial/task-planning prompts. Full guide: examples/gemini-robotics-er.md.
+- **Source defects:** JS sample uses fictional `new GoogleGenerativeAI({apiKey, baseUrl})`+`getGenerativeModel` (use `@google/genai`); Python sample `http_options={"api_version":"v1beta","url":…}` — correct key is `base_url`; curl uses Bearer header on v1beta (also accepts `x-goog-api-key`). Never drive actuators from raw output.

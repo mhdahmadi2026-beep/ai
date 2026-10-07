@@ -249,3 +249,11 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | News: Fireworks models + cache routing | /news/2026-08-13-fireworks-models-cache-aware-routing | news/2026-08-13-fireworks-models-cache-aware-routing.md | DONE |
 | Deprecations (raw page, 2026-09-30) | /deprecations | 10-deprecations.md | DUPLICATE (verified; see notes in SKILL.md) |
 | Models explorer (2nd paste) | /models | — | DUPLICATE / nothing to capture |
+| News: Files API beta | /news/2026-01-01-files-api-beta-launched | news/2026-01-01-files-api-beta-launched.md | DONE |
+| News: Flex tier | /news/2025-12-15-flex-service-tier-launched | news/2025-12-15-flex-service-tier-launched.md | DONE |
+| News: User API | /news/2025-11-27-user-api-launched | news/2025-11-27-user-api-launched.md | DONE |
+| News: Claude base ids routing | /news/2025-11-28-claude-base-models-smart-routing | news/2025-11-28-claude-base-models-smart-routing.md | DONE |
+| News: Search API launch | /news/2025-10-26-search-api-launched | news/2025-10-26-search-api-launched.md | DONE |
+| News: Robotics-ER added | /news/2025-10-28-gemini-robotics-er-model-added | news/2025-10-28-gemini-robotics-er-model-added.md | DONE |
+| News: Mistral OCR added | /news/2025-05-15-mistral-ocr-latest-added | news/2025-05-15-mistral-ocr-latest-added.md | DONE |
+| News: Gemini 1.x deprecation | /news/2025-09-27-google-gemini-models-deprecation | news/2025-09-27-google-gemini-models-deprecation.md | DONE |

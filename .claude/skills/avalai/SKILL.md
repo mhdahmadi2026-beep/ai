@@ -511,3 +511,6 @@ See `references/00-index.md`.
 - Gemini 3.8 TTS: price promo to 2026-12-31 then ×2; routes only v1beta/chat/audio-speech; output audio default WAV (check mimeType); see providers/google.md.
 - Cache-aware routing: best-effort 15-min sticky infra per user+model; keep prefixes stable; verify `cached_tokens`. No explicit cache breakpoints.
 - GPT-5 `-chat` ids: newer deprecations page maps to base `gpt-5`/`5.1`/`5.2`/`5.3` (supersedes news 2026-09-04 mapping to gpt-5.6-*). `gpt-audio-mini`: deprecations says removed but catalog still lists it — verify `/v1/models`.
+
+## Older news (references/news/)
+- Files API (`/v1/files`, beta free period ended ~2026-03-01): not encrypted at rest, 128 MB/file, per-tier ops + storage limits; use `expires_after`; no secrets. Flex tier (`service_tier:"flex"`, −50%, gpt-5*/o3/o4-mini only, 900 s timeout, NOT covered by credit packages; fall back to default). User API: exact cost via `/user/v1/transactions/lookup` after ~30 s using `avalai-request-id`; source samples wrongly read `cost.total_cost_usd` — use `cost.unit`; tag with `safety_identifier`. Claude base ids route multi-cloud for higher limits. Search API 8 tools $0.003–0.025/query. Old Gemini 1.x/2.0-exp ids are gone. Robotics-ER/Mistral OCR sample SDK code in the news pages has defects (see files).

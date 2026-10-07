@@ -1,0 +1,3 @@
+# News 2025-05-15 (1404-02-25): `mistral-ocr-latest` added (docs.avalai.ir/fa/news/2025-05-15-mistral-ocr-latest-added)
+
+OCR → Markdown preserving headings/lists/tables/math, multilingual; PDFs ≤50 MB & ≤1000 pages; PNG/JPEG/WEBP/non-animated GIF. Original price ≈ 1000 pages/$ (check live catalog). Mistral SDK uses `server_url="https://api.avalai.ir"` (NO /v1), `client.ocr.process(model, document={"type":"document_url","document_url":…}, pages=[…])`. JS sample's `baseURL` is suspect (Mistral JS uses `serverURL`) — verify. Pair with an LLM for Q&A / JSON extraction. Full guide: examples/mistral-ocr-document-processing.md.
