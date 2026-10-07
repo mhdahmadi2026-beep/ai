@@ -218,3 +218,6 @@ See `references/00-index.md`.
 
 ## Text generation guide (references/guides/text-generation.md)
 - Default to `/v1/responses` with `instructions` + `input`; read `output_text`; parse `output` by `type`. `instructions` aren't inherited across `previous_response_id`; prior chain is billed. `max_output_tokens` includes reasoning. Prefer `truncation:"disabled"`; set temperature OR top_p. Keep prompts in code, not hosted prompt objects (deprecated).
+
+## Vision (references/guides/vision.md)
+- Chat: `image_url:{url,detail}`; Responses: `input_image` with `image_url` as STRING (or `file_id` from Files `purpose:"vision"`). Inline ≤20 MB; set `detail` explicitly. Gemini images must be base64 (no URLs); bbox coords are [ymin,xmin,ymax,xmax] in 0-1000.

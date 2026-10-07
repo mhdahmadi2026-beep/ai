@@ -138,3 +138,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: batch-processing | /guides/batch-processing | guides/batch-processing.md | DONE |
 | Guide: error-handling | /guides/error-handling | guides/error-handling.md | DONE |
 | Guide: text-generation | /guides/text-generation | guides/text-generation.md | DONE |
+| Guide: vision | /guides/vision | guides/vision.md | DONE |
