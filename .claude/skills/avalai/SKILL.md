@@ -252,3 +252,6 @@ See `references/00-index.md`.
 
 ## Function calling (references/guides/function-calling.md)
 - Chat tools nest under `function`; Responses tools are flat; results: Chat `role:"tool"`+`tool_call_id`, Responses `function_call_output`+`call_id` (replay prior `response.output`). Parse `arguments` (JSON string), validate server-side, `strict:true` + `additionalProperties:false` + all required, <~20 tools, `parallel_tool_calls:false` for state-changing flows, run tools only after `response.function_call_arguments.done`.
+
+## Conversation state (references/guides/conversation-state.md)
+- `previous_response_id` needs `store=True`; resend `instructions` each turn; never combine with `conversation`; prior chain is billed as input. Stateless: replay `response.output` items (keep reasoning/function_call/phase, `include=["reasoning.encrypted_content"]` if supported) with `store=False`. Keep your own DB record of response ids/usage.

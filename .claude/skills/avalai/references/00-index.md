@@ -149,3 +149,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: reasoning | /guides/reasoning | guides/reasoning.md | DONE |
 | Guide: structured-outputs | /guides/structured-outputs | guides/structured-outputs.md | DONE |
 | Guide: function-calling | /guides/function-calling | guides/function-calling.md | DONE |
+| Guide: conversation-state | /guides/conversation-state | guides/conversation-state.md | DONE |
