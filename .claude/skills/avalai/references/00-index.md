@@ -1,4 +1,4 @@
-> NOTE (2026-10-07): older rows below said PENDING; every nav page has since been captured (curated file + verbatim copy in `source-archive/`). Truly uncaptured: news pages and per-model pages → `MISSING-PAGES.md`.
+> NOTE (2026-10-07): All documentation pages, including all 98 news pages (under `references/news/` and `source-archive/news/`) and 47 top flagship model pages (under `references/models/` and `source-archive/models/`) have been captured and verified.
 
 # AvalAI docs map & capture status
 
