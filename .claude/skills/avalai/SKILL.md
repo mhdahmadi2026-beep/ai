@@ -465,3 +465,6 @@ See `references/00-index.md`.
 
 ## Excel / spreadsheets (references/examples/processing-excel-files.md)
 - Convert in your app (pandas `to_csv(index=False)`/aggregates, per sheet, trimmed columns); don't depend on xlsx `file` parts. Never let the LLM do arithmetic from pasted tables — compute in code, verify. LangChain `create_csv_agent` is CSV-only; pandas/CSV agents exec LLM code → sandbox only, treat cell text as prompt injection. `ChatOpenAI` needs explicit `api_key`/`base_url`. Source page has fictional LangChain.js APIs, Go/PHP bugs, placeholder Responses blocks.
+
+## Nano Banana image gen/edit (references/examples/nano-banana-image-generation.md)
+- Chat Completions + `modalities:["image","text"]` → base64 data URL in `message.images[0]["image_url"]["url"]`; edit = `image_url` parts (multi-image = fusion). Iterative edits/character consistency REQUIRE re-sending the image each turn. `imageConfig` via Python `extra_body={"generationConfig":{"imageConfig":{aspectRatio,imageSize:"4K"}}}`; in raw HTTP/JS put `generationConfig` top-level (page's `extra_body` in cURL/JS is wrong). `imageSize` only on 3.1-flash/3-pro. Verify `gemini-2.5-flash-image` (deprecations say retired 2026-10-02); default `gemini-3.1-flash-image`. Responses-equivalent blocks on the page are placeholders.
