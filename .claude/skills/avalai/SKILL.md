@@ -348,3 +348,6 @@ See `references/00-index.md`.
 
 ## Gemini safety settings (references/guides/gemini-safety-settings.md)
 - 4 harm categories (HARASSMENT, HATE_SPEECH, SEXUALLY_EXPLICIT, DANGEROUS_CONTENT) × thresholds `OFF|BLOCK_NONE|BLOCK_ONLY_HIGH|BLOCK_MEDIUM_AND_ABOVE|BLOCK_LOW_AND_ABOVE`; default OFF on Gemini 2.5/3, `BLOCK_MEDIUM_AND_ABOVE` on older. Native: `safetySettings` (v1beta, camelCase); Chat compat: `safety_settings` via `extra_body`. Always check `promptFeedback.blockReason` / `safetyRatings`. Gemini-only; use Moderation API for other providers or combine for sensitive apps.
+
+## Tools overview (references/guides/tools.md)
+- Portable default: `/v1/responses` + `web_search` + custom `function` tools. Hosted file_search/computer use/shell/code interpreter/remote MCP/tool_search/image_generation tool are route/model-dependent (hosted vector stores unavailable) → implement in your app and return via `function_call_output`. Gemini: `codeExecution` is exclusive, `googleSearch` only with `urlContext`, function declarations alone; Qwen web search = `extra_body.enable_search`. Web search costs per 1K calls on top of tokens. Use `parallel_tool_calls:false` for stateful tools; keep secrets/OAuth in the backend; approval for write ops.

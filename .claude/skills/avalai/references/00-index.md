@@ -181,3 +181,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: video-generation-veo | /guides/generate-videos-using-veo | guides/video-generation-veo.md | DONE (verify Veo live) |
 | Guide: video-generation-runway | /guides/generate-videos-using-runway | guides/video-generation-runway.md | DONE (verify live) |
 | Guide: gemini-safety-settings | /guides/gemini-safety-settings | guides/gemini-safety-settings.md | DONE |
+| Guide: tools (overview) | /guides/tools | guides/tools.md | DONE |
