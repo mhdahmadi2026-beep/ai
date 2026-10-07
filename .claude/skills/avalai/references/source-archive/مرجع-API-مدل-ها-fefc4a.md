@@ -37,11 +37,14 @@ GET https://api.avalai.ir/v1/models
 
 #### نمونه درخواست (فرمت OpenAI)
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/models \
+```bash
+curl https://api.avalai.ir/v1/models \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(
     api_key="your-avalai-api-key",
@@ -53,7 +56,10 @@ models = client.models.list()
 for model in models.data:
     print(f"{model.id} - {model.owned_by}")
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -66,7 +72,10 @@ for (const model of models.data) {
   console.log(`${model.id} - ${model.owned_by}`);
 }
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -93,7 +102,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -112,6 +124,7 @@ foreach ($models->data as $model) {
 }
 
 ```
+
 
 #### پاسخ (فرمت OpenAI)
 
@@ -171,11 +184,14 @@ foreach ($models->data as $model) {
 
 #### نمونه درخواست (فرمت Anthropic)
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/models \
+```bash
+curl https://api.avalai.ir/v1/models \
   -H "x-api-key: $AVALAI_API_KEY"
 
-python=:import anthropic
+```
+
+```python
+import anthropic
 
 client = anthropic.Anthropic(
     api_key="your-avalai-api-key",
@@ -187,7 +203,10 @@ models = client.models.list()
 for model in models.data:
     print(f"{model.id} - {model.display_name}")
 
-javascript=:import Anthropic from "@anthropic-ai/sdk";
+```
+
+```javascript
+import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic({
   apiKey: process.env.AVALAI_API_KEY,
@@ -201,6 +220,7 @@ for (const model of models.data) {
 }
 
 ```
+
 
 #### پاسخ (فرمت Anthropic)
 
@@ -244,10 +264,13 @@ GET https://api.avalai.ir/public/models
 
 ### نمونه درخواست
 
-```language-selector
-bash=:curl https://api.avalai.ir/public/models
+```bash
+curl https://api.avalai.ir/public/models
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.get("https://api.avalai.ir/public/models")
 models = response.json()
@@ -255,14 +278,20 @@ models = response.json()
 for model in models["data"]:
     print(f"{model['id']} - {model['owned_by']}")
 
-javascript=:const response = await fetch("https://api.avalai.ir/public/models");
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/public/models");
 const models = await response.json();
 
 for (const model of models.data) {
   console.log(`${model.id} - ${model.owned_by}`);
 }
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"encoding/json"
@@ -287,7 +316,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 $response = file_get_contents("https://api.avalai.ir/public/models");
 $models = json_decode($response, true);
@@ -297,6 +329,7 @@ foreach ($models["data"] as $model) {
 }
 
 ```
+
 
 فرمت پاسخ مشابه نقطه پایانی لیست با فرمت OpenAI است.
 
@@ -320,11 +353,14 @@ GET https://api.avalai.ir/v1/models/{model_id}
 
 #### نمونه درخواست (فرمت OpenAI)
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/models/gpt-5.5 \
+```bash
+curl https://api.avalai.ir/v1/models/gpt-5.5 \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(
     api_key="your-avalai-api-key",
@@ -339,7 +375,10 @@ print(f"Owned by: {model.owned_by}")
 # دسترسی به داده‌های اضافی AvalAI (به عنوان فیلدهای اضافی در دسترس است)
 print(f"Extra data: {model.model_extra}")
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -351,7 +390,10 @@ const model = await client.models.retrieve("gpt-5.6-luna");
 console.log(`Model: ${model.id}`);
 console.log(`Owned by: ${model.owned_by}`);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -377,7 +419,10 @@ func main() {
 	fmt.Printf("Owned by: %s\n", model.OwnedBy)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -395,6 +440,7 @@ echo "Model: " . $model->id . "\n";
 echo "Owned by: " . $model->ownedBy . "\n";
 
 ```
+
 
 #### پاسخ (فرمت OpenAI با Extra اختصاصی AvalAI)
 
@@ -468,11 +514,14 @@ echo "Owned by: " . $model->ownedBy . "\n";
 
 #### نمونه درخواست (فرمت Anthropic)
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/models/claude-sonnet-4-20250514 \
+```bash
+curl https://api.avalai.ir/v1/models/claude-sonnet-4-20250514 \
   -H "x-api-key: $AVALAI_API_KEY"
 
-python=:import anthropic
+```
+
+```python
+import anthropic
 
 client = anthropic.Anthropic(
     api_key="your-avalai-api-key",
@@ -485,7 +534,10 @@ print(f"Model: {model.id}")
 print(f"Display name: {model.display_name}")
 print(f"Created at: {model.created_at}")
 
-javascript=:import Anthropic from "@anthropic-ai/sdk";
+```
+
+```javascript
+import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic({
   apiKey: process.env.AVALAI_API_KEY,
@@ -499,6 +551,7 @@ console.log(`Display name: ${model.display_name}`);
 console.log(`Created at: ${model.created_at}`);
 
 ```
+
 
 #### پاسخ (فرمت Anthropic با Extra اختصاصی AvalAI)
 

@@ -80,8 +80,8 @@ Receiverها را برای تحویل **at-least-once** طراحی کنید: ت�
 
 وقتی sender از فرمت Standard Webhooks مورد استفاده OpenAI پیروی می‌کند، به جای verification دستی، از helperهای SDK یا کتابخانه‌های Standard Webhooks استفاده کنید. این helperها raw body، headerها، timestamp و signature را پیش از برگرداندن event اعتبارسنجی می‌کنند. این الگو را فقط برای routeهایی به‌کار ببرید که signing secret سازگار را صریحا ارائه می‌کنند.
 
-```language-selector
-python=:import os
+```python
+import os
 from flask import Flask, Response, request
 from openai import InvalidWebhookSignatureError, OpenAI
 
@@ -110,7 +110,10 @@ def receive_openai_style_webhook():
     print("verified event:", delivery_id, event.type, event.data)
     return Response(status=200)
 
-javascript=:import express from "express";
+```
+
+```javascript
+import express from "express";
 import OpenAI from "openai";
 
 const app = express();
@@ -145,29 +148,34 @@ app.listen(8000, () => console.log("Webhook receiver listening on :8000"));
 
 ```
 
+
 پیش از verification از `express.json()` یا هر parser دیگری که payload را تغییر می‌دهد استفاده نکنید. اگر route از schema امضای متفاوتی استفاده می‌کند، دقیقا headerها و canonical payload همان provider را دنبال کنید.
 
 برای `response.completed`، payload رویداد معمولا شامل Response ID است. receiver را سریع نگه دارید: event را verify کنید، ID آن را ذخیره کنید، `2xx` برگردانید، و یک worker پاسخ نهایی را retrieve کند.
 
-```language-selector
-python=:# این بخش را بعد از verify شدن webhook در queue worker اجرا کنید.
+```python
+# این بخش را بعد از verify شدن webhook در queue worker اجرا کنید.
 response_id = event.data.id
 response = client.responses.retrieve(response_id)
 print(response.output_text)
 
-javascript=:// این بخش را بعد از verify شدن webhook در queue worker اجرا کنید.
+```
+
+```javascript
+// این بخش را بعد از verify شدن webhook در queue worker اجرا کنید.
 const responseId = event.data.id;
 const response = await client.responses.retrieve(responseId);
 console.log(response.output_text);
 
 ```
 
+
 ## الگوی Webhook مدیریت‌شده در برنامه
 
 برای jobهای async امن در AvalAI، worker شما پس از ذخیره نتیجه نهایی یک callback امضاشده ارسال کند. Receiver امضا را verify می‌کند، event ID را deduplicate می‌کند، event را ذخیره می‌کند و قبل از کار سنگین `2xx` برمی‌گرداند.
 
-```language-selector
-python=:import hashlib
+```python
+import hashlib
 import hmac
 import json
 import os
@@ -222,7 +230,10 @@ def receive_job_webhook():
 if __name__ == "__main__":
     app.run(port=8000)
 
-javascript=:import crypto from "node:crypto";
+```
+
+```javascript
+import crypto from "node:crypto";
 import express from "express";
 
 const app = express();
@@ -286,6 +297,7 @@ app.post("/webhooks/avalai-jobs", (req, res) => {
 app.listen(8000, () => console.log("Webhook receiver listening on :8000"));
 
 ```
+
 
 در production برای `seen_event_ids` از storage پایدار استفاده کنید؛ set در حافظه فقط برای مثال local است.
 

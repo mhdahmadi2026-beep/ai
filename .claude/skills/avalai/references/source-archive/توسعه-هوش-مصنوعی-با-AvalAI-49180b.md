@@ -31,8 +31,8 @@ description: "توسعه هوش مصنوعی با AvalAI با استفاده ا�
   </div>
   <div class="docs-first-request-code">
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -47,7 +47,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -61,7 +64,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -70,6 +76,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
   </div>
 </section>

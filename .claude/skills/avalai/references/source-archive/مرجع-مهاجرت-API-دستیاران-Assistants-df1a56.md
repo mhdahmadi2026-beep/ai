@@ -37,8 +37,8 @@ OpenAI اعلام کرده است که Assistants API از **۲۶ اوت ۲۰۲�
 
 برای برنامه‌های agent-style جدید در AvalAI، به‌جای endpoint برنامه‌ریزی‌شده Assistants از این الگو استفاده کنید. persona قابل استفاده مجدد را در `instructions` نگه دارید، turn فعلی را در `input` بفرستید، و فقط وقتی برنامه شما می‌تواند اجرا و مجوزدهی را امن انجام دهد ابزارهای function سفارشی اضافه کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -58,7 +58,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -75,7 +78,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -86,6 +92,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 اگر طراحی Assistants شما به Code Interpreter وابسته بود، تا زمانی که route انتخابی AvalAI صریحا اجرای کد میزبانی‌شده را پشتیبانی کند، کد را در sandbox یا worker خودتان اجرا کنید و فقط یک [ابزار function](fa/guides/function-calling.md) محدود expose کنید.
 
@@ -122,8 +129,8 @@ POST https://api.avalai.ir/v1/assistants
 
 ### ایجاد یک دستیار
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/assistants \
+```bash
+curl https://api.avalai.ir/v1/assistants \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "OpenAI-Beta: assistants=v2" \
@@ -134,7 +141,10 @@ bash=:curl https://api.avalai.ir/v1/assistants \
   "tools": [{"type": "code_interpreter"}]
 }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(
     api_key="your-avalai-api-key",  # با کلید واقعی خود جایگزین کنید
@@ -150,7 +160,10 @@ assistant = client.beta.assistants.create(
 
 print(assistant.id)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -167,7 +180,10 @@ const assistant = await client.beta.assistants.create({
 
 console.log(assistant.id);
 
-go=:// مثال Go: ایجاد یک دستیار از طریق AvalAI
+```
+
+```go
+// مثال Go: ایجاد یک دستیار از طریق AvalAI
 package main
 
 import (
@@ -210,7 +226,10 @@ func main() {
 	fmt.Printf("دستیار با شناسه ایجاد شد: %s\n", resp.ID)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP: ایجاد یک دستیار از طریق AvalAI
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -264,6 +283,7 @@ if ($err) {
     ?>
 
 ```
+
 
 ## فرمت پاسخ (Response Format)
 

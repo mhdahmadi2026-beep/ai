@@ -50,8 +50,8 @@
 
 ## حلقه حداقلی ابزار با Responses
 
-```language-selector
-python=:import json
+```python
+import json
 import os
 from openai import OpenAI
 
@@ -118,7 +118,10 @@ while True:
         input=tool_outputs,
     )
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -183,6 +186,7 @@ while (true) {
 }
 
 ```
+
 
 برای مدل‌ها یا integrationهایی که هنوز از `/v1/chat/completions` استفاده می‌کنند، همین معماری را نگه دارید اما نتیجه ابزارها را به‌صورت پیام‌های `role: "tool"` با `tool_call_id` متناظر ارسال کنید.
 

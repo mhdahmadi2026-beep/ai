@@ -111,8 +111,8 @@ API AvalAI از سه روش برای ارائه ورودی‌های فایل ب�
 
 ### تصویر URL در Chat Completions
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -136,7 +136,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
   ]
 }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -162,7 +165,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -187,7 +193,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -232,7 +241,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -264,14 +276,15 @@ echo $response->choices[0]->message->content;
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -294,7 +307,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -316,7 +332,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -341,6 +360,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `choices[0].message.content` → `response.output_text`
@@ -354,8 +374,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 برای مدل‌های Anthropic (Claude)، می‌توانید PDFها را از طریق URL ارائه دهید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -379,7 +399,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
   ]
 }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -405,7 +428,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -429,7 +455,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -476,7 +505,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -507,14 +539,15 @@ echo $response->choices[0]->message->content;
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `claude-sonnet-4-6` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. برای PDF عمومی، URL اصلی را نگه دارید و آن را با `input_file.file_url` بفرستید؛ `file_id` را فقط برای فایل‌های آپلودشده از `/v1/files` استفاده کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -540,7 +573,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -566,7 +602,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -591,6 +630,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `file.file_id` که URL دارد → `input_file.file_url`
@@ -603,8 +643,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### URL سند در OCR API
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -616,7 +656,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
   "include_image_base64": true
 }' -o ocr_output.json
 
-python=:import os
+```
+
+```python
+import os
 from mistralai import Mistral
 
 client = Mistral(
@@ -636,7 +679,10 @@ ocr_response = client.ocr.process(
 
 print(ocr_response)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: process.env.AVALAI_API_KEY,
@@ -656,7 +702,10 @@ const ocrResponse = await client.ocr.process({
 
 console.log(ocrResponse);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -697,7 +746,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 $apiKey = getenv('AVALAI_API_KEY');
 
@@ -726,6 +778,7 @@ echo $response;
 
 ```
 
+
 ## روش ۲: فایل‌های کدگذاری شده با Base64
 
 برای فایل‌های محلی یا محتوای خصوصی، فایل را به صورت Base64 کدگذاری کرده و در درخواست قرار دهید.
@@ -745,8 +798,8 @@ data:{mime_type};base64,{encoded_data}
 
 ### تصویر با Base64 در Chat Completions
 
-```language-selector
-bash=:# کدگذاری تصویر به base64
+```bash
+# کدگذاری تصویر به base64
 IMAGE_BASE64=$(base64 -i image.jpg | tr -d '\n') # در لینوکس از -w 0 استفاده کنید
 
 curl https://api.avalai.ir/v1/chat/completions \
@@ -773,7 +826,10 @@ curl https://api.avalai.ir/v1/chat/completions \
   ]
 }'
 
-python=:import base64
+```
+
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -806,7 +862,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from "fs";
 
 const client = new OpenAI({
@@ -836,7 +895,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -893,7 +955,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -929,14 +994,15 @@ echo $response->choices[0]->message->content;
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، تصویر را به شکل data URL نگه دارید و آن را با `input_image.image_url` ارسال کنید.
 
-```language-selector
-python=:import base64
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -966,7 +1032,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import fs from "node:fs";
+```
+
+```javascript
+import fs from "node:fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -994,7 +1063,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1019,6 +1091,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `image_url.url` → `input_image.image_url`
@@ -1031,8 +1104,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### PDF با Base64 در Chat Completions
 
-```language-selector
-bash=:# کدگذاری PDF به base64
+```bash
+# کدگذاری PDF به base64
 PDF_BASE64=$(base64 -i document.pdf | tr -d '\n') # در لینوکس از -w 0 استفاده کنید
 
 curl https://api.avalai.ir/v1/chat/completions \
@@ -1059,7 +1132,10 @@ curl https://api.avalai.ir/v1/chat/completions \
   ]
 }'
 
-python=:import base64
+```
+
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -1092,7 +1168,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from "fs";
 
 const client = new OpenAI({
@@ -1122,7 +1201,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -1179,7 +1261,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -1215,14 +1300,15 @@ echo $response->choices[0]->message->content;
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-2.5-flash` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، PDF محلی را با `input_file.filename` و `input_file.file_data` به صورت inline نگه دارید.
 
-```language-selector
-python=:import base64
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -1253,7 +1339,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import fs from "node:fs";
+```
+
+```javascript
+import fs from "node:fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -1282,7 +1371,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1308,6 +1400,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `file.file_data` در Chat → `input_file.file_data` در Responses
@@ -1320,8 +1413,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### صوت با Base64 در Chat Completions
 
-```language-selector
-bash=:# کدگذاری صوت به base64
+```bash
+# کدگذاری صوت به base64
 AUDIO_BASE64=$(base64 -i audio.mp3 | tr -d '\n')
 
 curl https://api.avalai.ir/v1/chat/completions \
@@ -1348,7 +1441,10 @@ curl https://api.avalai.ir/v1/chat/completions \
   ]
 }'
 
-python=:import base64
+```
+
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -1381,7 +1477,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from "fs";
 
 const client = new OpenAI({
@@ -1411,7 +1510,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -1468,7 +1570,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -1504,14 +1609,15 @@ echo $response->choices[0]->message->content;
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-2.5-flash` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل Responses انتخابی در AvalAI ورودی صوت inline را نمی‌پذیرد، از این مسیر migration استفاده کنید. مثال Chat Completions بالا را برای مدل‌های صوتی مستقیم نگه دارید، یا ابتدا صوت را با [Speech to Text](fa/guides/speech-to-text.md) transcribe کنید و سپس transcript را برای خلاصه‌سازی، extraction یا reasoning بعدی به `/v1/responses` بفرستید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1536,7 +1642,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1558,7 +1667,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1580,6 +1692,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - بایت‌های صوت inline → ابتدا transcribe کنید، یا فقط پس از تأیید پشتیبانی مدل انتخابی از schema صوتی route-specific استفاده کنید
@@ -1592,8 +1705,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### اکسل با Base64 در Chat Completions
 
-```language-selector
-bash=:# کدگذاری فایل اکسل به base64
+```bash
+# کدگذاری فایل اکسل به base64
 EXCEL_BASE64=$(base64 -i spreadsheet.xlsx | tr -d '\n')
 
 curl https://api.avalai.ir/v1/chat/completions \
@@ -1620,7 +1733,10 @@ curl https://api.avalai.ir/v1/chat/completions \
   ]
 }'
 
-python=:import base64
+```
+
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -1657,7 +1773,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from "fs";
 
 const client = new OpenAI({
@@ -1688,7 +1807,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -1746,7 +1868,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -1783,14 +1908,15 @@ echo $response->choices[0]->message->content;
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، برای spreadsheet نام فایل و MIME type spreadsheet را در `file_data` بیاورید و پیش از استفاده از پاسخ، rowها یا formulaهای استخراج‌شده را verify کنید.
 
-```language-selector
-python=:import base64
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -1827,7 +1953,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import fs from "node:fs";
+```
+
+```javascript
+import fs from "node:fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -1860,7 +1989,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1885,6 +2017,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -1911,13 +2044,16 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### آپلود فایل
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/files \
+```bash
+curl https://api.avalai.ir/v1/files \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F purpose="user_data" \
   -F file="@document.pdf"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1930,7 +2066,10 @@ file = client.files.create(file=open("document.pdf", "rb"), purpose="user_data")
 
 print(f"فایل با شناسه آپلود شد: {file.id}")
 
-javascript=:import fs from "fs";
+```
+
+```javascript
+import fs from "fs";
 import { OpenAI } from "openai";
 
 const client = new OpenAI({
@@ -1946,7 +2085,10 @@ const file = await client.files.create({
 
 console.log(`فایل با شناسه آپلود شد: ${file.id}`);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -1973,7 +2115,10 @@ func main() {
 	fmt.Printf("فایل با شناسه آپلود شد: %s\n", file.ID)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -1994,10 +2139,11 @@ echo "فایل با شناسه آپلود شد: " . $file->id . "\n";
 
 ```
 
+
 ### استفاده از شناسه فایل در Chat Completions
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -2021,7 +2167,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
   ]
 }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -2047,7 +2196,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -2072,7 +2224,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -2121,7 +2276,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -2152,10 +2310,11 @@ echo $response->choices[0]->message->content;
 
 ```
 
+
 ### استفاده از شناسه فایل در Responses API
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/responses \
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -2177,7 +2336,10 @@ bash=:curl https://api.avalai.ir/v1/responses \
   ]
 }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -2202,7 +2364,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -2226,7 +2391,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -2272,7 +2440,10 @@ func main() {
 	fmt.Println(resp.OutputText)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -2301,6 +2472,7 @@ $response = $client->responses()->create([
 echo $response->outputText;
 
 ```
+
 
 ## ملاحظات خاص مدل‌ها
 

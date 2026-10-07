@@ -99,13 +99,16 @@ Files API مرجع OpenAI چند سطح مصرف downstream را پشتیبان�
 
 ### مثال‌ها
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/files \
+```bash
+curl https://api.avalai.ir/v1/files \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F purpose="user_data" \
   -F file="@document.pdf"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -124,7 +127,10 @@ file_with_expiry = client.files.create(
     expires_after={"anchor": "created_at", "seconds": 2592000},  # ۳۰ روز
 )
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -151,7 +157,10 @@ const fileWithExpiry = await client.files.create({
     },
 });
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -187,7 +196,10 @@ func main() {
 	fmt.Printf("فایل آپلود شد: %s\n", uploaded.ID)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 
 $apiKey = getenv('AVALAI_API_KEY');
@@ -222,6 +234,7 @@ if ($httpcode >= 400) {
 ?>
 
 ```
+
 
 ### پاسخ (Response)
 
@@ -260,8 +273,8 @@ GET https://api.avalai.ir/v1/files
 
 ### مثال‌ها
 
-```language-selector
-bash=:# لیست تمام فایل‌ها
+```bash
+# لیست تمام فایل‌ها
 curl https://api.avalai.ir/v1/files \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
@@ -269,7 +282,10 @@ curl https://api.avalai.ir/v1/files \
 curl "https://api.avalai.ir/v1/files?purpose=user_data&limit=10" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -284,7 +300,10 @@ for file in files.data:
 # لیست فایل‌ها با هدف خاص
 user_files = client.files.list(purpose="user_data")
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -301,7 +320,10 @@ for (const file of files.data) {
 // لیست فایل‌ها با هدف خاص
 const userFiles = await client.files.list({ purpose: "user_data" });
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -329,7 +351,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 
 $apiKey = getenv('AVALAI_API_KEY');
@@ -351,6 +376,7 @@ foreach ($data['data'] as $file) {
 ?>
 
 ```
+
 
 ### پاسخ (Response)
 
@@ -405,11 +431,14 @@ GET https://api.avalai.ir/v1/files/{file_id}
 
 ### مثال‌ها
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/files/file-abc123 \
+```bash
+curl https://api.avalai.ir/v1/files/file-abc123 \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -421,7 +450,10 @@ print(f"نام فایل: {file.filename}")
 print(f"اندازه: {file.bytes} بایت")
 print(f"هدف: {file.purpose}")
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -434,7 +466,10 @@ console.log(`نام فایل: ${file.filename}`);
 console.log(`اندازه: ${file.bytes} بایت`);
 console.log(`هدف: ${file.purpose}`);
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -462,7 +497,10 @@ func main() {
 	fmt.Printf("هدف: %s\n", file.Purpose)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 
 $apiKey = getenv('AVALAI_API_KEY');
@@ -485,6 +523,7 @@ echo "هدف: " . $file['purpose'] . "\n";
 ?>
 
 ```
+
 
 ### پاسخ (Response)
 
@@ -520,11 +559,14 @@ DELETE https://api.avalai.ir/v1/files/{file_id}
 
 ### مثال‌ها
 
-```language-selector
-bash=:curl -X DELETE https://api.avalai.ir/v1/files/file-abc123 \
+```bash
+curl -X DELETE https://api.avalai.ir/v1/files/file-abc123 \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -534,7 +576,10 @@ client = OpenAI(
 deleted = client.files.delete("file-abc123")
 print(f"حذف شد: {deleted.deleted}")
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -545,7 +590,10 @@ const client = new OpenAI({
 const deleted = await client.files.del("file-abc123");
 console.log(`حذف شد: ${deleted.deleted}`);
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -571,7 +619,10 @@ func main() {
 	fmt.Printf("حذف شد: %v\n", deleted.Deleted)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 
 $apiKey = getenv('AVALAI_API_KEY');
@@ -593,6 +644,7 @@ echo "حذف شد: " . ($result['deleted'] ? 'بله' : 'خیر') . "\n";
 ?>
 
 ```
+
 
 ### پاسخ (Response)
 
@@ -622,13 +674,16 @@ GET https://api.avalai.ir/v1/files/{file_id}/content
 
 ### مثال‌ها
 
-```language-selector
-bash=:# دانلود محتوای فایل
+```bash
+# دانلود محتوای فایل
 curl https://api.avalai.ir/v1/files/file-abc123/content \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   --output downloaded_file.pdf
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -642,7 +697,10 @@ content = client.files.content("file-abc123")
 with open("downloaded_file.pdf", "wb") as f:
     f.write(content.read())
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -656,7 +714,10 @@ const content = await client.files.content("file-abc123");
 const buffer = Buffer.from(await content.arrayBuffer());
 fs.writeFileSync("downloaded_file.pdf", buffer);
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -688,7 +749,10 @@ func main() {
 	io.Copy(file, content.Body)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 
 $apiKey = getenv('AVALAI_API_KEY');
@@ -709,6 +773,7 @@ echo "فایل با موفقیت دانلود شد\n";
 ?>
 
 ```
+
 
 ---
 
@@ -772,8 +837,8 @@ echo "فایل با موفقیت دانلود شد\n";
 
 ### مثال: تکمیل گفتگو با فایل
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -797,7 +862,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -822,7 +890,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -846,7 +917,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -881,7 +955,10 @@ func main() {
 	fmt.Println(response.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 
 $apiKey = getenv('AVALAI_API_KEY');
@@ -918,14 +995,15 @@ echo $result['choices'][0]['message']['content'] . "\n";
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-2.5-flash` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -948,7 +1026,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -970,7 +1051,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -994,6 +1078,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`

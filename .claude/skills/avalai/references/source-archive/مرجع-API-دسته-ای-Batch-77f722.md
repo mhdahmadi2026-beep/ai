@@ -79,8 +79,8 @@ POST https://api.avalai.ir/v1/batches
 
 ### مثال درخواست
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/batches \
+```bash
+curl https://api.avalai.ir/v1/batches \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -93,7 +93,10 @@ bash=:curl https://api.avalai.ir/v1/batches \
   }
 }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -112,7 +115,10 @@ batch = client.batches.create(
 )
 print(batch)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -135,14 +141,15 @@ main();
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 برای اجرای batch با شکل Responses، batch را با `endpoint: "/v1/responses"` بسازید و فایل ورودی را با ردیف‌های `/v1/responses` آماده کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -159,7 +166,10 @@ batch = client.batches.create(
 
 print(batch)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -177,7 +187,10 @@ const batch = await client.batches.create({
 
 console.log(batch);
 
-bash=:curl https://api.avalai.ir/v1/batches \
+```
+
+```bash
+curl https://api.avalai.ir/v1/batches \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -191,6 +204,7 @@ bash=:curl https://api.avalai.ir/v1/batches \
   }'
 
 ```
+
 
 - ایجاد batch همچنان از `/v1/batches` انجام می‌شود؛ فقط مقدار `endpoint` به `/v1/responses` تغییر می‌کند.
 - در هر ردیف JSONL، `messages` به `input` و راهنمایی system/developer به `instructions` یا آیتم `developer` منتقل می‌شود.

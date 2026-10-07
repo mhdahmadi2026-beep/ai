@@ -65,8 +65,8 @@ Google سقف **۸٬۱۹۲ توکن ورودی و ۱۶٬۳۸۴ توکن خروج
 
 ### Speech: ذخیره MP3 با درخواست صریح قالب
 
-```language-selector
-bash=:curl --fail-with-body -sS https://api.avalai.ir/v1/audio/speech \
+```bash
+curl --fail-with-body -sS https://api.avalai.ir/v1/audio/speech \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -80,14 +80,15 @@ bash=:curl --fail-with-body -sS https://api.avalai.ir/v1/audio/speech \
 
 ```
 
+
 متن انگلیسی با `languageCode: "en-US"` هماهنگ است. برای Lite فقط شناسه مدل را به `gemini-3.8-flash-lite-tts` تغییر دهید. پیش از پخش، وضعیت واقعی HTTP و Content-Type را در هدرهای ذخیره‌شده بررسی کنید؛ بدنه درخواست ناموفق، صوت نیست.
 
 **پاسخ توضیحی — ILLUSTRATIVE:** بدنه دودویی MP3 با Content-Type صوتی، نه شیء JSON حاوی Base64. هدرهای واقعی را برای فراداده احتمالی صورتحساب بررسی کنید؛ فرض نکنید پاسخ دودویی دارای فیلدهای JSON مانند `usage` یا `estimated_cost` است.
 
 ### مسیر بومی: فراداده گوینده و سبک برای هر بخش
 
-```language-selector
-bash=:curl --fail-with-body -sS \
+```bash
+curl --fail-with-body -sS \
   https://api.avalai.ir/v1beta/models/gemini-3.8-flash-tts:generateContent \
   -H "x-goog-api-key: $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -116,6 +117,7 @@ bash=:curl --fail-with-body -sS \
 jq 'walk(if type == "object" and has("inlineData") then .inlineData |= (if has("data") then del(.data) else . end) else . end)' native-speech.json
 
 ```
+
 
 **پاسخ کامل واقعی** را بررسی کنید؛ از جمله همه گزینه‌ها، `usageMetadata` یا `usage` و `estimated_cost` در صورت وجود. دستور نمایش فقط داده صوتی Base64 بخش‌های بومی را حذف می‌کند و همه فیلدهای دیگر را نگه می‌دارد؛ JSON ذخیره‌شده دست‌نخورده می‌ماند.
 
@@ -179,8 +181,8 @@ for index, audio in enumerate(audio_parts):
 
 برای کنترل دقیق بیان در هر نوبت، از درخواست بومی بالا استفاده کنید؛ متن این درخواست Chat فقط شامل گفتار است.
 
-```language-selector
-bash=:curl --fail-with-body -sS https://api.avalai.ir/v1/chat/completions \
+```bash
+curl --fail-with-body -sS https://api.avalai.ir/v1/chat/completions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -206,6 +208,7 @@ PY
 ffmpeg -f s16le -ar 24000 -ac 1 -i chat-speech.pcm chat-speech.wav
 
 ```
+
 
 JSON کامل واقعی را بررسی کنید؛ از جمله `usage` و `estimated_cost` در صورت بازگردانده‌شدن. دستور نمایش فقط داده صوتی Base64 را حذف می‌کند و فیلدهای صورتحساب و سایر فیلدهای پاسخ را نگه می‌دارد. دستور تبدیل، PCM16 درخواستی را صریحاً صوت خام علامت‌دار ۱۶بیتی با ترتیب بایت little-endian، نرخ ۲۴ کیلوهرتز و یک کانال در نظر می‌گیرد؛ نام فایل به‌تنهایی این پارامترها را به رمزگشا نمی‌دهد.
 

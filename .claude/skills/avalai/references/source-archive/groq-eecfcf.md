@@ -50,8 +50,8 @@ groq استنتاج فوق‌سریع برای مدل‌های هوش مصنوع
 
 **قیمت‌گذاری:** 0.20 دلار/1م توکن ورودی، 0.10 دلار/1م ورودی کش‌شده، 0.20 دلار/1م توکن خروجی
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -64,7 +64,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -80,7 +83,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -101,14 +107,15 @@ console.log(response.choices[0].message.content);
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `groq.llama-guard-4-12b` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -124,7 +131,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -139,7 +149,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -150,6 +163,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -182,8 +196,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 **قیمت‌گذاری:** 0.20 دلار/1م توکن ورودی، 0.10 دلار/1م ورودی کش‌شده، 0.60 دلار/1م توکن خروجی
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -196,7 +210,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -212,7 +229,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -233,14 +253,15 @@ console.log(response.choices[0].message.content);
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `groq.llama-4-maverick-17b-128e-instruct` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -256,7 +277,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -271,7 +295,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -282,6 +309,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -340,8 +368,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 **صداهای پشتیبانی شده:** Aaliyah-PlayAI, Adelaide-PlayAI, Angelo-PlayAI, Arista-PlayAI, Atlas-PlayAI, Basil-PlayAI, Briggs-PlayAI, Calum-PlayAI, Celeste-PlayAI, Cheyenne-PlayAI, Chip-PlayAI, Cillian-PlayAI, Deedee-PlayAI, Eleanor-PlayAI, Fritz-PlayAI, Gail-PlayAI, Indigo-PlayAI, Jennifer-PlayAI, Judy-PlayAI, Mamaw-PlayAI, Mason-PlayAI, Mikail-PlayAI, Mitch-PlayAI, Nia-PlayAI, Quinn-PlayAI, Ruby-PlayAI, Thunder-PlayAI
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/audio/speech \
+```bash
+curl https://api.avalai.ir/v1/audio/speech \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -350,7 +378,10 @@ bash=:curl https://api.avalai.ir/v1/audio/speech \
     "voice": "Aaliyah-PlayAI"
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -362,7 +393,10 @@ response = client.audio.speech.create(
 
 response.stream_to_file("output.mp3")
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from "fs";
 
 const client = new OpenAI({
@@ -381,6 +415,7 @@ await fs.promises.writeFile("output.mp3", buffer);
 
 ```
 
+
 ### groq.playai-tts-arabic
 
 سنتز گفتار بهینه‌شده برای زبان عربی.
@@ -395,13 +430,16 @@ await fs.promises.writeFile("output.mp3", buffer);
 
 **قیمت‌گذاری:** 0.000031 دلار به ازای هر ثانیه صدا (0.00185 دلار به ازای هر دقیقه)
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/audio/transcriptions \
+```bash
+curl https://api.avalai.ir/v1/audio/transcriptions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F file="@audio.mp3" \
   -F model="groq.whisper-large-v3"
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -413,7 +451,10 @@ with open("audio.mp3", "rb") as audio_file:
 
 print(transcript.text)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from "fs";
 
 const client = new OpenAI({
@@ -429,6 +470,7 @@ const transcript = await client.audio.transcriptions.create({
 console.log(transcript.text);
 
 ```
+
 
 ### groq.whisper-large-v3-turbo
 

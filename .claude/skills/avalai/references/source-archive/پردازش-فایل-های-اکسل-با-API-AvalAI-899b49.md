@@ -54,8 +54,8 @@ API AvalAI قابلیت‌های قدرتمندی برای پردازش صفحا
 
 می‌توانید فایل‌های اکسل را مستقیما به صورت base64 کدگذاری کرده و به API ارسال کنید:
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import base64
 import pandas as pd
 from io import BytesIO
@@ -93,7 +93,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from "fs";
 
 // مقداردهی اولیه کلاینت با API AvalAI
@@ -138,7 +141,10 @@ async function processExcel() {
 
 processExcel();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -204,7 +210,10 @@ func getExcelData() ([]byte, error) {
 	return ioutil.ReadFile("path/to/your/spreadsheet.xlsx")
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -252,14 +261,15 @@ echo $completion->choices[0]->message->content;
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -282,7 +292,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -304,7 +317,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -329,6 +345,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `choices[0].message.content` → `response.output_text`
@@ -342,8 +359,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 برای کنترل بیشتر روی داده‌ها، می‌توانید فایل‌های اکسل را به یک DataFrame پانداس و سپس به یک نمایش متنی تبدیل کنید:
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import pandas as pd
 
 # مقداردهی اولیه کلاینت با API AvalAI
@@ -372,7 +389,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import * as XLSX from "xlsx";
 
 // مقداردهی اولیه کلاینت با API AvalAI
@@ -429,7 +449,10 @@ ${excelText}
 
 analyzeExcel();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -513,7 +536,10 @@ func excelToText(filePath string) (string, error) {
 	return sb.String(), nil
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -573,14 +599,15 @@ echo $completion->choices[0]->message->content;
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `claude-sonnet-4-6` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -596,7 +623,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -611,7 +641,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -622,6 +655,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -638,8 +672,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 #### ایجاد عامل CSV
 
-```language-selector
-python=:from langchain_openai import ChatOpenAI
+```python
+from langchain_openai import ChatOpenAI
 from langchain_experimental.agents import create_csv_agent
 import os
 
@@ -670,7 +704,10 @@ response = agent_executor.invoke(
 
 print(response["output"])
 
-javascript=:// پیاده‌سازی جاوااسکریپت با استفاده از LangChain.js
+```
+
+```javascript
+// پیاده‌سازی جاوااسکریپت با استفاده از LangChain.js
 import { ChatOpenAI } from "@langchain/openai";
 import { createCSVAgent } from "langchain/agents";
 import dotenv from "dotenv";
@@ -716,12 +753,13 @@ runCSVAgent();
 
 ```
 
+
 #### ایجاد عامل DataFrame پانداس
 
 برای تحلیل داده‌های حتی پیشرفته‌تر، می‌توانید از عامل DataFrame پانداس استفاده کنید:
 
-```language-selector
-python=:from langchain_openai import ChatOpenAI
+```python
+from langchain_openai import ChatOpenAI
 from langchain_experimental.agents import create_pandas_dataframe_agent
 import pandas as pd
 import os
@@ -763,7 +801,10 @@ response = agent_executor.invoke(
 
 print(response["output"])
 
-javascript=:// پیاده‌سازی جاوااسکریپت با استفاده از LangChain.js
+```
+
+```javascript
+// پیاده‌سازی جاوااسکریپت با استفاده از LangChain.js
 import { ChatOpenAI } from "@langchain/openai";
 import { createPandasDataFrameAgent } from "langchain/agents";
 import { readFile } from "fs/promises";
@@ -826,6 +867,7 @@ async function runPandasAgent() {
 runPandasAgent();
 
 ```
+
 
 ## استفاده از ارائه‌دهندگان مدل مختلف
 
@@ -984,8 +1026,8 @@ print(response.output_text)
 
 ### تحلیل داده
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import pandas as pd
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -1015,7 +1057,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import * as XLSX from "xlsx";
 
 const client = new OpenAI({
@@ -1069,14 +1114,15 @@ analyzeSalesData();
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1092,7 +1138,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1107,7 +1156,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1118,6 +1170,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -1130,8 +1183,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### خلاصه‌سازی داده‌ها
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import pandas as pd
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -1161,7 +1214,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import * as XLSX from "xlsx";
 
 const client = new OpenAI({
@@ -1215,14 +1271,15 @@ summarizeFinancialReport();
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `claude-sonnet-4-6` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1238,7 +1295,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1253,7 +1313,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1264,6 +1327,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -1276,8 +1340,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### پاسخ به سؤالات
 
-```language-selector
-python=:from langchain_openai import ChatOpenAI
+```python
+from langchain_openai import ChatOpenAI
 from langchain_experimental.agents import create_csv_agent
 import os
 
@@ -1308,7 +1372,10 @@ for question in questions:
     print(f"پاسخ: {response['output']}")
     print("---")
 
-javascript=:// پیاده‌سازی جاوااسکریپت با استفاده از LangChain.js
+```
+
+```javascript
+// پیاده‌سازی جاوااسکریپت با استفاده از LangChain.js
 import { ChatOpenAI } from "@langchain/openai";
 import { createCSVAgent } from "langchain/agents";
 import dotenv from "dotenv";
@@ -1355,6 +1422,7 @@ async function askInventoryQuestions() {
 askInventoryQuestions();
 
 ```
+
 
 ## بهترین شیوه‌ها
 

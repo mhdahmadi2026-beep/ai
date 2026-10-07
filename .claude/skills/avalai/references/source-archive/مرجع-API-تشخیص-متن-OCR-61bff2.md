@@ -156,8 +156,8 @@ API OCR از خروجی ساختاریافته JSON از طریق پارامتر
 
 ### درخواست ساده OCR
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -168,7 +168,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
     }
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 import os
 
 api_key = os.getenv("AVALAI_API_KEY")
@@ -189,7 +192,10 @@ result = response.json()
 for page in result["pages"]:
     print(f"Page {page['index']}: {page['markdown'][:100]}...")
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/ocr", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/ocr", {
   method: "POST",
   headers: {
     "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -209,7 +215,10 @@ result.pages.forEach(page => {
   console.log(`Page ${page.index}: ${page.markdown.substring(0, 100)}...`);
 });
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -272,7 +281,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 $apiKey = getenv('AVALAI_API_KEY');
 $apiUrl = 'https://api.avalai.ir/v1/ocr';
@@ -317,10 +329,11 @@ if ($err) {
 
 ```
 
+
 ### پردازش صفحات خاص
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -332,7 +345,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
     "pages": [0, 1, 2]
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/ocr",
@@ -349,7 +365,10 @@ response = requests.post(
 
 result = response.json()
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/ocr", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/ocr", {
   method: "POST",
   headers: {
     "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -369,10 +388,11 @@ const result = await response.json();
 
 ```
 
+
 ### استخراج تصاویر با OCR
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -386,7 +406,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
     "image_min_size": 100
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/ocr",
@@ -408,7 +431,10 @@ for page in result["pages"]:
     if page.get("images"):
         print(f"Page {page['index']} has {len(page['images'])} images")
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/ocr", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/ocr", {
   method: "POST",
   headers: {
     "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -435,10 +461,11 @@ result.pages.forEach(page => {
 
 ```
 
+
 ### پردازش یک تصویر
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -449,7 +476,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
     }
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/ocr",
@@ -463,7 +493,10 @@ response = requests.post(
 result = response.json()
 print(result["pages"][0]["markdown"])
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/ocr", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/ocr", {
   method: "POST",
   headers: {
     "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -482,6 +515,7 @@ const result = await response.json();
 console.log(result.pages[0].markdown);
 
 ```
+
 
 ### استفاده از Mistral AI SDK
 
@@ -514,8 +548,8 @@ print(ocr_response)
 
 از پارامتر `document_annotation_format` برای استخراج داده ساختاریافته از اسناد استفاده کنید. این برای پردازش فاکتورها، رسیدها، فرم‌ها و سایر اسناد ساختاریافته مفید است.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -542,7 +576,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
     }
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 import json
 import os
 
@@ -598,7 +635,10 @@ if result.get("document_annotation"):
     print(f"شماره فاکتور: {invoice_data.get('invoice_number')}")
     print(f"مبلغ کل: {invoice_data.get('total_amount')}")
 
-javascript=:const invoiceSchema = {
+```
+
+```javascript
+const invoiceSchema = {
   type: "json_schema",
   json_schema: {
     name: "invoice_data",
@@ -653,12 +693,13 @@ if (result.document_annotation) {
 
 ```
 
+
 ### جداول در فرمت HTML
 
 می‌توانید جداول را به جای markdown در فرمت HTML استخراج کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -670,7 +711,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
     "table_format": "html"
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 import os
 
 api_key = os.getenv("AVALAI_API_KEY")
@@ -692,7 +736,10 @@ result = response.json()
 for page in result["pages"]:
     print(page["markdown"])  # جداول در تگ‌های <table> HTML خواهند بود
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/ocr", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/ocr", {
   method: "POST",
   headers: {
     "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -714,6 +761,7 @@ result.pages.forEach(page => {
 });
 
 ```
+
 
 ## فرمت پاسخ
 

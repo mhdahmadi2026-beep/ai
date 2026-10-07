@@ -30,8 +30,8 @@ context قدیمی را به یک handoff پایدار تبدیل کنید:
 
 با یک درخواست معمولی `/v1/responses` یک state object فشرده بسازید، آن را در برنامه خود ذخیره کنید و همراه نوبت بعدی کاربر دوباره بفرستید.
 
-```language-selector
-python=:import json
+```python
+import json
 import os
 from openai import OpenAI
 
@@ -70,7 +70,10 @@ next_response = client.responses.create(
 
 print(next_response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -105,6 +108,7 @@ console.log(nextResponse.output_text);
 
 ```
 
+
 ## مرز فشرده‌سازی Hosted
 
 وقتی یک route از فشرده‌سازی hosted به سبک OpenAI پشتیبانی می‌کند:
@@ -132,8 +136,8 @@ console.log(nextResponse.output_text);
 
 این شکل را فقط پس از تأیید پشتیبانی route از `context_management` استفاده کنید. threshold باید پایین‌تر از context window مدل باشد و برای output و reasoning tokens حاشیه امن بگذارد.
 
-```language-selector
-python=:conversation = [
+```python
+conversation = [
     {
         "type": "message",
         "role": "user",
@@ -151,7 +155,10 @@ response = client.responses.create(
 # Append output items, including any encrypted compaction item.
 conversation.extend(response.output)
 
-javascript=:const conversation = [
+```
+
+```javascript
+const conversation = [
   {
     type: "message",
     role: "user",
@@ -173,12 +180,13 @@ conversation.push(...response.output);
 
 ```
 
+
 ### شکل Compact Endpoint مستقل
 
 وقتی `/v1/responses/compact` در دسترس است، current window را پیش از اضافه کردن پیام بعدی کاربر compact کنید. windowای که به compact endpoint می‌فرستید همچنان باید در context window مدل انتخاب‌شده جا شود.
 
-```language-selector
-python=:compacted = client.responses.compact(
+```python
+compacted = client.responses.compact(
     model="gpt-5.6-luna",
     input=long_input_items,
 )
@@ -198,7 +206,10 @@ next_response = client.responses.create(
     store=False,
 )
 
-javascript=:const compacted = await client.responses.compact({
+```
+
+```javascript
+const compacted = await client.responses.compact({
   model: "gpt-5.6-luna",
   input: longInputItems,
 });
@@ -219,6 +230,7 @@ const nextResponse = await client.responses.create({
 });
 
 ```
+
 
 ## بهترین شیوه‌ها
 

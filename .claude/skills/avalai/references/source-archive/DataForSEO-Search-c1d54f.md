@@ -22,8 +22,8 @@ DataForSEO در ارائه داده‌های SEO و جستجو با تمرکز �
 
 **نمونه استفاده:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/dataforseo-search \
+```bash
+curl https://api.avalai.ir/v1/search/dataforseo-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -31,7 +31,10 @@ bash=:curl https://api.avalai.ir/v1/search/dataforseo-search \
     "max_results": 10
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/dataforseo-search",
@@ -43,7 +46,10 @@ results = response.json()
 for result in results["results"]:
     print(f"{result['title']}: {result['url']}")
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/search/dataforseo-search", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/search/dataforseo-search", {
     method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -62,12 +68,13 @@ data.results.forEach(result => {
 
 ```
 
+
 ## جستجوی پیشرفته با فیلترینگ
 
 مقرون به صرفه بودن DataForSEO را با گزینه‌های فیلترینگ پیشرفته برای نتایج هدفمند ترکیب کنید.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search \
+```bash
+curl https://api.avalai.ir/v1/search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -82,7 +89,10 @@ bash=:curl https://api.avalai.ir/v1/search \
     "os": "windows"
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search",
@@ -103,7 +113,10 @@ response = requests.post(
 
 results = response.json()
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/search", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/search", {
     method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -126,6 +139,7 @@ javascript=:const response = await fetch("https://api.avalai.ir/v1/search", {
 const data = await response.json();
 
 ```
+
 
 ## پارامترهای درخواست
 

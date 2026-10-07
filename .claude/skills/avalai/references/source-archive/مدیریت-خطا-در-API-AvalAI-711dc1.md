@@ -404,8 +404,8 @@ checkpointهای conversation را بیرون از socket ذخیره کنید ت
 
 #### مثال ها
 
-```language-selector
-python=:import os
+```python
+import os
 import time
 import random
 from openai import OpenAI, APIError, RateLimitError
@@ -457,7 +457,10 @@ try:
 except Exception as e:
     print(f"Failed after multiple retries: {e}")
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -523,7 +526,10 @@ async function main() {
 
 main();
 
-bash=:#!/bin/bash
+```
+
+```bash
+#!/bin/bash
 
 # تابع ارسال درخواست API با منطق تلاش مجدد
 function make_api_request_with_retry {
@@ -591,7 +597,10 @@ else
   echo "خطا در ارسال درخواست: $result"
 fi
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -709,7 +718,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 require 'vendor/autoload.php';
 
 /**
@@ -793,14 +805,15 @@ try {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -816,7 +829,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -831,7 +847,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -842,6 +861,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`

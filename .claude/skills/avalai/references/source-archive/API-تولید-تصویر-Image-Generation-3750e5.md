@@ -63,8 +63,8 @@ POST https://api.avalai.ir/v1/images/generations
 
 برای الگوهای پرامپت production، متن داخل تصویر، بومی‌سازی، compositing و ویرایش دقیق، [ساخت تصویر با GPT Image](fa/examples/generate_images_with_gpt_image.md) را ببینید. آن راهنما محتوای رسمی OpenAI Cookbook برای GPT Image را برای AvalAI تطبیق می‌دهد.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/images/generations \
+```bash
+curl https://api.avalai.ir/v1/images/generations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -75,7 +75,10 @@ bash=:curl https://api.avalai.ir/v1/images/generations \
   "quality": "medium"
 }' | jq -r '.data[0].b64_json' | base64 --decode >sea-otter.png
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 import base64
 import os
 from openai import OpenAI
@@ -97,7 +100,10 @@ image_base64 = response.data[0].b64_json
 with open("sea-otter.png", "wb") as image_file:
     image_file.write(base64.b64decode(image_base64))
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -119,12 +125,13 @@ fs.writeFileSync("sea-otter.png", Buffer.from(imageBase64, "base64"));
 
 ```
 
+
 ### مثال ابزار تصویر در Responses
 
 فقط وقتی مدل و حساب AvalAI انتخابی شما از ابزار میزبانی‌شده `image_generation` پشتیبانی می‌کند از `/v1/responses` استفاده کنید. برای تولید و ویرایش تک‌مرحله‌ای، Image API مستقیم بالا مسیر قابل‌حمل‌تر است.
 
-```language-selector
-python=:import base64
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -152,7 +159,10 @@ if image_calls:
     with open("docs-mascot.png", "wb") as image_file:
         image_file.write(base64.b64decode(image_calls[0].result))
 
-javascript=:import fs from "fs";
+```
+
+```javascript
+import fs from "fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -182,6 +192,7 @@ if (imageCall) {
 }
 
 ```
+
 
 #### گزینه‌های ابزار Responses
 
@@ -221,8 +232,8 @@ if (imageCall) {
 
 ### مثال با پارامترهای اختصاصی ارائه‌دهنده
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -244,7 +255,10 @@ response = client.images.generate(
     response_format="b64_json",  # not supporting 'url'
 )
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
  apiKey: process.env.AVALAI_API_KEY,
@@ -268,12 +282,13 @@ const response = await client.images.generate({
 
 ```
 
+
 ### مدل‌های تصویر Alibaba Qwen
 
 مدل‌های تصویر Qwen از هم فرمت OpenAI SDK و هم فرمت بومی Alibaba Dashscope پشتیبانی می‌کنند و حداکثر انعطاف‌پذیری را برای توسعه‌دهندگان فراهم می‌کنند.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 import requests
 
@@ -339,7 +354,10 @@ dashscope_response = requests.post(
 
 print(f"نتیجه فرمت Dashscope: {dashscope_response.json()}")
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -391,6 +409,7 @@ const result = await dashscopeResponse.json();
 console.log("نتیجه فرمت Dashscope:", result);
 
 ```
+
 
 #### پارامترهای اختصاصی مدل Qwen
 
@@ -583,8 +602,8 @@ curl --fail-with-body https://api.avalai.ir/v1/images/edits \
 
 ### مثال ویرایش تصویر
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -611,7 +630,10 @@ with open("edited_image.png", "wb") as f:
 
 print("✅ تصویر ویرایش شد و با نام edited_image.png ذخیره شد")
 
-javascript=:import fs from 'fs';
+```
+
+```javascript
+import fs from 'fs';
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -637,12 +659,13 @@ console.log("✅ تصویر ویرایش شد و با نام edited_image.png ذ
 
 ```
 
+
 ### ویرایش تصویر با ورودی Base64 (بدون SDK)
 
 اگر در محیطی کار می‌کنید که SDK OpenAI در دسترس نیست، می‌توانید `v1/images/edits` را مستقیم از طریق HTTP صدا بزنید. برای درخواست‌های JSON ویرایش سبک GPT Image، تصویر منبع را به data URL با Base64 (`data:{mime_type};base64,{encoded_data}`) تبدیل کنید و طبق [فرمت‌های درخواست بالا](#فرمتهای-درخواست-و-ماسکها)، آن را در آرایه `images` با یک object شامل `image_url` بفرستید. این schema مورد انتظار برای referenceهای تصویری JSON است؛ `image_url` می‌تواند URL عمومی HTTPS هم باشد و برای تصویرهای آپلودشده از Files API می‌توانید `file_id` بفرستید. بسته به route، تصویر ویرایش‌شده ممکن است در `data[0].b64_json`، به‌صورت data URL با Base64 در `data[0].url` یا به‌صورت URL قابل دانلود برگردد؛ قبل از ذخیره bytes همه شکل‌های پشتیبانی‌شده را handle کنید.
 
-```language-selector
-bash=:# تصویر منبع را Base64 encode کنید (در Linux برای حذف line break از `base64 -w 0` استفاده کنید)
+```bash
+# تصویر منبع را Base64 encode کنید (در Linux برای حذف line break از `base64 -w 0` استفاده کنید)
 IMAGE_BASE64=$(base64 -i input_image.png | tr -d '\n')
 
 curl https://api.avalai.ir/v1/images/edits \
@@ -664,7 +687,10 @@ curl https://api.avalai.ir/v1/images/edits \
     end
 ' | base64 --decode >edited_image.png
 
-python=:import base64
+```
+
+```python
+import base64
 import os
 
 import requests
@@ -713,6 +739,7 @@ save_image_result(response.json()["data"][0], "edited_image.png")
 print("✅ تصویر ویرایش شد و با نام edited_image.png ذخیره شد")
 
 ```
+
 
 اگر route انتخابی فقط `multipart/form-data` را پشتیبانی می‌کند، به‌جای Base64 فایل خام را upload کنید — در curl از `-F "image=@input_image.png"` استفاده کنید و در Python `requests`، file handle باز را با `files={"image": image_file}` مثل مثال Qwen بالا بفرستید. data URLهای Base64 فقط برای درخواست‌های ویرایش JSON کاربرد دارند.
 

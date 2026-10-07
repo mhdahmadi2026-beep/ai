@@ -216,8 +216,8 @@ curl https://api.avalai.ir/v1/chat/completions \
 
 ### تکمیل گفتگوی پایه
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -234,7 +234,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
   ]
 }'
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 import os
 from openai import OpenAI
 
@@ -253,7 +256,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:# مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+# مثال جاوااسکریپت (JavaScript)
 import { OpenAI } from "openai";
 
 const client = new OpenAI({
@@ -271,7 +277,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:# مثال گو (Go)
+```
+
+```go
+# مثال گو (Go)
 package main
 
 import (
@@ -309,7 +318,10 @@ func main() {
     fmt.Println(resp.Choices[0].Message.Content) // دسترسی صحیح به محتوای پاسخ
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP برای تکمیل گفتگو از طریق AvalAI
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -363,14 +375,15 @@ if ($err) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -386,7 +399,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -401,7 +417,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -412,6 +431,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -709,8 +729,8 @@ ffmpeg -f s16le -ar 24000 -ac 1 -i speech.pcm speech.wav
 
 ### تولید صوتی پایه
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -728,7 +748,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     }
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -745,7 +768,10 @@ response = client.chat.completions.create(
 audio_data = response.choices[0].message.audio.data  # صدای رمزگذاری‌شده Base64
 transcript = response.choices[0].message.audio.transcript  # متن رونویسی
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -771,7 +797,10 @@ const response = await client.chat.completions.create({
 const audioData = response.choices[0].message.audio.data;
 const transcript = response.choices[0].message.audio.transcript;
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -811,7 +840,10 @@ func main() {
 	fmt.Printf("Transcript: %s\n", completion.Choices[0].Message.Audio.Transcript)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -843,6 +875,7 @@ $transcript = $response['choices'][0]['message']['audio']['transcript'];
 echo "متن رونویسی: " . $transcript . "\n";
 
 ```
+
 
 صدای بازگشتی به‌صورت Base64 در مسیر `choices[0].message.audio.data` قرار می‌گیرد. برای تبدیل آن به یک فایل MP3 قابل پخش مستقیم از ترمینال (به `jq` نیاز دارد)، یک دستور یک‌باره اجرا کنید:
 
@@ -934,8 +967,8 @@ Start-Process .\output.mp3
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -950,7 +983,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -965,7 +1001,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -976,6 +1015,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`

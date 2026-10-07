@@ -43,14 +43,17 @@ Gemini Robotics-ER 1.5 اولین مدل بینایی-زبانی گوگل است
 2. **محیط Python**: Python 3.8+ با pip نصب شده
 3. **کتابخانه‌های مورد نیاز**:
 
-```language-selector
-bash=:# نصب Google GenAI SDK (توصیه شده برای رباتیک)
+```bash
+# نصب Google GenAI SDK (توصیه شده برای رباتیک)
 pip install -U google-genai
 
 # یا نصب OpenAI SDK برای فرمت سازگار با OpenAI
 pip install -U openai
 
-python=:# نصب Google GenAI SDK
+```
+
+```python
+# نصب Google GenAI SDK
 import subprocess
 
 subprocess.run(["pip", "install", "-U", "google-genai"])
@@ -58,19 +61,29 @@ subprocess.run(["pip", "install", "-U", "google-genai"])
 # یا OpenAI SDK
 subprocess.run(["pip", "install", "-U", "openai"])
 
-javascript=:# نصب Google GenAI SDK
+```
+
+```javascript
+# نصب Google GenAI SDK
 npm install @google/generative-ai
 
 # یا OpenAI SDK
 npm install openai
 
-go=:# نصب OpenAI Go SDK
+```
+
+```go
+# نصب OpenAI Go SDK
 go get github.com/openai/openai-go
 
-php=:# نصب OpenAI PHP SDK
+```
+
+```php
+# نصب OpenAI PHP SDK
 composer require openai-php/client
 
 ```
+
 
 4. **فایل‌های تصویری/ویدیویی**: نمونه تصاویر یا ویدیوهای صحنه‌های رباتیک برای تست
 
@@ -80,8 +93,8 @@ composer require openai-php/client
 
 ### مثال: تشخیص اشیاء روی میز
 
-```language-selector
-bash=:# رمزگذاری تصویر به base64
+```bash
+# رمزگذاری تصویر به base64
 IMAGE_BASE64=$(base64 -w 0 workspace.jpg)
 
 curl -X POST \
@@ -108,7 +121,10 @@ curl -X POST \
     }
   }'
 
-python=:from google import genai
+```
+
+```python
+from google import genai
 from google.genai import types
 
 # مقداردهی اولیه کلاینت GenAI
@@ -147,7 +163,10 @@ response = client.models.generate_content(
 
 print(response.text)
 
-javascript=:import { GoogleGenerativeAI } from "@google/generative-ai";
+```
+
+```javascript
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from 'fs';
 
 // مقداردهی اولیه کلاینت
@@ -190,7 +209,10 @@ const result = await model.generateContent([
 
 console.log(result.response.text());
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -228,7 +250,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 require 'vendor/autoload.php';
 
@@ -267,6 +292,7 @@ $response = $client->chat()->create([
 echo $response['choices'][0]['message']['content'];
 
 ```
+
 
 **خروجی مورد انتظار:**
 
@@ -317,8 +343,8 @@ echo $response['choices'][0]['message']['content'];
 
 `gemini-robotics-er-1.5-preview` یک مدل رباتیک Gemini است و در AvalAI فعلا با مسیر نیتیو Gemini `v1beta` یا مسیر سازگار OpenAI یعنی `/v1/chat/completions` استفاده می‌شود. وقتی به همین مدل رباتیک نیاز دارید، مثال‌های بالا را نگه دارید. اگر برای یک گردش‌کار بینایی قابل‌حمل به شکل `/v1/responses` نیاز دارید، به یک مدل بینایی سازگار با Responses مثل `gpt-5.5` مهاجرت کنید، تصویر و prompt را داخل `input` بفرستید و متن نهایی را از `response.output_text` بخوانید.
 
-```language-selector
-python=:import base64
+```python
+import base64
 import json
 import os
 from openai import OpenAI
@@ -388,7 +414,10 @@ response = client.responses.create(
 objects = json.loads(response.output_text)["objects"]
 print(objects)
 
-javascript=:import fs from "fs";
+```
+
+```javascript
+import fs from "fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -453,7 +482,10 @@ const response = await client.responses.create({
 
 console.log(JSON.parse(response.output_text).objects);
 
-bash=:IMAGE_BASE64=$(base64 -w 0 workspace.jpg)
+```
+
+```bash
+IMAGE_BASE64=$(base64 -w 0 workspace.jpg)
 
 curl https://api.avalai.ir/v1/responses \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
@@ -509,6 +541,7 @@ curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 برای کنترل ربات، نسخه Responses را مهاجرت orchestration بدانید، نه مهاجرت ایمنی. calibration، بررسی برخورد، بازبینی انسانی و منطق توقف اضطراری را بیرون از مدل نگه دارید.
 
 </details>
@@ -523,8 +556,8 @@ curl https://api.avalai.ir/v1/responses \
 
 برای موقعیت‌یابی دقیق‌تر اشیاء، به جای نقاط منفرد، کادرهای محدودکننده دوبعدی درخواست کنید.
 
-```language-selector
-python=:prompt = """
+```python
+prompt = """
 Return bounding boxes as a JSON array with labels. Never return masks
 or code fencing. Limit to 25 objects. Include as many objects as you
 can identify on the table.
@@ -547,7 +580,10 @@ import json
 boxes = json.loads(response.text)
 print(f"تشخیص {len(boxes)} شیء")
 
-javascript=:const prompt = `
+```
+
+```javascript
+const prompt = `
 Return bounding boxes as a JSON array with labels. Limit to 25 objects.
 Format: [{"box_2d": [ymin, xmin, ymax, xmax], "label": <label>}]
 normalized to 0-1000. Values must be integers.
@@ -567,6 +603,7 @@ const boxes = JSON.parse(result.response.text());
 console.log(`تشخیص ${boxes.length} شیء`);
 
 ```
+
 
 **مثال خروجی:**
 
@@ -610,8 +647,8 @@ console.log(`تشخیص ${boxes.length} شیء`);
 
 اشیاء را در فریم‌های ویدیو برای کاربردهای رباتیک پویا ردیابی کنید.
 
-```language-selector
-python=:import cv2
+```python
+import cv2
 
 # تعریف اشیاء برای ردیابی
 queries = [
@@ -666,6 +703,7 @@ print(f"پردازش {len(tracking_data)} فریم")
 
 ```
 
+
 ![An example that shows objects being tracked through frames in a GIF](https://ai.google.dev/static/gemini-api/docs/images/robotics/object-tracking.gif)
 
 *شکل 3: ردیابی اشیاء در فریم‌های ویدیو که تحلیل زمانی حرکت اشیاء را نشان می‌دهد*
@@ -674,8 +712,8 @@ print(f"پردازش {len(tracking_data)} فریم")
 
 مسیرهای حرکتی را برای دستکاری‌کننده‌های رباتیک تولید کنید تا اشیاء را به طور ایمن جابجا کنند.
 
-```language-selector
-python=:prompt = """
+```python
+prompt = """
 Place a point on the red block, then 15 points for the trajectory of
 moving the red block to the top of the container on the left.
 The points should be labeled by order of the trajectory, from '0'
@@ -713,6 +751,7 @@ for waypoint in trajectory:
 
 ```
 
+
 ![An example showing the planned trajectory](https://ai.google.dev/static/gemini-api/docs/images/robotics/trajectories.png ':size=1000')
 
 *شکل 4: برنامه‌ریزی مسیر با 15 نقطه میانی که مسیر حرکت ربات را تعریف می‌کند*
@@ -723,8 +762,8 @@ for waypoint in trajectory:
 
 ### مثال: ایجاد فضا برای یک شیء
 
-```language-selector
-python=:prompt = """
+```python
+prompt = """
 Point to the object that I need to remove to make room for my laptop.
 Return JSON: [{"point": [y, x], "label": <label>}, ...].
 Points in [y, x] format normalized to 0-1000.
@@ -744,14 +783,15 @@ print(f"موقعیت: {result[0]['point']}")
 
 ```
 
+
 ![An example that shows which object needs to be moved for another object](https://ai.google.dev/static/gemini-api/docs/images/robotics/spatial-reasoning.png ':size=1000')
 
 *شکل 5: استدلال فضایی برای شناسایی شیئی که باید جابجا شود تا فضا برای لپ‌تاپ ایجاد گردد*
 
 ### مثال: برنامه‌ریزی وظایف چند مرحله‌ای
 
-```language-selector
-python=:prompt = """
+```python
+prompt = """
 Explain how to pack the lunch box and lunch bag. Point to each
 object you refer to. Each point format:
 [{"point": [y, x], "label": <object_name>}]
@@ -770,6 +810,7 @@ print(response.text)
 
 ```
 
+
 ![An image of a lunch box and items to put into it](https://ai.google.dev/static/gemini-api/docs/images/robotics/packing-lunch.png ':size=1000')
 
 *شکل 6: برنامه‌ریزی وظایف چند مرحله‌ای برای بسته‌بندی جعبه ناهار با دستورالعمل‌های گام به گام*
@@ -780,8 +821,8 @@ print(response.text)
 
 ### مثال: عملیات برداشتن و قرار دادن
 
-```language-selector
-python=:# تعریف API ربات شبیه‌سازی شده
+```python
+# تعریف API ربات شبیه‌سازی شده
 def move(x, y, high):
     """حرکت بازو به مختصات. high=True بازو را بالای صحنه بلند می‌کند."""
     print(f"حرکت به: x={x}, y={y}, z={'بالا' if high else 'پایین'}")
@@ -878,6 +919,7 @@ if json_match:
 
 ```
 
+
 ![Example of robot API scenario](https://ai.google.dev/static/gemini-api/docs/images/robotics/robot-api-example.png ':size=1000')
 
 *شکل 7: سناریوی وظیفه برداشتن و قرار دادن با بلوک آبی و کاسه نارنجی*
@@ -886,8 +928,8 @@ if json_match:
 
 مدل را قادر سازید تا کد بنویسد و برای رفتارهای تطبیقی اجرا کند.
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 prompt = """
@@ -913,6 +955,7 @@ for part in response.candidates[0].content.parts:
         print("نتیجه اجرا:", part.code_execution_result.output)
 
 ```
+
 
 ## بهترین شیوه‌ها
 

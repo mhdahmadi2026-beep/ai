@@ -65,8 +65,8 @@ Developer Mode در ChatGPT یک سطح ساخت app داخل ChatGPT است، �
 
 سرورهای Remote MCP از `server_url` استفاده می‌کنند؛ connectorها از `connector_id`. هر دو در `response.output` به شکل آیتم‌هایی مثل `mcp_list_tools`، `mcp_call` و گاهی `mcp_approval_request` دیده می‌شوند.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -90,7 +90,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -113,7 +116,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -131,6 +137,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 ## شکل connector
 

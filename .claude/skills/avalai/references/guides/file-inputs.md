@@ -50,3 +50,9 @@ URLs for public (smaller requests); Base64 for local under limits; file id for l
 - Chat PDF-URL sample abuses `file_id` for a URL (Claude-specific quirk).
 - Model ids used (claude-sonnet-4-6, gemini-2.5-flash) may be deprecated — check 10-deprecations.
 - Mistral sample uses `mistral-ocr-latest` (now ocr-4-0).
+
+## Audit addendum (exact lists from the source page)
+**Supported types / MIME:** images `image/jpeg` (.jpg .jpeg), `image/png`, `image/gif` (non-animated, single frame), `image/webp` · documents `application/pdf` · audio `audio/mp3`|`audio/mpeg`, `audio/wav`, `audio/m4a`, `audio/flac` · spreadsheets `.xlsx` (`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`), `.xls` (`application/vnd.ms-excel`).
+**OpenAI-style `input_file` on some `/v1/responses` routes only:** text/code (.txt .md .json .html .xml, source files), rich docs (.doc .docx .rtf .odt), presentations (.ppt .pptx), delimited sheets (.csv .tsv). Provider/endpoint dependent → convert to PDF (visual fidelity) or plain text when a MIME is rejected.
+**Inline size limits (AvalAI table):** Gemini 20 MB total inline data per request · Mistral OCR 50 MB per doc, ≤1000 pages · OpenAI 20 MB per request · Anthropic 32 MB per request · other models 20 MB default. May differ from upstream limits; higher needs → t.me/AvalAISupport; see api-reference/files.md.
+**Base64 data URL form:** `data:{mime_type};base64,{data}` with NO newlines (Linux: `base64 -w 0` or `| tr -d '\n'`), e.g. `data:image/jpeg;base64,/9j/4AAQSkZJRg...`, `data:application/pdf;base64,JVBERi0xLjQK...`, `data:audio/mp3;base64,SUQzAwAAAAA...`. Chat parts: `{"type":"image_url","image_url":{"url":…}}`, `{"type":"file","file":{"file_data":"data:…"}}` (or `file_id`); Responses parts: `input_image`, `input_file`, `input_text`.

@@ -22,8 +22,8 @@
 
 این شکل را فقط بعد از تأیید پشتیبانی Shell میزبانی‌شده در staging برای route انتخابی AvalAI استفاده کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -52,7 +52,10 @@ for item in response.output:
     if item.type == "shell_call":
         print("Shell call:", item.call_id, item.action)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -80,7 +83,10 @@ for (const item of response.output ?? []) {
   }
 }
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -97,6 +103,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 ## نکته‌های runtime میزبانی‌شده
 

@@ -30,8 +30,8 @@ tokenizerهای محلی متن برای تخمین سریع مفیدند، ام
 
 ## مثال Responses API
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -62,7 +62,10 @@ response = client.responses.create(
 )
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -95,6 +98,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 
 ```
+
 
 ## بررسی سازگاری با cURL
 
@@ -154,8 +158,8 @@ endpoint شمارش توکن OpenAI شکل درخواست Responses را می‌
 
 همان request body را استفاده کنید که قرار است به `responses.create` بفرستید. مثال زیر image input و function tool schema را با هم می‌شمارد؛ هر دو مورد با تخمین محلی به‌راحتی کمتر از مقدار واقعی محاسبه می‌شوند.
 
-```language-selector
-python=:count = client.responses.input_tokens.count(
+```python
+count = client.responses.input_tokens.count(
     model="gpt-5.6-luna",
     tools=[
         {
@@ -186,7 +190,10 @@ python=:count = client.responses.input_tokens.count(
 
 print(count.input_tokens)
 
-javascript=:const count = await client.responses.input_tokens.count({
+```
+
+```javascript
+const count = await client.responses.input_tokens.count({
   model: "gpt-5.6-luna",
   tools: [
     {
@@ -215,6 +222,7 @@ javascript=:const count = await client.responses.input_tokens.count({
 console.log(count.input_tokens);
 
 ```
+
 
 برای فایل‌های خصوصی، از [Files API](fa/api-reference/files.md) یا Base64 input مطابق route هدف استفاده کنید؛ فقط برای شمارش توکن، سند خصوصی را با URL عمومی منتشر نکنید.
 

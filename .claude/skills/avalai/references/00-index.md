@@ -264,3 +264,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | ALL PHP samples from docs (104 blocks, verbatim, by page) | — | examples/php-official-samples.md | DONE |
 | ALL Go samples from docs (113 blocks) | — | examples/go-official-samples.md | DONE |
 | Laravel/PHP complete guide (authored) | — | examples/laravel-complete-guide.md | DONE |
+| Full deprecated-model list (verbatim) | /deprecations | 10b-deprecations-complete.md | DONE |

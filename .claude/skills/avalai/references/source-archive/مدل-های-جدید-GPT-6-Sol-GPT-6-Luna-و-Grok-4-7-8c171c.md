@@ -84,8 +84,8 @@ OpenAI از بهبود استفاده دوباره از کش، از جمله ه�
 
 مقدار `AVALAI_API_KEY` را در محیط سرور قرار دهید. مثال‌ها یک درخواست ساده و یکسان Chat Completions را اجرا می‌کنند. برای مقایسه مدل‌های دیگر، فقط شناسه مدل را به `gpt-6-luna` یا `grok-4.7` تغییر دهید؛ تنظیمات تلاش استدلالی یا نمونه‌برداری مدل قدیمی را بدون تأیید پشتیبانی به کار نبرید.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -95,7 +95,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -115,7 +118,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -132,6 +138,7 @@ const response = await client.chat.completions.create({
 console.log(response.choices[0].message.content);
 
 ```
+
 
 ### پاسخ نمونه آموزشی
 
@@ -179,8 +186,8 @@ console.log(response.choices[0].message.content);
 
 برای یکپارچه‌سازی مبتنی بر Responses، درخواست زیر را به کار ببرید و در صورت نیاز `gpt-6-luna` را با `gpt-6-sol` جایگزین کنید. این مثال هیچ ابزار میزبانی‌شده‌ای درخواست نمی‌کند. چون پشتیبانی Responses در Grok 4.7 جزئی است، گردش‌کار آن همچنان باید جداگانه آزمایش شود.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/responses \
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -188,7 +195,10 @@ bash=:curl https://api.avalai.ir/v1/responses \
     "input": "Give a concise rollout checklist for a new API endpoint."
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -203,7 +213,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -218,6 +231,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 
 ```
+
 
 ---
 

@@ -22,8 +22,8 @@ Parallel AI در پردازش جستجوی موازی سریع تخصص دارد
 
 **نمونه استفاده:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/parallel_ai-search \
+```bash
+curl https://api.avalai.ir/v1/search/parallel_ai-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -31,7 +31,10 @@ bash=:curl https://api.avalai.ir/v1/search/parallel_ai-search \
     "max_results": 10
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/parallel_ai-search",
@@ -43,7 +46,10 @@ results = response.json()
 for result in results["results"]:
     print(f"{result['title']}: {result['url']}")
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/search/parallel_ai-search", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/search/parallel_ai-search", {
     method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -62,6 +68,7 @@ data.results.forEach(result => {
 
 ```
 
+
 ### Parallel AI Search Pro
 
 نسخه پیشرفته با ویژگی‌های اضافی و نتایج با کیفیت بالاتر.
@@ -78,8 +85,8 @@ data.results.forEach(result => {
 
 **نمونه استفاده:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search \
+```bash
+curl https://api.avalai.ir/v1/search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -90,7 +97,10 @@ bash=:curl https://api.avalai.ir/v1/search \
     "max_chars_per_result": 500
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search",
@@ -108,7 +118,10 @@ response = requests.post(
 results = response.json()
 print(f"Total results: {len(results['results'])}")
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/search", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/search", {
     method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -128,6 +141,7 @@ const data = await response.json();
 console.log(`Total results: ${data.results.length}`);
 
 ```
+
 
 ## پارامترهای درخواست
 

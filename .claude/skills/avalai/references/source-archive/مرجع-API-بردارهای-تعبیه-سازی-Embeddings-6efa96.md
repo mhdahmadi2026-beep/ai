@@ -41,8 +41,8 @@ POST https://api.avalai.ir/v1/embeddings
 
 ### تولید تعبیه‌سازی پایه
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -50,7 +50,10 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
   "input": "The food was delicious and the service was excellent."
 }'
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 import os
 from openai import OpenAI
 
@@ -68,7 +71,10 @@ embeddings = response.data[0].embedding
 print(f"Length of embedding vector: {len(embeddings)}")
 print(f"First few values: {embeddings[:5]}")
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -85,7 +91,10 @@ const embeddings = response.data[0].embedding;
 console.log(`Length of embedding vector: ${embeddings.length}`);
 console.log(`First few values: ${embeddings.slice(0, 5)}`);
 
-go=:// مثال گو (Go)
+```
+
+```go
+// مثال گو (Go)
 package main
 
 import (
@@ -117,7 +126,10 @@ func main() {
 	fmt.Printf("First few values: %v\n", embeddings[:5])
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP برای Embeddings از طریق AvalAI
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -170,6 +182,7 @@ if ($err) {
 
 ```
 
+
 ### چند ورودی در یک درخواست
 
 Embeddings API از batching ورودی با ارسال آرایه‌ای از رشته‌ها در `input` پشتیبانی می‌کند. API میزبانی‌شده `/v1/batches` در AvalAI یک قابلیت جداگانه برای پردازش آفلاین است؛ وقتی یک پاسخ فوری شامل embedding چند متن می‌خواهید، از همین فرم آرایه‌ای استفاده کنید.
@@ -195,8 +208,8 @@ for i, embedding in enumerate(response.data):
 
 وقتی مدل انتخابی از `dimensions` پشتیبانی می‌کند، اندازه هدف را هنگام ساخت embedding تعیین کنید تا همه بردارهای index شکل یکسان داشته باشند:
 
-```language-selector
-python=:response = client.embeddings.create(
+```python
+response = client.embeddings.create(
     model="text-embedding-3-large",
     input="مستندات routing مدل در AvalAI را خلاصه کن.",
     dimensions=1024,
@@ -206,7 +219,10 @@ python=:response = client.embeddings.create(
 vector = response.data[0].embedding
 print(len(vector))
 
-javascript=:const response = await client.embeddings.create({
+```
+
+```javascript
+const response = await client.embeddings.create({
   model: "text-embedding-3-large",
   input: "مستندات routing مدل در AvalAI را خلاصه کن.",
   dimensions: 1024,
@@ -216,7 +232,10 @@ javascript=:const response = await client.embeddings.create({
 const vector = response.data[0].embedding;
 console.log(vector.length);
 
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```
+
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -227,6 +246,7 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
   }'
 
 ```
+
 
 اگر ناچارید بردارها را بعد از تولید کوتاه کنید، قبل از مقایسه آن‌ها را نرمال کنید. روش پیشنهادی استفاده از پارامتر API است، چون ابعاد تولید، ذخیره‌سازی و search را صریح نگه می‌دارد.
 
@@ -433,8 +453,8 @@ for text, prediction in zip(new_texts, predictions):
 
 #### تعبیه‌سازی پایه Gemini
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -452,7 +472,10 @@ embedding = response.data[0].embedding
 print(f"ابعاد تعبیه‌سازی: {len(embedding)}")
 print(f"چند مقدار اول: {embedding[:5]}")
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -469,7 +492,10 @@ const embedding = response.data[0].embedding;
 console.log(`ابعاد تعبیه‌سازی: ${embedding.length}`);
 console.log(`چند مقدار اول: ${embedding.slice(0, 5)}`);
 
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```
+
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -479,12 +505,13 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
 
 ```
 
+
 #### ویژگی‌های پیشرفته با انواع وظایف
 
 تعبیه‌سازی‌ Gemini از بهینه‌سازی خاص وظیفه و ابعاد سفارشی پشتیبانی می‌کنند:
 
-```language-selector
-python=:# تعبیه‌سازی پیشرفته Gemini با نوع وظیفه و ابعاد سفارشی
+```python
+# تعبیه‌سازی پیشرفته Gemini با نوع وظیفه و ابعاد سفارشی
 response = client.embeddings.create(
     model="gemini-embedding-001",
     input=["معنای زندگی چیست؟", "هدف وجود چیست؟", "چگونه کیک درست کنم؟"],
@@ -511,7 +538,10 @@ if len(embeddings[0]) < 3072:
         normalized_embeddings.append(normalized)
     print("تعبیه‌سازی‌‌ها برای عملکرد بهینه نرمال‌سازی شدند")
 
-javascript=:// تعبیه‌سازی پیشرفته Gemini با نوع وظیفه و ابعاد سفارشی
+```
+
+```javascript
+// تعبیه‌سازی پیشرفته Gemini با نوع وظیفه و ابعاد سفارشی
 const response = await client.embeddings.create({
     model: "gemini-embedding-001",
     input: [
@@ -537,7 +567,10 @@ function dotProduct(a, b) {
 const similarity = dotProduct(embeddings[0], embeddings[1]);
 console.log(`شباهت بین دو متن اول: ${similarity.toFixed(4)}`);
 
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```
+
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -550,6 +583,7 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
   }'
 
 ```
+
 
 #### انواع وظایف پشتیبانی‌شده
 
@@ -568,8 +602,8 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
 
 همچنین می‌توانید از تعبیه‌سازی‌ Gemini از طریق نقطه پایانی SDK بومی Google GenAI برای دسترسی کامل به ویژگی‌های خاص Gemini استفاده کنید:
 
-```language-selector
-python=:import os
+```python
+import os
 from google import genai
 
 client = genai.Client(
@@ -607,7 +641,10 @@ similarity_matrix = cosine_similarity(embeddings_matrix)
 print(f"شباهت بین 'معنای زندگی' و 'هدف وجود': {similarity_matrix[0, 1]:.4f}")
 print(f"شباهت بین 'معنای زندگی' و 'درست کردن کیک': {similarity_matrix[0, 2]:.4f}")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -638,7 +675,10 @@ const advancedResponse = await ai.models.embedContent({
 
 console.log(`${advancedResponse.embeddings.length} تعبیه‌سازی تولید شد`);
 
-bash=:# تعبیه‌سازی پایه با API بومی
+```
+
+```bash
+# تعبیه‌سازی پایه با API بومی
 curl "https://api.avalai.ir/v1beta/models/gemini-embedding-001:embedContent" \
   -H "x-goog-api-key: $AVALAI_API_KEY" \
   -H 'Content-Type: application/json' \
@@ -664,6 +704,7 @@ curl "https://api.avalai.ir/v1beta/models/gemini-embedding-001:embedContent" \
   }'
 
 ```
+
 
 ### فرمت پاسخ تعبیه‌سازی Gemini (API بومی)
 

@@ -77,8 +77,8 @@ Claude Opus 5.5 از Anthropic برای عامل‌های کدنویسی طول�
 
 ### Chat Completions
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -89,7 +89,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -110,7 +113,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -128,6 +134,7 @@ const response = await client.chat.completions.create({
 console.log(response.choices[0].message.content);
 
 ```
+
 
 ### نمونه آموزشی پاسخ Chat Completions
 
@@ -179,8 +186,8 @@ console.log(response.choices[0].message.content);
 
 API بومی به بودجه خروجی نیاز دارد. بلوک‌های متنی را بر اساس نوع بخوانید و فرض نکنید اولین بلوک همیشه متن است؛ این فیلتر فقط برای نمایش است و نباید جایگزین محتوای کاملی شود که برای نوبت‌های بعدی نگه می‌دارید.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/messages \
+```bash
+curl https://api.avalai.ir/v1/messages \
   -H "Content-Type: application/json" \
   -H "x-api-key: $AVALAI_API_KEY" \
   -H "anthropic-version: 2023-06-01" \
@@ -192,7 +199,10 @@ bash=:curl https://api.avalai.ir/v1/messages \
     ]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from anthropic import Anthropic
 
 client = Anthropic(
@@ -213,7 +223,10 @@ message = client.messages.create(
 
 print("".join(block.text for block in message.content if block.type == "text"))
 
-javascript=:import Anthropic from "@anthropic-ai/sdk";
+```
+
+```javascript
+import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic({
   apiKey: process.env.AVALAI_API_KEY,
@@ -232,12 +245,13 @@ console.log(message.content.filter((block) => block.type === "text").map((block)
 
 ```
 
+
 ### Responses
 
 در کلاینت‌های Responses سازگار با OpenAI، به‌جای `messages` از `input` استفاده کنید و `response.output_text` را بخوانید. فیلدهای استدلال اختصاصی OpenAI را کپی نکنید و صرف پشتیبانی نقطه پایانی را به معنی دسترسی به ابزارهای میزبانی‌شده ندانید.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/responses \
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -246,7 +260,10 @@ bash=:curl https://api.avalai.ir/v1/responses \
     "input": "Review a staged database migration and list verification and rollback checks."
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -262,7 +279,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -278,6 +298,7 @@ const response = await client.responses.create({
 console.log(response.output_text);
 
 ```
+
 
 ## منابع مرتبط
 

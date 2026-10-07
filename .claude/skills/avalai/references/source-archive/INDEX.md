@@ -1,6 +1,6 @@
 # Source archive — verbatim AvalAI doc pages as pasted by the user (lossless; ~173 pages)
 
-Use for exact wording, every code sample, full tables. `references/**` holds the curated/organized knowledge; this folder is the raw truth when details matter. Pages may include Persian text, `language-selector` code blocks (python/javascript/bash/go/php where the docs have them) and frontmatter. Prices/limits inside are snapshots — verify live (`scripts/avalai_live.py`).
+Use for exact wording, every code sample, full tables. `references/**` holds the curated/organized knowledge; this folder is the raw truth when details matter. Pages may include Persian text, standard fenced code blocks (converted from the docs' language-selector tabs: bash/python/javascript/go/php) (python/javascript/bash/go/php where the docs have them) and frontmatter. Prices/limits inside are snapshots — verify live (`scripts/avalai_live.py`).
 
 | Title | File | Bytes |
 |---|---|---:|

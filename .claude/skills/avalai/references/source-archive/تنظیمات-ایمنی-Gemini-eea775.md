@@ -45,8 +45,8 @@
 
 ### مثال پایه
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 # مقداردهی اولیه کلاینت با AvalAI
@@ -83,7 +83,10 @@ response = client.models.generate_content(
 
 print(response.text)
 
-javascript=:import { GoogleGenAI, HarmCategory, HarmBlockThreshold } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI, HarmCategory, HarmBlockThreshold } from "@google/genai";
 
 // مقداردهی اولیه کلاینت با AvalAI
 const client = new GoogleGenAI({
@@ -120,7 +123,10 @@ const response = await client.models.generateContent({
 
 console.log(response.text);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -177,7 +183,10 @@ func main() {
 	}
 }
 
-bash=:curl "https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent" \
+```
+
+```bash
+curl "https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent" \
   -H "Content-Type: application/json" \
   -H "x-goog-api-key: $AVALAI_API_KEY" \
   -d '{
@@ -206,12 +215,13 @@ bash=:curl "https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent
 
 ```
 
+
 ### غیرفعال کردن فیلترهای ایمنی
 
 برای موارد استفاده خاص که نیاز به کنترل کامل بر فیلترینگ محتوا دارید، می‌توانید فیلترهای ایمنی را کاملا غیرفعال کنید:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -244,7 +254,10 @@ response = client.models.generate_content(
     config=types.GenerateContentConfig(safety_settings=safety_settings),
 )
 
-javascript=:import { GoogleGenAI, HarmCategory, HarmBlockThreshold } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI, HarmCategory, HarmBlockThreshold } from "@google/genai";
 
 const client = new GoogleGenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -265,7 +278,10 @@ const response = await client.models.generateContent({
   config: { safetySettings: safetySettings },
 });
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -295,7 +311,10 @@ func main() {
 	fmt.Println(resp.Candidates[0].Content.Parts[0])
 }
 
-bash=:curl "https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent" \
+```
+
+```bash
+curl "https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent" \
   -H "Content-Type: application/json" \
   -H "x-goog-api-key: $AVALAI_API_KEY" \
   -d '{
@@ -312,6 +331,7 @@ bash=:curl "https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent
 
 ```
 
+
 > **هشدار:** غیرفعال کردن فیلترهای ایمنی به این معناست که محتوای بالقوه مضر ممکن است تولید شود. از این گزینه با مسئولیت استفاده کنید و در صورت نیاز فیلترینگ محتوای خود را پیاده‌سازی کنید.
 
 ## استفاده از تنظیمات ایمنی با OpenAI SDK (extra_body)
@@ -322,8 +342,8 @@ bash=:curl "https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent
 
 ### مثال پایه با OpenAI SDK
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -355,7 +375,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -379,7 +402,10 @@ const response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -416,7 +442,10 @@ func main() {
 	fmt.Println(resp.Choices[0].Message.Content)
 }
 
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```
+
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -434,14 +463,15 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-2.5-flash` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -457,7 +487,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -472,7 +505,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -483,6 +519,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -495,8 +532,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### غیرفعال کردن فیلترهای ایمنی با OpenAI SDK
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -514,7 +551,10 @@ response = client.chat.completions.create(
     },
 )
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -534,7 +574,10 @@ const response = await client.chat.completions.create({
   ],
 });
 
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```
+
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -550,14 +593,15 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-2.5-flash` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -573,7 +617,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -588,7 +635,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -599,6 +649,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -615,8 +666,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 هنگامی که پاسخی به دلیل تنظیمات ایمنی مسدود می‌شود، می‌توانید بازخورد ایمنی را بررسی کنید تا دلیل آن را درک کنید:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -641,7 +692,10 @@ if response.candidates:
                 print(f"احتمال: {rating.probability}")
                 print(f"مسدود شده: {rating.blocked}")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const client = new GoogleGenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -671,7 +725,10 @@ if (response.candidates) {
   }
 }
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -709,7 +766,10 @@ func main() {
 	}
 }
 
-bash=:# پاسخ شامل رتبه‌بندی‌های ایمنی در خروجی JSON خواهد بود
+```
+
+```bash
+# پاسخ شامل رتبه‌بندی‌های ایمنی در خروجی JSON خواهد بود
 # ساختار پاسخ نمونه با بازخورد ایمنی:
 # {
 #   "candidates": [{
@@ -730,6 +790,7 @@ curl "https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent" \
   -d '{"contents": [{"parts": [{"text": "پرامپت شما اینجا"}]}]}'
 
 ```
+
 
 ### فیلدهای بازخورد ایمنی
 

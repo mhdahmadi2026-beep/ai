@@ -34,8 +34,8 @@ Mistral OCR یک مدل OCR پیشرفته است که به شما امکان م
 
 می‌توانید یک سند PDF را با ارائه URL آن پردازش کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -47,7 +47,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
  "include_image_base64": true
 }' -o ocr_output.json
 
-python=:from mistralai import Mistral
+```
+
+```python
+from mistralai import Mistral
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
 
@@ -64,7 +67,10 @@ ocr_response = client.ocr.process(
 
 print(ocr_response)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -84,7 +90,10 @@ const ocrResponse = await client.ocr.process({
 
 console.log(ocrResponse);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -151,7 +160,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 // API configuration
 $apiKey = getenv('AVALAI_API_KEY');
@@ -196,12 +208,13 @@ curl_close($ch);
 
 ```
 
+
 ### استفاده از PDF کدگذاری شده با Base64
 
 از آنجا که اندپوینت `v1/files` هنوز به طور کامل در دسترس نیست، می‌توانید از کدگذاری base64 برای پردازش مستقیم فایل‌های PDF استفاده کنید:
 
-```language-selector
-bash=:# تبدیل PDF به base64
+```bash
+# تبدیل PDF به base64
 PDF_BASE64=$(base64 -i document.pdf) # در لینوکس از -w 0 برای عدم شکست خط استفاده کنید
 
 # پردازش PDF کدگذاری شده
@@ -217,7 +230,10 @@ curl https://api.avalai.ir/v1/ocr \
  "include_image_base64": true
 }' -o ocr_output.json
 
-python=:import base64
+```
+
+```python
+import base64
 from mistralai import Mistral
 
 # خواندن و کدگذاری فایل PDF
@@ -240,7 +256,10 @@ ocr_response = client.ocr.process(
 
 print(ocr_response)
 
-javascript=:import fs from "fs";
+```
+
+```javascript
+import fs from "fs";
 import { Mistral } from "mistralai";
 
 // خواندن و کدگذاری فایل PDF
@@ -267,7 +286,10 @@ const ocrResponse = await client.ocr.process({
 
 console.log(ocrResponse);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -344,7 +366,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 // API configuration
 $apiKey = getenv('AVALAI_API_KEY');
@@ -394,12 +419,13 @@ curl_close($ch);
 
 ```
 
+
 ### پردازش صفحات خاص
 
 می‌توانید با استفاده از پارامتر `pages` مشخص کنید که کدام صفحات پردازش شوند:
 
-```language-selector
-python=:from mistralai import Mistral
+```python
+from mistralai import Mistral
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
 
@@ -417,7 +443,10 @@ ocr_response = client.ocr.process(
 
 print(ocr_response)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -438,7 +467,10 @@ const ocrResponse = await client.ocr.process({
 
 console.log(ocrResponse);
 
-bash=:curl https://api.avalai.ir/v1/ocr \
+```
+
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -451,7 +483,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
  "include_image_base64": true
 }' -o ocr_output.json
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -513,7 +548,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 // API configuration
 $apiKey = getenv('AVALAI_API_KEY');
@@ -558,6 +596,7 @@ curl_close($ch);
 
 ```
 
+
 ### نمونه خروجی
 
 API OCR هم محتوای متن استخراج شده در قالب مارک‌داون و هم متادیتا در مورد ساختار سند را برمی‌گرداند:
@@ -592,8 +631,8 @@ API OCR هم محتوای متن استخراج شده در قالب مارک‌
 
 می‌توانید تصاویر را با ارائه URL مستقیم پردازش کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -604,7 +643,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
  }
 }' -o ocr_output.json
 
-python=:from mistralai import Mistral
+```
+
+```python
+from mistralai import Mistral
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
 
@@ -621,7 +663,10 @@ ocr_response = client.ocr.process(
 
 print(ocr_response)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -642,7 +687,10 @@ const ocrResponse = await client.ocr.process({
 
 console.log(ocrResponse);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -703,7 +751,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 // API configuration
 $apiKey = getenv('AVALAI_API_KEY');
@@ -747,12 +798,13 @@ curl_close($ch);
 
 ```
 
+
 ### استفاده از تصاویر کدگذاری شده با Base64
 
 همچنین می‌توانید تصاویر را با استفاده از کدگذاری base64 پردازش کنید:
 
-```language-selector
-bash=:# تبدیل تصویر به base64
+```bash
+# تبدیل تصویر به base64
 IMAGE_BASE64=$(base64 -i receipt.jpg) # در لینوکس از -w 0 برای عدم شکست خط استفاده کنید
 
 # پردازش تصویر کدگذاری شده
@@ -767,7 +819,10 @@ curl https://api.avalai.ir/v1/ocr \
  }
 }' -o ocr_output.json
 
-python=:import base64
+```
+
+```python
+import base64
 from mistralai import Mistral
 
 # خواندن و کدگذاری فایل تصویر
@@ -789,7 +844,10 @@ ocr_response = client.ocr.process(
 
 print(ocr_response)
 
-javascript=:import fs from "fs";
+```
+
+```javascript
+import fs from "fs";
 import { Mistral } from "mistralai";
 
 // خواندن و کدگذاری فایل تصویر
@@ -815,7 +873,10 @@ const ocrResponse = await client.ocr.process({
 
 console.log(ocrResponse);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -886,7 +947,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 // API configuration
 $apiKey = getenv('AVALAI_API_KEY');
@@ -935,6 +999,7 @@ curl_close($ch);
 
 ```
 
+
 ### مثال: پردازش یک رسید
 
 در اینجا یک مثال خاص از پردازش تصویر یک رسید و استخراج اطلاعات ساختاریافته آورده شده است:
@@ -975,8 +1040,8 @@ print(receipt_text)
 
 ### پاسخگویی به سؤالات با مقالات علمی
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -998,7 +1063,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
  ]
 }'
 
-python=:from mistralai import Mistral
+```
+
+```python
+from mistralai import Mistral
 from mistralai.models import UserMessage
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
@@ -1016,7 +1084,10 @@ response = client.chat.complete(model="mistral-small-latest", messages=messages)
 
 print(response.choices[0].message.content)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -1045,7 +1116,10 @@ const response = await client.chat.complete({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -1130,7 +1204,10 @@ func main() {
 	fmt.Println(content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 // API configuration
 $apiKey = getenv('AVALAI_API_KEY');
@@ -1182,14 +1259,15 @@ curl_close($ch);
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `mistral-small-latest` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1212,7 +1290,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1234,7 +1315,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1259,6 +1343,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `choices[0].message.content` → `response.output_text`
@@ -1272,8 +1357,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 همچنین می‌توانید از درک سند برای استخراج اطلاعات خاص از رسیدها استفاده کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -1295,7 +1380,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
  ]
 }'
 
-python=:from mistralai import Mistral
+```
+
+```python
+from mistralai import Mistral
 from mistralai.models import UserMessage
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
@@ -1319,7 +1407,10 @@ response = client.chat.complete(model="mistral-small-latest", messages=messages)
 
 print(response.choices[0].message.content)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -1352,7 +1443,10 @@ const response = await client.chat.complete({
 
 console.log(response.choices[0].message.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -1437,7 +1531,10 @@ func main() {
 	fmt.Println(content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 // API configuration
 $apiKey = getenv('AVALAI_API_KEY');
@@ -1489,14 +1586,15 @@ curl_close($ch);
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `mistral-small-latest` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1519,7 +1617,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1541,7 +1642,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1566,6 +1670,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `choices[0].message.content` → `response.output_text`
@@ -1585,8 +1690,8 @@ API OCR از حالت‌های خروجی JSON بومی پشتیبانی می‌
 
 با تنظیم `document_annotation_format` به `{"type": "json_object"}` حالت JSON را فعال کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -1600,7 +1705,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
   }
 }'
 
-python=:from mistralai import Mistral
+```
+
+```python
+from mistralai import Mistral
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
 
@@ -1619,7 +1727,10 @@ ocr_response = client.ocr.process(
 # فیلد document_annotation حاوی JSON ساختاریافته خواهد بود
 print(ocr_response.document_annotation)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -1644,12 +1755,13 @@ console.log(ocrResponse.document_annotation);
 
 ```
 
+
 #### استفاده از حالت JSON Schema
 
 برای کنترل بیشتر بر ساختار خروجی، از حالت JSON Schema برای تعریف دقیق فیلدهایی که می‌خواهید استخراج کنید استفاده کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -1685,7 +1797,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
   }
 }'
 
-python=:from mistralai import Mistral
+```
+
+```python
+from mistralai import Mistral
 import json
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
@@ -1736,7 +1851,10 @@ print(f"جمع کل: ${receipt_data.get('total')}")
 for item in receipt_data.get("items", []):
     print(f"  - {item['name']}: ${item['price']}")
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -1793,6 +1911,7 @@ for (const item of receiptData.items || []) {
 
 ```
 
+
 #### نمونه پاسخ JSON Schema
 
 هنگام استفاده از حالت JSON Schema، فیلد `document_annotation` در پاسخ حاوی JSON ساختاریافته مطابق با schema شما خواهد بود:
@@ -1823,8 +1942,8 @@ for (const item of receiptData.items || []) {
 
 می‌توانید نحوه استخراج جداول از اسناد را با استفاده از پارامتر `table_format` کنترل کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -1837,7 +1956,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
   "pages": [0]
 }'
 
-python=:from mistralai import Mistral
+```
+
+```python
+from mistralai import Mistral
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
 
@@ -1857,7 +1979,10 @@ ocr_response = client.ocr.process(
 # جداول در سند به صورت HTML قالب‌بندی خواهند شد
 print(ocr_response.pages[0].markdown)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -1882,12 +2007,13 @@ console.log(ocrResponse.pages[0].markdown);
 
 ```
 
+
 ### استخراج سربرگ و پاورقی
 
 می‌توانید سربرگ‌ها و پاورقی‌های سند را به صورت جداگانه با استفاده از پارامترهای `extract_header` و `extract_footer` استخراج کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/ocr \
+```bash
+curl https://api.avalai.ir/v1/ocr \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -1901,7 +2027,10 @@ bash=:curl https://api.avalai.ir/v1/ocr \
   "pages": [0, 1, 2]
 }'
 
-python=:from mistralai import Mistral
+```
+
+```python
+from mistralai import Mistral
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
 
@@ -1921,7 +2050,10 @@ ocr_response = client.ocr.process(
 
 print(ocr_response)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -1945,6 +2077,7 @@ const ocrResponse = await client.ocr.process({
 console.log(ocrResponse);
 
 ```
+
 
 ### پردازش دسته‌ای
 

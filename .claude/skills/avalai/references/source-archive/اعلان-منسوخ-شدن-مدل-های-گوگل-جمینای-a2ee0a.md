@@ -64,8 +64,8 @@
 
 اگر از یک مدل منسوخ شده استفاده می‌کردید، پیاده‌سازی خود را به‌روزرسانی کنید:
 
-```language-selector
-bash=:# قبل (منسوخ شده)
+```bash
+# قبل (منسوخ شده)
 curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
@@ -93,7 +93,10 @@ curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:# قبل (منسوخ شده)
+```
+
+```python
+# قبل (منسوخ شده)
 from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -121,7 +124,10 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 
-javascript=:// قبل (منسوخ شده)
+```
+
+```javascript
+// قبل (منسوخ شده)
 import { OpenAI } from "openai";
 
 const client = new OpenAI({
@@ -153,6 +159,7 @@ const completion = await client.chat.completions.create({
 console.log(completion.choices[0].message.content);
 
 ```
+
 
 ### پشتیبانی و کمک
 

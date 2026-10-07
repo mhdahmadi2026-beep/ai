@@ -36,15 +36,18 @@ API کاربر امکانات زیر را به شما می‌دهد:
 
 تمام نقاط پایانی API کاربر نیاز به احراز هویت با توکن Bearer و کلید API AvalAI دارند.
 
-```language-selector
-bash=:# تنظیم کلید API
+```bash
+# تنظیم کلید API
 export AVALAI_API_KEY="your-avalai-api-key"
 
 # نمونه درخواست
 curl -X GET "https://api.avalai.ir/user/v1/credit" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 from openai import OpenAI
 import requests
 
@@ -55,7 +58,10 @@ headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/js
 response = requests.get("https://api.avalai.ir/user/v1/credit", headers=headers)
 print(response.json())
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 const apiKey = process.env.AVALAI_API_KEY;
 
 const response = await fetch("https://api.avalai.ir/user/v1/credit", {
@@ -69,7 +75,10 @@ const response = await fetch("https://api.avalai.ir/user/v1/credit", {
 const data = await response.json();
 console.log(data);
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -98,7 +107,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 $apiKey = getenv('AVALAI_API_KEY');
 
@@ -118,6 +130,7 @@ print_r($data);
 ?>
 
 ```
+
 
 ### خطاهای احراز هویت
 
@@ -172,11 +185,14 @@ print_r($data);
 
 #### درخواست
 
-```language-selector
-bash=:curl -X GET "https://api.avalai.ir/user/v1/credit" \
+```bash
+curl -X GET "https://api.avalai.ir/user/v1/credit" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 import requests
 
 api_key = "your-avalai-api-key"
@@ -187,7 +203,10 @@ credit_info = response.json()
 print(f"اعتبار باقیمانده: {credit_info['remaining_irt']} تومان")
 print(f"سطح حساب: {credit_info['account_tier']}")
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 const response = await fetch("https://api.avalai.ir/user/v1/credit", {
   headers: { Authorization: `Bearer ${process.env.AVALAI_API_KEY}` },
 });
@@ -196,7 +215,10 @@ const creditInfo = await response.json();
 console.log(`اعتبار باقیمانده: ${creditInfo.remaining_irt} تومان`);
 console.log(`سطح حساب: ${creditInfo.account_tier}`);
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -224,7 +246,10 @@ func main() {
 	fmt.Printf("اعتبار باقیمانده: %.2f تومان\n", credit.RemainingIRT)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 $apiKey = getenv('AVALAI_API_KEY');
 
@@ -241,6 +266,7 @@ echo "سطح حساب: " . $credit['account_tier'] . "\n";
 ?>
 
 ```
+
 
 #### پاسخ
 
@@ -348,8 +374,8 @@ echo "سطح حساب: " . $credit['account_tier'] . "\n";
 | `status_code` | int | - | فیلتر بر اساس کد وضعیت HTTP |
 #### مثال‌ها
 
-```language-selector
-bash=:# ۲۴ ساعت گذشته (پیش‌فرض)
+```bash
+# ۲۴ ساعت گذشته (پیش‌فرض)
 curl -X GET "https://api.avalai.ir/user/v1/transactions" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
@@ -365,7 +391,10 @@ curl -X GET "https://api.avalai.ir/user/v1/transactions?start_date=2025-01-01&en
 curl -X GET "https://api.avalai.ir/user/v1/transactions?model=gpt-5.5&page_size=50" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 import requests
 
 api_key = "your-avalai-api-key"
@@ -385,7 +414,10 @@ transactions = response.json()
 for tx in transactions["transactions"]:
     print(f"{tx['id']}: {tx['model']} - {tx['tokens']['total']} توکن")
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 const apiKey = process.env.AVALAI_API_KEY;
 
 // با فیلترها
@@ -407,7 +439,10 @@ data.transactions.forEach((tx) => {
   console.log(`${tx.id}: ${tx.model} - ${tx.tokens.total} توکن`);
 });
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -436,7 +471,10 @@ func main() {
 	fmt.Printf("تعداد کل تراکنش‌ها: %v\n", result["total"])
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 $apiKey = getenv('AVALAI_API_KEY');
 
@@ -460,6 +498,7 @@ foreach ($data['transactions'] as $tx) {
 ?>
 
 ```
+
 
 #### پاسخ
 
@@ -600,8 +639,8 @@ print(response.output_text)
 
 #### مثال
 
-```language-selector
-bash=:# ابتدا یک فراخوانی API انجام دهید و هدر avalai-request-id را ذخیره کنید
+```bash
+# ابتدا یک فراخوانی API انجام دهید و هدر avalai-request-id را ذخیره کنید
 curl -i "https://api.avalai.ir/v1/chat/completions" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -621,7 +660,10 @@ curl -X POST "https://api.avalai.ir/user/v1/transactions/lookup" \
     "transaction_ids": ["019ac4a0-a8f4-7041-845f-3ea8f15dcf1a"]
   }'
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 import requests
 import time
 
@@ -655,7 +697,10 @@ if transaction["summary"]["found"] > 0:
     print(f"هزینه دقیق: {tx['cost']['unit']} دلار")
     print(f"هزینه دقیق: {tx['cost']['paid_irt']} تومان")
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 const apiKey = process.env.AVALAI_API_KEY;
 const headers = {
   Authorization: `Bearer ${apiKey}`,
@@ -696,7 +741,10 @@ if (data.summary.found > 0) {
   console.log(`هزینه دقیق: ${tx.cost.paid_irt} تومان`);
 }
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -746,7 +794,10 @@ func main() {
 	fmt.Printf("نتیجه: %+v\n", result)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 $apiKey = getenv('AVALAI_API_KEY');
 
@@ -802,14 +853,15 @@ if ($data['summary']['found'] > 0) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -825,7 +877,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -840,7 +895,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -851,6 +909,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -1100,11 +1159,14 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 **گروه‌بندی بر اساس مدل (پیش‌فرض):**
 
-```language-selector
-bash=:curl -X GET "https://api.avalai.ir/user/v1/transactions/summary" \
+```bash
+curl -X GET "https://api.avalai.ir/user/v1/transactions/summary" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 import requests
 
 response = requests.get(
@@ -1113,7 +1175,10 @@ response = requests.get(
 )
 print(response.json())
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 const response = await fetch(
   "https://api.avalai.ir/user/v1/transactions/summary",
   {
@@ -1122,7 +1187,10 @@ const response = await fetch(
 );
 console.log(await response.json());
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -1144,7 +1212,10 @@ func main() {
 	fmt.Printf("%+v\n", result)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 $ch = curl_init('https://api.avalai.ir/user/v1/transactions/summary');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -1157,6 +1228,7 @@ print_r(json_decode($response, true));
 ?>
 
 ```
+
 
 **پاسخ (group_by=model):**
 
@@ -1188,18 +1260,24 @@ print_r(json_decode($response, true));
 
 **گروه‌بندی بر اساس ارائه‌دهنده:**
 
-```language-selector
-bash=:curl -X GET "https://api.avalai.ir/user/v1/transactions/summary?group_by=provider" \
+```bash
+curl -X GET "https://api.avalai.ir/user/v1/transactions/summary?group_by=provider" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 response = requests.get(
     "https://api.avalai.ir/user/v1/transactions/summary",
     headers={"Authorization": f"Bearer {api_key}"},
     params={"group_by": "provider"},
 )
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 const response = await fetch(
   "https://api.avalai.ir/user/v1/transactions/summary?group_by=provider",
   {
@@ -1207,11 +1285,17 @@ const response = await fetch(
   },
 );
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 req, _ := http.NewRequest("GET", "https://api.avalai.ir/user/v1/transactions/summary?group_by=provider", nil)
 req.Header.Set("Authorization", "Bearer "+os.Getenv("AVALAI_API_KEY"))
 
-php=:<?php
+```
+
+```php
+<?php
 $ch = curl_init('https://api.avalai.ir/user/v1/transactions/summary?group_by=provider');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer ' . getenv('AVALAI_API_KEY')]);
@@ -1219,6 +1303,7 @@ $response = curl_exec($ch);
 ?>
 
 ```
+
 
 **پاسخ (group_by=provider):**
 
@@ -1250,18 +1335,24 @@ $response = curl_exec($ch);
 
 **گروه‌بندی بر اساس تاریخ:**
 
-```language-selector
-bash=:curl -X GET "https://api.avalai.ir/user/v1/transactions/summary?group_by=date&hours_ago=168" \
+```bash
+curl -X GET "https://api.avalai.ir/user/v1/transactions/summary?group_by=date&hours_ago=168" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 response = requests.get(
     "https://api.avalai.ir/user/v1/transactions/summary",
     headers={"Authorization": f"Bearer {api_key}"},
     params={"group_by": "date", "hours_ago": 168},  # ۷ روز
 )
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 const response = await fetch(
   "https://api.avalai.ir/user/v1/transactions/summary?group_by=date&hours_ago=168",
   {
@@ -1269,11 +1360,17 @@ const response = await fetch(
   },
 );
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 req, _ := http.NewRequest("GET", "https://api.avalai.ir/user/v1/transactions/summary?group_by=date&hours_ago=168", nil)
 req.Header.Set("Authorization", "Bearer "+os.Getenv("AVALAI_API_KEY"))
 
-php=:<?php
+```
+
+```php
+<?php
 $params = http_build_query(['group_by' => 'date', 'hours_ago' => 168]);
 $ch = curl_init('https://api.avalai.ir/user/v1/transactions/summary?' . $params);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -1281,6 +1378,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer ' . getenv('AVALAI_
 ?>
 
 ```
+
 
 **پاسخ (group_by=date):**
 
@@ -1312,11 +1410,14 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer ' . getenv('AVALAI_
 
 **گروه‌بندی بر اساس ساعت:**
 
-```language-selector
-bash=:curl -X GET "https://api.avalai.ir/user/v1/transactions/summary?group_by=hour&hours_ago=24" \
+```bash
+curl -X GET "https://api.avalai.ir/user/v1/transactions/summary?group_by=hour&hours_ago=24" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:# مثال پایتون (Python) - تحلیل الگوهای ساعتی
+```
+
+```python
+# مثال پایتون (Python) - تحلیل الگوهای ساعتی
 response = requests.get(
     "https://api.avalai.ir/user/v1/transactions/summary",
     headers={"Authorization": f"Bearer {api_key}"},
@@ -1329,7 +1430,10 @@ for hour_data in data["summary"]:
         f"ساعت {hour_data['hour']}: {hour_data['count']} درخواست، {hour_data['total_cost_unit']} دلار"
     )
 
-javascript=:// مثال جاوااسکریپت (JavaScript) - نمودار هزینه ساعتی
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript) - نمودار هزینه ساعتی
 const response = await fetch(
   "https://api.avalai.ir/user/v1/transactions/summary?group_by=hour&hours_ago=24",
   {
@@ -1342,7 +1446,10 @@ data.summary.forEach((hour) => {
   console.log(`ساعت ${hour.hour}: ${hour.count} درخواست`);
 });
 
-go=:// مثال Go - گزارش تفصیلی ساعتی
+```
+
+```go
+// مثال Go - گزارش تفصیلی ساعتی
 req, _ := http.NewRequest("GET", "https://api.avalai.ir/user/v1/transactions/summary?group_by=hour&hours_ago=24", nil)
 req.Header.Set("Authorization", "Bearer "+os.Getenv("AVALAI_API_KEY"))
 
@@ -1352,7 +1459,10 @@ defer resp.Body.Close()
 var result map[string]interface{}
 json.NewDecoder(resp.Body).Decode(&result)
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP - تحلیل الگوی استفاده
 $params = http_build_query(['group_by' => 'hour', 'hours_ago' => 24]);
 $ch = curl_init('https://api.avalai.ir/user/v1/transactions/summary?' . $params);
@@ -1368,6 +1478,7 @@ foreach ($data['summary'] as $hour) {
 ?>
 
 ```
+
 
 **پاسخ (group_by=hour):**
 
@@ -1407,11 +1518,14 @@ foreach ($data['summary'] as $hour) {
 
 #### درخواست
 
-```language-selector
-bash=:curl -X GET "https://api.avalai.ir/user/v1/health" \
+```bash
+curl -X GET "https://api.avalai.ir/user/v1/health" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:# مثال پایتون (Python)
+```
+
+```python
+# مثال پایتون (Python)
 import requests
 
 response = requests.get(
@@ -1420,13 +1534,19 @@ response = requests.get(
 )
 print(response.json())
 
-javascript=:// مثال جاوااسکریپت (JavaScript)
+```
+
+```javascript
+// مثال جاوااسکریپت (JavaScript)
 const response = await fetch("https://api.avalai.ir/user/v1/health", {
   headers: { Authorization: `Bearer ${process.env.AVALAI_API_KEY}` },
 });
 console.log(await response.json());
 
-go=:// مثال Go
+```
+
+```go
+// مثال Go
 package main
 
 import (
@@ -1447,7 +1567,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP
 $ch = curl_init('https://api.avalai.ir/user/v1/health');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -1460,6 +1583,7 @@ print_r(json_decode($response, true));
 ?>
 
 ```
+
 
 #### پاسخ
 

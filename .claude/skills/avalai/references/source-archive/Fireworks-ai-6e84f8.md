@@ -56,8 +56,8 @@ Muse Glimmer توسط Meta Superintelligence Lab توسعه یافته و روی
 
 ### مثال
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -65,7 +65,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     "messages": [{"role": "user", "content": "یک workflow پژوهشی مطمئن با استفاده از ابزار طراحی کن."}]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -82,7 +85,10 @@ response = client.chat.completions.create(
 )
 print(response.choices[0].message.content)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.AVALAI_API_KEY, baseURL: "https://api.avalai.ir/v1" });
 const response = await client.chat.completions.create({
@@ -92,6 +98,7 @@ const response = await client.chat.completions.create({
 console.log(response.choices[0].message.content);
 
 ```
+
 
 ## nemotron-3.5-lightning
 
@@ -123,8 +130,8 @@ Nemotron 3.5 Lightning توسط NVIDIA توسعه یافته و روی Fireworks
 
 ### مثال
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -132,7 +139,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     "messages": [{"role": "user", "content": "این برنامه deployment را بررسی کن و سه ریسک اصلی را فهرست کن."}]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -149,7 +159,10 @@ response = client.chat.completions.create(
 )
 print(response.choices[0].message.content)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.AVALAI_API_KEY, baseURL: "https://api.avalai.ir/v1" });
 const response = await client.chat.completions.create({
@@ -159,6 +172,7 @@ const response = await client.chat.completions.create({
 console.log(response.choices[0].message.content);
 
 ```
+
 
 ## nemotron-3-ultra
 
