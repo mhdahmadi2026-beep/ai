@@ -11,8 +11,8 @@
 
 ## مثال جایگزین ویرایش
 
-```language-selector
-python=:import base64
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -33,7 +33,10 @@ with open("room.png", "rb") as image_file, open("mask.png", "rb") as mask_file:
 with open("edited-room.png", "wb") as output_file:
     output_file.write(base64.b64decode(response.data[0].b64_json))
 
-javascript=:import fs from "fs";
+```
+
+```javascript
+import fs from "fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -187,3 +190,4 @@ hasH1: true
 
 
 ```
+

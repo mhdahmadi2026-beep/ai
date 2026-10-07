@@ -58,8 +58,8 @@ POST https://api.avalai.ir/v1/rerank
 
 ### رتبه‌بندی مجدد پایه
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/rerank \
+```bash
+curl https://api.avalai.ir/v1/rerank \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -73,7 +73,10 @@ bash=:curl https://api.avalai.ir/v1/rerank \
  ]
 }'
 
-python=:import requests
+```
+
+```python
+import requests
 import json
 
 API_KEY = "YOUR_AVALAI_API_KEY"
@@ -103,7 +106,10 @@ if response.status_code == 200:
 else:
     print(f"خطا: {response.status_code} - {response.text}")
 
-javascript=:const fetch = require("node-fetch"); // یا از fetch مرورگر استفاده کنید
+```
+
+```javascript
+const fetch = require("node-fetch"); // یا از fetch مرورگر استفاده کنید
 
 const API_KEY = process.env.AVALAI_API_KEY;
 const AVALAI_BASE_URL = "https://api.avalai.ir/v1";
@@ -148,7 +154,10 @@ async function rerankDocuments() {
 
 rerankDocuments();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -247,7 +256,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP برای Rerank از طریق AvalAI
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -304,6 +316,7 @@ if ($err) {
 ?>
 
 ```
+
 
 ### رتبه‌بندی مجدد پیشرفته با اشیا سند و نتایج Top-N
 

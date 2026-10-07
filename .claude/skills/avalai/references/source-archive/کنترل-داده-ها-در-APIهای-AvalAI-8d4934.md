@@ -50,8 +50,8 @@ OpenAI بین **logهای بررسی سوءاستفاده** و **application sta
 
 برای workflowهای جدید Responses API، مگر اینکه واقعا نیاز دارید پاسخ را بعدا بازیابی کنید، `store: false` را تنظیم کنید. اگر route انتخاب‌شده از `store` پشتیبانی نمی‌کند، رفتار را وابسته به ارائه‌دهنده بدانید و سیاست نگه‌داری برنامه خودتان را محافظه‌کارانه نگه دارید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -69,7 +69,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -88,12 +91,13 @@ console.log(response.output_text);
 
 ```
 
+
 در Chat Completions فقط نوبت‌هایی را دوباره بفرستید که برای پاسخ لازم هستند و اگر policy اجازه می‌دهد، حافظه بلندمدت مکالمه را در پایگاه‌داده خودتان نگه دارید. به‌صورت پیش‌فرض prompt کامل را log نکنید.
 
 برای reasoning چندنوبتی stateless، بدون ذخیره Response object هم می‌توانید continuity لازم را حفظ کنید: encrypted reasoning items را درخواست کنید و itemهای `response.output` برگشتی را در history خودتان replay کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -122,7 +126,10 @@ follow_up = client.responses.create(
 
 print(follow_up.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -151,6 +158,7 @@ const followUp = await client.responses.create({
 console.log(followUp.output_text);
 
 ```
+
 
 ## چه زمانی State ذخیره‌شده مفید است؟
 

@@ -31,8 +31,8 @@ export AVALAI_API_KEY="your-avalai-api-key"
 
 ابتدا یک response بسازید و سپس با `previous_response_id` آن را ادامه دهید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -55,7 +55,10 @@ follow_up = client.responses.create(
 
 print(follow_up.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -77,7 +80,10 @@ const followUp = await client.responses.create({
 
 console.log(followUp.output_text);
 
-bash=:FIRST_RESPONSE=$(curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+FIRST_RESPONSE=$(curl https://api.avalai.ir/v1/responses \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -98,6 +104,7 @@ curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 ## تصمیم‌های State، نگه‌داری و هزینه
 
 `previous_response_id` ساده‌ترین راه برای ادامه دادن یک thread است، اما همچنان به state سمت سرویس تکیه دارد. انتخاب state را صریح کنید:
@@ -108,8 +115,8 @@ curl https://api.avalai.ir/v1/responses \
 - اگر continuation به دلیل resolve نشدن response قبلی شکست خورد، درخواست را با context کامل و بدون `previous_response_id` دوباره ارسال کنید.
 - برای کل زنجیره بودجه بگذارید: input قبلی در thread همچنان می‌تواند به‌عنوان input token حساب شود و مدل‌های reasoning نیز reasoning token را داخل context window مصرف می‌کنند.
 
-```language-selector
-python=:history = [{"role": "user", "content": "Draft a rollback checklist for a payment API."}]
+```python
+history = [{"role": "user", "content": "Draft a rollback checklist for a payment API."}]
 
 first = client.responses.create(
     model="gpt-5.6-luna",
@@ -131,7 +138,10 @@ second = client.responses.create(
 
 print(second.output_text)
 
-javascript=:const history = [
+```
+
+```javascript
+const history = [
   { role: "user", content: "Draft a rollback checklist for a payment API." },
 ];
 
@@ -158,12 +168,13 @@ console.log(second.output_text);
 
 ```
 
+
 ## شاخه‌سازی از یک پاسخ قبلی
 
 شاخه‌سازی به شما اجازه می‌دهد از یک پاسخ قبلی مسیر جدیدی بسازید، بدون اینکه مسیر اصلی را تغییر دهید. این کار برای A/B تست پرامپت، تولید لحن‌های متفاوت یا تلاش دوباره با محدودیت جدید مفید است.
 
-```language-selector
-python=:forked = client.responses.create(
+```python
+forked = client.responses.create(
     model="gpt-5.6-luna",
     input=(
         "Use the same original checklist, but rewrite it for a solo developer "
@@ -174,7 +185,10 @@ python=:forked = client.responses.create(
 
 print(forked.output_text)
 
-javascript=:const forked = await client.responses.create({
+```
+
+```javascript
+const forked = await client.responses.create({
   model: "gpt-5.6-luna",
   input:
     "Use the same original checklist, but rewrite it for a solo developer who deploys manually once per week.",
@@ -183,7 +197,10 @@ javascript=:const forked = await client.responses.create({
 
 console.log(forked.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d "{
@@ -194,32 +211,40 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 ## دریافت دوباره یک Response ذخیره‌شده
 
 برای لاگ‌گیری، دیباگ یا پردازش با تاخیر بعد از یک گردش‌کار پس‌زمینه، می‌توانید response را دوباره دریافت کنید. اگر retrieval بعدی لازم دارید، response را با `store=true` بسازید؛ در غیر این صورت `store=false` را ترجیح دهید و فقط فیلدهای مورد نیاز برنامه را نگه دارید.
 
-```language-selector
-python=:stored = client.responses.retrieve(first.id)
+```python
+stored = client.responses.retrieve(first.id)
 
 print(stored.id)
 print(stored.output_text)
 
-javascript=:const stored = await client.responses.retrieve(first.id);
+```
+
+```javascript
+const stored = await client.responses.retrieve(first.id);
 
 console.log(stored.id);
 console.log(stored.output_text);
 
-bash=:curl "https://api.avalai.ir/v1/responses/$FIRST_ID" \
+```
+
+```bash
+curl "https://api.avalai.ir/v1/responses/$FIRST_ID" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
 ```
+
 
 ## افزودن جستجوی وب
 
 وقتی پاسخ به اطلاعات تازه نیاز دارد، ابزار `web_search` را اضافه کنید. اگر رابط کاربری شما به لینک منبع نیاز دارد، در پرامپت صریحا درخواست citation کنید.
 
-```language-selector
-python=:response = client.responses.create(
+```python
+response = client.responses.create(
     model="gpt-5.6-luna",
     input="Find the latest AvalAI documentation updates and summarize them with sources.",
     tools=[{"type": "web_search"}],
@@ -230,7 +255,10 @@ print(response.output_text)
 for item in response.output:
     print(item.type)
 
-javascript=:const response = await client.responses.create({
+```
+
+```javascript
+const response = await client.responses.create({
   model: "gpt-5.6-luna",
   input:
     "Find the latest AvalAI documentation updates and summarize them with sources.",
@@ -243,7 +271,10 @@ for (const item of response.output) {
   console.log(item.type);
 }
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -253,6 +284,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 ## نکات Production
 

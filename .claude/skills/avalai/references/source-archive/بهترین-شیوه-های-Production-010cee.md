@@ -274,8 +274,8 @@ API ما مدل‌های مختلفی با سطوح متفاوتی از پیچی
 
 برای تجربه کاربری بهتر، از پاسخ‌های جریانی استفاده کنید:
 
-```language-selector
-python=:import os
+```python
+import os
 import sys
 from openai import OpenAI
 
@@ -295,7 +295,10 @@ for chunk in response:
         sys.stdout.write(chunk.choices[0].delta.content)
         sys.stdout.flush()
 
-javascript=:const { OpenAI } = require("openai");
+```
+
+```javascript
+const { OpenAI } = require("openai");
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -320,7 +323,10 @@ async function streamResponse() {
 
 streamResponse();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -365,7 +371,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 require 'vendor/autoload.php';
 
 $client = OpenAI::client(getenv('AVALAI_API_KEY'), [
@@ -390,14 +399,15 @@ foreach ($stream as $response) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -413,7 +423,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -428,7 +441,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -439,6 +455,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -453,8 +470,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 برای وظایف طولانی‌مدت، پردازش ناهمزمان را پیاده‌سازی کنید:
 
-```language-selector
-python=:import asyncio
+```python
+import asyncio
 import os
 from openai import AsyncOpenAI
 
@@ -479,7 +496,10 @@ async def process_batch(prompts):
 # استفاده
 results = asyncio.run(process_batch(["سلام", "حالت چطوره؟", "هوا چطوره؟"]))
 
-javascript=:const { OpenAI } = require("openai");
+```
+
+```javascript
+const { OpenAI } = require("openai");
 
 const client = new OpenAI({
   apiKey: "AVALAI_API_KEY",
@@ -504,7 +524,10 @@ processBatch(["سلام", "حالت چطوره؟", "هوا چطوره؟"])
   .then((results) => console.log(results))
   .catch((error) => console.error(error));
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -560,7 +583,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 require 'vendor/autoload.php';
 
 $client = OpenAI::client('AVALAI_API_KEY', [
@@ -600,14 +626,15 @@ print_r($results);
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -623,7 +650,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -638,7 +668,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -649,6 +682,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`

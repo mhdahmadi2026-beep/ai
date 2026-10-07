@@ -34,8 +34,8 @@ curl -X POST \
 
 فراخوانی جدید نانو بنانا از طریق نقطه پایانی سازگار با OpenAI:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -46,7 +46,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     "modalities": ["image", "text"]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -66,7 +69,10 @@ images = response.choices[0].message.images
 if images:
     print("Image URL:", images[0]["image_url"]["url"])
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -87,6 +93,7 @@ if (images?.length) {
 }
 
 ```
+
 
 برای راهنمای کامل پرامپت‌نویسی، کنترل نسبت ابعاد و اندازه تصویر و نمونه‌های ویرایش، به [راهنمای خانواده نانو بنانا](fa/examples/generate_images_with_nano_banana_series.md) و [راهنمای منسوخ‌شدن و مهاجرت مدل‌ها](fa/news/2026-09-04-model-deprecations-and-migration-guide.md) مراجعه کنید.
 

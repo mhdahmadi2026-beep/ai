@@ -1216,8 +1216,8 @@ print(response.output_text)
 
 ### مثال استفاده
 
-```language-selector
-bash=:curl -X POST https://api.avalai.ir/v1/chat/completions \
+```bash
+curl -X POST https://api.avalai.ir/v1/chat/completions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -1232,7 +1232,10 @@ bash=:curl -X POST https://api.avalai.ir/v1/chat/completions \
     "search_options": {"search_strategy": "agent"}
 }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -1244,7 +1247,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1264,14 +1270,15 @@ console.log(response.choices[0].message.content);
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `qwen3-max` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1287,7 +1294,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1302,7 +1312,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1313,6 +1326,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -2040,8 +2054,8 @@ print(response.json())
 
 **مثال:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -2050,7 +2064,10 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
     "dimensions": 1024
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -2062,7 +2079,10 @@ response = client.embeddings.create(
 
 print(response.data[0].embedding)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -2078,6 +2098,7 @@ const response = await client.embeddings.create({
 console.log(response.data[0].embedding);
 
 ```
+
 
 **ویژگی‌های پیشرفته با API بومی:**
 
@@ -2129,8 +2150,8 @@ response = client.embeddings.create(
 
 **مثال:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -2143,7 +2164,10 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
     }
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -2165,7 +2189,10 @@ response = client.embeddings.create(
 
 print(response.data[0].embedding)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -2194,6 +2221,7 @@ const result = await response.json();
 console.log(result.data[0].embedding);
 
 ```
+
 
 #### tongyi-embedding-vision-flash
 
@@ -2273,8 +2301,8 @@ console.log(result.data[0].embedding);
 
 **مثال:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/rerank \
+```bash
+curl https://api.avalai.ir/v1/rerank \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -2287,7 +2315,10 @@ bash=:curl https://api.avalai.ir/v1/rerank \
     ]
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -2314,6 +2345,7 @@ response = requests.post(
 print(response.json())
 
 ```
+
 
 **نمونه پاسخ:**
 

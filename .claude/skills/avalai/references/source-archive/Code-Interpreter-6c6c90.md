@@ -29,8 +29,8 @@ OpenAI اشاره می‌کند که مدل این قابلیت hosted را با
 
 اگر درخواست کاربر حتما باید Python اجرا کند، روی routeهای پشتیبانی‌شده `tool_choice: "required"` بگذارید. اگر اجرای Python اختیاری است، انتخاب ابزار را automatic نگه دارید و به مدل بگویید فقط وقتی از tool استفاده کند که دقت، تکرارپذیری یا تولید artifact را بهتر می‌کند.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -58,7 +58,10 @@ for item in response.output:
     if item.type == "code_interpreter_call":
         print("Container:", item.container_id)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -85,7 +88,10 @@ for (const item of response.output ?? []) {
   }
 }
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -101,6 +107,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 ## Containerها و فایل‌ها
 

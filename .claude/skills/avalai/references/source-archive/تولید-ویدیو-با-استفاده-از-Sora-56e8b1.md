@@ -80,8 +80,8 @@ AvalAI دسترسی به دو مدل تولید ویدیوی Sora را فراه�
 
 ساده‌ترین راه برای تولید ویدیو، ارائه یک پرامپت متنی است. API درخواست شما را به صورت ناهمزمان پردازش می‌کند و شما می‌توانید وضعیت تکمیل را بررسی کنید.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -120,7 +120,10 @@ while True:
 
     time.sleep(10)
 
-bash=:# ایجاد درخواست تولید ویدیو
+```
+
+```bash
+# ایجاد درخواست تولید ویدیو
 curl -X POST https://api.avalai.ir/v1/videos \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F "model=sora-2" \
@@ -141,7 +144,10 @@ curl -X GET https://api.avalai.ir/v1/videos/video_691bab4a12248190b1e9123d8648ff
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   --output video.mp4
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -188,12 +194,13 @@ generateVideo();
 
 ```
 
+
 ## استفاده از تصاویر مرجع
 
 می‌توانید یک تصویر مرجع برای هدایت تولید ویدیو ارائه دهید. این برای ایجاد ویدیوهایی که از عناصر بصری خاص شروع می‌شوند یا آن‌ها را شامل می‌شوند مفید است.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -231,7 +238,10 @@ while True:
 
     time.sleep(10)
 
-bash=:# ایجاد ویدیو با تصویر مرجع
+```
+
+```bash
+# ایجاد ویدیو با تصویر مرجع
 curl -X POST https://api.avalai.ir/v1/videos \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F "model=sora-2-pro" \
@@ -249,7 +259,10 @@ curl -X GET https://api.avalai.ir/v1/videos/video_691bab4a12248190b1e9123d8648ff
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   --output landscape_video.mp4
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -295,12 +308,13 @@ generateVideoWithImage();
 
 ```
 
+
 ## ریمیکس ویدیو
 
 ویدیوهای موجود را با پرامپت‌های جدید ریمیکس کنید تا تغییرات یا اصلاحات ایجاد کنید. از اندپوینت `/videos/{video_id}/remix` استفاده کنید.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -335,7 +349,10 @@ while True:
 
     time.sleep(10)
 
-bash=:# ریمیکس ویدیوی موجود
+```
+
+```bash
+# ریمیکس ویدیوی موجود
 curl -X POST https://api.avalai.ir/v1/videos/video_691bab4a12248190b1e9123d8648ff4d/remix \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -352,7 +369,10 @@ curl -X GET https://api.avalai.ir/v1/videos/video_691bb11c9f1481908d6c5a0c463fcd
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   --output remixed_output.mp4
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -397,12 +417,13 @@ remixVideo();
 
 ```
 
+
 ## بررسی وضعیت ویدیو
 
 برای برنامه‌های تولیدی، دریافت وضعیت راهی قابل اعتماد برای بررسی زمان تکمیل تولید ویدیو فراهم می‌کند.
 
-```language-selector
-python=:from openAI import OpenAI
+```python
+from openAI import OpenAI
 import time
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -447,7 +468,10 @@ video = client.videos.create(
 
 check_video_status(video.id)
 
-bash=:# دریافت وضعیت ویدیو
+```
+
+```bash
+# دریافت وضعیت ویدیو
 VIDEO_ID="video_691bab4a12248190b1e9123d8648ff4d"
 
 while true; do
@@ -469,7 +493,10 @@ while true; do
   fi
 done
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -517,6 +544,7 @@ const video = await client.videos.create({
 await checkVideoStatus(video.id);
 
 ```
+
 
 ## بهترین شیوه‌ها برای پرامپت‌نویسی
 

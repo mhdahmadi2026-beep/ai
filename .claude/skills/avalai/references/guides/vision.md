@@ -39,3 +39,10 @@ Tokens depend on model family, image size, count, detail; OpenAI patch-based (32
 - Go Responses sample uses nonexistent `client.CreateResponse`, lowercase `model:`; Chat Go sample uses `openai.F` (openai-go v1) — mixed SDKs.
 - "Responses equivalent" blocks use example.com image, not the user's data.
 - gemini-3.1-pro-preview / opus-4-6/4-7 may be deprecated (see 10-deprecations.md).
+
+## Audit addendum — `detail` values (image_url.detail / input_image.detail)
+- `low`: reduced-resolution pass (OpenAI reference ≈512px view) — cheap; classification, captions, scene gist.
+- `high`: higher fidelity — small text, layout, UI details, charts, small objects.
+- `original` (supported models/routes, e.g. OpenAI gpt-5.4/5.5 families): preserves most spatial detail — dense screenshots, localization, computer-use-like analysis.
+- `auto` (default): provider decides; on OpenAI gpt-5.5 `auto` and omitted behave like `original`; on some older families closer to `high` — check cost via `usage`.
+- Multiple images: several `image_url` parts in `messages[].content` (Chat) or `input_image` parts in `input[].content` (Responses); each adds tokens + latency. Upload once with `purpose:"vision"` (Files API) and reference by `file_id` to avoid repeated base64. Rotated/upside-down images and tiny text hurt accuracy — enlarge text, don't crop critical context.

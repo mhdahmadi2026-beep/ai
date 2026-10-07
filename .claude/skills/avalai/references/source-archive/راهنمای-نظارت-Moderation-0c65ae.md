@@ -28,8 +28,8 @@ AvalAI دسترسی به مدل‌های نظارت را فراهم می‌کن�
 
 اطلاعات طبقه‌بندی را برای یک ورودی متنی دریافت کنید:
 
-```language-selector
-python=:# مثال پایتون با استفاده از API نظارت AvalAI
+```python
+# مثال پایتون با استفاده از API نظارت AvalAI
 import os
 from openai import OpenAI
 
@@ -47,7 +47,10 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-javascript=:// مثال جاوااسکریپت با استفاده از API نظارت AvalAI
+```
+
+```javascript
+// مثال جاوااسکریپت با استفاده از API نظارت AvalAI
 import { OpenAI } from "openai";
 
 const client = new OpenAI({
@@ -68,7 +71,10 @@ async function main() {
 }
 main();
 
-bash=:# مثال cURL با استفاده از API نظارت AvalAI
+```
+
+```bash
+# مثال cURL با استفاده از API نظارت AvalAI
 curl https://api.avalai.ir/v1/moderations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
@@ -77,7 +83,10 @@ curl https://api.avalai.ir/v1/moderations \
   "input": "متن نمونه‌ای که ممکن است خط‌مشی محتوا را نقض کند."
 }'
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP با استفاده از API نظارت AvalAI
 require_once 'vendor/autoload.php';
 
@@ -110,7 +119,10 @@ try {
   echo "خطا: " . $e->getMessage() . "\n";
 }
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -150,14 +162,15 @@ func main() {
 
 ```
 
+
 ### نظارت ورودی‌های تصویر و متن (چندوجهی)
 
 _نیاز به یک مدل نظارت چندوجهی مانند `omni-moderation-latest` دارد._
 
 اطلاعات طبقه‌بندی را برای ورودی ترکیبی تصویر و متن دریافت کنید:
 
-```language-selector
-python=:# مثال پایتون با استفاده از نظارت چندوجهی AvalAI
+```python
+# مثال پایتون با استفاده از نظارت چندوجهی AvalAI
 import os
 from openai import OpenAI
 
@@ -184,7 +197,10 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-javascript=:// مثال جاوااسکریپت با استفاده از نظارت چندوجهی AvalAI
+```
+
+```javascript
+// مثال جاوااسکریپت با استفاده از نظارت چندوجهی AvalAI
 import { OpenAI } from "openai";
 
 const client = new OpenAI({
@@ -214,7 +230,10 @@ async function main() {
 }
 main();
 
-bash=:# مثال cURL با استفاده از نظارت چندوجهی AvalAI
+```
+
+```bash
+# مثال cURL با استفاده از نظارت چندوجهی AvalAI
 curl https://api.avalai.ir/v1/moderations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
@@ -231,7 +250,10 @@ curl https://api.avalai.ir/v1/moderations \
   ]
 }'
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP با استفاده از نظارت چندوجهی AvalAI
 require_once 'vendor/autoload.php';
 
@@ -273,7 +295,10 @@ try {
   echo "خطا: " . $e->getMessage() . "\n";
 }
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -326,6 +351,7 @@ func main() {
 }
 
 ```
+
 
 ## نظارت روی محتوای تولیدشده به‌صورت Inline
 

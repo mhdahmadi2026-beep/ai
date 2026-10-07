@@ -42,8 +42,8 @@ AvalAI دو روش برای دسترسی به مدل‌های تصویری Gemin
 
 تولید تصاویر از دستورات متنی با استفاده از API بومی Gemini:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 # راه‌اندازی کلاینت با endpoint AvalAI
@@ -70,7 +70,10 @@ for part in response.parts:
         image.save("nano_banana_dish.png")
         print("✅ تصویر ذخیره شد به عنوان nano_banana_dish.png")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
 
 // راه‌اندازی کلاینت با endpoint AvalAI
@@ -97,7 +100,10 @@ for (const part of response.candidates[0].content.parts) {
     }
 }
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -136,7 +142,10 @@ func main() {
 	}
 }
 
-bash=:curl -s -X POST \
+```
+
+```bash
+curl -s -X POST \
   "https://api.avalai.ir/v1beta/models/gemini-2.5-flash-image:generateContent" \
   -H "x-goog-api-key: $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -155,6 +164,7 @@ echo "✅ تصویر ذخیره شد به عنوان nano_banana_dish.png"
 
 ```
 
+
 **نمونه خروجی:**
 
 ![تصویر تولید شده با هوش مصنوعی از غذای nano banana](https://ai.google.dev/static/gemini-api/docs/images/nano-banana.png)
@@ -167,8 +177,8 @@ echo "✅ تصویر ذخیره شد به عنوان nano_banana_dish.png"
 
 ویرایش تصاویر موجود با استفاده از دستورات متنی:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from PIL import Image
 
 # راه‌اندازی کلاینت با endpoint AvalAI
@@ -195,7 +205,10 @@ for part in response.parts:
         result_image.save("cat_nano_banana.png")
         print("✅ تصویر ویرایش شده ذخیره شد به عنوان cat_nano_banana.png")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
 
 const ai = new GoogleGenAI({
@@ -234,7 +247,10 @@ for (const part of response.candidates[0].content.parts) {
     }
 }
 
-bash=:IMG_PATH=/path/to/cat_image.png
+```
+
+```bash
+IMG_PATH=/path/to/cat_image.png
 
 if [[ "$(base64 --version 2>&1)" == *"FreeBSD"* ]]; then
   B64FLAGS="--input"
@@ -269,6 +285,7 @@ echo "✅ Edited image saved as cat_nano_banana.png"
 
 ```
 
+
 **نمونه خروجی:**
 
 ![تصویر تولید شده با هوش مصنوعی از گربه در حال خوردن nano banana](https://ai.google.dev/static/gemini-api/docs/images/cat-banana.png)
@@ -281,8 +298,8 @@ echo "✅ Edited image saved as cat_nano_banana.png"
 
 استفاده از حالت چت برای بهبود تکراری تصویر:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -329,7 +346,10 @@ for part in response2.parts:
         image.save("photosynthesis_spanish.png")
         print("✅ اینفوگرافیک اسپانیایی ذخیره شد به عنوان photosynthesis_spanish.png")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
 
 const ai = new GoogleGenAI({
@@ -388,6 +408,7 @@ for (const part of response.candidates[0].content.parts) {
 
 ```
 
+
 **نمونه خروجی‌ها:**
 
 | نسخه انگلیسی | نسخه اسپانیایی |
@@ -400,8 +421,8 @@ for (const part of response.candidates[0].content.parts) {
 
 Gemini 3 Pro Image Preview از تولید تصاویر با رزولوشن تا 4K پشتیبانی می‌کند:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -420,7 +441,10 @@ if response.image:
     response.image.save("fantasy_map_4k.png")
     print("✅ تصویر 4K ذخیره شد به عنوان fantasy_map_4k.png")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
 
 const ai = new GoogleGenAI({
@@ -450,12 +474,13 @@ if (result.image) {
 
 ```
 
+
 ### استفاده سازگار با OpenAI (Gemini 3 Pro)
 
 همچنین می‌توانید از SDK استاندارد OpenAI برای دسترسی به قابلیت‌های تولید تصویر Gemini 3 Pro از طریق AvalAI استفاده کنید.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="YOUR_AVALAI_API_KEY", base_url="https://api.avalai.ir/v1")
 
@@ -469,7 +494,10 @@ response = client.images.generate(
 
 print(response.data[0].url)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -488,6 +516,7 @@ console.log(response.data[0].url);
 
 ```
 
+
 ---
 
 ## Gemini 2.5 Flash Image (Nano Banana)
@@ -498,8 +527,8 @@ Gemini 2.5 Flash Image (که قبلا با نام Nano Banana شناخته می�
 
 Gemini 2.5 Flash Image از نسبت‌های تصویر مختلف به صورت بومی پشتیبانی می‌کند.
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -519,7 +548,10 @@ response = client.models.generate_image(
 if response.image:
     response.image.save("desert_cinematic.png")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
 
 const ai = new GoogleGenAI({
@@ -545,10 +577,11 @@ if (result.image) {
 
 ```
 
+
 ### استفاده سازگار با OpenAI (Gemini 2.5 Flash Image)
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="YOUR_AVALAI_API_KEY", base_url="https://api.avalai.ir/v1")
 
@@ -561,7 +594,10 @@ response = client.images.generate(
 
 print(response.data[0].url)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -578,6 +614,7 @@ const response = await client.images.generate({
 console.log(response.data[0].url);
 
 ```
+
 
 ## مقایسه: Gemini 3 Pro در مقابل Gemini 2.5 Flash Image
 
@@ -603,8 +640,8 @@ Gemini 2.5 Flash Image در ویرایش تصاویر موجود بر اساس �
 
 ### ویرایش پایه تصویر (SDK بومی)
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 from PIL import Image
 
@@ -634,7 +671,10 @@ for part in response.candidates[0].content.parts:
             f.write(image_bytes)
         print("✅ تصویر ویرایش شده ذخیره شد به عنوان edited_photo.png")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
 
 const ai = new GoogleGenAI({
@@ -677,10 +717,11 @@ for (const part of result.response.candidates[0].content.parts) {
 
 ```
 
+
 ### ویرایش تصویر از طریق API سازگار با OpenAI
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import base64
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -714,7 +755,10 @@ if response.choices[0].message.images:
     image_url = response.choices[0].message.images[0]["image_url"]["url"]
     print(f"URL تصویر ویرایش شده: {image_url}")
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 import * as fs from "node:fs";
 
 const client = new OpenAI({
@@ -754,14 +798,15 @@ if (response.choices[0].message.images) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-2.5-flash-image` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -784,7 +829,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -806,7 +854,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -831,6 +882,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `choices[0].message.content` → `response.output_text`
@@ -853,8 +905,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 #### Gemini 2.5 Flash Image (Nano Banana) با نسبت ابعاد
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import base64
 
 client = OpenAI(api_key="YOUR_AVALAI_API_KEY", base_url="https://api.avalai.ir/v1")
@@ -882,7 +934,10 @@ if response.choices[0].message.images:
     image_url = response.choices[0].message.images[0]["image_url"]["url"]
     print(f"URL تصویر تولید شده: {image_url}")
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -920,14 +975,15 @@ if (response.choices[0].message.images) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-2.5-flash-image` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -950,7 +1006,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -972,7 +1031,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -997,6 +1059,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `choices[0].message.content` → `response.output_text`
@@ -1008,8 +1071,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 #### Gemini 3 Pro Image Preview (Nano Banana Pro) با نسبت ابعاد و اندازه تصویر
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="YOUR_AVALAI_API_KEY", base_url="https://api.avalai.ir/v1")
 
@@ -1043,7 +1106,10 @@ if response.choices[0].message.images:
     image_url = response.choices[0].message.images[0]["image_url"]["url"]
     print(f"URL تصویر 4K تولید شده: {image_url}")
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -1082,14 +1148,15 @@ if (response.choices[0].message.images) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-3-pro-image` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1112,7 +1179,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1134,7 +1204,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1159,6 +1232,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `choices[0].message.content` → `response.output_text`
@@ -1172,8 +1246,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 همچنین می‌توانید هنگام ویرایش تصاویر از پارامترهای `extra_body` استفاده کنید:
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import base64
 
 client = OpenAI(api_key="YOUR_AVALAI_API_KEY", base_url="https://api.avalai.ir/v1")
@@ -1213,7 +1287,10 @@ if response.choices[0].message.images:
     image_url = response.choices[0].message.images[0]["image_url"]["url"]
     print(f"URL تصویر ویرایش شده: {image_url}")
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 import * as fs from "node:fs";
 
 const client = new OpenAI({
@@ -1261,14 +1338,15 @@ if (response.choices[0].message.images) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `gemini-2.5-flash-image` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1291,7 +1369,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1313,7 +1394,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1338,6 +1422,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ```
 
+
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
 - `choices[0].message.content` → `response.output_text`
@@ -1357,8 +1442,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 
 ### مثال بهبود تکراری
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -1406,7 +1491,10 @@ for part in response3.parts:
         image.save("logo_v3_dark.png")
         print("✅ Logo v3 (dark) saved")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
 
 const ai = new GoogleGenAI({
@@ -1462,14 +1550,15 @@ for (const part of response.candidates[0].content.parts) {
 
 ```
 
+
 ---
 
 ## مدیریت خطا و ایمنی
 
 هنگام کار با تولید تصویر، مدیریت صحیح خطاها ضروری است:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 from google.api_core import exceptions
 
@@ -1500,7 +1589,10 @@ except exceptions.ResourceExhausted as e:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
 
 const ai = new GoogleGenAI({
@@ -1536,6 +1628,7 @@ try {
 }
 
 ```
+
 
 ---
 

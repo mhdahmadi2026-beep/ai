@@ -22,8 +22,8 @@ Exa AI در فناوری جستجوی عصبی تخصص دارد و از مدل�
 
 **نمونه استفاده:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/exa_ai-search \
+```bash
+curl https://api.avalai.ir/v1/search/exa_ai-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -31,7 +31,10 @@ bash=:curl https://api.avalai.ir/v1/search/exa_ai-search \
     "max_results": 10
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/exa_ai-search",
@@ -43,7 +46,10 @@ results = response.json()
 for result in results["results"]:
     print(f"{result['title']}: {result['url']}")
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/search/exa_ai-search", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/search/exa_ai-search", {
     method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -62,12 +68,13 @@ data.results.forEach(result => {
 
 ```
 
+
 ## جستجوی معنایی با فیلتر دامنه
 
 جستجوی عصبی Exa AI در درک کوئری‌های پیچیده عالی است و می‌تواند با فیلترینگ دامنه برای نتایج هدفمند ترکیب شود.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search \
+```bash
+curl https://api.avalai.ir/v1/search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -77,7 +84,10 @@ bash=:curl https://api.avalai.ir/v1/search \
     "search_domain_filter": ["arxiv.org", "paperswithcode.com", "scholar.google.com"]
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search",
@@ -96,7 +106,10 @@ response = requests.post(
 
 results = response.json()
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/search", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/search", {
     method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -113,6 +126,7 @@ javascript=:const response = await fetch("https://api.avalai.ir/v1/search", {
 const data = await response.json();
 
 ```
+
 
 ## پارامترهای درخواست
 

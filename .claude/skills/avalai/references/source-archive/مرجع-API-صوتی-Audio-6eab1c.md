@@ -42,8 +42,8 @@ POST https://api.avalai.ir/v1/audio/speech
 
 ### تولید گفتار پایه
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/audio/speech \
+```bash
+curl https://api.avalai.ir/v1/audio/speech \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -54,7 +54,10 @@ bash=:curl https://api.avalai.ir/v1/audio/speech \
   }' \
   --output avalai_speech.mp3
 
-python=:import os
+```
+
+```python
+import os
 from pathlib import Path
 from openai import OpenAI
 
@@ -75,7 +78,10 @@ with client.audio.speech.with_streaming_response.create(
 
 print(f"Saved {speech_path}")
 
-javascript=:import fs from "node:fs/promises";
+```
+
+```javascript
+import fs from "node:fs/promises";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -93,6 +99,7 @@ const audio = await client.audio.speech.create({
 await fs.writeFile("avalai_speech.mp3", Buffer.from(await audio.arrayBuffer()));
 
 ```
+
 
 ### تبدیل متن به گفتار با Gemini 3.8
 
@@ -149,15 +156,18 @@ POST https://api.avalai.ir/v1/audio/transcriptions
 
 ### رونویسی فایل صوتی
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/audio/transcriptions \
+```bash
+curl https://api.avalai.ir/v1/audio/transcriptions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
   -F file="@meeting.mp3" \
   -F model="gpt-4o-transcribe" \
   -F response_format="text"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -175,7 +185,10 @@ with open("meeting.mp3", "rb") as audio_file:
 
 print(transcript)
 
-javascript=:import fs from "node:fs";
+```
+
+```javascript
+import fs from "node:fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -194,12 +207,13 @@ console.log(transcript);
 
 ```
 
+
 ### تشخیص گوینده (Diarization)
 
 وقتی به segmentهای دارای برچسب گوینده نیاز دارید، از `gpt-4o-transcribe-diarize` استفاده کنید. `response_format` را `diarized_json` بگذارید و برای فایل‌های طولانی‌تر از ۳۰ ثانیه `chunking_strategy: "auto"` تنظیم کنید. در مستندات فعلی OpenAI این مدل فقط از مسیر `/v1/audio/transcriptions` در دسترس است، نه Realtime.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/audio/transcriptions \
+```bash
+curl https://api.avalai.ir/v1/audio/transcriptions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
   -F file="@meeting.wav" \
@@ -207,7 +221,10 @@ bash=:curl https://api.avalai.ir/v1/audio/transcriptions \
   -F response_format="diarized_json" \
   -F chunking_strategy="auto"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -227,6 +244,7 @@ for segment in transcript.segments:
     print(segment.speaker, segment.start, segment.end, segment.text)
 
 ```
+
 
 ### رویدادهای streaming رونویسی
 
@@ -258,14 +276,17 @@ endpoint ترجمه، صوت پشتیبانی‌شده را می‌گیرد و �
 | `response_format` | string | خیر | پیش‌فرض `json` است. فرمت‌های رایج سازگار با OpenAI شامل `json`، `text`، `srt`، `verbose_json` و `vtt` هستند. |
 | `temperature` | number | خیر | دمای نمونه‌گیری از `0` تا `1`، اگر پشتیبانی شود. مقدار کمتر deterministicتر است. |
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/audio/translations \
+```bash
+curl https://api.avalai.ir/v1/audio/translations \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
   -F file="@german.mp3" \
   -F model="whisper-1"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -283,12 +304,13 @@ print(translation.text)
 
 ```
 
+
 ## صوت در Chat Completions
 
 مدل‌های صوتی مانند `gpt-audio-1.5`، `gpt-audio` و `gpt-audio-mini` از ورودی و/یا خروجی صوتی مستقیم در `/v1/chat/completions` پشتیبانی می‌کنند. وقتی به `message.audio` یا `input_audio` مستقیم نیاز دارید، همین مسیر را نگه دارید.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -300,7 +322,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:import base64
+```
+
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -323,6 +348,7 @@ with open("reply.wav", "wb") as output:
     output.write(base64.b64decode(audio_data))
 
 ```
+
 
 صدای بازگشتی به‌صورت Base64 در مسیر `choices[0].message.audio.data` قرار می‌گیرد. برای تبدیل آن به یک فایل قابل پخش مستقیم از ترمینال (به `jq` نیاز دارد)، خروجی `mp3` بخواهید و یک دستور یک‌باره اجرا کنید:
 
@@ -401,8 +427,8 @@ Responses API برای گردش‌کارهای جدید متنی، reasoning، �
 3. متن نهایی را از `response.output_text` بخوانید.
 4. خروجی گفتاری را با `/v1/audio/speech` بسازید.
 
-```language-selector
-python=:import os
+```python
+import os
 from pathlib import Path
 from openai import OpenAI
 
@@ -431,7 +457,10 @@ with client.audio.speech.with_streaming_response.create(
 ) as speech:
     speech.stream_to_file(Path("answer.mp3"))
 
-javascript=:import fs from "node:fs";
+```
+
+```javascript
+import fs from "node:fs";
 import fsp from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -461,6 +490,7 @@ const speech = await client.audio.speech.create({
 await fsp.writeFile("answer.mp3", Buffer.from(await speech.arrayBuffer()));
 
 ```
+
 
 </details>
 <!-- responses-equivalent:end -->

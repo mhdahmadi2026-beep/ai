@@ -164,8 +164,8 @@ curl https://api.avalai.ir/v1/chat/completions \
 
 ## مثال‌های استفاده از SDK
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -179,7 +179,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     "service_tier": "flex"
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -198,7 +201,10 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 print(f"سطح سرویس استفاده شده: {response.service_tier}")
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -221,6 +227,7 @@ console.log(response.choices[0].message.content);
 console.log(`سطح سرویس استفاده شده: ${response.service_tier}`);
 
 ```
+
 
 ---
 

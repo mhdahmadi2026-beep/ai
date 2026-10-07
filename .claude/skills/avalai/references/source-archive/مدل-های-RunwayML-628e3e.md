@@ -42,8 +42,8 @@ RunwayML یک شرکت پیشرو در زمینه هوش مصنوعی است ک�
 
 #### مثال استفاده
 
-```language-selector
-bash=:curl -X POST "https://api.avalai.ir/v1/videos" \
+```bash
+curl -X POST "https://api.avalai.ir/v1/videos" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
   -F prompt="صحنه سینمایی از زن جوانی با ویژگی‌های چشمگیر، در نمای نزدیک که نگاه شدید او را برجسته می‌کند." \
@@ -52,7 +52,10 @@ bash=:curl -X POST "https://api.avalai.ir/v1/videos" \
   -F seconds="5" \
   -F input_reference="@portrait_reference.jpeg;type=image/jpeg"
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(
@@ -90,7 +93,10 @@ while True:
 
     time.sleep(10)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -109,6 +115,7 @@ const video = await client.videos.create({
 console.log(`تولید ویدیو شروع شد: ${video.id}`);
 
 ```
+
 
 ---
 

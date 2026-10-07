@@ -31,8 +31,8 @@
 
 مدل Mistral OCR را می‌توان با API AvalAI استفاده کرد. توجه داشته باشید که برخلاف سایر مدل‌های سازگار با OpenAI، مدل‌های Mistral AI از ساختار نقطه پایانی متفاوتی بدون بخش مسیر "/v1" استفاده می‌کنند.
 
-```language-selector
-python=:from mistralai import Mistral
+```python
+from mistralai import Mistral
 
 client = Mistral(server_url="https://api.avalai.ir", api_key="avalai-api-key")
 
@@ -50,7 +50,10 @@ ocr_response = client.ocr.process(
 
 print(ocr_response)
 
-javascript=:import { Mistral } from "mistralai";
+```
+
+```javascript
+import { Mistral } from "mistralai";
 
 const client = new Mistral({
   apiKey: "avalai-api-key",
@@ -72,6 +75,7 @@ const ocrResponse = await client.ocr.process({
 console.log(ocrResponse);
 
 ```
+
 
 ### درک سند
 

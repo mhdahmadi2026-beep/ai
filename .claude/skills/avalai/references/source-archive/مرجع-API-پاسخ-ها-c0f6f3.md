@@ -115,8 +115,8 @@ POST https://api.avalai.ir/v1/responses
 
 ### درخواست نمونه (ورودی متنی)
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/responses \
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -124,7 +124,10 @@ bash=:curl https://api.avalai.ir/v1/responses \
 "input": "یک داستان سه جمله‌ای قبل از خواب درباره یک تک‌شاخ برایم بگو."
 }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -139,7 +142,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -155,7 +161,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -230,7 +239,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP برای API پاسخ‌های AvalAI (/v1/responses)
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -293,14 +305,15 @@ if ($err) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -316,7 +329,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -331,7 +347,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -342,6 +361,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -442,12 +462,15 @@ GET https://api.avalai.ir/v1/responses/{response_id}
 
 ### درخواست نمونه
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/responses/resp_123 \
+```bash
+curl https://api.avalai.ir/v1/responses/resp_123 \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -458,7 +481,10 @@ client = OpenAI(
 response = client.responses.retrieve("resp_123")
 print(response)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
 
@@ -468,7 +494,10 @@ const client = new OpenAI({
 const response = await client.responses.retrieve("resp_123");
 console.log(response);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -526,7 +555,10 @@ func main() {
 	fmt.Printf("%+v\n", result)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP برای بازیابی یک پاسخ خاص AvalAI (/v1/responses/{response_id})
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -577,6 +609,7 @@ if ($err) {
 ?>
 
 ```
+
 
 ### پاسخ نمونه
 
@@ -659,12 +692,15 @@ DELETE https://api.avalai.ir/v1/responses/{response_id}
 
 ### درخواست نمونه
 
-```language-selector
-bash=:curl -X DELETE https://api.avalai.ir/v1/responses/resp_123 \
+```bash
+curl -X DELETE https://api.avalai.ir/v1/responses/resp_123 \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -675,7 +711,10 @@ client = OpenAI(
 response = client.responses.delete("resp_123")  # نام متد تصحیح شده
 print(response)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
 
@@ -685,7 +724,10 @@ const client = new OpenAI({
 const response = await client.responses.del("resp_123"); // نام متد تصحیح شده
 console.log(response);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -740,7 +782,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP برای حذف یک پاسخ خاص AvalAI (/v1/responses/{response_id})
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -791,6 +836,7 @@ if ($err) {
 
 ```
 
+
 ### پاسخ نمونه
 
 ```json
@@ -831,12 +877,15 @@ GET https://api.avalai.ir/v1/responses/{response_id}/input_items
 
 ### درخواست نمونه
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/responses/resp_abc123/input_items \
+```bash
+curl https://api.avalai.ir/v1/responses/resp_abc123/input_items \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -847,7 +896,10 @@ client = OpenAI(
 response = client.responses.input_items.list("resp_123")
 print(response.data)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
 
@@ -857,7 +909,10 @@ const client = new OpenAI({
 const response = await client.responses.inputItems.list("resp_123");
 console.log(response.data);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -956,7 +1011,10 @@ func main() {
 	fmt.Printf("%+v\n", itemList)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP برای لیست کردن آیتم‌های ورودی برای یک پاسخ AvalAI (/v1/responses/{response_id}/input_items)
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -1012,6 +1070,7 @@ if ($err) {
 ?>
 
 ```
+
 
 ### پاسخ نمونه
 
@@ -1225,8 +1284,8 @@ data: {"type":"response.completed","response":{"id":"resp_123","status":"complet
 
 مقدار `event.delta` را از رویدادهای `response.output_text.delta` جمع کنید، سپس با `response.output_text.done` و metadata نهایی در `response.completed` تطبیق دهید. الگوهای قدیمی مانند `choices[0].delta.content` یا `chunk.output[0].delta.content` مربوط به Chat Completions هستند و برای Responses مناسب نیستند.
 
-```language-selector
-bash=:# شروع جریان SSE از AvalAI. در تولید، کلاینت باید خطوط
+```bash
+# شروع جریان SSE از AvalAI. در تولید، کلاینت باید خطوط
 # event: و data: را parse کند، بر اساس نوع رویداد شاخه‌بندی کند و خطاها را مدیریت کند.
 curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
@@ -1239,7 +1298,10 @@ curl https://api.avalai.ir/v1/responses \
   }' \
   --no-buffer
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1262,7 +1324,10 @@ for event in stream:
     elif event.type == "error":
         raise RuntimeError(event.error)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1286,7 +1351,10 @@ for await (const event of stream) {
   }
 }
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bufio"
@@ -1358,7 +1426,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 $apiKey = getenv('AVALAI_API_KEY');
 if (!$apiKey) {
   die("خطا: متغیر محیطی AVALAI_API_KEY تنظیم نشده است.\n");
@@ -1412,14 +1483,15 @@ echo "\n";
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1435,7 +1507,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1450,7 +1525,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1461,6 +1539,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`

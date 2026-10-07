@@ -99,8 +99,8 @@ Rules:
 
 ## مثال RAG دستی
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -142,7 +142,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -181,14 +184,15 @@ console.log(response.output_text);
 
 ```
 
+
 برای Chat Completions قدیمی، همین instructionها را در پیام `developer` یا `system` بگذارید و blockهای قابل citation را در یک پیام جدا قبل از سؤال کاربر ارسال کنید.
 
 ## Parse و Render کردن Citationها
 
 پیش از نمایش پاسخ، خروجی مدل را post-process کنید. source IDها را در پایگاه داده خود resolve کنید و marker خام را با link، footnote یا chipهای inline جایگزین کنید. Parser باید citationهای تک‌منبعی، چند منبع پشتیبان و locatorهای اختیاری مثل line range را پشتیبانی کند.
 
-```language-selector
-python=:import re
+```python
+import re
 
 CITATION_START = "\ue200"
 CITATION_DELIMITER = "\ue202"
@@ -247,7 +251,10 @@ answer, citations = extract_citations(
 print(answer)
 print(citations)
 
-javascript=:const CITATION_START = "\ue200";
+```
+
+```javascript
+const CITATION_START = "\ue200";
 const CITATION_DELIMITER = "\ue202";
 const CITATION_STOP = "\ue201";
 const sourceIdRe = /^[A-Za-z0-9_-]+$/;
@@ -304,6 +311,7 @@ console.log(
 );
 
 ```
+
 
 ## چک‌لیست Production
 

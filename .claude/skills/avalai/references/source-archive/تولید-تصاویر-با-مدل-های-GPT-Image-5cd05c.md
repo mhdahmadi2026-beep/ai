@@ -116,8 +116,8 @@ Preserve the product label exactly.
 
 برای تولید یک تصویر با مدل‌های GPT Image، باید یک دستور متنی ارائه دهید که آنچه می‌خواهید ایجاد کنید را توصیف می‌کند. هرچه دستور شما دقیق‌تر باشد، نتایج بهتر خواهد بود. می‌توانید از [`gpt-image-2`](fa/providers/openai.md) برای تازه‌ترین و بهترین قابلیت‌ها، [`gpt-image-1.5`](fa/providers/openai.md) برای مدل پیشرفته قبلی، [`gpt-image-1`](fa/providers/openai.md) برای کیفیت بالا، یا [`gpt-image-1-mini`](fa/providers/openai.md) برای تولید مقرون به صرفه استفاده کنید.
 
-```language-selector
-python=:import base64
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -137,7 +137,10 @@ image_base64 = response.data[0].b64_json
 with open("mountain-lake.png", "wb") as image_file:
     image_file.write(base64.b64decode(image_base64))
 
-javascript=:import fs from "fs";
+```
+
+```javascript
+import fs from "fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -158,14 +161,15 @@ fs.writeFileSync("mountain-lake.png", Buffer.from(imageBase64, "base64"));
 
 ```
 
+
 ## ابزار تصویر در Responses (وابسته به route)
 
 برای کارهای تک‌مرحله‌ای تصویر، `/v1/images/generations` را پیش‌فرض نگه دارید. وقتی مدل و حساب AvalAI شما صریحا از ابزار میزبانی‌شده `image_generation` پشتیبانی می‌کند و تصویر بخشی از مکالمه، agent flow یا ویرایش چندنوبتی است، از `/v1/responses` استفاده کنید.
 
 در فیلد `model` از یک مدل متنی سازگار با Responses استفاده کنید و رفتار تصویر را داخل تنظیمات tool بگذارید. `action: "generate"` تولید تصویر جدید را اجباری می‌کند، `action: "edit"` را فقط وقتی استفاده کنید که تصویر ورودی در context وجود دارد، و `action: "auto"` اجازه می‌دهد مدل تصمیم بگیرد. اگر روی routeهای پشتیبانی‌شده باید حتما فراخوانی تصویر انجام شود، `tool_choice: { type: "image_generation" }` را اضافه کنید؛ در غیر این صورت مدل می‌تواند پاسخ متنی بدهد.
 
-```language-selector
-python=:import base64
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -197,7 +201,10 @@ with open("responses-product-hero.png", "wb") as image_file:
 
 print("Revised prompt:", getattr(image_calls[0], "revised_prompt", None))
 
-javascript=:import fs from "fs";
+```
+
+```javascript
+import fs from "fs";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -235,6 +242,7 @@ fs.writeFileSync(
 console.log("Revised prompt:", imageCall.revised_prompt);
 
 ```
+
 
 ## شخصی‌سازی گزینه‌های خروجی
 

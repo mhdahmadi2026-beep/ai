@@ -147,8 +147,8 @@ curl https://api.avalai.ir/v1/chat/completions \
 
 ### نمونه‌های استفاده از SDK
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -161,7 +161,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -178,7 +181,10 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -200,12 +206,13 @@ console.log(completion.choices[0].message.content);
 
 ```
 
+
 ### استفاده از SDK Anthropic
 
 فضاهای نام مدل پایه با SDK رسمی Anthropic نیز پشتیبانی می‌شوند:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/messages \
+```bash
+curl https://api.avalai.ir/v1/messages \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "anthropic-version: 2023-06-01" \
@@ -220,7 +227,10 @@ bash=:curl https://api.avalai.ir/v1/messages \
     ]
   }'
 
-python=:import anthropic
+```
+
+```python
+import anthropic
 
 client = anthropic.Anthropic(
     api_key="your-avalai-api-key", base_url="https://api.avalai.ir"
@@ -239,7 +249,10 @@ message = client.messages.create(
 
 print(message.content[0].text)
 
-javascript=:import Anthropic from "@anthropic-ai/sdk";
+```
+
+```javascript
+import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic({
   apiKey: process.env.AVALAI_API_KEY,
@@ -260,6 +273,7 @@ const message = await client.messages.create({
 console.log(message.content[0].text);
 
 ```
+
 
 ### سازگاری پس‌رو
 

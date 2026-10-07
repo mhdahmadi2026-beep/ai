@@ -48,8 +48,8 @@ pip install websocket-client
 npm install ws
 ```
 
-```language-selector
-python=:import json
+```python
+import json
 import os
 from websocket import create_connection
 
@@ -92,7 +92,10 @@ while True:
     elif event["type"] in {"response.failed", "error"}:
         raise RuntimeError(event)
 
-javascript=:import WebSocket from "ws";
+```
+
+```javascript
+import WebSocket from "ws";
 
 const ws = new WebSocket(
   process.env.AVALAI_RESPONSES_WS_URL ?? "wss://api.avalai.ir/v1/responses",
@@ -137,12 +140,13 @@ ws.on("message", (data) => {
 
 ```
 
+
 ## ادامه با ورودی‌های Incremental
 
 پس از کامل شدن response اول، socket را باز نگه دارید و فقط input itemهای جدید را همراه آخرین `previous_response_id` بفرستید.
 
-```language-selector
-python=:ws.send(
+```python
+ws.send(
     json.dumps(
         {
             "type": "response.create",
@@ -171,7 +175,10 @@ python=:ws.send(
     )
 )
 
-javascript=:ws.send(
+```
+
+```javascript
+ws.send(
   JSON.stringify({
     type: "response.create",
     model: "gpt-5.6-luna",
@@ -196,6 +203,7 @@ javascript=:ws.send(
 );
 
 ```
+
 
 `instructions` مهم را در هر turn دوباره ارسال کنید. `previous_response_id` در routeهای پشتیبانی‌شده context پاسخ را حمل می‌کند، اما instructionهای top-level را خودکار دائمی نمی‌کند.
 

@@ -38,8 +38,8 @@
 
 وقتی sessionهای Realtime زنده در دسترس نیستند، از این الگوی production-friendly استفاده کنید. تأخیر آن مثل WebRTC نیست، اما قابل حمل است و اجازه می‌دهد از ابزارها و state در Responses استفاده کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from pathlib import Path
 from openai import OpenAI
 
@@ -72,7 +72,10 @@ speech.stream_to_file(speech_path)
 print(answer.output_text)
 print(f"Saved {speech_path}")
 
-javascript=:import fs from "node:fs/promises";
+```
+
+```javascript
+import fs from "node:fs/promises";
 import { createReadStream } from "node:fs";
 import OpenAI from "openai";
 
@@ -102,13 +105,17 @@ const speech = await client.audio.speech.create({
 await fs.writeFile("answer.mp3", Buffer.from(await speech.arrayBuffer()));
 console.log(answer.output_text);
 
-bash=:curl https://api.avalai.ir/v1/audio/transcriptions \
+```
+
+```bash
+curl https://api.avalai.ir/v1/audio/transcriptions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F file="@question.mp3" \
   -F model="gpt-transcribe" \
   -F response_format="text"
 
 ```
+
 
 ## مفاهیم session در Realtime
 

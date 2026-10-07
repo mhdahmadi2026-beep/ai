@@ -85,8 +85,8 @@ Embedding ابزار retrieval است، نه منبع واقعیت‌های تا
 
 ## مثال سریع
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -106,7 +106,10 @@ response = client.embeddings.create(
 vectors = [item.embedding for item in response.data]
 print(len(vectors), len(vectors[0]))
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -125,7 +128,10 @@ const response = await client.embeddings.create({
 const vectors = response.data.map((item) => item.embedding);
 console.log(vectors.length, vectors[0].length);
 
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```
+
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -138,6 +144,7 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
   }'
 
 ```
+
 
 ## نکته‌های Production
 

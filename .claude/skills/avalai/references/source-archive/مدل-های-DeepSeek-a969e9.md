@@ -588,8 +588,8 @@ DeepSeek-V3.2 قابلیت‌های استنتاج ترکیبی منحصر به 
 
 **دسترسی به محتوای استدلال:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -606,7 +606,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
 # - choices[0].message.reasoning_content: استدلال CoT
 # - choices[0].message.content: پاسخ نهایی
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -623,7 +626,10 @@ content = response.choices[0].message.content
 print(f"استدلال: {reasoning_content}")
 print(f"پاسخ: {content}")
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -643,7 +649,10 @@ const content = response.choices[0].message.content;
 console.log(`استدلال: ${reasoningContent}`);
 console.log(`پاسخ: ${content}`);
 
-php=:<?php
+```
+
+```php
+<?php
 require 'vendor/autoload.php';
 
 use OpenAI;
@@ -670,14 +679,15 @@ echo "پاسخ: " . $content . "\n";
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `deepseek-reasoner` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -693,7 +703,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -708,7 +721,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -719,6 +735,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -737,8 +754,8 @@ bash=:curl https://api.avalai.ir/v1/responses \
 - **مهم**: هنگام ادامه مکالمه، فقط `content` از نوبت‌های قبلی را ارسال کنید، نه `reasoning_content`
 - `reasoning_content` از نوبت‌های قبلی در زمینه متصل نمی‌شود
 
-```language-selector
-bash=:# نوبت ۱
+```bash
+# نوبت ۱
 RESPONSE=$(curl -s https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
@@ -764,7 +781,10 @@ curl https://api.avalai.ir/v1/chat/completions \
     ]
   }"
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -783,7 +803,10 @@ response = client.chat.completions.create(model="deepseek-reasoner", messages=me
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -811,7 +834,10 @@ response = await client.chat.completions.create({
 
 console.log(response.choices[0].message.content);
 
-php=:<?php
+```
+
+```php
+<?php
 require 'vendor/autoload.php';
 
 use OpenAI;
@@ -844,14 +870,15 @@ echo $response->choices[0]->message->content . "\n";
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `deepseek-reasoner` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -867,7 +894,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -882,7 +912,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -893,6 +926,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`
@@ -921,8 +955,8 @@ Missing reasoning_content field in the assistant message
 
 **پیاده‌سازی صحیح فراخوانی ابزار:**
 
-```language-selector
-bash=:# توجه: فراخوانی ابزار با حالت تفکری نیاز به مدیریت دقیق reasoning_content دارد
+```bash
+# توجه: فراخوانی ابزار با حالت تفکری نیاز به مدیریت دقیق reasoning_content دارد
 # این یک مثال ساده است - برای پیاده‌سازی کامل به Python/JS مراجعه کنید
 
 curl https://api.avalai.ir/v1/chat/completions \
@@ -954,7 +988,10 @@ curl https://api.avalai.ir/v1/chat/completions \
 # مهم: وقتی مدل tool_calls برمی‌گرداند، باید
 # reasoning_content را در پیام دستیار هنگام ارسال نتایج ابزار درج کنید
 
-python=:import json
+```
+
+```python
+import json
 from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -1028,7 +1065,10 @@ while True:
             }
         )
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -1105,7 +1145,10 @@ while (true) {
     }
 }
 
-php=:<?php
+```
+
+```php
+<?php
 require 'vendor/autoload.php';
 
 use OpenAI;
@@ -1189,14 +1232,15 @@ while (true) {
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه معادل Responses API مدل این نسخه روی `gpt-5.5` تنظیم شده، چون `deepseek-reasoner` ممکن است در داده‌های فعلی AvalAI برای `/v1/responses` فعال نباشد.</summary>
 
 وقتی مدل انتخابی از `/v1/responses` پشتیبانی می‌کند، این نسخه را کنار مثال Chat Completions استفاده کنید. `messages` به `input` منتقل می‌شود و متن نهایی از `response.output_text` خوانده می‌شود.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1229,7 +1273,10 @@ for item in response.output:
         print(item.name, item.arguments)
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1263,7 +1310,10 @@ for (const item of response.output) {
 }
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '
@@ -1292,6 +1342,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - `messages` → `input`
 - پیام سیستمی → `instructions` یا آیتم `developer`

@@ -36,8 +36,8 @@ POST https://api.avalai.ir/v1/messages
 
 ### تکمیل پیام پایه
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/messages \
+```bash
+curl https://api.avalai.ir/v1/messages \
   -H "Content-Type: application/json" \
   -H "x-api-key: $AVALAI_API_KEY" \
   -d '{
@@ -51,7 +51,10 @@ bash=:curl https://api.avalai.ir/v1/messages \
  "max_tokens": 1024
 }'
 
-python=:from anthropic import Anthropic
+```
+
+```python
+from anthropic import Anthropic
 
 client = Anthropic(
     api_key="AVALAI_API_KEY",
@@ -71,7 +74,10 @@ response = client.messages.create(
 
 print(response.content)
 
-javascript=:import { Anthropic } from "@anthropic-ai/sdk";
+```
+
+```javascript
+import { Anthropic } from "@anthropic-ai/sdk";
 
 const client = new Anthropic({
   apiKey: process.env.AVALAI_API_KEY,
@@ -92,7 +98,10 @@ const response = await client.messages.create({
 
 console.log(response.content);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -127,7 +136,10 @@ func main() {
 	fmt.Println(resp.Content)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP برای API پیام‌ها از طریق AvalAI
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید واقعی خود جایگزین کنید
@@ -172,6 +184,7 @@ if ($err) {
 ?>
 
 ```
+
 
 ## فرمت پاسخ
 

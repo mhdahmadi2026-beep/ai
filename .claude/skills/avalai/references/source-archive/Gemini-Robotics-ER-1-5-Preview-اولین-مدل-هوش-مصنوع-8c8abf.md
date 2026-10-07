@@ -140,14 +140,17 @@ curl https://api.avalai.ir/v1/chat/completions \
 
 #### SDK بومی Gemini (توصیه‌شده برای رباتیک)
 
-```language-selector
-bash=:# نصب Google GenAI SDK
+```bash
+# نصب Google GenAI SDK
 pip install -q google-genai
 
 # تنظیم کلید API شما
 export AVALAI_API_KEY="your-avalai-api-key"
 
-python=:from google import genai
+```
+
+```python
+from google import genai
 from google.genai import types
 
 # مقداردهی اولیه کلاینت GenAI
@@ -186,7 +189,10 @@ response = client.models.generate_content(
 
 print(response.text)
 
-javascript=:import { GoogleGenerativeAI } from "@google/generative-ai";
+```
+
+```javascript
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from 'fs';
 
 // مقداردهی اولیه کلاینت
@@ -231,10 +237,11 @@ console.log(result.response.text());
 
 ```
 
+
 #### SDK سازگار با OpenAI
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -258,7 +265,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -284,7 +294,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -316,14 +329,15 @@ console.log(response.choices[0].message.content);
 
 ```
 
+
 ### ویژگی‌های پیشرفته
 
 #### برنامه‌ریزی مسیر
 
 مدل می‌تواند دنباله‌ای از نقاط تعریف‌کننده مسیرهای حرکت ربات تولید کند:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -351,12 +365,13 @@ print(response.text)
 
 ```
 
+
 #### استدلال فضایی و هماهنگی
 
 مدل می‌تواند روابط فضایی را درک کند و وظایف چندمرحله‌ای را برنامه‌ریزی کند:
 
-```language-selector
-python=:prompt = """
+```python
+prompt = """
 Explain how to pack a lunch box with the items shown.
 Point to each object you refer to.
 Format: [{"point": [y, x], "label": <object_name>}, ...]
@@ -375,6 +390,7 @@ response = client.models.generate_content(
 print(response.text)
 
 ```
+
 
 ---
 

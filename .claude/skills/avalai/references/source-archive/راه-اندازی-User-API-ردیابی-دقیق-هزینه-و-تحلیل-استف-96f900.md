@@ -213,8 +213,8 @@ curl "https://api.avalai.ir/user/v1/transactions/lookup" \
 
 ### Python: ردیابی هزینه فروشندگان
 
-```language-selector
-bash=:# مرحله 1: فراخوانی API برای مشتری
+```bash
+# مرحله 1: فراخوانی API برای مشتری
 curl -i "https://api.avalai.ir/v1/chat/completions" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -234,7 +234,10 @@ curl "https://api.avalai.ir/user/v1/transactions/lookup" \
     "transaction_ids": ["019ac4a0-a8f4-7041-845f-3ea8f15dcf1a"]
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 import time
 
 # مرحله 1: فراخوانی API برای مشتری
@@ -266,7 +269,10 @@ transaction = cost_response.json()["transactions"][0]
 cost_usd = float(transaction["cost"]["total_cost_usd"])
 print(f"هزینه دقیق: ${cost_usd:.6f}")
 
-javascript=:// مرحله 1: فراخوانی API برای مشتری
+```
+
+```javascript
+// مرحله 1: فراخوانی API برای مشتری
 const response = await fetch("https://api.avalai.ir/v1/chat/completions", {
   method: "POST",
   headers: {
@@ -306,10 +312,11 @@ console.log(`هزینه دقیق: $${costUsd.toFixed(6)}`);
 
 ```
 
+
 ### سازمان‌ها: بازیابی دسته‌ای هزینه
 
-```language-selector
-bash=:# لیست تراکنش‌های اخیر
+```bash
+# لیست تراکنش‌های اخیر
 curl "https://api.avalai.ir/user/v1/transactions?limit=100&created_after=2025-11-27T00:00:00Z" \
   -H "Authorization: Bearer $AVALAI_API_KEY"
 
@@ -325,7 +332,10 @@ curl "https://api.avalai.ir/user/v1/transactions/lookup" \
     ]
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 # لیست تراکنش‌های اخیر
 list_response = requests.get(
@@ -350,7 +360,10 @@ total_cost = sum(
 )
 print(f"هزینه کل: ${total_cost:.6f}")
 
-javascript=:// لیست تراکنش‌های اخیر
+```
+
+```javascript
+// لیست تراکنش‌های اخیر
 const listResponse = await fetch(
   "https://api.avalai.ir/user/v1/transactions?limit=100&created_after=2025-11-27T00:00:00Z",
   {
@@ -385,6 +398,7 @@ const totalCost = costData.transactions.reduce(
 console.log(`هزینه کل: $${totalCost.toFixed(6)}`);
 
 ```
+
 
 ---
 

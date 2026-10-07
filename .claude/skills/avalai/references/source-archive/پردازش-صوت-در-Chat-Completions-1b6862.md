@@ -22,8 +22,8 @@ hasH1: true
 
 وقتی کاربر متن می‌فرستد و می‌خواهید مدل هم متن و هم صدا برگرداند، از این الگو استفاده کنید.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -42,7 +42,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:import base64
+```
+
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -74,7 +77,10 @@ if message.audio:
     with open("answer.wav", "wb") as output:
         output.write(base64.b64decode(message.audio.data))
 
-javascript=:import fs from "node:fs/promises";
+```
+
+```javascript
+import fs from "node:fs/promises";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -106,6 +112,7 @@ if (message.audio?.data) {
 }
 
 ```
+
 
 صدای بازگشتی به‌صورت Base64 در مسیر `choices[0].message.audio.data` قرار می‌گیرد. برای تبدیل آن به یک فایل قابل پخش مستقیم از ترمینال (به `jq` نیاز دارد)، خروجی `mp3` بخواهید و یک دستور یک‌باره اجرا کنید:
 
@@ -231,8 +238,8 @@ ffmpeg -f s16le -ar 24000 -ac 1 -i speech.pcm speech.wav
 
 وقتی مدل باید مستقیم روی صوت reasoning انجام دهد، از `input_audio` استفاده کنید. فایل صوتی را متناسب با محدودیت مدل و request کوتاه نگه دارید.
 
-```language-selector
-python=:import base64
+```python
+import base64
 import os
 from openai import OpenAI
 
@@ -264,7 +271,10 @@ completion = client.chat.completions.create(
 
 print(completion.choices[0].message.content)
 
-javascript=:import fs from "node:fs/promises";
+```
+
+```javascript
+import fs from "node:fs/promises";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -296,12 +306,13 @@ console.log(completion.choices[0].message.content);
 
 ```
 
+
 ## الگوی ۳: ادامه گفت‌وگوی صوتی
 
 برای گفت‌وگوهای کوتاه، transcript متنی را در برنامه خود نگه دارید و turnهای قبلی کاربر/دستیار را در `messages` بفرستید. بایت‌های صوتی را جداگانه ذخیره کنید؛ فقط وقتی مدل باید دوباره خود صوت را بررسی کند، صوت را دوباره ارسال کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -335,6 +346,7 @@ print(second.choices[0].message.content)
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>مسیر مهاجرت به Responses API</summary>
@@ -346,8 +358,8 @@ print(second.choices[0].message.content)
 3. متن نهایی را از `response.output_text` بخوانید.
 4. صدا را با `/v1/audio/speech` بسازید.
 
-```language-selector
-python=:import os
+```python
+import os
 from pathlib import Path
 from openai import OpenAI
 
@@ -376,7 +388,10 @@ with client.audio.speech.with_streaming_response.create(
 ) as speech:
     speech.stream_to_file(Path("response.mp3"))
 
-javascript=:import fs from "node:fs";
+```
+
+```javascript
+import fs from "node:fs";
 import fsp from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -406,6 +421,7 @@ const speech = await client.audio.speech.create({
 await fsp.writeFile("response.mp3", Buffer.from(await speech.arrayBuffer()));
 
 ```
+
 
 وقتی به قابلیت‌هایی مثل tool call، structured outputs، `previous_response_id` یا manual Item replay نیاز دارید، از این مسیر مهاجرت استفاده کنید. وقتی خروجی صوتی مستقیم مدل قابلیت اصلی است، Chat Completions را نگه دارید.
 

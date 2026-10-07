@@ -48,8 +48,8 @@ POST https://api.avalai.ir/v1/fine-tuning/jobs
 
 ### ایجاد یک کار تنظیم دقیق
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/fine-tuning/jobs \
+```bash
+curl https://api.avalai.ir/v1/fine-tuning/jobs \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -61,7 +61,10 @@ bash=:curl https://api.avalai.ir/v1/fine-tuning/jobs \
   }
 }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(
     api_key="your-avalai-api-key",  # با کلید واقعی خود جایگزین کنید
@@ -77,7 +80,10 @@ response = client.fine_tuning.jobs.create(
 
 print(response)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -95,7 +101,10 @@ const response = await client.fineTuning.jobs.create({
 
 console.log(response);
 
-go=:// مثال Go: ایجاد یک کار تنظیم دقیق از طریق AvalAI
+```
+
+```go
+// مثال Go: ایجاد یک کار تنظیم دقیق از طریق AvalAI
 package main
 
 import (
@@ -137,7 +146,10 @@ func main() {
 	fmt.Printf("کار تنظیم دقیق ایجاد شد: %+v\n", resp)
 }
 
-php=:<?php
+```
+
+```php
+<?php
 // مثال PHP: ایجاد یک کار تنظیم دقیق از طریق AvalAI
 
 $apiKey = getenv('AVALAI_API_KEY'); // یا مستقیما با کلید خود جایگزین کنید
@@ -186,6 +198,7 @@ if ($err) {
 ?>
 
 ```
+
 
 ## فرمت پاسخ (Response Format)
 

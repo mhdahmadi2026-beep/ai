@@ -41,8 +41,8 @@ API `v1/search` یک **endpoint اختصاصی جستجوی وب** است که �
 
 ساده‌ترین روش استفاده از API ‍‍‍`v1/search` شامل کردن نام ابزار جستجو مستقیما در URL است:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/perplexity-search \
+```bash
+curl https://api.avalai.ir/v1/search/perplexity-search \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -50,7 +50,10 @@ bash=:curl https://api.avalai.ir/v1/search/perplexity-search \
     "max_results": 5
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -69,7 +72,10 @@ response = requests.post(
 results = response.json()
 print(results)
 
-javascript=:import fetch from 'node-fetch';
+```
+
+```javascript
+import fetch from 'node-fetch';
 
 const response = await fetch('https://api.avalai.ir/v1/search/perplexity-search', {
   method: 'POST',
@@ -86,7 +92,10 @@ const response = await fetch('https://api.avalai.ir/v1/search/perplexity-search'
 const results = await response.json();
 console.log(results);
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -124,7 +133,10 @@ func main() {
 	fmt.Println(string(body))
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 $apiKey = getenv('AVALAI_API_KEY');
 
@@ -150,12 +162,13 @@ print_r($results);
 
 ```
 
+
 ### روش 2: مشخص کردن ابزار در بدنه درخواست
 
 به طور جایگزین، می‌توانید ابزار جستجو را در بدنه درخواست با استفاده از endpoint پایه `v1/search` مشخص کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search \
+```bash
+curl https://api.avalai.ir/v1/search \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -164,7 +177,10 @@ bash=:curl https://api.avalai.ir/v1/search \
     "max_results": 10
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search",
@@ -185,7 +201,10 @@ for result in results.get("results", []):
     print(f"اسنیپت: {result['snippet']}")
     print("---")
 
-javascript=:const response = await fetch('https://api.avalai.ir/v1/search', {
+```
+
+```javascript
+const response = await fetch('https://api.avalai.ir/v1/search', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -208,7 +227,10 @@ results.results?.forEach(result => {
   console.log('---');
 });
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"bytes"
@@ -274,7 +296,10 @@ func main() {
 	}
 }
 
-php=:<?php
+```
+
+```php
+<?php
 
 $apiKey = getenv('AVALAI_API_KEY');
 
@@ -307,14 +332,15 @@ foreach ($results['results'] ?? [] as $result) {
 
 ```
 
+
 ## ویژگی‌های پیشرفته
 
 ### کنترل تعداد نتایج
 
 تعداد نتایج دریافتی را با استفاده از پارامتر `max_results` مشخص کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/google_pse-search \
+```bash
+curl https://api.avalai.ir/v1/search/google_pse-search \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -322,7 +348,10 @@ bash=:curl https://api.avalai.ir/v1/search/google_pse-search \
     "max_results": 20
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/google_pse-search",
@@ -332,7 +361,10 @@ response = requests.post(
 
 results = response.json()
 
-javascript=:const response = await fetch('https://api.avalai.ir/v1/search/google_pse-search', {
+```
+
+```javascript
+const response = await fetch('https://api.avalai.ir/v1/search/google_pse-search', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -348,12 +380,13 @@ const results = await response.json();
 
 ```
 
+
 ### جستجوی Serper با فیلتر زمانی و هدف‌گیری جغرافیایی
 
 از `serper-search` برای جستجوی کم‌هزینه مبتنی بر Google با پارامترهای اختصاصی Serper مانند `gl`، `hl`، `autocorrect`، `tbs` و `page` استفاده کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/serper-search \
+```bash
+curl https://api.avalai.ir/v1/search/serper-search \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -368,7 +401,10 @@ bash=:curl https://api.avalai.ir/v1/search/serper-search \
     "location": "Berlin,Germany"
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/serper-search",
@@ -390,7 +426,10 @@ response = requests.post(
 
 results = response.json()
 
-javascript=:const response = await fetch('https://api.avalai.ir/v1/search/serper-search', {
+```
+
+```javascript
+const response = await fetch('https://api.avalai.ir/v1/search/serper-search', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -415,14 +454,15 @@ const results = await response.json();
 
 ```
 
+
 **مقادیر جستجوی زمانی:** `qdr:h` (ساعت گذشته)، `qdr:d` (روز گذشته)، `qdr:w` (هفته گذشته)، `qdr:m` (ماه گذشته) و `qdr:y` (سال گذشته).
 
 ### جستجوی خاص دامنه
 
 از پارامتر `domains` برای محدود کردن نتایج جستجو به دامنه‌های خاص استفاده کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/tavily-search \
+```bash
+curl https://api.avalai.ir/v1/search/tavily-search \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -431,7 +471,10 @@ bash=:curl https://api.avalai.ir/v1/search/tavily-search \
     "max_results": 10
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/tavily-search",
@@ -445,7 +488,10 @@ response = requests.post(
 
 results = response.json()
 
-javascript=:const response = await fetch('https://api.avalai.ir/v1/search/tavily-search', {
+```
+
+```javascript
+const response = await fetch('https://api.avalai.ir/v1/search/tavily-search', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -462,12 +508,13 @@ const results = await response.json();
 
 ```
 
+
 ### کنترل عمق جستجو (Tavily پیشرفته)
 
 برای تحلیل عمیق‌تر جستجو، از `tavily-search-advanced` با کنترل عمق جستجو استفاده کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/tavily-search-advanced \
+```bash
+curl https://api.avalai.ir/v1/search/tavily-search-advanced \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -476,7 +523,10 @@ bash=:curl https://api.avalai.ir/v1/search/tavily-search-advanced \
     "max_results": 15
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/tavily-search-advanced",
@@ -490,7 +540,10 @@ response = requests.post(
 
 results = response.json()
 
-javascript=:const response = await fetch('https://api.avalai.ir/v1/search/tavily-search-advanced', {
+```
+
+```javascript
+const response = await fetch('https://api.avalai.ir/v1/search/tavily-search-advanced', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -507,12 +560,13 @@ const results = await response.json();
 
 ```
 
+
 ### جستجوی معنایی عصبی (Exa AI)
 
 برای قابلیت‌های جستجوی معنایی/عصبی، از Exa AI استفاده کنید:
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/exa_ai-search \
+```bash
+curl https://api.avalai.ir/v1/search/exa_ai-search \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -520,7 +574,10 @@ bash=:curl https://api.avalai.ir/v1/search/exa_ai-search \
     "max_results": 10
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/exa_ai-search",
@@ -538,7 +595,10 @@ for result in results.get("results", []):
     print(f"URL مرتبط: {result['url']}")
     print(f"زمینه: {result['snippet']}")
 
-javascript=:const response = await fetch('https://api.avalai.ir/v1/search/exa_ai-search', {
+```
+
+```javascript
+const response = await fetch('https://api.avalai.ir/v1/search/exa_ai-search', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -562,14 +622,15 @@ results.results?.forEach(result => {
 
 ```
 
+
 ## موارد استفاده
 
 ### 1. اتوماسیون تحقیق
 
 اتوماسیون تحقیق با جمع‌آوری اطلاعات از ابزارهای جستجوی متعدد:
 
-```language-selector
-bash=:# جستجو در چندین ارائه‌دهنده
+```bash
+# جستجو در چندین ارائه‌دهنده
 curl https://api.avalai.ir/v1/search/dataforseo-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -580,7 +641,10 @@ curl https://api.avalai.ir/v1/search/exa_ai-search \
   -H "Content-Type: application/json" \
   -d '{"query": "دستورالعمل‌های اخلاقی هوش مصنوعی", "max_results": 5}'
 
-python=:import requests
+```
+
+```python
+import requests
 import asyncio
 import aiohttp
 
@@ -627,7 +691,10 @@ for provider_results in results:
 
 print(f"{len(all_urls)} منبع منحصر به فرد پیدا شد")
 
-javascript=:import fetch from 'node-fetch';
+```
+
+```javascript
+import fetch from 'node-fetch';
 
 async function searchMultipleProviders(query) {
   const apiKey = process.env.AVALAI_API_KEY;
@@ -671,12 +738,13 @@ const results = await searchMultipleProviders(
 
 ```
 
+
 ### 2. مقایسه و نظارت بر قیمت
 
 ساخت سیستم نظارت بر قیمت با استفاده از ابزارهای جستجوی مقرون به صرفه:
 
-```language-selector
-bash=:# استفاده از DataForSEO برای نظارت مقرون به صرفه بر قیمت
+```bash
+# استفاده از DataForSEO برای نظارت مقرون به صرفه بر قیمت
 curl https://api.avalai.ir/v1/search/dataforseo-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -685,7 +753,10 @@ curl https://api.avalai.ir/v1/search/dataforseo-search \
     "max_results": 20
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 import re
 from datetime import datetime
 
@@ -729,7 +800,10 @@ for item in iphone_prices:
     print(f"{item['title']}: {item['price']}")
     print(f"URL: {item['url']}\n")
 
-javascript=:async function monitorPrices(productQuery) {
+```
+
+```javascript
+async function monitorPrices(productQuery) {
   const response = await fetch('https://api.avalai.ir/v1/search/dataforseo-search', {
     method: 'POST',
     headers: {
@@ -772,12 +846,13 @@ iphonePrices.forEach(item => {
 
 ```
 
+
 ### 3. تجمیع اخبار
 
 تجمیع اخبار از منابع متعدد با استفاده از ابزارهای جستجوی سریع:
 
-```language-selector
-bash=:# استفاده از Parallel AI برای تجمیع سریع اخبار
+```bash
+# استفاده از Parallel AI برای تجمیع سریع اخبار
 curl https://api.avalai.ir/v1/search/parallel_ai-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -786,7 +861,10 @@ curl https://api.avalai.ir/v1/search/parallel_ai-search \
     "max_results": 15
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 from datetime import datetime
 
 
@@ -826,7 +904,10 @@ for article in tech_news[:5]:  # نمایش 5 مورد اول
     print(f"   {article['snippet'][:100]}...")
     print(f"   {article['url']}\n")
 
-javascript=:async function aggregateNews(topic, maxResults = 15) {
+```
+
+```javascript
+async function aggregateNews(topic, maxResults = 15) {
   const response = await fetch('https://api.avalai.ir/v1/search/parallel_ai-search', {
     method: 'POST',
     headers: {
@@ -863,12 +944,13 @@ aiNews.slice(0, 5).forEach(article => {
 
 ```
 
+
 ### 4. تحقیقات آکادمیک
 
 جستجوی منابع آکادمیک با استفاده از فیلتر دامنه خاص:
 
-```language-selector
-bash=:# جستجوی مقالات آکادمیک با استفاده از Tavily با فیلتر دامنه
+```bash
+# جستجوی مقالات آکادمیک با استفاده از Tavily با فیلتر دامنه
 curl https://api.avalai.ir/v1/search/tavily-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -878,7 +960,10 @@ curl https://api.avalai.ir/v1/search/tavily-search \
     "max_results": 15
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 
 def search_academic_papers(query, domains=None):
@@ -927,7 +1012,10 @@ for paper in papers:
     print(f"   منبع: {paper['source']}")
     print(f"   {paper['url']}\n")
 
-javascript=:async function searchAcademicPapers(query, domains = null) {
+```
+
+```javascript
+async function searchAcademicPapers(query, domains = null) {
   if (!domains) {
     domains = [
       'arxiv.org',
@@ -976,12 +1064,13 @@ papers.forEach(paper => {
 
 ```
 
+
 ### 5. هوش رقابتی
 
 استفاده از جستجوی معنایی Exa AI برای تحلیل رقابتی:
 
-```language-selector
-bash=:# استفاده از Exa AI برای جستجوی معنایی شرکت/رقبا
+```bash
+# استفاده از Exa AI برای جستجوی معنایی شرکت/رقبا
 curl https://api.avalai.ir/v1/search/exa_ai-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -990,7 +1079,10 @@ curl https://api.avalai.ir/v1/search/exa_ai-search \
     "max_results": 10
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 
 def competitive_intelligence(query, max_results=10):
@@ -1030,7 +1122,10 @@ for comp in competitors:
     print(f"   {comp['description'][:150]}...")
     print(f"   {comp['url']}\n")
 
-javascript=:async function competitiveIntelligence(query, maxResults = 10) {
+```
+
+```javascript
+async function competitiveIntelligence(query, maxResults = 10) {
   const response = await fetch('https://api.avalai.ir/v1/search/exa_ai-search', {
     method: 'POST',
     headers: {
@@ -1068,6 +1163,7 @@ competitors.forEach(comp => {
 
 ```
 
+
 ## درک فرمت پاسخ
 
 API ‍‍‍`v1/search` نتایج را در فرمت سازگار با Perplexity برمی‌گرداند:
@@ -1091,8 +1187,8 @@ API ‍‍‍`v1/search` نتایج را در فرمت سازگار با Perplex
 
 ### پردازش نتایج
 
-```language-selector
-python=:import requests
+```python
+import requests
 import json
 
 
@@ -1142,7 +1238,10 @@ for i, result in enumerate(results["results"][:5], 1):
     print(f"   {result['snippet']}")
     print(f"   {result['url']}\n")
 
-javascript=:async function processSearchResults(query, searchTool = 'perplexity-search') {
+```
+
+```javascript
+async function processSearchResults(query, searchTool = 'perplexity-search') {
   const response = await fetch(`https://api.avalai.ir/v1/search/${searchTool}`, {
     method: 'POST',
     headers: {
@@ -1187,6 +1286,7 @@ results.results.slice(0, 5).forEach((result, i) => {
 
 ```
 
+
 ## مقایسه: API ‍‍‍`v1/search` در برابر جستجوی وب داخل مدل
 
 AvalAI هم API خام جستجو و هم جستجوی داخل مدل را پشتیبانی می‌کند. این دو را ابزارهای متفاوت بدانید، نه جایگزین مستقیم یکدیگر.
@@ -1213,8 +1313,8 @@ AvalAI هم API خام جستجو و هم جستجوی داخل مدل را پش
 
 **مثال تفاوت:**
 
-```language-selector
-bash=:# API /v1/search - بازگشت نتایج خام جستجو
+```bash
+# API /v1/search - بازگشت نتایج خام جستجو
 curl https://api.avalai.ir/v1/search/perplexity-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -1246,14 +1346,15 @@ curl https://api.avalai.ir/v1/chat/completions \
 
 ```
 
+
 <!-- responses-equivalent:start -->
 <details>
 <summary>نسخه Responses API همراه ابزار `web_search`</summary>
 
 برای پاسخ‌های جدیدی که مدل با جستجوی وب تولید می‌کند، از این نسخه استفاده کنید. `messages` به `input` منتقل می‌شود، دسترسی وب در `tools` اعلام می‌شود و متن نهایی از `response.output_text` خوانده می‌شود؛ برای جزئیات `web_search_call` و `url_citation`، `response.output` را بررسی کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -1270,7 +1371,10 @@ response = client.responses.create(
 
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -1286,7 +1390,10 @@ const response = await client.responses.create({
 
 console.log(response.output_text);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -1297,6 +1404,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 - Chat `messages` → Responses `input`
 - مدل search در Chat → مدل پشتیبان Responses همراه `tools: [{"type": "web_search"}]`

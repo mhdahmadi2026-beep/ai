@@ -65,8 +65,8 @@ AvalAI دسترسی به دو مدل تولید ویدیوی Veo 3.1 را فرا
 
 ساده‌ترین راه برای تولید ویدیو، ارائه یک پرامپت متنی است. API درخواست شما را به صورت ناهمزمان پردازش می‌کند و شما می‌توانید وضعیت تکمیل را بررسی کنید.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -105,7 +105,10 @@ while True:
 
     time.sleep(10)
 
-bash=:# ایجاد درخواست تولید ویدیو با safety_identifier برای ردیابی
+```
+
+```bash
+# ایجاد درخواست تولید ویدیو با safety_identifier برای ردیابی
 curl -X POST https://api.avalai.ir/v1/videos \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -126,7 +129,10 @@ curl -X GET https://api.avalai.ir/v1/videos/video_691bab4a12248190b1e9123d8648ff
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   --output video.mp4
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -173,12 +179,13 @@ generateVideo();
 
 ```
 
+
 ## استفاده از تصاویر مرجع
 
 می‌توانید یک تصویر مرجع برای هدایت تولید ویدیو ارائه دهید. Veo از تصویر ورودی به عنوان فریم اولیه استفاده می‌کند، که آن را برای انیمیشن اشیاء روزمره، زنده کردن نقاشی‌ها و طراحی‌ها، و اضافه کردن حرکت و صدا به صحنه‌های طبیعی عالی می‌کند.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -216,7 +223,10 @@ while True:
 
     time.sleep(10)
 
-bash=:# ایجاد ویدیو با تصویر مرجع
+```
+
+```bash
+# ایجاد ویدیو با تصویر مرجع
 curl -X POST https://api.avalai.ir/v1/videos \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F "model=veo-3.1-generate-001" \
@@ -234,7 +244,10 @@ curl -X GET https://api.avalai.ir/v1/videos/video_691bab4a12248190b1e9123d8648ff
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   --output landscape_video.mp4
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -280,12 +293,13 @@ generateVideoWithImage();
 
 ```
 
+
 ## تصاویر مرجع برای ثبات کاراکتر
 
 Veo 3.1 به شما امکان می‌دهد تا 3 تصویر مرجع از یک کاراکتر، شی یا صحنه ارائه دهید تا ثبات را در تولیدات ویدیویی حفظ کنید. این برای حفظ ظاهر کاراکتر در چندین شات یا اعمال یک استایل خاص عالی است.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -328,7 +342,10 @@ while True:
 
     time.sleep(10)
 
-bash=:# ایجاد ویدیو با تصاویر مرجع
+```
+
+```bash
+# ایجاد ویدیو با تصاویر مرجع
 curl -X POST https://api.avalai.ir/v1/videos \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F "model=veo-3.1-generate-001" \
@@ -339,7 +356,10 @@ curl -X POST https://api.avalai.ir/v1/videos \
   -F "size=1280x720" \
   -F "seconds=8"
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -384,14 +404,15 @@ generateWithCharacterConsistency();
 
 ```
 
+
 ## گسترش ویدیو
 
 ویدیوهای تولید شده با Veo خود را گسترش دهید تا سکانس‌های طولانی‌تر ایجاد کنید. گسترش از ثانیه نهایی (24 فریم) ویدیوی موجود شما استفاده می‌کند و عمل را ادامه می‌دهد، که به شما امکان می‌دهد ویدیوهایی به طول یک دقیقه یا بیشتر با زنجیره‌ای کردن چندین گسترش ایجاد کنید.
 
 **توجه:** صدا/دیالوگ فقط در صورتی به طور موثر گسترش می‌یابد که در ثانیه آخر ویدیو حضور داشته باشد.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -427,7 +448,10 @@ while True:
 
     time.sleep(10)
 
-bash=:# گسترش یک ویدیوی موجود
+```
+
+```bash
+# گسترش یک ویدیوی موجود
 curl -X POST https://api.avalai.ir/v1/videos/video_691bab4a12248190b1e9123d8648ff4d/extend \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -445,7 +469,10 @@ curl -X GET https://api.avalai.ir/v1/videos/video_691bb11c9f1481908d6c5a0c463fcd
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   --output extended_output.mp4
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -491,12 +518,13 @@ extendVideo();
 
 ```
 
+
 ## بررسی وضعیت ویدیو
 
 برای برنامه‌های تولید، دریافت وضعیت یک روش قابل اعتماد برای بررسی زمان تکمیل تولید ویدیو فراهم می‌کند.
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 import time
 
 client = OpenAI(api_key="avalai-api-key", base_url="https://api.avalai.ir/v1")
@@ -544,7 +572,10 @@ video = client.videos.create(
 
 check_video_status(video.id)
 
-bash=:# دریافت وضعیت ویدیو
+```
+
+```bash
+# دریافت وضعیت ویدیو
 VIDEO_ID="video_691bab4a12248190b1e9123d8648ff4d"
 
 while true; do
@@ -566,7 +597,10 @@ while true; do
   fi
 done
 
-javascript=:import OpenAI from 'openai';
+```
+
+```javascript
+import OpenAI from 'openai';
 import fs from 'fs';
 
 const client = new OpenAI({
@@ -614,6 +648,7 @@ const video = await client.videos.create({
 await checkVideoStatus(video.id);
 
 ```
+
 
 ## بهترین شیوه‌ها برای نوشتن پرامپت
 

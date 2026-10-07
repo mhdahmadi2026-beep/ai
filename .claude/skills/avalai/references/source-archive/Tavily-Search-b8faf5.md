@@ -22,8 +22,8 @@ Tavily در ارائه نتایج جستجوی با کیفیت بالای وب �
 
 **نمونه استفاده:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search/tavily-search \
+```bash
+curl https://api.avalai.ir/v1/search/tavily-search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -31,7 +31,10 @@ bash=:curl https://api.avalai.ir/v1/search/tavily-search \
     "max_results": 10
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search/tavily-search",
@@ -43,7 +46,10 @@ results = response.json()
 for result in results["results"]:
     print(f"{result['title']}: {result['url']}")
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/search/tavily-search", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/search/tavily-search", {
     method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -62,6 +68,7 @@ data.results.forEach(result => {
 
 ```
 
+
 ### Tavily Search Advanced
 
 جستجوی پیشرفته با قابلیت‌های فیلترینگ پیشرفته و کیفیت عمیق‌تر نتایج.
@@ -78,8 +85,8 @@ data.results.forEach(result => {
 
 **نمونه استفاده:**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/search \
+```bash
+curl https://api.avalai.ir/v1/search \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -90,7 +97,10 @@ bash=:curl https://api.avalai.ir/v1/search \
     "country": "united states"
   }'
 
-python=:import requests
+```
+
+```python
+import requests
 
 response = requests.post(
     "https://api.avalai.ir/v1/search",
@@ -106,7 +116,10 @@ response = requests.post(
 
 results = response.json()
 
-javascript=:const response = await fetch("https://api.avalai.ir/v1/search", {
+```
+
+```javascript
+const response = await fetch("https://api.avalai.ir/v1/search", {
     method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.AVALAI_API_KEY}`,
@@ -124,6 +137,7 @@ javascript=:const response = await fetch("https://api.avalai.ir/v1/search", {
 const data = await response.json();
 
 ```
+
 
 ## پارامترهای درخواست
 

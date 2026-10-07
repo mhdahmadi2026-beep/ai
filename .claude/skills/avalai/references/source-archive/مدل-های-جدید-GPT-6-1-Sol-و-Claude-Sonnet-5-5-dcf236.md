@@ -70,8 +70,8 @@ GPT-6.1 Sol و Claude Sonnet 5.5 اکنون از سطح ۱ در AvalAI در دس
 
 کلید `AVALAI_API_KEY` را در محیط خود قرار دهید. برای هر دو مدل از همان پرامپت و ساختار درخواست استفاده کنید؛ هنگام ارزیابی Sonnet فقط شناسه مدل را تغییر دهید. در مثال‌ها عمداً کنترل نمونه‌گیری و تلاش استدلالی ارسال نشده است.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/chat/completions \
+```bash
+curl https://api.avalai.ir/v1/chat/completions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -79,7 +79,10 @@ bash=:curl https://api.avalai.ir/v1/chat/completions \
     "messages": [{"role": "user", "content": "Review this release plan and give a concise verification checklist: deploy an API behind a feature flag."}]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -97,7 +100,10 @@ for model in ("gpt-6.1-sol", "claude-sonnet-5-5"):
     )
     print(model, response.choices[0].message.content)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.AVALAI_API_KEY, baseURL: "https://api.avalai.ir/v1" });
 for (const model of ["gpt-6.1-sol", "claude-sonnet-5-5"]) {
@@ -109,6 +115,7 @@ for (const model of ["gpt-6.1-sol", "claude-sonnet-5-5"]) {
 }
 
 ```
+
 
 ### پاسخ‌های آموزشی
 
@@ -182,13 +189,16 @@ for (const model of ["gpt-6.1-sol", "claude-sonnet-5-5"]) {
 
 این درخواست ساده و بدون وضعیت ذخیره‌شده از نقطه پایانی کامل Responses برای GPT-6.1 Sol استفاده می‌کند. قابلیت‌های اضافی ابزار میزبانی‌شده یا وضعیت ذخیره‌شده را جداگانه آزمایش کنید.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/responses \
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-6.1-sol","input":"Give a concise verification checklist for a feature-flagged API release."}'
 
-python=:import os
+```
+
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -200,7 +210,10 @@ response = client.responses.create(
 )
 print(response.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.AVALAI_API_KEY, baseURL: "https://api.avalai.ir/v1" });
 const response = await client.responses.create({
@@ -211,12 +224,13 @@ console.log(response.output_text);
 
 ```
 
+
 ## Claude Sonnet 5.5 با SDK بومی Anthropic
 
 در SDK Anthropic، آدرس پایه باید **فقط نشانی میزبان** باشد و به `/v1` ختم نشود. این مثال صریحاً تفکر تطبیقی و تلاش `high` را درخواست می‌کند؛ بدنه مهاجرت `between_tools` نیست. برای کارهای دشوارتر بودجه خروجی را افزایش دهید و برای نوبت‌های بعدی ابزار، محتوای کامل پاسخ را حفظ کنید.
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/messages \
+```bash
+curl https://api.avalai.ir/v1/messages \
   -H "x-api-key: $AVALAI_API_KEY" \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
@@ -228,7 +242,10 @@ bash=:curl https://api.avalai.ir/v1/messages \
     "messages":[{"role":"user","content":"Review this release plan and give a concise verification checklist: deploy an API behind a feature flag."}]
   }'
 
-python=:import os
+```
+
+```python
+import os
 from anthropic import Anthropic
 
 client = Anthropic(
@@ -250,7 +267,10 @@ for block in response.content:
     if block.type == "text":
         print(block.text)
 
-javascript=:import Anthropic from "@anthropic-ai/sdk";
+```
+
+```javascript
+import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic({ apiKey: process.env.AVALAI_API_KEY, baseURL: "https://api.avalai.ir" });
 const response = await client.messages.create({
@@ -265,6 +285,7 @@ for (const block of response.content) {
 }
 
 ```
+
 
 ## چک‌لیست یکپارچه‌سازی
 

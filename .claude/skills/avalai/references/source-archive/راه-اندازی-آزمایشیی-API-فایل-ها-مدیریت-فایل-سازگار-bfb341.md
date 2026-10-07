@@ -162,8 +162,8 @@ curl https://api.avalai.ir/v1/chat/completions \
 
 ### آپلود و استفاده از یک فایل
 
-```language-selector
-bash=:# آپلود یک فایل
+```bash
+# آپلود یک فایل
 FILE_RESPONSE=$(curl -s https://api.avalai.ir/v1/files \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F purpose="user_data" \
@@ -188,7 +188,10 @@ curl https://api.avalai.ir/v1/chat/completions \
     ]
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(
     api_key="your-avalai-api-key",  # با کلید واقعی خود جایگزین کنید
@@ -216,7 +219,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 import fs from "fs";
 
 const client = new OpenAI({
@@ -250,17 +256,21 @@ console.log(response.choices[0].message.content);
 
 ```
 
+
 ### فایل با سیاست انقضا
 
-```language-selector
-bash=:# آپلود فایلی که بعد از ۲۴ ساعت منقضی می‌شود
+```bash
+# آپلود فایلی که بعد از ۲۴ ساعت منقضی می‌شود
 curl https://api.avalai.ir/v1/files \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -F purpose="user_data" \
   -F file="@temp_document.pdf" \
   -F 'expires_after={"anchor":"created_at","seconds":86400}'
 
-python=:# آپلود فایلی که بعد از ۲۴ ساعت منقضی می‌شود
+```
+
+```python
+# آپلود فایلی که بعد از ۲۴ ساعت منقضی می‌شود
 file = client.files.create(
     file=open("temp_document.pdf", "rb"),
     purpose="user_data",
@@ -269,7 +279,10 @@ file = client.files.create(
 
 print(f"زمان انقضای فایل: {file.expires_at}")
 
-javascript=:// آپلود فایلی که بعد از ۲۴ ساعت منقضی می‌شود
+```
+
+```javascript
+// آپلود فایلی که بعد از ۲۴ ساعت منقضی می‌شود
 const file = await client.files.create({
   file: fs.createReadStream("temp_document.pdf"),
   purpose: "user_data",
@@ -282,6 +295,7 @@ const file = await client.files.create({
 console.log(`زمان انقضای فایل: ${file.expires_at}`);
 
 ```
+
 
 ---
 

@@ -2943,8 +2943,8 @@ AvalAI اکنون از دسترسی بومی به مدل‌های Gemini با ا
 
 #### تولید متن پایه
 
-```language-selector
-bash=:curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent' \
+```bash
+curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent' \
   -H 'Content-Type: application/json' \
   -H 'x-goog-api-key: $AVALAI_API_KEY' \
   -d '{
@@ -2960,7 +2960,10 @@ bash=:curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generat
     "model": "gemini-2.5-flash"
   }'
 
-python=:from google import genai
+```
+
+```python
+from google import genai
 
 client = genai.Client(
     api_key="your-avalai-api-key", http_options={"base_url": "https://api.avalai.ir"}
@@ -2971,7 +2974,10 @@ response = client.models.generate_content(
 )
 print(response.text)
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
     apiKey: "your-avalai-api-key",
@@ -2988,7 +2994,10 @@ async function main() {
 
 await main();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -3017,10 +3026,11 @@ func main() {
 }
 
 ```
+
 #### دستورالعمل‌های سیستمی
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -3037,7 +3047,10 @@ response = client.models.generate_content(
 
 print(response.text)
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
     apiKey: "your-avalai-api-key",
@@ -3057,7 +3070,10 @@ async function main() {
 
 await main();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -3091,10 +3107,11 @@ func main() {
 
 ```
 
+
 #### پیکربندی تفکر (مدل‌های Gemini 2.5)
 
-```language-selector
-bash=:curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent' \
+```bash
+curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent' \
   -H 'Content-Type: application/json' \
   -H 'x-goog-api-key: $AVALAI_API_KEY' \
   -d '{
@@ -3114,7 +3131,10 @@ bash=:curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generat
     "model": "gemini-2.5-flash"
   }'
 
-python=:from google import genai
+```
+
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -3130,7 +3150,10 @@ response = client.models.generate_content(
 )
 print(response.text)
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
     apiKey: "your-avalai-api-key",
@@ -3152,7 +3175,10 @@ async function main() {
 
 await main();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
     "context"
@@ -3186,10 +3212,11 @@ func main() {
 
 ```
 
+
 #### پاسخ‌های جریانی
 
-```language-selector
-bash=:curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:streamGenerateContent' \
+```bash
+curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:streamGenerateContent' \
   -H 'Content-Type: application/json' \
   -H 'x-goog-api-key: $AVALAI_API_KEY' \
   -d '{
@@ -3204,7 +3231,10 @@ bash=:curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:streamG
     }
 }' --no-buffer
 
-python=:from google import genai
+```
+
+```python
+from google import genai
 
 client = genai.Client(
     api_key="your-avalai-api-key", http_options={"base_url": "https://api.avalai.ir"}
@@ -3216,7 +3246,10 @@ response = client.models.generate_content_stream(
 for chunk in response:
     print(chunk.text, end="")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
     apiKey: "your-avalai-api-key",
@@ -3236,7 +3269,10 @@ async function main() {
 
 await main();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -3268,10 +3304,11 @@ func main() {
 }
 
 ```
+
 #### مکالمات چندمرحله‌ای (چت)
 
-```language-selector
-bash=:# پیام اول
+```bash
+# پیام اول
 curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent' \
   -H 'Content-Type: application/json' \
   -H 'x-goog-api-key: $AVALAI_API_KEY' \
@@ -3313,7 +3350,10 @@ curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateConte
     "model": "gemini-2.5-flash"
   }'
 
-python=:from google import genai
+```
+
+```python
+from google import genai
 
 client = genai.Client(
     api_key="your-avalai-api-key", http_options={"base_url": "https://api.avalai.ir"}
@@ -3330,7 +3370,10 @@ for message in chat.get_history():
     print(f"نقش - {message.role}", end=": ")
     print(message.parts[0].text)
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
     apiKey: "your-avalai-api-key",
@@ -3365,7 +3408,10 @@ async function main() {
 
 await main();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -3397,6 +3443,7 @@ func main() {
 }
 
 ```
+
 
 ### دسترسی مستقیم API
 
@@ -3481,8 +3528,8 @@ API Gemini تنظیمات ایمنی قابل تنظیم را فراهم می‌
 
 #### استفاده از تنظیمات ایمنی با API بومی
 
-```language-selector
-bash=:curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent' \
+```bash
+curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generateContent' \
   -H 'Content-Type: application/json' \
   -H 'x-goog-api-key: $AVALAI_API_KEY' \
   -d '{
@@ -3516,7 +3563,10 @@ bash=:curl -X POST 'https://api.avalai.ir/v1beta/models/gemini-2.5-flash:generat
     "model": "gemini-2.5-flash"
   }'
 
-python=:from google import genai
+```
+
+```python
+from google import genai
 from google.genai import types
 
 client = genai.Client(
@@ -3552,7 +3602,10 @@ response = client.models.generate_content(
 
 print(response.text)
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
     apiKey: "your-avalai-api-key",
@@ -3589,7 +3642,10 @@ async function main() {
 
 await main();
 
-go=:package main
+```
+
+```go
+package main
 
 import (
 	"context"
@@ -3637,6 +3693,7 @@ func main() {
 }
 
 ```
+
 
 #### بازخورد ایمنی در پاسخ‌ها
 
@@ -4069,8 +4126,8 @@ print(response.output_text)
 
 **مثال (API سازگار با OpenAI):**
 
-```language-selector
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -4079,7 +4136,10 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
     "dimensions": 768
   }'
 
-python=:from openai import OpenAI
+```
+
+```python
+from openai import OpenAI
 
 client = OpenAI(api_key="your-avalai-api-key", base_url="https://api.avalai.ir/v1")
 
@@ -4091,7 +4151,10 @@ response = client.embeddings.create(
 
 print(f"Embedding length: {len(response.data[0].embedding)}")
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -4107,6 +4170,7 @@ const response = await client.embeddings.create({
 console.log(`Embedding length: ${response.data[0].embedding.length}`);
 
 ```
+
 
 **مثال (API بومی Gemini v1beta — تجمیع چندوجهی):**
 
@@ -4150,8 +4214,8 @@ curl "https://api.avalai.ir/v1beta/models/gemini-embedding-2:embedContent" \
 
 #### استفاده پایه (طرحواره OpenAI)
 
-```language-selector
-python=:from openai import OpenAI
+```python
+from openai import OpenAI
 
 client = OpenAI(
     api_key="your-avalai-api-key",  # با کلید واقعی خود جایگزین کنید
@@ -4168,7 +4232,10 @@ embedding = response.data[0].embedding
 print(f"ابعاد تعبیه‌سازی: {len(embedding)}")
 print(f"چند مقدار اول: {embedding[:5]}")
 
-javascript=:import { OpenAI } from "openai";
+```
+
+```javascript
+import { OpenAI } from "openai";
 
 const client = new OpenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -4185,7 +4252,10 @@ const embedding = response.data[0].embedding;
 console.log(`ابعاد تعبیه‌سازی: ${embedding.length}`);
 console.log(`چند مقدار اول: ${embedding.slice(0, 5)}`);
 
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```
+
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -4195,12 +4265,13 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
 
 ```
 
+
 #### ویژگی‌های پیشرفته با انواع وظایف
 
 برای عملکرد بهینه، نوع وظیفه را مشخص کنید تا مدل تعبیه‌سازی‌‌ها را برای مورد استفاده خاص شما بهینه‌سازی کند:
 
-```language-selector
-python=:# بهینه‌سازی خاص وظیفه با ابعاد سفارشی
+```python
+# بهینه‌سازی خاص وظیفه با ابعاد سفارشی
 response = client.embeddings.create(
     model="gemini-embedding-001",
     input=["معنای زندگی چیست؟", "هدف وجود چیست؟", "چگونه کیک درست کنم؟"],
@@ -4217,7 +4288,10 @@ similarity_matrix = cosine_similarity(embeddings_matrix)
 
 print(f"شباهت بین دو متن اول: {similarity_matrix[0, 1]:.4f}")
 
-javascript=:// بهینه‌سازی خاص وظیفه با ابعاد سفارشی
+```
+
+```javascript
+// بهینه‌سازی خاص وظیفه با ابعاد سفارشی
 const response = await client.embeddings.create({
     model: "gemini-embedding-001",
     input: [
@@ -4235,7 +4309,10 @@ const response = await client.embeddings.create({
 const embeddings = response.data.map(item => item.embedding);
 console.log(`${embeddings.length} تعبیه‌سازی با ${embeddings[0].length} بعد تولید شد`);
 
-bash=:curl https://api.avalai.ir/v1/embeddings \
+```
+
+```bash
+curl https://api.avalai.ir/v1/embeddings \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -4249,12 +4326,13 @@ bash=:curl https://api.avalai.ir/v1/embeddings \
 
 ```
 
+
 #### استفاده از API بومی Gemini
 
 همچنین می‌توانید از تعبیه‌سازی‌ Gemini از طریق SDK بومی Google GenAI استفاده کنید:
 
-```language-selector
-python=:from google import genai
+```python
+from google import genai
 
 client = genai.Client(
     api_key="your-avalai-api-key",
@@ -4282,7 +4360,10 @@ result = client.models.embed_content(
 for i, embedding in enumerate(result.embeddings):
     print(f"تعبیه‌سازی {i}: {len(embedding.values)} بعد")
 
-javascript=:import { GoogleGenAI } from "@google/genai";
+```
+
+```javascript
+import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
     apiKey: process.env.AVALAI_API_KEY,
@@ -4310,7 +4391,10 @@ const advancedResponse = await ai.models.embedContent({
 
 console.log(`${advancedResponse.embeddings.length} تعبیه‌سازی تولید شد`);
 
-bash=:curl "https://api.avalai.ir/v1beta/models/gemini-embedding-001:embedContent" \
+```
+
+```bash
+curl "https://api.avalai.ir/v1beta/models/gemini-embedding-001:embedContent" \
   -H "x-goog-api-key: $AVALAI_API_KEY" \
   -H 'Content-Type: application/json' \
   -d '{
@@ -4324,6 +4408,7 @@ bash=:curl "https://api.avalai.ir/v1beta/models/gemini-embedding-001:embedConten
   }'
 
 ```
+
 
 #### انواع وظایف پشتیبانی‌شده
 
@@ -4389,8 +4474,8 @@ normalized_embedding = embedding_values / np.linalg.norm(embedding_values)
 
 این نمونه‌های HTTP از فیلد بومی `speechMetadata` با نام‌گذاری camelCase استفاده می‌کنند و به پشتیبانی SDK از فیلدهای تازه وابسته نیستند. برای توان عملیاتی بالا، همین بدنه را با `gemini-3.8-flash-lite-tts` ارسال کنید.
 
-```language-selector
-bash=:curl --fail-with-body "https://api.avalai.ir/v1beta/models/gemini-3.8-flash-tts:generateContent" \
+```bash
+curl --fail-with-body "https://api.avalai.ir/v1beta/models/gemini-3.8-flash-tts:generateContent" \
   -H "x-goog-api-key: $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -4427,7 +4512,10 @@ else:
     raise ValueError(f"Unexpected audio MIME type: {mime}")
 PYTHON
 
-python=:import base64
+```
+
+```python
+import base64
 import json
 import os
 import wave
@@ -4484,7 +4572,10 @@ elif mime == "audio/l16":
 else:
     raise ValueError(f"Unexpected audio MIME type: {mime}")
 
-javascript=:import { writeFile } from "node:fs/promises";
+```
+
+```javascript
+import { writeFile } from "node:fs/promises";
 
 const result = await fetch(
   "https://api.avalai.ir/v1beta/models/gemini-3.8-flash-tts:generateContent",
@@ -4522,6 +4613,7 @@ if (mime === "audio/wav") {
 }
 
 ```
+
 
 در شاخه PCM نمونه JavaScript، فایل `out.pcm` نوشته می‌شود. فقط وقتی نوع MIME برابر با `audio/L16` است، آن را تبدیل کنید:
 
@@ -4590,8 +4682,8 @@ ffmpeg -f s16le -ar 24000 -ac 1 -i out.pcm out.wav
 
 هر دو حالت متن و صدا را با صدای `Zephyr` و قالب `pcm16` درخواست کنید. فقط `choices[0].message.audio.data` را رمزگشایی کنید؛ محتوای پیام جایگزین داده صوتی نیست. خروجی، PCM16 خام با کدگذاری base64 است، نه MP3 یا فایل WAV.
 
-```language-selector
-bash=:curl --fail-with-body https://api.avalai.ir/v1/chat/completions \
+```bash
+curl --fail-with-body https://api.avalai.ir/v1/chat/completions \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -4610,7 +4702,10 @@ Path("chat.pcm").write_bytes(base64.b64decode(response["choices"][0]["message"][
 PYTHON
 ffmpeg -f s16le -ar 24000 -ac 1 -i chat.pcm chat.wav
 
-python=:import base64
+```
+
+```python
+import base64
 import os
 import wave
 from openai import OpenAI
@@ -4631,7 +4726,10 @@ with wave.open("chat.wav", "wb") as output:
     output.setframerate(24000)
     output.writeframes(data)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 import { writeFile } from "node:fs/promises";
 
 const client = new OpenAI({ apiKey: process.env.AVALAI_API_KEY, baseURL: "https://api.avalai.ir/v1" });
@@ -4645,14 +4743,15 @@ await writeFile("chat.pcm", Buffer.from(response.choices[0].message.audio.data, 
 
 ```
 
+
 برای نمونه JavaScript، فایل `chat.pcm` را با دستور `ffmpeg -f s16le -ar 24000 -ac 1 -i chat.pcm chat.wav` تبدیل کنید.
 
 ### تولید مستقیم گفتار
 
 شیء صدا از `name` و `languageCode` استفاده می‌کند. این نمونه‌ها عمداً متن انگلیسی را همراه با `en-US` می‌فرستند، WAV درخواست می‌کنند و پاسخ دودویی را مستقیم ذخیره می‌کنند.
 
-```language-selector
-bash=:curl --fail-with-body https://api.avalai.ir/v1/audio/speech \
+```bash
+curl --fail-with-body https://api.avalai.ir/v1/audio/speech \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -4662,7 +4761,10 @@ bash=:curl --fail-with-body https://api.avalai.ir/v1/audio/speech \
     "response_format": "wav"
   }' --output speech.wav
 
-python=:import os
+```
+
+```python
+import os
 from pathlib import Path
 import requests
 
@@ -4680,7 +4782,10 @@ response = requests.post(
 response.raise_for_status()
 Path("speech.wav").write_bytes(response.content)
 
-javascript=:import { writeFile } from "node:fs/promises";
+```
+
+```javascript
+import { writeFile } from "node:fs/promises";
 
 const response = await fetch("https://api.avalai.ir/v1/audio/speech", {
   method: "POST",
@@ -4699,6 +4804,7 @@ if (!response.ok) throw new Error(await response.text());
 await writeFile("speech.wav", Buffer.from(await response.arrayBuffer()));
 
 ```
+
 
 ### صداها و زبان‌ها
 

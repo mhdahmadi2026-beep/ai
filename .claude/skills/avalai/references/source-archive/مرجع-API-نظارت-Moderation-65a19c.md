@@ -121,8 +121,8 @@ curl https://api.avalai.ir/v1/moderations \
 
 نقاط پایانی تولید سازگار با OpenAI ممکن است از شیء سطح بالای `moderation` پشتیبانی کنند تا امتیازهای نظارت ورودی مدل و خروجی تولیدشده را کنار پاسخ برگردانند. وقتی پشتیبانی AvalAI برای route انتخابی شما فعال باشد، `moderation: {"model": "omni-moderation-latest"}` را به `/v1/responses` یا `/v1/chat/completions` بفرستید؛ در غیر این صورت، پیش و/یا پس از تولید، `/v1/moderations` را جداگانه فراخوانی کنید.
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -142,7 +142,10 @@ output_moderation = response.moderation.output
 print(input_moderation.flagged)
 print(output_moderation.flagged)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -159,7 +162,10 @@ const response = await client.responses.create({
 console.log(response.moderation.input.flagged);
 console.log(response.moderation.output.flagged);
 
-bash=:curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -169,6 +175,7 @@ bash=:curl https://api.avalai.ir/v1/responses \
   }'
 
 ```
+
 
 ?> نتایج inline moderation را پیش از نمایش متن تولیدشده به کاربر بررسی کنید. در پاسخ‌های streamشده، امتیازهای moderation پس از کامل شدن کل خروجی آماده می‌شوند، نه همراه deltaهای جزئی.
 

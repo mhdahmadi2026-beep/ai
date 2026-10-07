@@ -46,8 +46,8 @@ context window را یک بودجه مشترک برای ورودی، خروجی 
 
 ## ادامه دادن مکالمه
 
-```language-selector
-python=:import os
+```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -72,7 +72,10 @@ follow_up = client.responses.create(
 
 print(follow_up.output_text)
 
-javascript=:import OpenAI from "openai";
+```
+
+```javascript
+import OpenAI from "openai";
 
 const client = new OpenAI({
   apiKey: process.env.AVALAI_API_KEY,
@@ -96,7 +99,10 @@ const followUp = await client.responses.create({
 
 console.log(followUp.output_text);
 
-bash=:FIRST_ID=$(curl https://api.avalai.ir/v1/responses \
+```
+
+```bash
+FIRST_ID=$(curl https://api.avalai.ir/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $AVALAI_API_KEY" \
   -d '{
@@ -118,6 +124,7 @@ curl https://api.avalai.ir/v1/responses \
   }"
 
 ```
+
 
 ## شاخه زدن از یک پاسخ قبلی
 
