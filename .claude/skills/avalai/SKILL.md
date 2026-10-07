@@ -64,3 +64,11 @@ See `references/00-index.md`.
 - Cache: stable prefix first, dynamic last; byte-identical prefix; verify `usage.prompt_tokens_details.cached_tokens`; app must work on cache miss and keep its own conversation state.
 - Cap output (`max_output_tokens` for Responses, `max_completion_tokens` for Chat), stream, reuse connections, log p50/p90/p95 + request IDs.
 - Benchmarks in docs are point-in-time observations, never guarantees. Main domain `api.avalai.ir`; `api.avalapis.ir` is a slower alternate; Guardrail adds ~200–300 ms.
+
+## Pricing rules
+- Prices are USD per 1M tokens, pass-through (no markup). Live source: `GET https://api.avalai.ir/public/models` — check `pricing`, `min_tier`, `tier_rate_limits`, `supported_endpoints` before quoting or hard-coding. Snapshot in `references/06-pricing.md`.
+- Hidden reasoning tokens bill at the **output** rate; don't add `reasoning_tokens` to `output_tokens` (double count).
+- `service_tier: "flex"` = 50% cheaper for select OpenAI models, up to 900 s, may fail → fall back to `default`; credit packages do NOT cover flex.
+- `estimated_cost` in responses is NOT for billing; use `avalai-request-id` + User API `/user/v1/transactions/lookup` for exact cost (~30 s delay).
+- Free signup credit: 25,000 T (email) → 200,000 T total after phone verification.
+- Watch promo expiries (GLM-5.3-Flash 18 Shahrivar 1405, Gemini 3.8 Flash & TTS 10 Dey 1405) and the `deepseek-v4-pro` → `deepseek-v4.1-flash` reroute on 2026-09-14.
