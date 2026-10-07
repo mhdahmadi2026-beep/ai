@@ -218,3 +218,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: web search capabilities | /examples/web_search_capabilities | examples/web-search-capabilities.md | DONE (older overview; see guides/tools-web-search.md) |
 | Example: processing PDF files (Chat Completions, Claude/Gemini) | /examples/… (slug unknown) | examples/processing-pdf-files-chat.md | DONE |
 | Example: processing audio in Chat Completions | /examples/processing_audio_in_chat_completion_api | examples/processing-audio-chat-completions.md | DONE |
+| Example: Mistral OCR document processing | /examples/… (slug unknown) | examples/mistral-ocr-document-processing.md | DONE |

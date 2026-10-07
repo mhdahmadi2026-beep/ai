@@ -459,3 +459,6 @@ See `references/00-index.md`.
 
 ## Audio in Chat Completions (references/examples/processing-audio-chat-completions.md)
 - Audio models `gpt-audio-1.5|gpt-audio|gpt-audio-mini`: need `modalities:["text","audio"]` + `audio:{voice,format}`; reply audio = base64 in `choices[0].message.audio.data`; input via `input_audio{data,format}`. Multi-turn: send text transcript only. Tools/structured output → pipeline transcriptions → Responses → `/v1/audio/speech`. Gemini 3.8 TTS via chat: `modalities:["audio"]`, `format:"pcm16"` = raw 24 kHz mono (no header; `ffmpeg -f s16le -ar 24000 -ac 1`); TTS-only, not on Responses/Messages.
+
+## Mistral OCR recipes (references/examples/mistral-ocr-document-processing.md)
+- `/v1/ocr` (SDK `server_url="https://api.avalai.ir"`, no /v1); `pages` 0-based; `document_url`/`image_url` (https or base64 data URL, no `file://`); `document_annotation_format` json_object/json_schema → `document_annotation` is a JSON STRING (json.loads, may be null); `table_format:"html"`, `extract_header/footer`. Understanding = chat `mistral-small-latest` + `document_url` part. Batch OCR NOT implemented → bounded-concurrency loop + cache. Pin `mistral-ocr-4-0`. Source samples have broken batch loop, Go syntax errors, wrong exception import.
