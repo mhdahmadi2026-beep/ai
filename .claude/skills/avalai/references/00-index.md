@@ -85,7 +85,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | تصاویر | /api-reference/images | api-reference/images.md | DONE |
 | بردارهای تعبیه‌سازی | /api-reference/embeddings | api-reference/embeddings.md | DONE |
 | صدا | /api-reference/audio | api-reference/audio.md | DONE |
-| نظارت | /api-reference/moderation | — | PENDING |
+| نظارت | /api-reference/moderation | api-reference/moderation.md | DONE |
 | API کاربر | /api-reference/user | api-reference/user.md | DONE |
 | هدرهای پاسخ | /api-reference/response-headers | api-reference/response-headers.md | DONE |
 | مدل‌ها | /api-reference/models | api-reference/models.md | DONE |

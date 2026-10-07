@@ -132,3 +132,7 @@ See `references/00-index.md`.
 ## Audio API rules (see api-reference/audio.md)
 - TTS `/v1/audio/speech` (≤4096 chars OpenAI-compat; chunk+concat; send `response_format` explicitly; `gemini-3.1-flash-tts-preview` needs `pcm`; Gemini 3.8 voice = object `{name,languageCode}`; Gemini TTS never on `/v1/responses`, `/v1/messages`, `/v1/text:synthesize`). STT `/v1/audio/transcriptions` (≤~25 MB; `gpt-4o-transcribe*`, `whisper-1`, `scribe_v*`, groq whisper; diarize → `diarized_json` + `chunking_strategy:"auto"`; whisper-1 can't stream; don't set multipart Content-Type manually). Translation → English only (`whisper-1`).
 - Direct audio in/out → Chat Completions (`gpt-audio*`, `modalities`, `message.audio.data` base64). Responses flow = transcribe → responses → speech. Tell users audio is AI-generated; keep consent for voice cloning.
+
+## Moderation rules (see api-reference/moderation.md)
+- `POST /v1/moderations`, models `omni-moderation-latest` (text+image, free, no audio), `text-moderation-*`, `cf.llama-guard-3-8b`. Array input → one result each. Use `category_scores` with per-category thresholds (stricter `sexual/minors`), not only `flagged`; keep result `id` + hashed `safety_identifier` for audit; human review for borderline.
+- Inline `moderation:{model}` on Responses/Chat only if route supports it; check input/output error objects first; streamed output is unmoderated until the final result; tool names/schemas aren't checked.
