@@ -462,3 +462,6 @@ See `references/00-index.md`.
 
 ## Mistral OCR recipes (references/examples/mistral-ocr-document-processing.md)
 - `/v1/ocr` (SDK `server_url="https://api.avalai.ir"`, no /v1); `pages` 0-based; `document_url`/`image_url` (https or base64 data URL, no `file://`); `document_annotation_format` json_object/json_schema → `document_annotation` is a JSON STRING (json.loads, may be null); `table_format:"html"`, `extract_header/footer`. Understanding = chat `mistral-small-latest` + `document_url` part. Batch OCR NOT implemented → bounded-concurrency loop + cache. Pin `mistral-ocr-4-0`. Source samples have broken batch loop, Go syntax errors, wrong exception import.
+
+## Excel / spreadsheets (references/examples/processing-excel-files.md)
+- Convert in your app (pandas `to_csv(index=False)`/aggregates, per sheet, trimmed columns); don't depend on xlsx `file` parts. Never let the LLM do arithmetic from pasted tables — compute in code, verify. LangChain `create_csv_agent` is CSV-only; pandas/CSV agents exec LLM code → sandbox only, treat cell text as prompt injection. `ChatOpenAI` needs explicit `api_key`/`base_url`. Source page has fictional LangChain.js APIs, Go/PHP bugs, placeholder Responses blocks.
