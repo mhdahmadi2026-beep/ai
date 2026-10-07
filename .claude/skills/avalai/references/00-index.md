@@ -174,3 +174,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: coding-agent-workflows | /guides/coding-agent-workflows | guides/coding-agent-workflows.md | DONE (exercise verified offline) |
 | Guide: provider-specific-params | /guides/provider-specific-params | guides/provider-specific-params.md | DONE |
 | Setup: VSCode / Copilot / Continue / Cursor | /guides/setup-vscode | guides/setup-vscode.md | DONE |
+| Setup: OpenAI Codex | /guides/setup-codex | guides/setup-codex.md | DONE |

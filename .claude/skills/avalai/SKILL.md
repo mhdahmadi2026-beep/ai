@@ -327,3 +327,6 @@ See `references/00-index.md`.
 
 ## Editors (references/guides/setup-vscode.md)
 - Copilot BYOK / Continue / Cursor: OpenAI-compatible Base URL `https://api.avalai.ir/v1` (API type Chat Completions); native Anthropic/Gemini profiles use `https://api.avalai.ir` without `/v1` and only that provider's models. Docs model ids in samples are inconsistent: confirm via `/v1/models`; don't commit keys.
+
+## Codex (references/guides/setup-codex.md)
+- `~/.codex/config.toml`: `model_provider="avalai"`, `[model_providers.avalai] base_url="https://api.avalai.ir/v1"`, `env_key="AVALAI_API_KEY"`; provider id can't be openai/ollama/lmstudio. Codex only uses `/v1/responses`: OpenAI models fine, non-OpenAI compatibility not guaranteed. Never put the key in the file.
