@@ -432,3 +432,6 @@ See `references/00-index.md`.
 
 ## Stateful Responses example (references/examples/responses-stateful-workflows.md)
 - Continue with `previous_response_id` (prior response must be stored; resend `instructions`; keep one model per chain), branch from any earlier id, retrieve via `GET /v1/responses/{id}`; stateless alternative = `store=False` + `history.extend(response.output)`. If the prior id can't be resolved resend full context. Whole-chain input still bills.
+
+## Persistent agent memory (references/examples/persistent-agent-memory.md, references/scripts/durable_memory.py)
+- Durable memory ≠ conversation state: app-approved, provenance-tagged facts only (preference/decision/verified_fact), scope (tenant,user,agent) filtered in SQL BEFORE similarity, `source_id` idempotency per scope, UTC-epoch expiry, recalled text treated as untrusted, `store=False` on the answer call; support delete/correct/export.

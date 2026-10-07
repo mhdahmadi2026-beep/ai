@@ -209,3 +209,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Example: evidence-grounded workflows (support/feedback/study) | /examples/… (slug unknown) | examples/evidence-grounded-workflows.md + scripts/evidence_workflow.py | DONE (offline verified) |
 | Example/Guide: generate images with GPT Image models | /examples/generate_images_with_gpt_image (inferred) | guides/generate-images-gpt-image.md | DONE (⚠ stale models; use gpt-image-2.5) |
 | Example: responses stateful workflows | /examples/responses_stateful_workflows | examples/responses-stateful-workflows.md | DONE |
+| Example: persistent agent memory with embeddings | /examples/… (slug unknown) | examples/persistent-agent-memory.md + scripts/durable_memory.py | DONE (script tested offline) |
