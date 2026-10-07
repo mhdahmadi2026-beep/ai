@@ -236,3 +236,6 @@ See `references/00-index.md`.
 
 ## Text-to-speech (references/guides/text-to-speech.md)
 - TTS default `gpt-audio-1.5` (voices marin/cedar first); `gpt-4o-mini-tts`/`tts-1*` are gone — api-reference/audio.md samples using them are stale. Gemini 3.8 TTS: object voice, verbatim text (no "Say:" prefixes), check MIME (wav vs L16), only speech/chat/v1beta routes. ≤4,096 chars/request.
+
+## Moderation guide (references/guides/moderation.md)
+- Use `omni-moderation-latest` on `/v1/moderations` for input AND output checks; image input only with omni; `sexual/minors`, harassment/hate are text-only. Inline `moderation={...}` on Responses is route-dependent; log request ids, never silently drop blocked requests.
