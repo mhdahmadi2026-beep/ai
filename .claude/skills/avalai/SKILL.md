@@ -480,3 +480,6 @@ See `references/00-index.md`.
 
 ## Gemini Robotics-ER (references/examples/gemini-robotics-er.md)
 - `gemini-robotics-er-1.5-preview` via v1beta (`base_url` NOT `url`) or chat: points `[y,x]` and boxes `[ymin,xmin,ymax,xmax]` normalized 0–1000; `thinkingBudget` 0 for speed; code_execution for zoom. Perception/planning only — NEVER drive actuators from raw output: schema + bounds + allow-listed functions + collision checks + human/e-stop. Keep labels English; defensive JSON parsing; video "tracking" = per-frame calls.
+
+## Voice/conversational apps (references/examples/voice-conversational-apps.md)
+- Pick: direct audio Chat (single call, `input_audio`/`message.audio`) vs Responses-first pipeline (transcribe → Responses → `/v1/audio/speech`, best for tools/state; `previous_response_id` needs `store:true`, resend `instructions`) vs Realtime (NOT available). Gemini 3.8 TTS on `/v1/audio/speech` uses `voice:{"name","languageCode"}` OBJECT + explicit `response_format`. Verify the speech model id — page uses `gpt-audio-1.5` (contradicts audio reference).
