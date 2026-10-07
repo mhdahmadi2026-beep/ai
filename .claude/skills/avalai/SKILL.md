@@ -249,3 +249,6 @@ See `references/00-index.md`.
 
 ## Structured outputs (references/guides/structured-outputs.md)
 - Prefer `text.format` json_schema (Responses; name/strict/schema flat) or `response_format.json_schema` (Chat). Always `strict:true`, `additionalProperties:false`, all props required (optional = nullable), root object, no allOf/not/if-then-else. Check refusal + incomplete status before `json.loads`; json_object mode needs the word JSON in the prompt. No secrets/tenant data inside schemas.
+
+## Function calling (references/guides/function-calling.md)
+- Chat tools nest under `function`; Responses tools are flat; results: Chat `role:"tool"`+`tool_call_id`, Responses `function_call_output`+`call_id` (replay prior `response.output`). Parse `arguments` (JSON string), validate server-side, `strict:true` + `additionalProperties:false` + all required, <~20 tools, `parallel_tool_calls:false` for state-changing flows, run tools only after `response.function_call_arguments.done`.
