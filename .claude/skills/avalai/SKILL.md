@@ -360,3 +360,6 @@ See `references/00-index.md`.
 
 ## Code Interpreter (references/guides/tools-code-interpreter.md)
 - Hosted `code_interpreter` is route/model/account-dependent — don't assume it. Default: your own sandboxed backend (no network, CPU/mem/time limits, allowlisted packages, validated files) exposed as one strict `function` tool (`run_python_analysis`), answered via `function_call_output` with the same `call_id`. If hosted: containers expire after 20 min inactivity → copy `container_file_citation` artifacts promptly; redact stdout/stderr; no secrets in the environment.
+
+## Shell tool (references/guides/tools-shell.md)
+- Hosted `shell` (+ skills / `apply_patch`) is route-dependent — default to your own sandbox exposing a strict `function` (`run_safe_shell_task`): allowlisted commands only (never raw model text), clean env without secrets, read-only mounts, CPU/mem/time limits, network off, capture stdout/stderr/exit code, approval for writes/installs/network/deletes, return compact `function_call_output`. Treat command output as untrusted; log request ids + decisions.
