@@ -147,3 +147,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: moderation | /guides/moderation | guides/moderation.md | DONE |
 | Guide: agents | /guides/agents | guides/agents.md | DONE |
 | Guide: reasoning | /guides/reasoning | guides/reasoning.md | DONE |
+| Guide: structured-outputs | /guides/structured-outputs | guides/structured-outputs.md | DONE |

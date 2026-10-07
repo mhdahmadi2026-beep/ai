@@ -246,3 +246,6 @@ See `references/00-index.md`.
 ## Reasoning (references/guides/reasoning.md)
 - Reasoning tokens are billed as output and `output_tokens` already includes them. `max_output_tokens`/`max_completion_tokens` cap hidden reasoning + answer → leave headroom; watch `status:"incomplete"` / `finish_reason:"length"` with empty text.
 - Per family: OpenAI `reasoning.effort`; Claude 5.x adaptive thinking + `output_config.effort` (no budget_tokens/temperature/prefill/forced tools); Kimi K3 `reasoning_effort:"max"`; Gemini 3.x `generationConfig.thinkingConfig.thinkingLevel` via `extra_body`; GLM-5.3 mandatory thinking; Qwen needs stream for thinking; DeepSeek tool loops must resend `reasoning_content` within the same turn. `deepseek-v4-pro` already redirects to `deepseek-v4.1-flash`.
+
+## Structured outputs (references/guides/structured-outputs.md)
+- Prefer `text.format` json_schema (Responses; name/strict/schema flat) or `response_format.json_schema` (Chat). Always `strict:true`, `additionalProperties:false`, all props required (optional = nullable), root object, no allOf/not/if-then-else. Check refusal + incomplete status before `json.loads`; json_object mode needs the word JSON in the prompt. No secrets/tenant data inside schemas.
