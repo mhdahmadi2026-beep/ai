@@ -417,3 +417,6 @@ See `references/00-index.md`.
 
 ## Advanced usage (references/guides/advanced-usage.md)
 - Embeddings: normalize then dot (fix the page's broken sample); `seed` + `system_fingerprint` = best-effort reproducibility (provider/model dependent; reasoning models reject `temperature`); frequency/presence penalties (0.1–1 mild, ≤2 strong) unsupported on reasoning models/with `prediction`; logprobs = token likelihood, NOT correctness — validate single-token labels, human-review below a threshold tuned on a labelled hold-out; Persian text costs more tokens; add `strict:true` to tool schemas.
+
+## Responses vs Chat Completions (references/guides/responses-vs-chat-completions.md)
+- Migration map: `messages`→`input` (+ stable rules in `instructions`, which are not inherited), `choices[0].message.content`→`output_text`/typed `output` items, `tool_calls`→`function_call` items + `function_call_output` with same `call_id`, `response_format`→`text.format`, `reasoning_effort`→`reasoning.effort`, `n` unsupported, typed SSE events instead of `delta`, `user`→`safety_identifier`/`prompt_cache_key`. Keep `reasoning`/`function_call`/`function_call_output` items on manual replay. `previous_response_id` still bills earlier context as input. Hosted tools route-dependent; keep custom `function` tools for private/write operations. Assistants not implemented.
