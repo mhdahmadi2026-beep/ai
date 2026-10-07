@@ -453,3 +453,6 @@ See `references/00-index.md`.
 
 ## Web search capabilities overview (references/examples/web-search-capabilities.md)
 - Routes: Responses `web_search` tool (OpenAI, preferred), Gemini `tools:[{"googleSearch":{}}]` (or native v1beta `google_search` + grounding_metadata, base_url without /v1), Qwen `enable_search`+`search_strategy:"agent"` (+$10/1K calls). `*-search-preview` models are REMOVED. Citations live in `output[].content[].annotations` (`url_citation`), not `response.annotations`; sources via `include:["web_search_call.action.sources"]` (item in `output`). No `detail_level` param for Gemini. Prefer guides/tools-web-search.md; raw results → `/v1/search`.
+
+## PDF via Chat Completions (references/examples/processing-pdf-files-chat.md)
+- Content part `{"type":"file","file":{"file_id":"<https URL>"}}` (Claude only) or `{"file":{"file_data":"data:application/pdf;base64,…"}}` (Claude+Gemini; Gemini = base64 only). Claude ≤32 MB/100 pages (~1.5–3K tok/page); Gemini ≤20 MB inline/1,000 pages (~258 tok/page). Text after the PDF; no encrypted PDFs; large bodies via `curl -d @file`; Linux `base64 -w 0`. Responses-API route = guides/pdf-files.md (`input_file`). Verify model ids (`claude-sonnet-5` vs `-4-6` inconsistent on page).
