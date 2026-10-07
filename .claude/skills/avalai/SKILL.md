@@ -185,3 +185,8 @@ See `references/00-index.md`.
 ## Anthropic/Claude provider rules (see providers/anthropic.md)
 - Use base ids (`claude-opus-5-5`, `claude-opus-5`, `claude-sonnet-5-5`, `claude-fable-5-1`, `claude-opus-4-8`, `claude-sonnet-4-6`, `claude-haiku-4-5`) for smart multi-cloud routing (≈10× limits). Anthropic SDK base URL has NO `/v1`. 1M context native on 5.x/4.6+ (else `anthropic-beta: context-1m-2025-08-07`). Fable 5.1 needs tier ≥2; Opus 5.5 responses full, others responses partial.
 - Opus 5.5 / Fable 5.1 / Opus 5: thinking is adaptive & **cannot be disabled**, control with `output_config.effort`; never send `temperature`/`top_p`/prefill/forced tool_choice; keep signed thinking blocks intact. Sonnet 5.5: `between_tools` to limit thinking. AvalAI cache-write prices: Sonnet 5.5 $4, Opus 5.5 $8.
+
+## Provider pages added: Google, Meta, Mistral, xAI, Cohere (see providers/*.md)
+- Google: Gemini extras via `extra_body={"generationConfig":{…}}`; images base64 only; `gemini-flash-latest`→`gemini-3.8-flash` (promo $0.75/$3.75 until 2026-12-31); code-execution tool excludes all other tools; Google Search billed per call; image models `gemini-3-pro-image`/`3.1-flash-image`/`3.1-flash-lite-image` (Imagen removed); Gemini 3.8 TTS paths only v1beta/chat/audio-speech.
+- xAI: `grok-4.7`/`4.6` 500K in/out, don't send `reasoning_effort`; Responses partial; prices ≤200K $2/$6, >200K $4/$12.50.
+- Mistral SDK `server_url` without `/v1`; OCR `mistral-ocr-4-0`. Cohere: rerank via raw HTTP; `embed-v-4-0` Azure = 30× limits. Meta: Llama via Bedrock ids; many removed.

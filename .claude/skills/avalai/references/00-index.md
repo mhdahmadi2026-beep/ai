@@ -112,3 +112,8 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Alibaba (Qwen) | /providers/alibaba | providers/alibaba.md | DONE |
 | OpenAI | /providers/openai | providers/openai.md | DONE |
 | Anthropic (Claude) | /providers/anthropic | providers/anthropic.md | DONE |
+| Google (Gemini/Gemma) | /providers/google | providers/google.md | DONE |
+| Meta (Llama) | /providers/meta | providers/meta.md | DONE |
+| Mistral AI | /providers/mistralai | providers/mistral.md | DONE |
+| xAI (Grok) | /providers/xai | providers/xai.md | DONE |
+| Cohere | /providers/cohere | providers/cohere.md | DONE |
