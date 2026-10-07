@@ -100,6 +100,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | OCR | /api-reference/ocr | api-reference/ocr.md | DONE |
 | ویدیوها ⚠ Sora shut down 2026-09-24 | /api-reference/videos | api-reference/videos.md | DONE |
 | جستجو | /api-reference/search | api-reference/search.md | DONE |
+| کاتالوگ مدل‌ها (ModelExplorer، داده پویا) | /models/index | models/index.md | DONE (shell only) |
 | (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
 
 Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices,structured-outputs,text-to-speech}, /providers/{openai,anthropic,xai,fireworksai,deepseek}, /examples/processing_audio_in_chat_completion_api, /api-reference/{moderation,search,audio}
