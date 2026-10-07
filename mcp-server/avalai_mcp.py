@@ -177,6 +177,201 @@ def corpus() -> Corpus:
     return _CORPUS
 
 
+
+# ----------------------------------------------------------------------------- semantic index (optional)
+import hashlib
+import struct
+import threading
+
+INDEX_DIR = Path(os.environ.get("AVALAI_INDEX_DIR", str(Path(__file__).resolve().parent / "index")))
+
+
+def chunk_id(c: "Chunk") -> str:
+    return hashlib.sha1((c.page.rel + "\x00" + c.heading + "\x00" + c.text).encode("utf-8")).hexdigest()[:16]
+
+
+def chunk_input(c: "Chunk") -> str:
+    """Text actually embedded: title + heading give the model the context the chunk body lacks."""
+    return f"{c.page.title} › {c.heading}\n{c.text}"[:6000]
+
+
+def _fake_embed(texts: list[str], dim: int = 256) -> list[list[float]]:
+    """Deterministic hashed bag-of-words (tests / offline demo ONLY, not semantic)."""
+    out = []
+    for t in texts:
+        v = [0.0] * dim
+        for tok in tokenize(t):
+            h = int(hashlib.md5(tok.encode()).hexdigest(), 16)
+            v[h % dim] += 1.0 if (h >> 8) & 1 else -1.0
+        out.append(v)
+    return out
+
+
+def embed_texts(texts: list[str], dimensions: int | None = None) -> list[list[float]]:
+    """OpenAI-compatible /embeddings call (AvalAI by default). Env: AVALAI_API_KEY (or EMBED_API_KEY),
+    EMBED_BASE_URL (default https://api.avalai.ir/v1), AVALAI_EMBED_MODEL, AVALAI_EMBED_DIMENSIONS."""
+    if os.environ.get("AVALAI_EMBED_FAKE"):
+        return _fake_embed(texts, dimensions or 256)
+    key = os.environ.get("EMBED_API_KEY") or os.environ.get("AVALAI_API_KEY")
+    if not key:
+        raise RuntimeError("AVALAI_API_KEY not set (needed to embed the query / build the index)")
+    base = os.environ.get("EMBED_BASE_URL", "https://api.avalai.ir/v1").rstrip("/")
+    model = os.environ.get("AVALAI_EMBED_MODEL")
+    if not model:
+        raise RuntimeError("AVALAI_EMBED_MODEL not set (pick one with avalai_models mode=embedding)")
+    body = {"model": model, "input": texts}
+    if dimensions:
+        body["dimensions"] = dimensions
+    delay = 1.0
+    for attempt in range(5):
+        req = urllib.request.Request(base + "/embeddings", data=json.dumps(body).encode(), method="POST",
+                                     headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "User-Agent": "avalai-mcp/1"})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                data = json.load(r)["data"]
+            data.sort(key=lambda d: d["index"])
+            return [d["embedding"] for d in data]
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 502, 503, 504) and attempt < 4:
+                ra = e.headers.get("Retry-After")
+                time.sleep(float(ra) if ra else delay)
+                delay = min(delay * 2, 30)
+                continue
+            raise RuntimeError(f"embeddings HTTP {e.code}: {e.read()[:300]!r} (avalai-request-id={e.headers.get('avalai-request-id')})")
+        except (urllib.error.URLError, TimeoutError) as e:
+            if attempt < 4:
+                time.sleep(delay)
+                delay = min(delay * 2, 30)
+                continue
+            raise RuntimeError(f"embeddings network error: {e}")
+    raise RuntimeError("embeddings failed")
+
+
+def _normalize(v: list[float]) -> list[float]:
+    n = math.sqrt(sum(x * x for x in v)) or 1.0
+    return [x / n for x in v]
+
+
+class VectorIndex:
+    """float16 matrix on disk (index/vectors.f16 + index/meta.json). numpy used when available."""
+
+    def __init__(self):
+        self.meta: dict | None = None
+        self.ids: list[str] = []
+        self.pos: dict[str, int] = {}
+        self.dim = 0
+        self.mat = None
+        self._np = None
+        self._lock = threading.Lock()
+
+    def load(self) -> bool:
+        mp, vp = INDEX_DIR / "meta.json", INDEX_DIR / "vectors.f16"
+        if not (mp.exists() and vp.exists()):
+            return False
+        self.meta = json.loads(mp.read_text(encoding="utf-8"))
+        self.ids, self.dim = self.meta["ids"], self.meta["dim"]
+        self.pos = {i: k for k, i in enumerate(self.ids)}
+        raw = vp.read_bytes()
+        try:
+            import numpy as np  # optional speed-up
+            self._np = np
+            self.mat = np.frombuffer(raw, dtype=np.float16).reshape(-1, self.dim).astype(np.float32)
+        except Exception:
+            n = len(raw) // 2
+            flat = struct.unpack(f"<{n}e", raw)
+            self.mat = [flat[i * self.dim:(i + 1) * self.dim] for i in range(len(self.ids))]
+        return True
+
+    def top(self, qvec: list[float], k: int, allowed: set[int] | None = None) -> list[tuple[float, str]]:
+        q = _normalize(qvec)
+        if len(q) != self.dim:
+            raise RuntimeError(f"query dim {len(q)} != index dim {self.dim}; use the same model/dimensions as the index ({self.meta.get('model')}, {self.dim})")
+        if self._np is not None:
+            sc = self.mat @ self._np.array(q, dtype=self._np.float32)
+            order = self._np.argsort(-sc)
+            res = []
+            for i in order:
+                if allowed is not None and int(i) not in allowed:
+                    continue
+                res.append((float(sc[i]), self.ids[int(i)]))
+                if len(res) >= k:
+                    break
+            return res
+        sc = []
+        for i, row in enumerate(self.mat):
+            if allowed is not None and i not in allowed:
+                continue
+            sc.append((sum(a * b for a, b in zip(row, q)), i))
+        sc.sort(reverse=True)
+        return [(s, self.ids[i]) for s, i in sc[:k]]
+
+
+_VINDEX: VectorIndex | None = None
+_QCACHE: dict[str, list[float]] = {}
+
+
+def vindex() -> VectorIndex | None:
+    global _VINDEX
+    if _VINDEX is None:
+        v = VectorIndex()
+        _VINDEX = v if v.load() else None
+    return _VINDEX
+
+
+def semantic_search(query: str, limit: int, scope: str) -> list[tuple[float, "Chunk"]]:
+    vi = vindex()
+    if vi is None:
+        raise RuntimeError("no semantic index (run mcp-server/build_index.py once)")
+    c = corpus()
+    if not hasattr(c, "_by_id"):
+        c._by_id = {chunk_id(ch): ch for ch in c.chunks}
+    if query not in _QCACHE:
+        dims = vi.dim if vi.meta.get("dimensions") else None
+        _QCACHE[query] = embed_texts([query], dims)[0]
+    allowed = None
+    if scope != "all":
+        allowed = {vi.pos[cid] for cid, ch in c._by_id.items() if ch.page.kind == scope and cid in vi.pos}
+    return [(s, c._by_id[cid]) for s, cid in vi.top(_QCACHE[query], limit * 4, allowed) if cid in c._by_id]
+
+
+def hybrid_search(query: str, limit: int, scope: str, mode: str) -> tuple[list[tuple[float, "Chunk"]], str]:
+    """mode: bm25 | semantic | hybrid | auto (hybrid when index+embeddings are usable, else bm25)."""
+    c = corpus()
+    if mode == "bm25":
+        return c.search(query, limit, scope), "bm25"
+    try:
+        sem = semantic_search(query, limit, scope)
+    except Exception as e:
+        if mode == "semantic":
+            raise
+        return c.search(query, limit, scope), f"bm25 (semantic unavailable: {str(e)[:120]})"
+    if mode == "semantic":
+        return _dedupe(sem, limit), "semantic"
+    lex = c.search(query, limit * 4, scope)
+    fused: dict[int, float] = defaultdict(float)
+    byid: dict[int, "Chunk"] = {}
+    for rank, (_, ch) in enumerate(lex):
+        fused[id(ch)] += 1.0 / (60 + rank)
+        byid[id(ch)] = ch
+    for rank, (_, ch) in enumerate(sem):
+        fused[id(ch)] += 1.0 / (60 + rank)
+        byid[id(ch)] = ch
+    ranked = sorted(((s, byid[i]) for i, s in fused.items()), key=lambda x: -x[0])
+    return _dedupe(ranked, limit), "hybrid (BM25 + embeddings, RRF)"
+
+
+def _dedupe(items, limit):
+    out, seen = [], Counter()
+    for s, ch in items:
+        if seen[ch.page.rel] >= 2:
+            continue
+        seen[ch.page.rel] += 1
+        out.append((s, ch))
+        if len(out) >= limit:
+            break
+    return out
+
+
 # ----------------------------------------------------------------------------- live data
 _MODELS_CACHE: tuple[float, list[dict]] | None = None
 
@@ -240,17 +435,34 @@ def _err(s: str) -> dict:
 def t_search(a: dict) -> dict:
     q = a.get("query", "")
     scope = a.get("scope", "all")
-    res = corpus().search(q, int(a.get("limit", 8)), scope)
+    limit = int(a.get("limit", 8))
+    try:
+        res, used = hybrid_search(q, limit, scope, a.get("mode", "auto"))
+    except RuntimeError as e:
+        return _err(str(e))
     if not res:
         return _text(f"No results for {q!r}. Try other keywords (model ids, parameter names, Persian or English).")
-    out = []
+    out = [f"_search mode: {used}_\n"]
     for i, (s, c) in enumerate(res, 1):
         snippet = c.text.strip()
         if len(snippet) > int(a.get("snippet_chars", 900)):
             snippet = snippet[: int(a.get("snippet_chars", 900))] + " …"
-        out.append(f"### {i}. {c.page.title} › {c.heading}\n`{c.page.rel}` ({c.page.kind}, score {s:.1f})\n\n{snippet}\n")
+        out.append(f"### {i}. {c.page.title} › {c.heading}\n`{c.page.rel}` ({c.page.kind}, score {s:.3f})\n\n{snippet}\n")
     out.append("\nUse avalai_get_page(path, section=…) for full text. Prices/ids from docs are snapshots — confirm with avalai_price / avalai_check_models.")
     return _text("\n".join(out))
+
+
+def t_index_status(a: dict) -> dict:
+    vi = vindex()
+    if vi is None:
+        return _text(f"No semantic index at {INDEX_DIR}. Search uses BM25 only. Build once: AVALAI_API_KEY=… AVALAI_EMBED_MODEL=<embedding model> python3 mcp-server/build_index.py")
+    c = corpus()
+    cur = {chunk_id(ch) for ch in c.chunks}
+    have = set(vi.ids)
+    return _text(json.dumps({"model": vi.meta.get("model"), "dim": vi.dim, "dimensions_param": vi.meta.get("dimensions"),
+                             "built_at": vi.meta.get("built_at"), "chunks_in_index": len(have), "chunks_in_docs": len(cur),
+                             "missing_from_index": len(cur - have), "stale_in_index": len(have - cur),
+                             "hint": "run build_index.py again (incremental) if missing/stale > 0"}, indent=1))
 
 
 def t_get_page(a: dict) -> dict:
@@ -424,13 +636,31 @@ def t_news(a: dict) -> dict:
     return _text("\n".join(lines[: int(a.get("limit", 25))]))
 
 
+def t_starters(a: dict) -> dict:
+    name = a.get("name")
+    pages = {r: p for r, p in corpus().pages.items() if r.startswith("starters/") and r != "starters/README.md"}
+    if not name:
+        return _text("Project starters (full blueprints; pass name to read one):\n" + "\n".join(f"- {r[9:-3]}: {p.title}" for r, p in pages.items())
+                     + "\n\n" + corpus().pages["starters/README.md"].text)
+    for r, p in pages.items():
+        if name.lower() in r.lower():
+            return _text(p.text)
+    return _err(f"unknown starter {name!r}; call without name to list")
+
+
 TOOLS = {
-    "avalai_search": (t_search, "Full-text search (BM25) across AvalAI docs: curated references + verbatim source archive. Use for any 'how/what/which parameter/price/limit' question.",
+    "avalai_starters": (t_starters, "Ready-to-run project blueprints on AvalAI (FastAPI RAG, Next.js streaming chat, Telegram bot, Laravel chat, Node agent CLI, OCR→JSON, voice assistant). Call without name to list. Use when the user wants to build an app.",
+                        {"type": "object", "properties": {"name": {"type": "string"}}}),
+    "avalai_search": (t_search, "Hybrid semantic + keyword search (BM25 + embeddings via RRF when the index exists; BM25 otherwise) across AvalAI docs: curated references + verbatim source archive. Use for any 'how/what/which parameter/price/limit' question.",
                       {"type": "object", "properties": {
                           "query": {"type": "string", "description": "Keywords: model ids, parameter names, Persian or English"},
                           "scope": {"type": "string", "enum": ["all", "curated", "archive"], "default": "all"},
+                          "mode": {"type": "string", "enum": ["auto", "hybrid", "semantic", "bm25"], "default": "auto",
+                                   "description": "auto = hybrid (BM25+embeddings) when an index and AVALAI_API_KEY exist, else BM25"},
                           "limit": {"type": "integer", "default": 8}, "snippet_chars": {"type": "integer", "default": 900}},
                           "required": ["query"]}),
+    "avalai_index_status": (t_index_status, "Status of the optional semantic (embeddings) index: model, dimensions, freshness.",
+                            {"type": "object", "properties": {}}),
     "avalai_get_page": (t_get_page, "Read a docs page by path (from search results) in slices, or just one section by heading text.",
                         {"type": "object", "properties": {"path": {"type": "string"}, "section": {"type": "string"},
                                                           "offset": {"type": "integer", "default": 0}, "max_chars": {"type": "integer", "default": 12000}},
@@ -579,6 +809,21 @@ def selftest() -> None:
     rr = handle({"jsonrpc": "2.0", "id": 8, "method": "resources/list"})
     assert len(rr["result"]["resources"]) > 50
     assert handle({"jsonrpc": "2.0", "id": 9, "method": "prompts/get", "params": {"name": "avalai_cost_plan", "arguments": {"workload": "W"}}})["result"]["messages"]
+    # semantic pipeline with fake vectors (offline)
+    import tempfile
+    global INDEX_DIR, _VINDEX
+    old_dir, INDEX_DIR, _VINDEX = INDEX_DIR, Path(tempfile.mkdtemp()), None
+    os.environ.update(AVALAI_EMBED_FAKE="1", AVALAI_EMBED_MODEL="fake-hash")
+    chunks = corpus().chunks[:300]
+    ids = [chunk_id(c) for c in chunks]
+    vecs = [_normalize(v) for v in embed_texts([chunk_input(c) for c in chunks])]
+    (INDEX_DIR / "vectors.f16").write_bytes(b"".join(struct.pack(f"<{len(v)}e", *v) for v in vecs))
+    (INDEX_DIR / "meta.json").write_text(json.dumps({"model": "fake-hash", "dim": len(vecs[0]), "dimensions": None, "ids": ids}))
+    res, used = hybrid_search("rate limit retry", 3, "all", "auto")
+    assert res and used.startswith("hybrid"), used
+    st = handle({"jsonrpc": "2.0", "id": 10, "method": "tools/call", "params": {"name": "avalai_starters", "arguments": {}}})
+    assert "fastapi-chat-rag" in st["result"]["content"][0]["text"]
+    INDEX_DIR, _VINDEX = old_dir, None
     print(f"selftest OK ({len(corpus().pages)} pages, {len(corpus().chunks)} chunks)")
 
 

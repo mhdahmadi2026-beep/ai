@@ -17,6 +17,8 @@
 | ابزار | کار |
 |---|---|
 | `avalai_search` | جستجوی متنی (فارسی/انگلیسی، شناسه‌ی مدل، نام پارامتر) در مراجع منتخب و آرشیو کامل |
+| `avalai_index_status` | وضعیت ایندکس معنایی (مدل، ابعاد، تازگی) |
+| `avalai_starters` | نقشه‌ی راه‌های آماده‌ی پروژه (FastAPI+RAG، Next.js، ربات تلگرام، Laravel، ایجنت Node، OCR→JSON، دستیار صوتی) |
 | `avalai_get_page` | خواندن یک صفحه (تکه‌تکه) یا فقط یک بخش با عنوانش |
 | `avalai_list_pages` | فهرست صفحه‌ها |
 | `avalai_code_samples` | نمونه‌کد بر اساس موضوع و زبان (python/javascript/bash/php/go…) |
@@ -28,6 +30,27 @@
 | `avalai_news` | اخبار (جدیدترین اول) یا متن یک خبر |
 
 منابع (Resources): `avalai://ref/<path>` برای همه‌ی مراجع منتخب. پرامپت‌ها: `avalai_integration_review`، `avalai_cost_plan`، `avalai_migrate_model`.
+
+## ایندکس معنایی (Embeddings)
+جستجوی پیش‌فرض ترکیبی است: **BM25 (کلمه‌محور) + بردار (معنایی)** با ادغام رتبه‌ای RRF. اگر ایندکس یا کلید نباشد، خودکار به BM25 برمی‌گردد (چیزی خراب نمی‌شود).
+
+ساخت ایندکس (یک‌بار، افزایشی و قابل ادامه):
+```bash
+export AVALAI_API_KEY=...
+python3 mcp-server/build_index.py --list-models                       # مدل‌های embedding زنده
+python3 mcp-server/build_index.py --model <embedding-model> --dry-run # تعداد تکه + برآورد توکن/هزینه (~۲.۱M توکن)
+python3 mcp-server/build_index.py --model <embedding-model> --dimensions 512   # ساخت (۶٫۶MB)
+```
+سپس برای سرور (هر دو را یکسان با زمان ساخت بگذار):
+```
+AVALAI_API_KEY=...  AVALAI_EMBED_MODEL=<embedding-model>  AVALAI_EMBED_DIMENSIONS=512
+```
+- فایل‌های `index/meta.json` و `index/vectors.f16` را commit کن تا همه‌ی ماشین‌ها از یک ایندکس استفاده کنند (فقط embedding‌ی **پرسش** در هنگام جستجو هزینه دارد، چند توکن).
+- با هر تغییر مستندات دوباره `build_index.py` را بزن؛ فقط تکه‌های جدید/تغییرکرده embed می‌شوند. `avalai_index_status` می‌گوید چه چیزی کهنه است.
+- اگر `numpy` نصب باشد جستجو سریع‌تر است (اختیاری).
+- ارائه‌دهنده‌ی دیگر؟ `EMBED_BASE_URL` و `EMBED_API_KEY` را برای هر API سازگار با OpenAI بگذار.
+- آزمایش آفلاین بدون شبکه: `python3 build_index.py --fake` (بردارهای هش‌شده؛ معنایی نیستند).
+- ابزار `avalai_search` پارامتر `mode` دارد: `auto | hybrid | semantic | bm25`.
 
 ## نصب
 
