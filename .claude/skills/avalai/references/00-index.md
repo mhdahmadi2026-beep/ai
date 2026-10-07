@@ -94,6 +94,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | دستیاران (Assistants) — NOT IMPLEMENTED | /api-reference/assistants | api-reference/assistants.md | DONE |
 | دسته‌ای (Batch) — NOT IMPLEMENTED | /api-reference/batch | api-reference/batch.md | DONE |
 | فایل‌ها (Files) | /api-reference/files | api-reference/files.md | DONE |
+| رتبه‌بندی مجدد (Rerank) | /api-reference/rerank | api-reference/rerank.md | DONE |
 | ویدیوها | /api-reference/videos | — | PENDING |
 | جستجو | /api-reference/search | — | PENDING |
 | (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
