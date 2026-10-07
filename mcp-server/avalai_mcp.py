@@ -767,6 +767,9 @@ def handle(msg: dict) -> dict | None:
 
 
 def serve() -> None:
+    # Windows defaults to cp1252, which cannot encode arrows/Persian in replies and kills the server
+    sys.stdin.reconfigure(encoding="utf-8")
+    sys.stdout.reconfigure(encoding="utf-8")
     for line in sys.stdin:
         line = line.strip()
         if not line:
