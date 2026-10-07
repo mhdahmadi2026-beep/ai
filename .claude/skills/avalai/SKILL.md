@@ -372,3 +372,6 @@ See `references/00-index.md`.
 
 ## Best practices checklist (references/guides/best-practices.md)
 - Responses-first; keys server-side; headers-aware backoff+jitter; log request id/model/latency/usage; validate in/out; parse `response.output` by `type`; version prompts in code; strict tool schemas (`parallel_tool_calls:false` for writes); eval before changing prompt/model/effort; moderate + minimize data; cache with TTL. Doc samples for embeddings cosine/caching are incomplete (see file).
+
+## Prompt engineering (references/guides/prompt-engineering.md)
+- Prompts live in code (no `/v1/prompts`). Stable rules in `instructions`/`developer`, per-request data in `input`; `instructions` are NOT inherited via `previous_response_id`. Untrusted content (web/files/RAG/tool output) in tagged blocks and treated as data; private-data stage separate from public-web stage; validate tool args server-side. Reasoning models: goal+constraints+success criteria, never "think step by step"/hidden chain-of-thought; tune `reasoning.effort` + `text.verbosity`; keep stable prefix first + `prompt_cache_key`. Change one prompt layer at a time and compare with evals; add structure only for measured failures; outcome-first prompts with stop rules and retrieval budgets.
