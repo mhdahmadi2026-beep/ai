@@ -267,3 +267,6 @@ See `references/00-index.md`.
 
 ## Webhooks (references/guides/webhooks.md) — hosted webhooks NOT implemented
 - Don't use `client.webhooks.unwrap` against AvalAI. Own signed callbacks: HMAC-SHA256 over `timestamp.raw_body`, 300 s tolerance, persistent dedupe by event id, fast 2xx + queue, at-least-once semantics, rotate secrets with overlap.
+
+## Streaming (references/guides/streaming-responses.md)
+- Responses SSE is typed: append only `response.output_text.delta`; refusals via `response.refusal.delta`; run tools after `response.function_call_arguments.done`; read usage/status from `response.completed` (check `incomplete_details`); handle both `response.failed` and `error`; moderation scores only after completion; stream resume (`starting_after`) is not available on AvalAI (hosted background unimplemented).
