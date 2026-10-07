@@ -499,3 +499,7 @@ See `references/00-index.md`.
 ## Deprecation notice 2026-09-04 & status page (references/news/…, references/guides/service-status.md)
 - Old ids now ERROR; AvalAI maps: gpt-5*-chat→`gpt-5.6-sol`/`-terra`, imagen-4→Nano Banana (`gemini-3.1-flash-image`/`gemini-3-pro-image`), TTS (tts-1/gpt-4o-mini-tts)→`gpt-audio-1.5`/Gemini TTS, STT (whisper-1/gpt-4o-*transcribe*)→`gpt-transcribe`, diarize→`gpt-live-transcribe`, Claude 4→`claude-opus-4-7`/`claude-sonnet-4-6`. Verify live `/v1/models` (some mappings conflict across notes).
 - status.avalai.ir (Instatus): frequent 1–6 min auto-detected degradations per endpoint, `/v1/files` weakest; plan retries/fallbacks/circuit breaker; tracks OpenAI, Anthropic, Google, Cloudflare, Stability, Perplexity upstreams. Not fetchable from sandbox.
+
+## Tier rate limits (references/11-tier-rate-limits.md) & news index
+- Per-model RPM/TPM for tiers 0–5 are in `11-tier-rate-limits.md` (snapshot; live: `/public/models` → `tier_rate_limits`). Frontier Claude/o-series/gpt-5-pro/grok-4 are NOT available on T0 (and often T1). Tier 0 chat ≈ 1–3 RPM, 10–40K TPM. Size per exact model id; stay ≤50–75% of limit.
+- `references/news/index.md` lists all announcement pages (titles); notable: `x-request-id`→`avalai-request-id` (2026-08-16), Files API beta (2026-01-01), Flex tier (2025-12-15), User API (2025-11-27), Search API (2025-10-26).

@@ -233,3 +233,7 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | News: 2026-09-04 model deprecations & migration guide | /news/2026-09-04-model-deprecations-and-migration-guide | news/2026-09-04-model-deprecations-and-migration-guide.md | DONE |
 | Service status page (screenshot only) | status.avalai.ir | guides/service-status.md | DONE (from screenshot; live fetch blocked) |
 | Re-sent duplicates (no change): rate-limits, speech-to-text, api-reference/models | | 09-rate-limits.md, guides/speech-to-text.md, api-reference/models.md | DUPLICATE (STT file got a news-based update note) |
+| Models explorer page (interactive, no static content) | /models | — | NOTHING TO CAPTURE (use /public/models or /v1/models) |
+| Pricing page full generated catalog → per-tier RPM/TPM | /pricing | 11-tier-rate-limits.md (+ prices in 06-pricing.md) | DONE (rate limits transcribed from catalog) |
+| Stability AI editing (deprecated) | /examples/stability_ai_image_editing | models/stability-deprecated.md | DONE |
+| News index | /news | news/index.md | DONE (titles only) |
