@@ -408,3 +408,6 @@ See `references/00-index.md`.
 
 ## Model selection (references/guides/model-selection.md)
 - Process: accuracy target (break-even = loss/(gain+loss)) → eval set → strongest model first → then cheaper/faster models, routing (easy→small, hard→flagship) and prompt/few-shot tuning; tune `reasoning.effort`/`text.verbosity` before swapping models; same eval on every provider route (feature parity, retention, quotas differ). Fine-tuning/distillation not available. Page model tables are stale in places — always confirm ids via `/v1/models` + deprecations. There is no `avalai` Python SDK (the page's sample is wrong): use the OpenAI SDK with `base_url`.
+
+## Latency optimization (references/guides/latency-optimization.md)
+- Measure TTFT and last-token latency per request first; cut output tokens first (~50% fewer ≈ ~50% faster; halving the prompt only ~1–5%); smallest passing model; lower `reasoning.effort`/`text.verbosity` + `max_output_tokens`; stable cacheable prefix; stream; merge/parallelize independent calls (bounded concurrency) and use speculative execution with a discard path; `service_tier:"default"` for interactive (flex only for delay-tolerant); skip the LLM where deterministic code works. Fine-tuning/distillation suggestions in the page aren't available on AvalAI.
