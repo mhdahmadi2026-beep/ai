@@ -181,3 +181,7 @@ See `references/00-index.md`.
 
 ## OpenAI provider rules (see providers/openai.md)
 - Newest: `gpt-6.1-sol` (tier ≥1; no `none`/`minimal` effort), `gpt-6-sol|luna|astra`, `gpt-5.6-sol|terra|luna`, `gpt-5.5`, `gpt-5.4*`. Tiered pricing keyed on **total input length** (>272K → higher rate for the whole request). Responses-only: `gpt-5.4-pro`, `gpt-5.2-pro`, `gpt-5-pro`, `gpt-5.x-codex`, `o3-deep-research`/`o4-mini-deep-research` (tool required; use background mode). Web search: Responses `web_search` tool, or `gpt-4o-search-preview` in Chat. Don't trust examples in the page that POST `messages` to `/v1/responses`. Many ids (gpt-5 `-chat`, gpt-4.5, Sora, gpt-image-1.x, gpt-audio*, o3/GPT-5 snapshots) are removed or scheduled for shutdown → check deprecations first.
+
+## Anthropic/Claude provider rules (see providers/anthropic.md)
+- Use base ids (`claude-opus-5-5`, `claude-opus-5`, `claude-sonnet-5-5`, `claude-fable-5-1`, `claude-opus-4-8`, `claude-sonnet-4-6`, `claude-haiku-4-5`) for smart multi-cloud routing (≈10× limits). Anthropic SDK base URL has NO `/v1`. 1M context native on 5.x/4.6+ (else `anthropic-beta: context-1m-2025-08-07`). Fable 5.1 needs tier ≥2; Opus 5.5 responses full, others responses partial.
+- Opus 5.5 / Fable 5.1 / Opus 5: thinking is adaptive & **cannot be disabled**, control with `output_config.effort`; never send `temperature`/`top_p`/prefill/forced tool_choice; keep signed thinking blocks intact. Sonnet 5.5: `between_tools` to limit thinking. AvalAI cache-write prices: Sonnet 5.5 $4, Opus 5.5 $8.

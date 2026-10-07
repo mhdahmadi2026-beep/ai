@@ -111,3 +111,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 |---|---|---|---|
 | Alibaba (Qwen) | /providers/alibaba | providers/alibaba.md | DONE |
 | OpenAI | /providers/openai | providers/openai.md | DONE |
+| Anthropic (Claude) | /providers/anthropic | providers/anthropic.md | DONE |
