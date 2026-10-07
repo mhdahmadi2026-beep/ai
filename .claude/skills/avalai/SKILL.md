@@ -441,3 +441,6 @@ See `references/00-index.md`.
 
 ## Reasoning + function calling loop (references/examples/reasoning-function-calls.md)
 - Loop: create → execute every `function_call` item → send `function_call_output` (same `call_id`, string `output`) with `previous_response_id` → repeat until no calls; ALWAYS cap iterations; unknown tool/bad JSON/timeout → return structured error output; stateless = replay output items unchanged (+ `reasoning.encrypted_content` if supported); keep `phase`; sample model `o3` is on the shutdown list (2026-12-11) — use a current reasoning model.
+
+## Rate-limit-safe parallel requests (references/examples/rate-limit-safe-parallel-requests.md)
+- Three layers: backoff+jitter (honour `Retry-After`, which may be an HTTP date), bounded concurrency (semaphore/worker pool), and real pacing (shared token bucket for RPM/TPM; header-based `x-ratelimit-remaining/reset-*`). Set SDK `max_retries=0` when you own retries; target 50–75% of tier limits; save partial results; keep side effects idempotent; 429 may be quota exhaustion, not a rate spike.
