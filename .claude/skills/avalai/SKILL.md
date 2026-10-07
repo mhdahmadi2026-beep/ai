@@ -174,3 +174,7 @@ See `references/00-index.md`.
 
 ## Videos API (see api-reference/videos.md) — ⚠ verify availability
 - `/v1/videos` (create/retrieve/list/delete/remix/content). Sora models + OpenAI Videos API had a provider shutdown 2026-09-24 → treat Sora as unavailable; verify Veo (`veo-3.1-*`) / Runway (`gen4.5`, `gen4_turbo`) live via `/v1/models`. Async: poll `status`; download only when `completed`; never resubmit after a dropped connection — list videos first (`failed` = not billed, otherwise billed). `seconds` is a string (multiples of 4 for Sora). Characters/extensions/edits not supported.
+
+## Alibaba/Qwen rules (see providers/alibaba.md)
+- Non-streaming Qwen calls → `extra_body={"enable_thinking": False}`; `enable_thinking: True` only with `stream=True` (else `invalid_request`). Qwen3.8-flash/27b/max accept `reasoning_effort` (low|medium|xhigh) / `preserve_thinking`; `qwen3.8-2.4t-a95b` text-only, thinking mandatory.
+- Prefer current ids: `qwen3.8-max|flash|27b`, `qwen3.7-max|plus`, `qwen3.6-plus|flash`, `qwen3-max`, `qwen3-coder-next`, `qwen3-vl-plus|flash`. Retired (May 2026): `qwen-max`, `qwen-turbo`, `qwen-vl-max|plus`, qwen2.5-vl, small qwen3-0.6b/1.7b/4b, qwen2.5-*-1m → don't use. Web search only on `qwen3-max` (`enable_search` + `search_strategy:"agent"`, +$10/1K searches). Image/embedding/rerank Qwen models: see images.md/embeddings.md/rerank.md (`text-embedding-v4` supports `text_type`/`instruct`).

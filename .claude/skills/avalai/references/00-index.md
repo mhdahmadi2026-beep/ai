@@ -104,3 +104,9 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
 
 Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices,structured-outputs,text-to-speech}, /providers/{openai,anthropic,xai,fireworksai,deepseek}, /examples/processing_audio_in_chat_completion_api, /api-reference/{moderation,search,audio}
+
+
+## Providers (ارائه‌دهندگان)
+| page | URL | file | status |
+|---|---|---|---|
+| Alibaba (Qwen) | /providers/alibaba | providers/alibaba.md | DONE |
