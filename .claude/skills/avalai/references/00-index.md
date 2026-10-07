@@ -190,3 +190,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: tools-connectors-mcp | /guides/tools-connectors-mcp | guides/tools-connectors-mcp.md | DONE (route-dependent) |
 | Guide: best-practices | /guides/best-practices | guides/best-practices.md | DONE |
 | Guide: prompt-engineering | /guides/prompt-engineering | guides/prompt-engineering.md | DONE |
+| Guide: production-best-practices | /guides/production-best-practices | guides/production-best-practices.md | DONE |
