@@ -330,3 +330,6 @@ See `references/00-index.md`.
 
 ## Codex (references/guides/setup-codex.md)
 - `~/.codex/config.toml`: `model_provider="avalai"`, `[model_providers.avalai] base_url="https://api.avalai.ir/v1"`, `env_key="AVALAI_API_KEY"`; provider id can't be openai/ollama/lmstudio. Codex only uses `/v1/responses`: OpenAI models fine, non-OpenAI compatibility not guaranteed. Never put the key in the file.
+
+## Claude Code (references/guides/setup-claude-code.md)
+- Direct, no proxy: `ANTHROPIC_BASE_URL=https://api.avalai.ir` (no `/v1`), `ANTHROPIC_AUTH_TOKEN=<AvalAI key>`, `ANTHROPIC_MODEL`, `ANTHROPIC_SMALL_FAST_MODEL`; Windows also needs `ANTHROPIC_API_KEY`=same key to skip browser login. Non-Claude models work only if `/v1/messages` + tool calling is compatible (not guaranteed). Env var names are upper-case. Verify with `/status`.
