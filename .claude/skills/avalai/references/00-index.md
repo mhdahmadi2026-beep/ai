@@ -1,3 +1,5 @@
+> NOTE (2026-10-07): older rows below said PENDING; every nav page has since been captured (curated file + verbatim copy in `source-archive/`). Truly uncaptured: news pages and per-model pages → `MISSING-PAGES.md`.
+
 # AvalAI docs map & capture status
 
 Mark each page DONE when its file exists in this folder. Base: https://docs.avalai.ir/fa/
@@ -5,13 +7,13 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 ## Top navigation
 | Section | URL | Status |
 |---|---|---|
-| راهنماها | /guides/best-practices | PENDING |
-| مرجع API | /api-reference/introduction | PENDING |
-| مدل‌ها | /models (index: /models/index) | PENDING |
-| قیمت‌گذاری | /pricing | PENDING |
+| راهنماها | /guides/best-practices | captured → see source-archive/INDEX.md |
+| مرجع API | /api-reference/introduction | captured → see source-archive/INDEX.md |
+| مدل‌ها | /models (index: /models/index) | captured → see source-archive/INDEX.md |
+| قیمت‌گذاری | /pricing | captured → see source-archive/INDEX.md |
 
 ## Sidebar
-### خبرها — /news/ — PENDING
+### خبرها — /news/ — captured → see source-archive/INDEX.md
 ### شروع به کار
 | Page | URL | File | Status |
 |---|---|---|---|
@@ -39,29 +41,29 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 ## Known model pages (from intro/news)
 /models/muse-glimmer-30b, /models/nemotron-3.5-lightning
 
-## Additional URLs discovered in Quickstart (pages still PENDING)
+## Additional URLs discovered in Quickstart (pages still captured → see source-archive/INDEX.md)
 /api-reference/chat, /api-reference/models, /api-reference/user, /api-reference/authentication, /api-reference/response-headers, /guides/responses-vs-chat-completions, /guides/provider-specific-params, /models/model-details, /resellers/cost-tracking-guide, /resellers/enterprise-guide, /safety/content-policy, /news/2025-06-03-anthropic-sdk-support-added, /news/2025-06-09-anthropic-sdk-multi-provider-support
 Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /user/v1/transactions/lookup
 
-## Discovered in ai-workflows page (PENDING)
+## Discovered in ai-workflows page (captured → see source-archive/INDEX.md)
 /examples/evidence_based_workflows, /examples/speaker_aware_meeting_intelligence, /examples/manual_rag_with_embeddings, /guides/coding-agent-workflows, /guides/setup-open-webui, /guides/setup-hermes, /guides/setup-opencode, /guides/setup-aider, /guides/setup-9router, /guides/setup-n8n, /guides/speech-to-text, /guides/evals, /guides/rate-limits, /models/
 
-## Discovered in libraries page (PENDING)
+## Discovered in libraries page (captured → see source-archive/INDEX.md)
 /api-reference/v1beta, /api-reference/response-headers (also `X-Client-Request-Id` request header), /guides/responses-vs-chat-completions
 
-## Discovered in performance page (PENDING)
+## Discovered in performance page (captured → see source-archive/INDEX.md)
 /guides/latency-optimization, /guides/cost-optimization, /guides/token-counting, /guides/prompt-caching
 
-## Discovered in pricing page (PENDING)
+## Discovered in pricing page (captured → see source-archive/INDEX.md)
 /models/model-details, /models/<model-id> pages (one per model), /api-reference/images, /api-reference/user, /resellers/cost-tracking-guide, /resellers/enterprise-guide, /guides/cost-optimization, /news/2026-09-11-..., /news/2026-09-30-gemini-3-8-tts-models-added
 
-## Discovered in service-tiers page (PENDING)
+## Discovered in service-tiers page (captured → see source-archive/INDEX.md)
 /guides/error-handling, /guides/production-best-practices, /api-reference/responses, /api-reference/chat
 
-## Discovered in rate-limits page (PENDING)
+## Discovered in rate-limits page (captured → see source-archive/INDEX.md)
 /rate-limits-tier0 … /rate-limits-tier5 (per-model RPM/TPM per tier — high value), /api-reference/user
 
-## Discovered in deprecations page (PENDING)
+## Discovered in deprecations page (captured → see source-archive/INDEX.md)
 /guides/model-selection, /providers/{moonshotai,elevenlabs,alibaba,google,zai,minimax}, /examples/{generate_images_with_gpt_image,generate_images_with_seedream_4,web_search_capabilities}, /api-reference/search, /news/2025-11-18-new-models-gemini-3-pro-kimi-k2-thinking, /news/2025-09-27-google-gemini-models-deprecation
 
 ## ALL 10 'شروع به کار' sidebar pages are now captured. Remaining groups: خبرها, نمایندگان فروش, مرجع API, ارائه‌دهندگان, راهنماها, ابزارهای داخلی, بهترین شیوه‌ها, مثال‌ها, منابع.
@@ -73,7 +75,7 @@ Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /us
 | راهنمای سازمانی | /resellers/enterprise-guide | resellers/enterprise-guide.md | DONE |
 (other pages in this group unknown — ask user to expand the group)
 
-Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (incl. LangChain async section)
+Discovered (captured → see source-archive/INDEX.md): /api-reference/videos, /api-reference/response-headers (incl. LangChain async section)
 
 ## مرجع API group
 | Page | URL | File | Status |
@@ -101,9 +103,9 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | ویدیوها ⚠ Sora shut down 2026-09-24 | /api-reference/videos | api-reference/videos.md | DONE |
 | جستجو | /api-reference/search | api-reference/search.md | DONE |
 | کاتالوگ مدل‌ها (ModelExplorer، داده پویا) | /models/index | models/index.md | DONE (shell only) |
-| (also guides) | /guides/realtime-audio, /guides/error-handling | — | PENDING |
+| (also guides) | /guides/realtime-audio, /guides/error-handling | — | captured → see source-archive/INDEX.md |
 
-Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices,structured-outputs,text-to-speech}, /providers/{openai,anthropic,xai,fireworksai,deepseek}, /examples/processing_audio_in_chat_completion_api, /api-reference/{moderation,search,audio}
+Discovered (captured → see source-archive/INDEX.md): /guides/{reasoning,predicted-outputs,safety-best-practices,structured-outputs,text-to-speech}, /providers/{openai,anthropic,xai,fireworksai,deepseek}, /examples/processing_audio_in_chat_completion_api, /api-reference/{moderation,search,audio}
 
 
 ## Providers (ارائه‌دهندگان)

@@ -85,3 +85,11 @@ Chat Completions full (tools, streaming, system, temperature, multimodal); Messa
 - Lists retired ids (qwen-max/turbo/vl-max/vl-plus note, plus qwen2.5-vl, qwen3-0.6b/1.7b/4b, qwen2.5-*-1m) as available in tables though banners say retired; trust deprecations + live list.
 - `qwen-vl-ocr` context 34,096 as printed.
 - Responses-equivalent blocks wrongly replace Qwen with `gpt-5.6-luna` (copy artifacts) — ignore.
+
+## Audit addendum — extra ids and flags from the source page
+- Qwen-Plus snapshots: `qwen-plus`, `qwen-plus-latest`, `qwen-plus-2025-09-11`, `-2025-07-28`, `-2025-07-14`, `-2025-04-28`; `qwen3-coder-plus` (1M ctx, 997,952 in, 65,536 out) and `qwen3-coder-plus-2025-07-22`.
+- Vision: `qwen2.5-vl-{72b,32b,7b,3b}-instruct` — each 131,072 ctx, 129,024 in, 8,192 out. `qwq*`/`qvq-max*` legacy → see 10b-deprecations-complete.md.
+- Legacy `qwen-turbo*` (turbo, -latest, -2025-04-28) retired 13–31 May 2026 → `qwen-flash` / `qwen3.6-flash`.
+- Web search: `extra_body={"enable_search": true}` (+ `search_options.search_strategy` must be `"agent"` for international regions); model decides whether to search.
+- Embeddings (`text-embedding-v4` only): `text_type: "query"` for user queries, `"document"` for stored docs.
+- `reasoning_effort` ∈ `low|medium|xhigh` (default `xhigh`) on Qwen3.8 2.4T; answer begins with `<think>…</think>`.
