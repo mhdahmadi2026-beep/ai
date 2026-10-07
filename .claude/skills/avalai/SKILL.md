@@ -444,3 +444,6 @@ See `references/00-index.md`.
 
 ## Rate-limit-safe parallel requests (references/examples/rate-limit-safe-parallel-requests.md)
 - Three layers: backoff+jitter (honour `Retry-After`, which may be an HTTP date), bounded concurrency (semaphore/worker pool), and real pacing (shared token bucket for RPM/TPM; header-based `x-ratelimit-remaining/reset-*`). Set SDK `max_retries=0` when you own retries; target 50–75% of tier limits; save partial results; keep side effects idempotent; 429 may be quota exhaustion, not a rate spike.
+
+## Promptfoo evals (references/examples/promptfoo-evals.md)
+- Local/CI regression evals: dataset contract first, Python provider via `file://…py` returning `{"output": …}` (key from env, never YAML), deterministic asserts before `llm-rubric`, fixed labelled dataset, one change at a time, small PR smoke eval + full pre-release suite, no secrets for fork PRs. Drop `temperature=0` for reasoning/Claude 5.x models; env var is `AVALAI_EVAL_MODEL` (page has a case typo).
