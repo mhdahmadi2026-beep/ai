@@ -202,3 +202,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: predicted-outputs | /guides/predicted-outputs | guides/predicted-outputs.md | DONE (provider/model dependent) |
 | Guide: model-selection | /guides/model-selection | guides/model-selection.md | DONE (ids need live verification) |
 | Guide: latency-optimization | /guides/latency-optimization | guides/latency-optimization.md | DONE |
+| Guide: optimizing-llm-accuracy | /guides/optimizing-llm-accuracy | guides/optimizing-llm-accuracy.md | DONE |

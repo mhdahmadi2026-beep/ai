@@ -411,3 +411,6 @@ See `references/00-index.md`.
 
 ## Latency optimization (references/guides/latency-optimization.md)
 - Measure TTFT and last-token latency per request first; cut output tokens first (~50% fewer ≈ ~50% faster; halving the prompt only ~1–5%); smallest passing model; lower `reasoning.effort`/`text.verbosity` + `max_output_tokens`; stable cacheable prefix; stream; merge/parallelize independent calls (bounded concurrency) and use speculative execution with a discard path; `service_tier:"default"` for interactive (flex only for delay-tolerant); skip the LLM where deterministic code works. Fine-tuning/distillation suggestions in the page aren't available on AvalAI.
+
+## Optimizing LLM accuracy (references/guides/optimizing-llm-accuracy.md)
+- Cycle: define failure+cost → small eval set → diagnose (missing context ⇒ RAG/files/search; inconsistent behaviour ⇒ instructions/examples/schemas/routing) → change ONE lever → re-run evals → rollout; every prod failure becomes an eval row. Prompt engineering first; RAG fails at retrieval OR LLM use; judge-models need rubric + human calibration + rotated order + frozen versions. Hosted fine-tuning unavailable (prepare data/evals only). Low confidence/high cost ⇒ clarify or hand off; high-impact actions ⇒ assistant mode.
