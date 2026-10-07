@@ -47,3 +47,9 @@ See `references/00-index.md`.
 - Provider-specific params: `extra_body` (Python) / `@ts-expect-error` direct fields (TS).
 - Exact cost: read `avalai-request-id` header → `POST /user/v1/transactions/lookup` (available ~30s later).
 - Model IDs in examples may be stale; verify live before hard-coding.
+
+## Tool integration rules (ai-workflows)
+- Base URL `https://api.avalai.ir/v1`; tools append `/chat/completions` themselves — never paste the full path into a base-URL field.
+- Model prefix is tool-specific: OpenCode `avalai/<id>`, Aider `openai/<id>`, direct API plain `<id>`.
+- Use a dedicated AvalAI key (not OpenAI/ChatGPT credentials). Don't use `gpt-transcribe`/`gpt-live-transcribe` on AvalAI.
+- Start direct; add 9Router (a gateway, not an agent) only when routing/fallback is needed. Human approval before side effects; synthetic data first.

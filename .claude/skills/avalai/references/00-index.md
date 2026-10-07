@@ -17,7 +17,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 |---|---|---|---|
 | معرفی | / | 01-introduction.md | DONE |
 | شروع سریع | /quickstart | 02-quickstart.md | DONE |
-| استفاده عملی از هوش مصنوعی | /guides/ai-workflows | 03-ai-workflows.md | PENDING |
+| استفاده عملی از هوش مصنوعی | /guides/ai-workflows | 03-ai-workflows.md | DONE |
 | کتابخانه‌ها | /libraries | 04-libraries.md | PENDING |
 | عملکرد | /performance | 05-performance.md | PENDING |
 | قیمت‌گذاری | /pricing | 06-pricing.md | PENDING |
@@ -42,3 +42,6 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 ## Additional URLs discovered in Quickstart (pages still PENDING)
 /api-reference/chat, /api-reference/models, /api-reference/user, /api-reference/authentication, /api-reference/response-headers, /guides/responses-vs-chat-completions, /guides/provider-specific-params, /models/model-details, /resellers/cost-tracking-guide, /resellers/enterprise-guide, /safety/content-policy, /news/2025-06-03-anthropic-sdk-support-added, /news/2025-06-09-anthropic-sdk-multi-provider-support
 Public endpoints: https://api.avalai.ir/public/models (no auth), /v1/models, /user/v1/transactions/lookup
+
+## Discovered in ai-workflows page (PENDING)
+/examples/evidence_based_workflows, /examples/speaker_aware_meeting_intelligence, /examples/manual_rag_with_embeddings, /guides/coding-agent-workflows, /guides/setup-open-webui, /guides/setup-hermes, /guides/setup-opencode, /guides/setup-aider, /guides/setup-9router, /guides/setup-n8n, /guides/speech-to-text, /guides/evals, /guides/rate-limits, /models/
