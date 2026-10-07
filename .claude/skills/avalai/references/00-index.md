@@ -83,7 +83,7 @@ Discovered (PENDING): /api-reference/videos, /api-reference/response-headers (in
 | پاسخ‌ها (Responses) | /api-reference/responses | — | PENDING |
 | تکمیل گفتگو | /api-reference/chat | api-reference/chat.md | DONE |
 | تصاویر | /api-reference/images | api-reference/images.md | DONE |
-| بردارهای تعبیه‌سازی | /api-reference/embeddings | — | PENDING |
+| بردارهای تعبیه‌سازی | /api-reference/embeddings | api-reference/embeddings.md | DONE |
 | صدا | /api-reference/audio | — | PENDING |
 | نظارت | /api-reference/moderation | — | PENDING |
 | API کاربر | /api-reference/user | api-reference/user.md | DONE |

@@ -123,3 +123,8 @@ See `references/00-index.md`.
 - Edits: multipart (`image`) or JSON (`images:[{image_url|file_id}]`, ≤16); mask needs alpha, same size/format; prompt describes whole final image; no `input_fidelity` for `gpt-image-2`; `background` stay `auto|opaque`; `moderation: auto`.
 - Non-OpenAI params via `extra_body` (FLUX: `response_format:"b64_json"` only). Qwen supports OpenAI format (`1328x1328`) and Dashscope-native (`input`/`parameters`, `1328*1328`). Gemini image models only via chat/completions or `/v1beta`; `imagen-*` removed. Variations endpoint = placeholder.
 - Cost: image output $30/1M tokens (2.5 and gpt-image-2); estimates cover output only — add prompt + reference-image tokens. Never auto-retry `moderation_blocked`.
+
+## Embeddings rules (see api-reference/embeddings.md)
+- `POST /v1/embeddings`; `input` = string or array (no empty strings; chunk big ingests, retry failed chunks). Same model + same `dimensions` for index and queries; never mix models/dims in one index. `encoding_format: float` by default. `dimensions` only on text-embedding-3-* / Gemini.
+- Models: `text-embedding-3-small` (1536), `-large` (3072), Gemini `gemini-embedding-001/2` (≤3072, `extra_body: {task_type, output_dimensionality}`; use RETRIEVAL_DOCUMENT for docs, RETRIEVAL_QUERY for queries; L2-normalize when dims < 3072), Cohere, Alibaba `text-embedding-v4`. Native Gemini: `/v1beta/models/<id>:embedContent`.
+- Vectors are derived user data: apply tenant isolation/retention/deletion. Use RAG: retrieve then answer via Responses/Chat.
