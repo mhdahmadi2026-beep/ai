@@ -101,3 +101,6 @@ See `references/00-index.md`.
 
 ## Auth rules
 - `Authorization: Bearer $AVALAI_API_KEY`, server-side only; separate key per env/service/tenant; rotate on any leak. No Admin API, no workload-identity exchange, and **organization header/option is NOT implemented — don't send it**. Don't use OpenAI admin keys/IP ranges with AvalAI. Log `avalai-request-id` + hashed `safety_identifier`.
+
+## User API quick map (`https://api.avalai.ir/user/v1`, Bearer key; rate-limited 3/15/50/150/350/750 req/min by tier)
+`GET /credit` (balance, tier, packages/grants) · `GET /transactions` (filters: hours_ago≤720, dates, page_size≤1000, model, provider, status_code, api_key_id, safety_identifier) · `POST /transactions/lookup` (≤1000 ids, exact `cost`) · `GET /transactions/summary?group_by=model|provider|date|hour` · `GET /health`. Records kept ≥90 days. Error shape is flat `{error, message}`.
