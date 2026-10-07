@@ -77,3 +77,8 @@ See `references/00-index.md`.
 - Public values: `default` (credit packages cover it) and `flex` (−50%, up to 900 s, no credit-package coverage, select OpenAI models only: gpt-5.5, 5.4-pro/5.4/mini/nano, 5.2-chat, 5.2, 5.1, 5, 5-mini, 5-nano, o3, o4-mini). Never send `priority`/`auto` unless the account has it.
 - Flex pattern: timeout 900 s, on failure/timeout retry with `service_tier: "default"` + exponential backoff (idempotent work only). Log returned `service_tier` with `avalai-request-id`.
 - Flex on an unsupported model → `invalid_request` error.
+
+## Credit-package rules
+- Packages = prepaid, discounted (20–40%), scoped to listed models, fixed validity (1/7/30/31 d), per-template purchase cap, non-transferable, flex tier NOT covered. Keep overall balance positive (≥100,000 Toman) or API is disabled.
+- Package credit is consumed before general balance; out-of-scope models bill at standard rates.
+- Verify with `POST /user/v1/transactions/lookup` → `cost.source` = `credit_package` | `balance`. Check live availability at the store/API before recommending a package; Claude packages are currently unavailable.

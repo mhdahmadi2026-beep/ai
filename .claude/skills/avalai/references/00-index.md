@@ -22,7 +22,7 @@ Mark each page DONE when its file exists in this folder. Base: https://docs.aval
 | عملکرد | /performance | 05-performance.md | DONE (cache benchmark source missing) |
 | قیمت‌گذاری | /pricing | 06-pricing.md | DONE (per-tier RPM/TPM per model not transcribed → see rate-limits page / live API) |
 | سطوح سرویس | /service-tiers | 07-service-tiers.md | DONE |
-| بسته‌های اعتباری | /credit-packages | 08-credit-packages.md | PENDING |
+| بسته‌های اعتباری | /credit-packages | 08-credit-packages.md | DONE |
 | محدودیت‌های نرخ مدل | /rate-limits | 09-rate-limits.md | PENDING |
 | مدل‌های منسوخ شده | /deprecations | 10-deprecations.md | PENDING |
 
