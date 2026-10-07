@@ -193,3 +193,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: production-best-practices | /guides/production-best-practices | guides/production-best-practices.md | DONE |
 | Guide: deployment-checklist | /guides/deployment-checklist | guides/deployment-checklist.md | DONE |
 | Guide: data-controls | /guides/data-controls | guides/data-controls.md | DONE |
+| Guide: safety-best-practices | /guides/safety-best-practices | guides/safety-best-practices.md | DONE |
