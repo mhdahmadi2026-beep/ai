@@ -221,3 +221,6 @@ See `references/00-index.md`.
 
 ## Vision (references/guides/vision.md)
 - Chat: `image_url:{url,detail}`; Responses: `input_image` with `image_url` as STRING (or `file_id` from Files `purpose:"vision"`). Inline ≤20 MB; set `detail` explicitly. Gemini images must be base64 (no URLs); bbox coords are [ymin,xmin,ymax,xmax] in 0-1000.
+
+## Image generation (references/guides/image-generation.md)
+- Use `/v1/images/generations|edits` by default; Responses `image_generation` tool only if verified. Default model `gpt-image-2.5-flare` (pro edits: `gpt-image-2.5-sunburst`); `xhigh`/`max` quality only on those two; results are base64. gpt-6-sol/luna, grok-4.7 are NOT image generators. No `imagen-*`; `gemini-2.5-flash-image` retired 2026-10-02. Non-OpenAI params via `extra_body`; edit prompt must describe full final image + invariants.

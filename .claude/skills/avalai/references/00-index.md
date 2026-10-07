@@ -139,3 +139,4 @@ Discovered (PENDING): /guides/{reasoning,predicted-outputs,safety-best-practices
 | Guide: error-handling | /guides/error-handling | guides/error-handling.md | DONE |
 | Guide: text-generation | /guides/text-generation | guides/text-generation.md | DONE |
 | Guide: vision | /guides/vision | guides/vision.md | DONE |
+| Guide: image-generation | /guides/image-generation | guides/image-generation.md | DONE |
