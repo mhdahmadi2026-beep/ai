@@ -315,3 +315,6 @@ See `references/00-index.md`.
 
 ## OpenCode (references/guides/setup-opencode.md)
 - `opencode.json` provider `avalai` with `npm:"@ai-sdk/openai-compatible"`, `baseURL:"https://api.avalai.ir/v1"`; set model + small_model, `share:"disabled"`, permission `*:ask`, `external_directory:deny`; `/connect` → Other → id `avalai`; selector `avalai/gpt-5.4-mini`, wire id `gpt-5.4-mini`; start without tools/auto-approve.
+
+## Aider (references/guides/setup-aider.md)
+- Env `OPENAI_API_BASE=https://api.avalai.ir/v1` (not `OPENAI_BASE_URL`) + `OPENAI_API_KEY` in a private `--env-file`; model arg `openai/gpt-5.4-mini` (+ `--weak-model`); start `--chat-mode ask --map-tokens 0 --no-auto-commits --no-dirty-commits`; never `--yes-always` in trials.
